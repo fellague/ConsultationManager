@@ -25,6 +25,14 @@ namespace ConsultationManager.Views
         }
         public List<EducationContent> EducationContents { get { return ConsultationManager.Views.EducationContents.DataSource; } }
         public List<EmployeeContent> EmployeeContents { get { return ConsultationManager.Views.EmployeeContents.DataSource; } }
+
+        private void showAllPatient(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new NavBarWindow();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
     }
 
     public class EducationContent
@@ -70,4 +78,5 @@ namespace ConsultationManager.Views
                 new EmployeeContent { HeaderCont = "Accès", TextCont = "Controller les droits d'accès des employées", Photo = "/ConsultationManager;component/Imgs/Home/roles.png" }
             };
     }
+
 }

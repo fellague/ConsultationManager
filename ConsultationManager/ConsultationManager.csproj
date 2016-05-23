@@ -72,6 +72,18 @@
     <Compile Include="Views\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\NavBarWindow.xaml.cs">
+      <DependentUpon>NavBarWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Patients\AllPatientsPage.xaml.cs">
+      <DependentUpon>AllPatientsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Patients\MyPatientsPage.xaml.cs">
+      <DependentUpon>MyPatientsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Patients\NewPatientPage.xaml.cs">
+      <DependentUpon>NewPatientPage.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -85,6 +97,22 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NavBarWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Patients\AllPatientsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Patients\MyPatientsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Patients\NewPatientPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -165,6 +193,7 @@
     <Resource Include="Imgs\Home\roles.png" />
     <Resource Include="Imgs\Home\staff.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

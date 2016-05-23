@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ConsultationManager.Views"
         xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
         x:Class="ConsultationManager.Views.Home"
         mc:Ignorable="d"
         Title="Home" Height="900" Width="1600" WindowState="Maximized"
@@ -15,7 +16,7 @@
             <dxlc:TileLayoutControl.Background>
                 <ImageBrush ImageSource="/ConsultationManager;component/Imgs/Home/bg_home.png"/>
             </dxlc:TileLayoutControl.Background>
-            <dxlc:Tile Header="Patients" FontSize="30" HorizontalHeaderAlignment="Left" dxlc:FlowLayoutControl.IsFlowBreak="True" Background="White" Foreground="#FF471647" Size="Small">
+            <dxlc:Tile Header="Patients" FontSize="30" HorizontalHeaderAlignment="Left" dxlc:FlowLayoutControl.IsFlowBreak="True" Background="White" Foreground="#FF471647" Size="Small" Click="showAllPatient">
                 <Image x:Name="image" Source="/ConsultationManager;component/Imgs/Home/old-patient.png" Stretch="Fill"/>
             </dxlc:Tile>
             <dxlc:Tile Header="Hospitalisation" FontSize="18" HorizontalHeaderAlignment="Center" Background="#FF6C15D4" Foreground="White" Size="Small">
@@ -27,9 +28,9 @@
             <!--<dxlc:Tile Header="Education Thérapeutique" HorizontalHeaderAlignment="Center" Background="#FF6C15D4" Foreground="White" FontSize="25">
                 <Image x:Name="image11" Source="Images/education.png"/>
             </dxlc:Tile>-->
-            <dxlc:Tile Name="tile5" Size="Large"
-                       HorizontalHeaderAlignment="Center" Background="#FF6C15D4"
-                       ContentSource="{Binding EducationContents}" ContentChangeInterval="00:00:05" AnimateContentChange="True">
+            <dxlc:Tile x:Name="tile5" Size="Large"
+				HorizontalHeaderAlignment="Center" Background="#FF6C15D4"
+				ContentSource="{Binding EducationContents}" ContentChangeInterval="00:00:05" AnimateContentChange="True">
                 <dxlc:Tile.ContentTemplate>
                     <DataTemplate>
                         <Grid>
@@ -46,9 +47,9 @@
             <!--<dxlc:Tile Header="Employées" FontSize="28" Background="#FFD8D8D8" HorizontalHeaderAlignment="Right" Foreground="#FF290606" dxlc:FlowLayoutControl.IsFlowBreak="True">
                 <Image x:Name="image5" Source="Images/staff.jpg" Stretch="Fill"/>
             </dxlc:Tile>-->
-            <dxlc:Tile Name="tile" Size="Large" dxlc:FlowLayoutControl.IsFlowBreak="True"
-                       HorizontalHeaderAlignment="Center" Background="#FF6C15D4"
-                       ContentSource="{Binding EmployeeContents}" ContentChangeInterval="00:00:07" AnimateContentChange="True">
+            <dxlc:Tile x:Name="tile" Size="Large" dxlc:FlowLayoutControl.IsFlowBreak="True"
+				HorizontalHeaderAlignment="Center" Background="#FF6C15D4"
+				ContentSource="{Binding EmployeeContents}" ContentChangeInterval="00:00:07" AnimateContentChange="True">
                 <dxlc:Tile.ContentTemplate>
                     <DataTemplate>
                         <Grid>
