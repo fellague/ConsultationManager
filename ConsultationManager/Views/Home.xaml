@@ -1,0 +1,87 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ConsultationManager.Views"
+        xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+        x:Class="ConsultationManager.Views.Home"
+        mc:Ignorable="d"
+        Title="Home" Height="900" Width="1600" WindowState="Maximized"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Grid>
+
+        <dxlc:TileLayoutControl Padding="120,100">
+            <dxlc:TileLayoutControl.Background>
+                <ImageBrush ImageSource="/ConsultationManager;component/Imgs/Home/bg_home.png"/>
+            </dxlc:TileLayoutControl.Background>
+            <dxlc:Tile Header="Patients" FontSize="30" HorizontalHeaderAlignment="Left" dxlc:FlowLayoutControl.IsFlowBreak="True" Background="White" Foreground="#FF471647" Size="Small">
+                <Image x:Name="image" Source="/ConsultationManager;component/Imgs/Home/old-patient.png" Stretch="Fill"/>
+            </dxlc:Tile>
+            <dxlc:Tile Header="Hospitalisation" FontSize="18" HorizontalHeaderAlignment="Center" Background="#FF6C15D4" Foreground="White" Size="Small">
+                <Image x:Name="image7" Source="/ConsultationManager;component/Imgs/Home/hospitalisation.png" />
+            </dxlc:Tile>
+            <dxlc:Tile Header="Mes Patients" FontSize="28" HorizontalHeaderAlignment="Left"  VerticalHeaderAlignment="Top" Background="#FF6C15D4" Foreground="Black">
+                <Image x:Name="image2" Source="/ConsultationManager;component/Imgs/Home/patient.png" Stretch="Fill"/>
+            </dxlc:Tile>
+            <!--<dxlc:Tile Header="Education Thérapeutique" HorizontalHeaderAlignment="Center" Background="#FF6C15D4" Foreground="White" FontSize="25">
+                <Image x:Name="image11" Source="Images/education.png"/>
+            </dxlc:Tile>-->
+            <dxlc:Tile Name="tile5" Size="Large"
+                       HorizontalHeaderAlignment="Center" Background="#FF6C15D4"
+                       ContentSource="{Binding EducationContents}" ContentChangeInterval="00:00:05" AnimateContentChange="True">
+                <dxlc:Tile.ContentTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <WrapPanel Orientation="Vertical" VerticalAlignment="Bottom" Margin="4, 0, 0, 4">
+                                <TextBlock Text="{Binding HeaderCont}" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="20"/>
+                                <TextBlock Text="{Binding TextCont}" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                            </WrapPanel>
+                            <Image Source="{Binding PhotoSource}" Stretch="Uniform" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                        </Grid>
+                    </DataTemplate>
+                </dxlc:Tile.ContentTemplate>
+            </dxlc:Tile>
+
+            <!--<dxlc:Tile Header="Employées" FontSize="28" Background="#FFD8D8D8" HorizontalHeaderAlignment="Right" Foreground="#FF290606" dxlc:FlowLayoutControl.IsFlowBreak="True">
+                <Image x:Name="image5" Source="Images/staff.jpg" Stretch="Fill"/>
+            </dxlc:Tile>-->
+            <dxlc:Tile Name="tile" Size="Large" dxlc:FlowLayoutControl.IsFlowBreak="True"
+                       HorizontalHeaderAlignment="Center" Background="#FF6C15D4"
+                       ContentSource="{Binding EmployeeContents}" ContentChangeInterval="00:00:07" AnimateContentChange="True">
+                <dxlc:Tile.ContentTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Image Source="{Binding PhotoSource}" Stretch="Fill" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                            <WrapPanel Orientation="Vertical" VerticalAlignment="Bottom" Margin="8, 0, 0, 4">
+                                <TextBlock Text="{Binding HeaderCont}" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="20"/>
+                                <TextBlock Text="{Binding TextCont}" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                            </WrapPanel>
+                        </Grid>
+                    </DataTemplate>
+                </dxlc:Tile.ContentTemplate>
+            </dxlc:Tile>
+            <dxlc:Tile Header="Emploi du Temps" HorizontalHeaderAlignment="Center" FontSize="28" Background="#FF6C15D4">
+                <Image x:Name="image6" Source="/ConsultationManager;component/Imgs/Home/schedule.png"/>
+            </dxlc:Tile>
+
+            <dxlc:Tile Header="Agenda" Size="Small" FontSize="28" dxlc:FlowLayoutControl.IsFlowBreak="True" Background="#FF4B97DE">
+                <Image x:Name="image3" Source="/ConsultationManager;component/Imgs/Home/agenda.png"/>
+            </dxlc:Tile>
+            <dxlc:Tile Header="Messages" Size="Small" FontSize="25" HorizontalHeaderAlignment="Center" Background="#FF4B97DE" Foreground="White">
+                <Image x:Name="image8" Source="/ConsultationManager;component/Imgs/Home/messages.png"/>
+            </dxlc:Tile>
+            <dxlc:Tile Header="Notifications" FontSize="28" HorizontalHeaderAlignment="Center" Background="#FF4B97DE" Foreground="White">
+                <Image x:Name="image4" Source="/ConsultationManager;component/Imgs/Home/notifications.png"/>
+            </dxlc:Tile>
+            <dxlc:Tile Header="Transfert" Size="Small" FontSize="28"  HorizontalHeaderAlignment="Center" Background="#FF4B97DE" Foreground="White">
+                <Image x:Name="image10" Source="/ConsultationManager;component/Imgs/Home/transfert.png"/>
+            </dxlc:Tile>
+
+            <dxlc:Tile Header="Profile" FontSize="28" HorizontalHeaderAlignment="Center" Background="#FF6C15D4" Foreground="White" Size="Small" dxlc:FlowLayoutControl.IsFlowBreak="True">
+                <Image x:Name="image9" Source="/ConsultationManager;component/Imgs/Home/profile-pic.png"/>
+            </dxlc:Tile>
+        </dxlc:TileLayoutControl>
+
+    </Grid>
+</Window>
