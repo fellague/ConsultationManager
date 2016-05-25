@@ -16,7 +16,7 @@
             <dxlc:TileLayoutControl.Background>
                 <ImageBrush ImageSource="/ConsultationManager;component/Imgs/Home/bg_home.png"/>
             </dxlc:TileLayoutControl.Background>
-            <dxlc:Tile Header="Patients" FontSize="30" HorizontalHeaderAlignment="Left" dxlc:FlowLayoutControl.IsFlowBreak="True" Background="White" Foreground="#FF471647" Size="Small" Click="showAllPatient">
+            <dxlc:Tile Header="Patients" Click="showAllPatient" FontSize="30" HorizontalHeaderAlignment="Left" dxlc:FlowLayoutControl.IsFlowBreak="True" Background="White" Foreground="#FF471647" Size="Small">
                 <Image x:Name="image" Source="/ConsultationManager;component/Imgs/Home/old-patient.png" Stretch="Fill"/>
             </dxlc:Tile>
             <dxlc:Tile Header="Hospitalisation" FontSize="18" HorizontalHeaderAlignment="Center" Background="#FF6C15D4" Foreground="White" Size="Small">
@@ -66,7 +66,7 @@
                 <Image x:Name="image6" Source="/ConsultationManager;component/Imgs/Home/schedule.png"/>
             </dxlc:Tile>
 
-            <dxlc:Tile Header="Agenda" Size="Small" FontSize="28" dxlc:FlowLayoutControl.IsFlowBreak="True" Background="#FF4B97DE">
+            <dxlc:Tile Header="Agenda" Click="showAllRdv" Size="Small" FontSize="28" dxlc:FlowLayoutControl.IsFlowBreak="True" Background="#FF4B97DE">
                 <Image x:Name="image3" Source="/ConsultationManager;component/Imgs/Home/agenda.png"/>
             </dxlc:Tile>
             <dxlc:Tile Header="Messages" Size="Small" FontSize="25" HorizontalHeaderAlignment="Center" Background="#FF4B97DE" Foreground="White">

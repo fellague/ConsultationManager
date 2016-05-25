@@ -1,0 +1,89 @@
+﻿<Page x:Class="ConsultationManager.Views.RDVs.MyTodayRdvPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:ConsultationManager.Views.RDVs"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="MyTodayRdvPage">
+
+    <Grid Margin="10">
+        <DockPanel>
+            <WrapPanel DockPanel.Dock="Top">
+                <TextBlock  FontSize="24">Les Rendez-vous de mes patients d'aujourduit</TextBlock>
+            </WrapPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <!--<ColumnDefinition Width="*" />-->
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <ListBox x:Name="listViewMyTodayRdv" HorizontalContentAlignment="Stretch">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <WrapPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 0">
+                                        <TextBlock Text="{Binding Path=NomPatient}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=PrenomPatient}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text=" assisté par le médecin " FontSize="16"></TextBlock>
+                                        <TextBlock Text="{Binding Path=NomMedecin}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=PrenomMedecin}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                    </WrapPanel>
+                                    <WrapPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 5">
+                                        <TextBlock Text="Dans le "></TextBlock>
+                                        <TextBlock Text="{Binding Path=DateRdv,  StringFormat=d}" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text=" à "></TextBlock>
+                                        <TextBlock Text="{Binding Path=DateRdv,  StringFormat=t}" FontWeight="Bold"></TextBlock>
+                                    </WrapPanel>
+                                    <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 5">
+                                        <TextBlock Text="Creé Par "></TextBlock>
+                                        <TextBlock Text="{Binding Path=CreePar}" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="Dans le "></TextBlock>
+                                        <TextBlock Text="{Binding Path=CreeDans,  StringFormat=d}" FontWeight="Bold"></TextBlock>
+                                    </WrapPanel>
+
+                                    <WrapPanel Grid.Column="1" Grid.RowSpan="3">
+                                        <Button >Consulter Maintenant</Button>
+                                        <materialDesign:PopupBox
+                                                         Margin="32" ToolTip="Plus d'Opionts">
+                                            <StackPanel>
+                                                <Button  Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
+                                                    ToolTip="Modifier le Rendez-Vous">
+                                                    <materialDesign:PackIcon Kind="Pencil" Height="24" Width="24" />
+                                                </Button>
+                                                <Button  Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
+                                                    ToolTip="Annuler le Rendez-vous">
+                                                    <materialDesign:PackIcon Kind="Delete" Height="24" Width="24" />
+                                                </Button>
+                                                <Button  Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
+                                                    ToolTip="Plus de Détails">
+                                                    <materialDesign:PackIcon Kind="Eye" Height="24" Width="24" />
+                                                </Button>
+                                                <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
+                                                    ToolTip="Voir Dossier Médical">
+                                                    <materialDesign:PackIcon Kind="FolderPlus" Height="24" Width="24" />
+                                                </Button>
+                                            </StackPanel>
+                                        </materialDesign:PopupBox>
+                                    </WrapPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Page>

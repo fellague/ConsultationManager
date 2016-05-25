@@ -23,7 +23,7 @@ namespace ConsultationManager.Views
         public NavBarWindow()
         {
             InitializeComponent();
-            List<Account> list = new AccountList().GetData();
+            //List<Account> list = new AccountList().GetData();
             _mainFrame.Navigate(new AllPatientsPage());
             AllPatBtn.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF945BF9"));
             MyPatBtn.Background = Brushes.Transparent;

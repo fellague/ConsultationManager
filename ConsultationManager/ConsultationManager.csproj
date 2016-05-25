@@ -72,6 +72,9 @@
     <Compile Include="Views\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MenuRdvWindow.xaml.cs">
+      <DependentUpon>MenuRdvWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NavBarWindow.xaml.cs">
       <DependentUpon>NavBarWindow.xaml</DependentUpon>
     </Compile>
@@ -83,6 +86,15 @@
     </Compile>
     <Compile Include="Views\Patients\NewPatientPage.xaml.cs">
       <DependentUpon>NewPatientPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RDVs\AllMyRdvPage.xaml.cs">
+      <DependentUpon>AllMyRdvPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RDVs\AllRdvPage.xaml.cs">
+      <DependentUpon>AllRdvPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RDVs\MyTodayRdvPage.xaml.cs">
+      <DependentUpon>MyTodayRdvPage.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -100,6 +112,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MenuRdvWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\NavBarWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -113,6 +129,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Patients\NewPatientPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RDVs\AllMyRdvPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RDVs\AllRdvPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RDVs\MyTodayRdvPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

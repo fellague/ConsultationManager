@@ -33,6 +33,13 @@ namespace ConsultationManager.Views
             form2.Closed += (s, args) => this.Close();
             form2.Show();
         }
+        private void showAllRdv(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new MenuRdvWindow();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
     }
 
     public class EducationContent
