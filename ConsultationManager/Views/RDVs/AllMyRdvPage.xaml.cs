@@ -39,6 +39,21 @@ namespace ConsultationManager.Views.RDVs
             listViewAllMyRdv.ItemsSource = myList;
         }
 
-        public ICommand RunDialogCommand => new AnotherCommandImplementation()
+        //public ICommand RunDialogCommand => new AnotherCommandImplementation(ExecuteRunDialog);
+
+        //private async void ExecuteRunDialog(object o)
+        //{
+        //    //let's set up a little MVVM, cos that's what the cool kids are doing:
+        //    var view = new NewRdvUserControl
+        //    {
+        //        DataContext = new NewRdvViewModel()
+        //    };
+
+        //    //show the dialog
+        //    var result = await DialogHost.Show(view, "RootDialog", ClosingEventHandler);
+
+        //    //check the result...
+        //    Console.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
+        //}
     }
 }

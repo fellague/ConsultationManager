@@ -7,7 +7,8 @@
       xmlns:local="clr-namespace:ConsultationManager.Views.RDVs"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="MyTodayRdvPage">
+      Title="MyTodayRdvPage"
+      d:DataContext="{d:DesignInstance local:NewRdvViewModel}">
 
     <Grid Margin="10">
         <DockPanel>
