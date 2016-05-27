@@ -96,6 +96,9 @@
     <Compile Include="Views\RDVs\MyTodayRdvPage.xaml.cs">
       <DependentUpon>MyTodayRdvPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\RDVs\NewRdvUserControl.xaml.cs">
+      <DependentUpon>NewRdvUserControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -141,6 +144,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RDVs\MyTodayRdvPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RDVs\NewRdvUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

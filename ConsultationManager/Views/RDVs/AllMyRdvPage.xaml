@@ -59,7 +59,8 @@
                                         <materialDesign:PopupBox
                                                          Margin="32" ToolTip="Plus d'Opionts">
                                             <StackPanel>
-                                                <Button  Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
+                                                <Button  Command="{Binding RunDialogCommand}"
+                                                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
                                                     ToolTip="Modifier le Rendez-Vous">
                                                     <materialDesign:PackIcon Kind="Pencil" Height="24" Width="24" />
                                                 </Button>
