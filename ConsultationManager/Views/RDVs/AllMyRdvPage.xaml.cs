@@ -25,6 +25,7 @@ namespace ConsultationManager.Views.RDVs
         public AllMyRdvPage()
         {
             InitializeComponent();
+            DataContext = new NewRdvViewModel();
             List<RDV> allList = new RdvList().GetData();
 
             List<RDV> myList = new List<RDV>();

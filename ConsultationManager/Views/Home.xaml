@@ -11,7 +11,6 @@
         Title="Home" Height="900" Width="1600" WindowState="Maximized"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
-
         <dxlc:TileLayoutControl Padding="120,100">
             <dxlc:TileLayoutControl.Background>
                 <ImageBrush ImageSource="/ConsultationManager;component/Imgs/Home/bg_home.png"/>

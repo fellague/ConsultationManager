@@ -26,22 +26,22 @@
             <WrapPanel Orientation="Vertical" Width="600">
                 <TextBlock x:Name="label" Text="Login" HorizontalAlignment="Left" Margin="0,30,0,0" VerticalAlignment="Top" FontSize="30" RenderTransformOrigin="0.47,1.147" FontWeight="Bold" Foreground="White"/>
                 <TextBlock x:Name="label_Copy1" Text="Introduit le nom d'utilisateur et le mot de passe SVP" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="18" RenderTransformOrigin="0.47,1.147" Height="37" Width="465" Foreground="White"/>
-                <!--<DockPanel Background="White" Opacity="0.9" Width="350" HorizontalAlignment="Left">
-                    <WrapPanel DockPanel.Dock="Left" HorizontalAlignment="Right" Height="28" Width="23">
-                        <WrapPanel.Background>
-                            <ImageBrush ImageSource="Images/unknow.png"/>
-                        </WrapPanel.Background>
-                    </WrapPanel>
-                    <TextBox Text="" FontSize="16" HorizontalAlignment="Stretch" Background="Transparent" Height="28"/>
-                </DockPanel>
-                <DockPanel Background="White" Opacity="0.9" Width="350" HorizontalAlignment="Left" Margin="0,10,0,0">
-                    <WrapPanel DockPanel.Dock="Left" HorizontalAlignment="Right" Height="28" Width="23">
-                        <WrapPanel.Background>
-                            <ImageBrush ImageSource="Images/security-512.png"/>
-                        </WrapPanel.Background>
-                    </WrapPanel>
-                    <TextBox Text="" FontSize="16" HorizontalAlignment="Stretch" Background="Transparent" Height="28"/>
-                </DockPanel>-->
+                <!--<dockpanel background="white" opacity="0.9" width="350" horizontalalignment="left">
+                    <wrappanel dockpanel.dock="left" horizontalalignment="right" height="28" width="23">
+                        <wrappanel.background>
+                            <imagebrush imagesource="images/unknow.png"/>
+                        </wrappanel.background>
+                    </wrappanel>
+                    <textbox text="" fontsize="16" horizontalalignment="stretch" background="transparent" height="28"/>
+                </dockpanel>
+                <dockpanel background="white" opacity="0.9" width="350" horizontalalignment="left" margin="0,10,0,0">
+                    <wrappanel dockpanel.dock="left" horizontalalignment="right" height="28" width="23">
+                        <wrappanel.background>
+                            <imagebrush imagesource="images/security-512.png"/>
+                        </wrappanel.background>
+                    </wrappanel>
+                    <textbox text="" fontsize="16" horizontalalignment="stretch" background="transparent" height="28"/>
+                </dockpanel>-->
                 <WrapPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Account" Foreground="{Binding ElementName=NameTextBox, Path=BorderBrush}"
                                              Width="30" Height="30" VerticalAlignment="Center"/>

@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:ConsultationManager.Views.RDVs"
+      xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="AllMyRdvPage">
@@ -55,9 +56,8 @@
                                     </WrapPanel>
 
                                     <WrapPanel Grid.Column="1" Grid.RowSpan="3">
-                                        <Button >Consulter Maintenant</Button>
-                                        <materialDesign:PopupBox
-                                                         Margin="32" ToolTip="Plus d'Opionts">
+                                        <Button>Consulter Maintenant</Button>
+                                        <materialDesign:PopupBox Margin="32" ToolTip="Plus d'Opionts">
                                             <StackPanel>
                                                 <Button  Command="{Binding RunDialogCommand}"
                                                     Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
@@ -78,8 +78,6 @@
                                                 </Button>
                                             </StackPanel>
                                         </materialDesign:PopupBox>
-
-
                                     </WrapPanel>
                                 </Grid>
                             </DataTemplate>

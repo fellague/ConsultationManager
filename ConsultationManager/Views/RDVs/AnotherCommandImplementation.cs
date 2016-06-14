@@ -14,6 +14,7 @@ namespace ConsultationManager.Views.RDVs
 
         public AnotherCommandImplementation(Action<object> execute) : this(execute, null)
         {
+            Console.WriteLine("yow yow from the annother");
         }
 
         public AnotherCommandImplementation(Action<object> execute, Func<object, bool> canExecute)
