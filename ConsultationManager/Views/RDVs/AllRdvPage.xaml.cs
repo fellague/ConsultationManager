@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ConsultationManager.Models;
+using ConsultationManager.ViewModels.RDVs;
 
 namespace ConsultationManager.Views.RDVs
 {
@@ -23,8 +25,7 @@ namespace ConsultationManager.Views.RDVs
         public AllRdvPage()
         {
             InitializeComponent();
-            List<RDV> allList = new RdvList().GetData();
-            listViewRdv.ItemsSource = allList;
+            DataContext = new ListRvdViewModel();
         }
     }
 }

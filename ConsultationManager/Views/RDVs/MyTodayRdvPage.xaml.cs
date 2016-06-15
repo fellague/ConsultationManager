@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ConsultationManager.Models;
 
 namespace ConsultationManager.Views.RDVs
 {
@@ -22,7 +23,8 @@ namespace ConsultationManager.Views.RDVs
     {
         public MyTodayRdvPage()
         {
-            InitializeComponent(); List<RDV> allList = new RdvList().GetData();
+            InitializeComponent();
+            List<RDV> allList = new RdvList().GetData();
 
             List<RDV> myList = new List<RDV>();
             DateTime today = new DateTime(2016, 10, 13);

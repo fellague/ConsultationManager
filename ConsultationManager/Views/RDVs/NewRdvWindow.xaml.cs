@@ -18,9 +18,9 @@ namespace ConsultationManager.Views.RDVs
     /// <summary>
     /// Interaction logic for NewRdvUserControl.xaml
     /// </summary>
-    public partial class NewRdvUserControl : UserControl
+    public partial class NewRdvWindow : Window
     {
-        public NewRdvUserControl()
+        public NewRdvWindow()
         {
             InitializeComponent();
         }

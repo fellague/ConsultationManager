@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MaterialDesignColors;
 using MaterialDesignThemes;
+using ConsultationManager.Models;
+using ConsultationManager.ViewModels.RDVs;
 
 namespace ConsultationManager.Views.RDVs
 {
@@ -25,36 +27,7 @@ namespace ConsultationManager.Views.RDVs
         public AllMyRdvPage()
         {
             InitializeComponent();
-            DataContext = new NewRdvViewModel();
-            List<RDV> allList = new RdvList().GetData();
-
-            List<RDV> myList = new List<RDV>();
-
-            foreach (RDV element in allList)
-            {
-                if (element.NomMedecin == "mokrane" && element.PrenomMedecin== "fatiha")
-                {
-                    myList.Add(element);
-                }
-            }
-            listViewAllMyRdv.ItemsSource = myList;
+            DataContext = new ListRvdViewModel();
         }
-
-        //public ICommand RunDialogCommand => new AnotherCommandImplementation(ExecuteRunDialog);
-
-        //private async void ExecuteRunDialog(object o)
-        //{
-        //    //let's set up a little MVVM, cos that's what the cool kids are doing:
-        //    var view = new NewRdvUserControl
-        //    {
-        //        DataContext = new NewRdvViewModel()
-        //    };
-
-        //    //show the dialog
-        //    var result = await DialogHost.Show(view, "RootDialog", ClosingEventHandler);
-
-        //    //check the result...
-        //    Console.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
-        //}
     }
 }

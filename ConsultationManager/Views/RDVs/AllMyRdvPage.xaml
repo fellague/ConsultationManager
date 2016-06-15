@@ -21,7 +21,7 @@
                     <!--<ColumnDefinition Width="*" />-->
                 </Grid.ColumnDefinitions>
                 <Grid>
-                    <ListBox x:Name="listViewAllMyRdv" HorizontalContentAlignment="Stretch">
+                    <ListBox ItemsSource="{Binding ListAllMyRvd}" HorizontalContentAlignment="Stretch">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>

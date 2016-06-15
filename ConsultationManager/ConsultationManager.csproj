@@ -69,6 +69,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\RunDialogUpdateRdvCommand.cs" />
+    <Compile Include="Models\RDV.cs" />
+    <Compile Include="ViewModels\RDVs\ListRvdViewModel.cs" />
     <Compile Include="Views\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
@@ -97,8 +100,8 @@
     <Compile Include="Views\RDVs\MyTodayRdvPage.xaml.cs">
       <DependentUpon>MyTodayRdvPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RDVs\NewRdvUserControl.xaml.cs">
-      <DependentUpon>NewRdvUserControl.xaml</DependentUpon>
+    <Compile Include="Views\RDVs\NewRdvWindow.xaml.cs">
+      <DependentUpon>NewRdvWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RDVs\NewRdvViewModel.cs" />
     <Page Include="MainWindow.xaml">
@@ -149,7 +152,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RDVs\NewRdvUserControl.xaml">
+    <Page Include="Views\RDVs\NewRdvWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -230,7 +233,9 @@
     <Resource Include="Imgs\Home\roles.png" />
     <Resource Include="Imgs\Home\staff.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ViewModels\Patients\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

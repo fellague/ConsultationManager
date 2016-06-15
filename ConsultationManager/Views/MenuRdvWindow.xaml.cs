@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ConsultationManager.Views.RDVs;
+using ConsultationManager.Models;
 
 namespace ConsultationManager.Views
 {
@@ -111,165 +112,39 @@ namespace ConsultationManager.Views
 
     public class RdvList
     {
-        public List<RDV> GetData()
+        internal List<RDV> GetData()
         {
             return CreateRDVs();
         }
         private List<RDV> CreateRDVs()
         {
             List<RDV> list = new List<RDV>();
-            list.Add(new RDV()
-            {
-                NomPatient = "Nick",
-                PrenomPatient = "White",
-                NomMedecin = "mokrane",
-                PrenomMedecin = "fatiha",
-                DateRdv = new DateTime(2016, 10, 13, 8, 30, 0),
-                CreeDans = DateTime.Today,
-                CreePar = "tebibell saliha"
-            });
-            list.Add(new RDV()
-            {
-                NomPatient = "Jack",
-                PrenomPatient = "Rodman",
-                NomMedecin = "bellal",
-                PrenomMedecin = "kader",
-                DateRdv = new DateTime(2017, 3, 23, 9, 45, 0),
-                CreeDans = new DateTime(2016, 5, 10),
-                CreePar = "mokrane fatiha"
-            });
-            list.Add(new RDV()
-            {
-                NomPatient = "Sandra",
-                PrenomPatient = "Sherry",
-                NomMedecin = "fellague",
-                PrenomMedecin = "halim",
-                DateRdv = new DateTime(2016, 11, 10, 11, 0, 0),
-                CreeDans = new DateTime(2008, 12, 22),
-                CreePar = "bellal kader"
-            });
-            list.Add(new RDV()
-            {
-                NomPatient = "Sabrina",
-                PrenomPatient = "Vilk",
-                NomMedecin = "mokrane",
-                PrenomMedecin = "fatiha",
-                DateRdv = new DateTime(2016, 10, 13, 12, 0, 0),
-                CreeDans = DateTime.Today,
-                CreePar = "fellague halim"
-            });
-            list.Add(new RDV()
-            {
-                NomPatient = "Mike",
-                PrenomPatient = "Pearson",
-                NomMedecin = "bellal",
-                PrenomMedecin = "kader",
-                DateRdv = new DateTime(2016, 12, 30, 9, 0, 0),
-                CreeDans = new DateTime(2008, 10, 18),
-                CreePar = "bennouna el khebith"
-            });
-            list.Add(new RDV()
-            {
-                NomPatient = "Bill",
-                PrenomPatient = "Watson",
-                NomMedecin = "fellague",
-                PrenomMedecin = "halim",
-                DateRdv = new DateTime(2017, 4, 20, 10, 15, 0),
-                CreeDans = new DateTime(2016, 1, 18),
-                CreePar = "fellague halim"
-            });
-            list.Add(new RDV()
-            {
-                NomPatient = "Christiano",
-                PrenomPatient = "Ronaldo",
-                NomMedecin = "bellal",
-                PrenomMedecin = "kader",
-                DateRdv = new DateTime(2017, 3, 10, 14, 0, 0),
-                CreeDans = new DateTime(2014, 7, 10),
-                CreePar = "bennouna el khebith"
-            });
-            list.Add(new RDV()
-            {
-                NomPatient = "Maria",
-                PrenomPatient = "Klara",
-                NomMedecin = "mokrane",
-                PrenomMedecin = "fatiha",
-                DateRdv = new DateTime(2016, 10, 13, 15, 0, 0),
-                CreeDans = new DateTime(2012, 2, 20),
-                CreePar = "bellal kader"
-            });
-            list.Add(new RDV()
-            {
-                NomPatient = "Amaouri",
-                PrenomPatient = "Benjamen",
-                NomMedecin = "mokrane",
-                PrenomMedecin = "fatiha",
-                DateRdv = new DateTime(2017, 1, 1, 8, 45, 0),
-                CreeDans = new DateTime(2003, 7, 1),
-                CreePar = "fellague halim"
-            });
-            list.Add(new RDV()
-            {
-                NomPatient = "Bouraoui",
-                PrenomPatient = "ElMerioul",
-                NomMedecin = "fellague",
-                PrenomMedecin = "halim",
-                DateRdv = new DateTime(2017, 6, 12, 11, 0, 0),
-                CreeDans = DateTime.Today,
-                CreePar = "tebibell saliha"
-            });
-            list.Add(new RDV()
-            {
-                NomPatient = "Henni",
-                PrenomPatient = "El Alia",
-                NomMedecin = "mokrane",
-                PrenomMedecin = "fatiha",
-                DateRdv = new DateTime(2016, 10, 13, 13, 0, 0),
-                CreeDans = new DateTime(2005, 10, 18),
-                CreePar = "fellague halim"
-            });
-            list.Add(new RDV()
-            {
-                NomPatient = "Keyta",
-                PrenomPatient = "Ben yamina",
-                NomMedecin = "mokrane",
-                PrenomMedecin = "fatiha",
-                DateRdv = new DateTime(2017, 1, 1, 8, 45, 0),
-                CreeDans = new DateTime(2012, 12, 22),
-                CreePar = "bellal kader"
-            });
-            list.Add(new RDV()
-            {
-                NomPatient = "Gabriel",
-                PrenomPatient = "Pepe",
-                NomMedecin = "fellague",
-                PrenomMedecin = "halim",
-                DateRdv = new DateTime(2016, 11, 16, 10, 0, 0),
-                CreeDans = new DateTime(2011, 7, 10),
-                CreePar = "bennouna el khebith"
-            });
-            list.Add(new RDV()
-            {
-                NomPatient = "Khoukhi",
-                PrenomPatient = "Doukkich",
-                NomMedecin = "mokrane",
-                PrenomMedecin = "fatiha",
-                DateRdv = new DateTime(2017, 1, 1, 9, 45, 0),
-                CreeDans = new DateTime(2009, 4, 8),
-                CreePar = "fellague halim"
-            });
+            list.Add(new RDV("Nick", "White", "mokrane", "fatiha", new DateTime(2016, 10, 13, 8, 30, 0), DateTime.Today, "tebibell saliha"));
+            list.Add(new RDV("Jack", "Rodman", "bellal", "kader", new DateTime(2017, 3, 23, 9, 45, 0), new DateTime(2016, 5, 10), "mokrane fatiha"));
+            list.Add(new RDV("Sandra", "Sherry", "fellague", "halim", new DateTime(2016, 11, 10, 11, 0, 0), new DateTime(2008, 12, 22), "bellal kader"));
+            list.Add(new RDV("Sabrina", "Vilk", "mokrane", "fatiha", new DateTime(2016, 10, 13, 12, 0, 0), DateTime.Today, "fellague halim"));
+            list.Add(new RDV("Mike", "Pearson","bellal","kader", new DateTime(2016, 12, 30, 9, 0, 0), new DateTime(2008, 10, 18),"bennouna el khebith"));
+            list.Add(new RDV("Bill","Watson", "fellague", "halim",new DateTime(2017, 4, 20, 10, 15, 0), new DateTime(2016, 1, 18), "fellague halim"));
+            list.Add(new RDV("Christiano", "Ronaldo", "bellal", "kader", new DateTime(2017, 3, 10, 14, 0, 0),new DateTime(2014, 7, 10),"bennouna el khebith"));
+            list.Add(new RDV("Maria","Klara", "mokrane","fatiha",new DateTime(2016, 10, 13, 15, 0, 0), new DateTime(2012, 2, 20), "bellal kader"));
+            list.Add(new RDV("Amaouri","Benjamen", "mokrane","fatiha", new DateTime(2017, 1, 1, 8, 45, 0), new DateTime(2003, 7, 1),"fellague halim"));
+            list.Add(new RDV("Bouraoui","ElMerioul","fellague", "halim",new DateTime(2017, 6, 12, 11, 0, 0),DateTime.Today,"tebibell saliha"));
+            list.Add(new RDV("Henni","El Alia","mokrane","fatiha",new DateTime(2016, 10, 13, 13, 0, 0), new DateTime(2005, 10, 18),"fellague halim"));
+            list.Add(new RDV("Keyta","Ben yamina", "mokrane", "fatiha", new DateTime(2017, 1, 1, 8, 45, 0), new DateTime(2012, 12, 22), "bellal kader"));
+            list.Add(new RDV("Gabriel", "Pepe", "fellague", "halim", new DateTime(2016, 11, 16, 10, 0, 0), new DateTime(2011, 7, 10), "bennouna el khebith"));
+            list.Add(new RDV("Khoukhi","Doukkich","mokrane","fatiha",new DateTime(2017, 1, 1, 9, 45, 0),new DateTime(2009, 4, 8),"fellague halim"));
             return list;
         }
-    }
+}
 
-    public class RDV
-    {
-        public string NomPatient { get; set; }
-        public string PrenomPatient { get; set; }
-        public string NomMedecin { get; set; }
-        public string PrenomMedecin { get; set; }
-        public DateTime DateRdv { get; set; }
-        public DateTime CreeDans { get; set; }
-        public string CreePar { get; set; }
-    }
+    //public class RDV
+    //{
+    //    public string NomPatient { get; set; }
+    //    public string PrenomPatient { get; set; }
+    //    public string NomMedecin { get; set; }
+    //    public string PrenomMedecin { get; set; }
+    //    public DateTime DateRdv { get; set; }
+    //    public DateTime CreeDans { get; set; }
+    //    public string CreePar { get; set; }
+    //}
 }
