@@ -98,7 +98,6 @@
     <Compile Include="Views\RDVs\AllRdvPage.xaml.cs">
       <DependentUpon>AllRdvPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RDVs\AnotherCommandImplementation.cs" />
     <Compile Include="Views\RDVs\MyTodayRdvPage.xaml.cs">
       <DependentUpon>MyTodayRdvPage.xaml</DependentUpon>
     </Compile>
