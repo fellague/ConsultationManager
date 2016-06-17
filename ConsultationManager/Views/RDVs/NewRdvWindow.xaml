@@ -29,10 +29,14 @@
                  />
         <StackPanel Orientation="Horizontal" Grid.Row="3"
                     Margin="0 16 0 0">
-            <Button IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}"
+            <!--<Button IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}"
                     materialDesign:DialogHost.DialogClosingAttached="True">
                 ACCEPT
             </Button>
+            <Button IsCancel="True" Margin="8 0 0 0" Style="{DynamicResource MaterialDesignFlatButton}"
+                    materialDesign:DialogHost.DialogClosingAttached="False">
+                CANCEL
+            </Button>-->
             <!--<Button IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}"
                     materialDesign:DialogHost.DialogClosingAttached="True"
                     Command="{x:Static wpf:DialogHost.CloseDialogCommand}">
@@ -41,10 +45,7 @@
                 </Button.CommandParameter>
                 ACCEPT
             </Button>-->
-            <Button IsCancel="True" Margin="8 0 0 0" Style="{DynamicResource MaterialDesignFlatButton}"
-                    materialDesign:DialogHost.DialogClosingAttached="False">
-                CANCEL
-            </Button>
+            
             <!--<Button IsCancel="True" Margin="8 0 0 0" Style="{DynamicResource MaterialDesignFlatButton}"
                     Command="{x:Static wpf:DialogHost.CloseDialogCommand}">
                 <Button.CommandParameter>

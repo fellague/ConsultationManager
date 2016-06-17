@@ -15,12 +15,14 @@ namespace ConsultationManager.ViewModels.RDVs
     {
         private ObservableCollection<RDV> listAllRvd;
         private ObservableCollection<RDV> listAllMyRvd;
+        private ObservableCollection<RDV> listAllMyTodayRvd;
 
         public ListRvdViewModel()
         {
             listAllRvd = CreateRDVs();
             listAllMyRvd = CreateListAllMyRdv();
-            
+            listAllMyTodayRvd = CreateListAllMyTodayRdv();
+
             RunDialogCommand = new RunDialogUpdateRdvCommand(this);
         }
 
@@ -36,6 +38,13 @@ namespace ConsultationManager.ViewModels.RDVs
             get
             {
                 return listAllMyRvd;
+            }
+        }
+        public ObservableCollection<RDV> ListAllMyTodayRvd
+        {
+            get
+            {
+                return listAllMyTodayRvd;
             }
         }
 
@@ -84,9 +93,22 @@ namespace ConsultationManager.ViewModels.RDVs
             {
                 if (element.NomMedecin == "mokrane" && element.PrenomMedecin == "fatiha")
                 {
-
                     allMyList.Add(element);
-                    Console.WriteLine("blablafound");
+                }
+            }
+            return allMyList;
+        }
+
+        private ObservableCollection<RDV> CreateListAllMyTodayRdv()
+        {
+            ObservableCollection<RDV> allList = CreateRDVs();
+            ObservableCollection<RDV> allMyList = new ObservableCollection<RDV>();
+            DateTime today = new DateTime(2016, 10, 13);
+            foreach (RDV element in allList)
+            {
+                if (element.NomMedecin == "mokrane" && element.PrenomMedecin == "fatiha" && element.DateRdv == today)
+                {
+                    allMyList.Add(element);
                 }
             }
             return allMyList;

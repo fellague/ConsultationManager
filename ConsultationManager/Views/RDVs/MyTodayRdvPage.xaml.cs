@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ConsultationManager.Models;
+using ConsultationManager.ViewModels.RDVs;
 
 namespace ConsultationManager.Views.RDVs
 {
@@ -24,19 +24,7 @@ namespace ConsultationManager.Views.RDVs
         public MyTodayRdvPage()
         {
             InitializeComponent();
-            List<RDV> allList = new RdvList().GetData();
-
-            List<RDV> myList = new List<RDV>();
-            DateTime today = new DateTime(2016, 10, 13);
-
-            foreach (RDV element in allList)
-            {
-                if (element.NomMedecin == "mokrane" && element.PrenomMedecin == "fatiha" && element.DateRdv == today)
-                {
-                    myList.Add(element);
-                }
-            }
-            listViewMyTodayRdv.ItemsSource = myList;
+            DataContext = new ListRvdViewModel();
         }
     }
 }

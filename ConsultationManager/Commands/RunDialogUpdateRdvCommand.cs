@@ -34,6 +34,7 @@ namespace ConsultationManager.Commands
 
         public void Execute(object parameter)
         {
+            Console.WriteLine("Show dialog command has executed");
             viewModel.ShowDialogUpdateRvd();
         }
 

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ConsultationManager.ViewModels.Patients;
 
 namespace ConsultationManager.Views.Patients
 {
@@ -23,19 +24,7 @@ namespace ConsultationManager.Views.Patients
         public MyPatientsPage()
         {
             InitializeComponent();
-
-            List<Account> allList = new AccountList().GetData();
-
-            List<Account> myList = new List<Account>();
-
-            foreach (Account element in allList)
-            {
-                if (element.CreePar == "fellague halim")
-                {
-                    myList.Add(element);
-                }
-            }
-            listViewMyAcount.ItemsSource = myList;
+            DataContext = new ListPatientViewModel();
         }
     }
 }

@@ -20,7 +20,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid>
-                    <ListBox x:Name="listViewAcount" HorizontalContentAlignment="Stretch">
+                    <ListBox x:Name="listViewAcount" ItemsSource="{Binding ListAllPatient}" HorizontalContentAlignment="Stretch">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>

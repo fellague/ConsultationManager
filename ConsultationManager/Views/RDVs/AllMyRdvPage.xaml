@@ -14,6 +14,7 @@
         <DockPanel>
             <WrapPanel DockPanel.Dock="Top">
                 <TextBlock  FontSize="24">Les Rendez-vous de mes patients</TextBlock>
+                
             </WrapPanel>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -56,7 +57,7 @@
                                     </WrapPanel>
 
                                     <WrapPanel Grid.Column="1" Grid.RowSpan="3">
-                                        <Button>Consulter Maintenant</Button>
+                                        <Button >Consulter Maintenant</Button>
                                         <materialDesign:PopupBox Margin="32" ToolTip="Plus d'Opionts">
                                             <StackPanel>
                                                 <Button  Command="{Binding RunDialogCommand}"
