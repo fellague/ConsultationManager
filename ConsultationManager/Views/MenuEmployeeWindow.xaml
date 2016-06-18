@@ -1,4 +1,4 @@
-﻿<Window x:Class="ConsultationManager.Views.MenuRdvWindow"
+﻿<Window x:Class="ConsultationManager.Views.MenuEmployeeWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,11 +6,12 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ConsultationManager.Views"
         mc:Ignorable="d"
-        Title="Rendez-vous"  WindowState="Maximized">
-    
+        Title="Employées" WindowState="Maximized">
+
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
@@ -26,10 +27,12 @@
                                   HorizontalAlignment="Right" Margin="16"
                                   IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
                     <ItemsControl>
-                        <Button Name="AllRdvBtn" Click="button_click_tout"  Content="Tous Les Rendez-vous" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
-                        <Button Name="AllMyRdvBtn" Click="button_click_tout_mes"  Content="Tous Mes Rendez-vous" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
-                        <Button Name="MyTodayRdvBtn" Click="button_click_ajourd"  Content="Mes Rendez-vous d'aujourduit" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
-                        <Button Name="NewRdvBtn" Click="button_click_nouveau"  Content="Nouveau Rendez-vous" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
+                        <Button Name="AllEmplBtn" Click="button_click_tout"  Content="Tous les employées" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
+                        <Button Name="chefServiceBtn" Click="button_click_chefServ"  Content="Les chefs service" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
+                        <Button Name="medecinsBtn" Click="button_click_medecin"  Content="Les Médecins" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
+                        <Button Name="infirmierBtn" Click="button_click_infirmier"  Content="Les infirmiers" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
+                        <Button Name="assistantBtn" Click="button_click_assistant"  Content="Les assistants" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
+                        <Button Name="NewEmplBtn" Click="button_click_nouveau"  Content="Nouveau Employée" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
                     </ItemsControl>
 
                 </DockPanel>
@@ -50,9 +53,8 @@
                     </DockPanel>
                 </materialDesign:ColorZone>
                 <!--<ContentControl Margin="16" Content="{Binding ElementName=DemoItemsListBox, Path=SelectedItem.Content}" />-->
-                <Frame x:Name="_frameRdv" Grid.Column="1" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+                <Frame x:Name="_mainFrame" Grid.Column="1" Grid.Row="1" NavigationUIVisibility="Hidden"/>
             </DockPanel>
         </materialDesign:DrawerHost>
     </materialDesign:DialogHost>
-    
 </Window>

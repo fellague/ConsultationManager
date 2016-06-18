@@ -7,27 +7,25 @@ using System.Threading.Tasks;
 
 namespace ConsultationManager.Models
 {
-    class Patient: INotifyPropertyChanged
+    class Employee: INotifyPropertyChanged
     {
         private string nom;
         private string prenom;
+        private string role;
         private DateTime dateNaiss;
-        private string raison;
         private string adresse;
         private string telephone;
-        private bool mariee;
         private DateTime creeDans;
         private string creePar;
 
-        public Patient(string nom, string prenom, DateTime dateNaiss, string raison, string adresse, string telephone, bool mariee, DateTime creeDans, string creePar)
+        public Employee(string nom, string prenom, string role, DateTime dateNaiss, string adresse, string telephone, DateTime creeDans, string creePar)
         {
             Nom = nom;
             Prenom = prenom;
+            Role = role;
             DateNaiss = dateNaiss;
-            Raison = raison;
             Adresse = adresse;
             Telephone = telephone;
-            Mariee = mariee;
             CreeDans = creeDans;
             CreePar = creePar;
         }
@@ -56,6 +54,18 @@ namespace ConsultationManager.Models
                 OnPropertyChanged("Prenom");
             }
         }
+        public string Role
+        {
+            get
+            {
+                return role;
+            }
+            set
+            {
+                role = value;
+                OnPropertyChanged("Role");
+            }
+        }
         public DateTime DateNaiss
         {
             get
@@ -66,18 +76,6 @@ namespace ConsultationManager.Models
             {
                 dateNaiss = value;
                 OnPropertyChanged("DateNaiss");
-            }
-        }
-        public string Raison
-        {
-            get
-            {
-                return raison;
-            }
-            set
-            {
-                raison = value;
-                OnPropertyChanged("Raison");
             }
         }
         public string Adresse
@@ -102,18 +100,6 @@ namespace ConsultationManager.Models
             {
                 telephone = value;
                 OnPropertyChanged("Telephone");
-            }
-        }
-        public bool Mariee
-        {
-            get
-            {
-                return mariee;
-            }
-            set
-            {
-                mariee = value;
-                OnPropertyChanged("Mariee");
             }
         }
         public DateTime CreeDans

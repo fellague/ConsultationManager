@@ -46,7 +46,7 @@
             <!--<dxlc:Tile Header="Employées" FontSize="28" Background="#FFD8D8D8" HorizontalHeaderAlignment="Right" Foreground="#FF290606" dxlc:FlowLayoutControl.IsFlowBreak="True">
                 <Image x:Name="image5" Source="Images/staff.jpg" Stretch="Fill"/>
             </dxlc:Tile>-->
-            <dxlc:Tile x:Name="tile" Size="Large" dxlc:FlowLayoutControl.IsFlowBreak="True"
+            <dxlc:Tile x:Name="tile" Click="showAllEmployees" Size="Large" dxlc:FlowLayoutControl.IsFlowBreak="True"
 				HorizontalHeaderAlignment="Center" Background="#FF6C15D4"
 				ContentSource="{Binding EmployeeContents}" ContentChangeInterval="00:00:07" AnimateContentChange="True">
                 <dxlc:Tile.ContentTemplate>

@@ -6,8 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ConsultationManager.Views"
         mc:Ignorable="d"
-        Title="Patients Window" WindowState="Maximized"
-        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+        Title="Patients" WindowState="Maximized">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -49,14 +48,6 @@
                         <WrapPanel Orientation="Horizontal" HorizontalAlignment="Right">
                             <Button Click="button_click_logout"  Content="Déconnexion" Margin="2,2,20,2" Background="{x:Null}" FontSize="16" BorderBrush="{x:Null}"/>
                         </WrapPanel>
-                        <!--<materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
-                            <StackPanel>
-                                <Button Content="Hello World"/>
-                                <Button Content="Help"/>
-                                <Button Content="Déconnexion"/>
-                            </StackPanel>
-                        </materialDesign:PopupBox>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">Material Design In XAML Toolkit</TextBlock>-->
                     </DockPanel>
                 </materialDesign:ColorZone>
                 <!--<ContentControl Margin="16" Content="{Binding ElementName=DemoItemsListBox, Path=SelectedItem.Content}" />-->

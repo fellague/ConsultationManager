@@ -70,12 +70,35 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\RunDialogUpdateRdvCommand.cs" />
+    <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\RDV.cs" />
+    <Compile Include="ViewModels\Employees\ListEmployeesViewModel.cs" />
     <Compile Include="ViewModels\Patients\ListPatientViewModel.cs" />
     <Compile Include="ViewModels\RDVs\ListRvdViewModel.cs" />
+    <Compile Include="Views\Employees\AllEmployeePage.xaml.cs">
+      <DependentUpon>AllEmployeePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employees\AssistantsPage.xaml.cs">
+      <DependentUpon>AssistantsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employees\ChefServicePage.xaml.cs">
+      <DependentUpon>ChefServicePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employees\InfirmiersPage.xaml.cs">
+      <DependentUpon>InfirmiersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employees\MedecinsPage.xaml.cs">
+      <DependentUpon>MedecinsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employees\NewEmployeePage.xaml.cs">
+      <DependentUpon>NewEmployeePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuEmployeeWindow.xaml.cs">
+      <DependentUpon>MenuEmployeeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MenuRdvWindow.xaml.cs">
       <DependentUpon>MenuRdvWindow.xaml</DependentUpon>
@@ -116,7 +139,35 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Employees\AllEmployeePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Employees\AssistantsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Employees\ChefServicePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Employees\InfirmiersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Employees\MedecinsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Employees\NewEmployeePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MenuEmployeeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

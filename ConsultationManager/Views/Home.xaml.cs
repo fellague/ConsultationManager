@@ -40,6 +40,14 @@ namespace ConsultationManager.Views
             form2.Closed += (s, args) => this.Close();
             form2.Show();
         }
+
+        private void showAllEmployees(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new MenuEmployeeWindow();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
     }
 
     public class EducationContent

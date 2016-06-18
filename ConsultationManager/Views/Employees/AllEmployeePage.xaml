@@ -1,0 +1,101 @@
+﻿<Page x:Class="ConsultationManager.Views.Employees.AllEmployeePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:ConsultationManager.Views.Employees"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="AllEmployeePage">
+
+    <Grid Margin="10">
+        <DockPanel>
+            <WrapPanel DockPanel.Dock="Top">
+                <TextBlock  FontSize="24">La liste des employées</TextBlock>
+            </WrapPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <ListBox x:Name="listViewAcount" ItemsSource="{Binding ListAllEmployee}" HorizontalContentAlignment="Stretch">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <WrapPanel Grid.Row="0" Grid.Column="0" Margin="5, 0, 0, 0">
+                                        <TextBlock Text="{Binding Path=Nom}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=Prenom}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                    </WrapPanel>
+                                    <WrapPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5, 0, 0, 0">
+                                        <TextBlock Text="Role : "></TextBlock>
+                                        <TextBlock Text="{Binding Path=Role}"></TextBlock>
+                                    </WrapPanel>
+                                    <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 5">
+                                        <TextBlock Text="Creé Par "></TextBlock>
+                                        <TextBlock Text="{Binding Path=CreePar}" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="Dans le "></TextBlock>
+                                        <TextBlock Text="{Binding Path=CreeDans,  StringFormat=d}" FontWeight="Bold"></TextBlock>
+                                    </WrapPanel>
+
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+
+                <!--<Frame x:Name="_detailsFrame" Grid.Column="1" Grid.Row="1" NavigationUIVisibility="Hidden"/>-->
+                <materialDesign:Card Grid.Column="1"  Margin="10,0,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+                    <WrapPanel Orientation="Vertical">
+                        <TextBlock Text="Détails : " FontSize="16"></TextBlock>
+                        <WrapPanel>
+                            <TextBlock Text="Nom : " FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.Nom}" FontSize="14"></TextBlock>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <TextBlock Text="Prénom : " FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.Prenom}" FontSize="14"></TextBlock>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <TextBlock Text="Role : " FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.Role}" FontSize="14"></TextBlock>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <TextBlock Text="Date de naissance : " FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.DateNaiss,  StringFormat=d}" FontSize="14"></TextBlock>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <TextBlock Text="Adresse : " FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.Adresse}" FontSize="14"></TextBlock>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <TextBlock Text="Téléphone : " FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.Telephone}" FontSize="14"></TextBlock>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <TextBlock Text="Ajouté Par : " FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.CreePar}" FontSize="14"></TextBlock>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <TextBlock Text="Dans le : " FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.CreeDans,  StringFormat=d}" FontSize="14"></TextBlock>
+                        </WrapPanel>
+
+                    </WrapPanel>
+                </materialDesign:Card>
+
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Page>
