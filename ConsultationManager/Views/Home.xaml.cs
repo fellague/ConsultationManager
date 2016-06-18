@@ -29,7 +29,7 @@ namespace ConsultationManager.Views
         private void showAllPatient(object sender, EventArgs e)
         {
             this.Hide();
-            var form2 = new NavBarWindow();
+            var form2 = new MenuPatientWindow();
             form2.Closed += (s, args) => this.Close();
             form2.Show();
         }

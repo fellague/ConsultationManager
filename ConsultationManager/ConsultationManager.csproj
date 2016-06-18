@@ -80,8 +80,8 @@
     <Compile Include="Views\MenuRdvWindow.xaml.cs">
       <DependentUpon>MenuRdvWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NavBarWindow.xaml.cs">
-      <DependentUpon>NavBarWindow.xaml</DependentUpon>
+    <Compile Include="Views\MenuPatientWindow.xaml.cs">
+      <DependentUpon>MenuPatientWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Patients\AllPatientsPage.xaml.cs">
       <DependentUpon>AllPatientsPage.xaml</DependentUpon>
@@ -124,7 +124,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\NavBarWindow.xaml">
+    <Page Include="Views\MenuPatientWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

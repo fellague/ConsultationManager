@@ -18,9 +18,9 @@ namespace ConsultationManager.Views
     /// <summary>
     /// Interaction logic for NavBarWindow.xaml
     /// </summary>
-    public partial class NavBarWindow : Window
+    public partial class MenuPatientWindow : Window
     {
-        public NavBarWindow()
+        public MenuPatientWindow()
         {
             InitializeComponent();
             //List<Account> list = new AccountList().GetData();
