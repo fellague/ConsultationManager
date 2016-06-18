@@ -22,11 +22,12 @@
         <Grid Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Name="col1" Width="2*"/>
+                <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
@@ -45,17 +46,22 @@
             <TextBlock Grid.Row="2" Text="Date de Naissance" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
             <DatePicker Grid.Row="2" Grid.Column="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
 
-            <TextBlock Grid.Row="3" Text="Lieu de Naissance" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBox Grid.Row="3" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Lieu de Naissance"/>
+            <TextBlock Grid.Row="3" Text="Sexe" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <ComboBox Grid.Row="3" Grid.Column="1" FontSize="16">
+                <ComboBoxItem>Malle</ComboBoxItem>
+                <ComboBoxItem>Femalle</ComboBoxItem>
+            </ComboBox>
+            
+            <TextBlock Grid.Row="4" Text="Lieu de Naissance" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBox Grid.Row="4" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Lieu de Naissance"/>
 
-            <Label Grid.Row="4" Content="Adresse" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
-            <TextBox Name="Adresse" Grid.Row="4" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Wilaya, Dayra Hay Numero 00"></TextBox>
+            <TextBlock Grid.Row="5" Text="Adresse" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBox Grid.Row="5" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Wilaya, Dayra Hay Numero 00"></TextBox>
 
-            <TextBlock Grid.Row="5" Text="Téléphone" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBox Grid.Row="5" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="06 66 66 66 66"></TextBox>
+            <TextBlock Grid.Row="6" Text="Téléphone" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBox Grid.Row="6" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="06 66 66 66 66"></TextBox>
 
-            <CheckBox Content="Marrié" Grid.Row="6" Grid.Column="1" FontSize="16" VerticalAlignment="Center" ></CheckBox>
-
+            <CheckBox Content="Marrié" Grid.Row="7" Grid.Column="1" FontSize="16" VerticalAlignment="Center" ></CheckBox>
 
         </Grid>
 

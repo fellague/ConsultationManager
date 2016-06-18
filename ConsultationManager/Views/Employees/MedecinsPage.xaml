@@ -38,10 +38,6 @@
                                         <TextBlock Text="{Binding Path=Nom}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
                                         <TextBlock Text="{Binding Path=Prenom}" FontSize="16" FontWeight="Bold"></TextBlock>
                                     </WrapPanel>
-                                    <WrapPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5, 0, 0, 0">
-                                        <TextBlock Text="Role : "></TextBlock>
-                                        <TextBlock Text="{Binding Path=Role}"></TextBlock>
-                                    </WrapPanel>
                                     <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 5">
                                         <TextBlock Text="Creé Par "></TextBlock>
                                         <TextBlock Text="{Binding Path=CreePar}" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>

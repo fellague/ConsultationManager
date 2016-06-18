@@ -11,7 +11,7 @@
     <Grid Margin="10">
         <DockPanel>
             <WrapPanel DockPanel.Dock="Top">
-                <TextBlock  FontSize="24">La liste des patients</TextBlock>
+                <TextBlock  FontSize="24">La liste des Rendez-vous</TextBlock>
             </WrapPanel>
             <Grid>
                 <Grid.ColumnDefinitions>
