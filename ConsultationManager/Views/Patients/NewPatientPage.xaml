@@ -15,11 +15,15 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition  Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition  Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.ColumnSpan="2">
+        <WrapPanel>
+            <TextBlock  FontSize="24">Nouveau Patient</TextBlock>
+        </WrapPanel>
+        
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="2*"/>

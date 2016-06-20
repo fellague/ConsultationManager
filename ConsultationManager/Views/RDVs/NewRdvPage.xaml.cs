@@ -12,17 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ConsultationManager.ViewModels.RDVs;
 
 namespace ConsultationManager.Views.RDVs
 {
     /// <summary>
     /// Interaction logic for NewRdvUserControl.xaml
     /// </summary>
-    public partial class NewRdvWindow : Window
+    public partial class NewRdvPage : Page
     {
-        public NewRdvWindow()
+        public NewRdvPage()
         {
             InitializeComponent();
+
+            DataContext = new NewRdvViewModel();
         }
     }
 }

@@ -1,0 +1,106 @@
+﻿<Page x:Class="ConsultationManager.Views.Hospitalisations.AllHospitalisationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:ConsultationManager.Views.Hospitalisations"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="AllHospitalisationPage">
+
+    <Grid Margin="10">
+        <DockPanel>
+            <WrapPanel DockPanel.Dock="Top">
+                <TextBlock  FontSize="24">La liste de toutes les hospitalisations</TextBlock>
+            </WrapPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <!--<ColumnDefinition Width="*" />-->
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <ListBox ItemsSource="{Binding ListAllHospitalisation}" HorizontalContentAlignment="Stretch">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <WrapPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 0">
+                                        <TextBlock Text="{Binding Path=Nom}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=Prenom}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text=" planifié de : " FontSize="16"></TextBlock>
+                                        <TextBlock Text="{Binding Path=DateDebut,  StringFormat=d}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text=" jusqu'à : " FontSize="16"></TextBlock>
+                                        <TextBlock Text="{Binding Path=DateFinPrevu,  StringFormat=d}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                    </WrapPanel>
+                                    <WrapPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 5">
+                                        <TextBlock Text="Dans la salle "></TextBlock>
+                                        <TextBlock Text="{Binding Path=Salle}" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text=" sur le lit "></TextBlock>
+                                        <TextBlock Text="{Binding Path=Lit}" FontWeight="Bold"></TextBlock>
+                                    </WrapPanel>
+                                    <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 5">
+                                        <TextBlock Text="Creé Par "></TextBlock>
+                                        <TextBlock Text="{Binding Path=CreePar}" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="Dans le "></TextBlock>
+                                        <TextBlock Text="{Binding Path=CreeDans,  StringFormat=d}" FontWeight="Bold"></TextBlock>
+                                    </WrapPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+
+                <!--<Frame x:Name="_detailsFrame" Grid.Column="1" Grid.Row="1" NavigationUIVisibility="Hidden"/>-->
+                <!--<materialDesign:Card Grid.Column="1"  Margin="10,0,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+                    <WrapPanel Orientation="Vertical">
+                        <TextBlock Text="Détails : " FontSize="16"></TextBlock>
+                        <WrapPanel>
+                            <TextBlock Text="Nom : " FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.Nom}" FontSize="14"></TextBlock>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <TextBlock Text="Prénom : " FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.Prenom}" FontSize="14"></TextBlock>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <TextBlock Text="Date de naissance : " FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.DateNaiss,  StringFormat=d}" FontSize="14"></TextBlock>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <TextBlock Text="Raison Médical : " FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.Raison}" FontSize="14"></TextBlock>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <TextBlock Text="Adresse : " FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.Adresse}" FontSize="14"></TextBlock>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <TextBlock Text="Téléphone : " FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.Telephone}" FontSize="14"></TextBlock>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <TextBlock Text="Ajouté Par : " FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.CreePar}" FontSize="14"></TextBlock>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <TextBlock Text="Dans le : " FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.CreeDans,  StringFormat=d}" FontSize="14"></TextBlock>
+                        </WrapPanel>
+
+                    </WrapPanel>
+                </materialDesign:Card>-->
+
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Page>

@@ -11,45 +11,38 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ConsultationManager.Views.RDVs;
-using ConsultationManager.Models;
+using ConsultationManager.Views.Hospitalisations;
 
 namespace ConsultationManager.Views
 {
     /// <summary>
-    /// Interaction logic for MenuRdvWindow.xaml
+    /// Interaction logic for MenuHospitalisationWindow.xaml
     /// </summary>
-    public partial class MenuRdvWindow : Window
+    public partial class MenuHospitalisationWindow : Window
     {
-        public MenuRdvWindow()
+        public MenuHospitalisationWindow()
         {
             InitializeComponent();
-            _frameRdv.Navigate(new AllRdvPage());
-            coloringTabs(AllRdvBtn, AllMyRdvBtn, MyTodayRdvBtn, NewRdvBtn);
+            _mainFrame.Navigate(new AllHospitalisationPage());
+            coloringTabs(AllHospBtn, ActiveHospBtn, NewHospBtn);
         }
+
 
         private void button_click_tout(object sender, RoutedEventArgs e)
         {
-            _frameRdv.Navigate(new AllRdvPage());
-            coloringTabs(AllRdvBtn, AllMyRdvBtn, MyTodayRdvBtn, NewRdvBtn);
+            _mainFrame.Navigate(new AllHospitalisationPage());
+            coloringTabs(AllHospBtn, ActiveHospBtn, NewHospBtn);
         }
 
-        private void button_click_tout_mes(object sender, RoutedEventArgs e)
+        private void button_click_active(object sender, RoutedEventArgs e)
         {
-            _frameRdv.Navigate(new AllMyRdvPage());
-            coloringTabs(AllMyRdvBtn, AllRdvBtn, MyTodayRdvBtn, NewRdvBtn);
+            _mainFrame.Navigate(new ActiveHospitalisationPage());
+            coloringTabs(ActiveHospBtn, AllHospBtn, NewHospBtn);
         }
-
-        private void button_click_ajourd(object sender, RoutedEventArgs e)
-        {
-            _frameRdv.Navigate(new MyTodayRdvPage());
-            coloringTabs(MyTodayRdvBtn, AllRdvBtn, AllMyRdvBtn, NewRdvBtn);
-        }
-
         private void button_click_nouveau(object sender, RoutedEventArgs e)
         {
-            _frameRdv.Navigate(new NewRdvPage());
-            coloringTabs(NewRdvBtn, MyTodayRdvBtn, AllRdvBtn, AllMyRdvBtn);
+            _mainFrame.Navigate(new NewDemandHospitalisationPage());
+            coloringTabs(NewHospBtn, AllHospBtn, ActiveHospBtn);
         }
 
         private void button_click_home(object sender, RoutedEventArgs e)
@@ -70,17 +63,15 @@ namespace ConsultationManager.Views
 
         }
 
-        private void coloringTabs(Button puprpleBtn, Button transparantBtn1, Button transparantBtn2, Button transparantBtn3)
+        private void coloringTabs(Button puprpleBtn, Button transparantBtn1, Button transparantBtn2)
         {
             puprpleBtn.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF945BF9"));
             transparantBtn1.Background = Brushes.Transparent;
             transparantBtn2.Background = Brushes.Transparent;
-            transparantBtn3.Background = Brushes.Transparent;
 
             puprpleBtn.Foreground = Brushes.White;
             transparantBtn1.Foreground = Brushes.Black;
             transparantBtn2.Foreground = Brushes.Black;
-            transparantBtn3.Foreground = Brushes.Black;
         }
     }
 }

@@ -20,55 +20,38 @@ namespace ConsultationManager.Views
     /// </summary>
     public partial class MenuPatientWindow : Window
     {
-        public MenuPatientWindow()
+        public MenuPatientWindow(string tab)
         {
             InitializeComponent();
-            //List<Account> list = new AccountList().GetData();
-            _mainFrame.Navigate(new AllPatientsPage());
-            AllPatBtn.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF945BF9"));
-            MyPatBtn.Background = Brushes.Transparent;
-            NewPatBtn.Background = Brushes.Transparent;
-
-            AllPatBtn.Foreground = Brushes.White;
-            MyPatBtn.Foreground = Brushes.Black;
-            NewPatBtn.Foreground = Brushes.Black;
+            if (tab == "all")
+            {
+                _mainFrame.Navigate(new AllPatientsPage());
+                coloringTabs(AllPatBtn,MyPatBtn,NewPatBtn);
+            }
+            if (tab == "my")
+            {
+                _mainFrame.Navigate(new MyPatientsPage());
+                coloringTabs(MyPatBtn, AllPatBtn, NewPatBtn);
+            }
+            
         }
 
         private void button_click_tout(object sender, RoutedEventArgs e)
         {
             _mainFrame.Navigate(new AllPatientsPage());
-            AllPatBtn.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF945BF9"));
-            MyPatBtn.Background = Brushes.Transparent;
-            NewPatBtn.Background = Brushes.Transparent;
-
-            AllPatBtn.Foreground = Brushes.White;
-            MyPatBtn.Foreground = Brushes.Black;
-            NewPatBtn.Foreground = Brushes.Black;
+            coloringTabs(AllPatBtn, MyPatBtn, NewPatBtn);
         }
 
         private void button_click_mes(object sender, RoutedEventArgs e)
         {
             _mainFrame.Navigate(new MyPatientsPage());
-            AllPatBtn.Background = Brushes.Transparent;
-            MyPatBtn.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF945BF9"));
-            NewPatBtn.Background = Brushes.Transparent;
-
-            AllPatBtn.Foreground = Brushes.Black;
-            MyPatBtn.Foreground = Brushes.White;
-            NewPatBtn.Foreground = Brushes.Black;
+            coloringTabs(MyPatBtn, AllPatBtn, NewPatBtn);
         }
 
         private void button_click_nouveau(object sender, RoutedEventArgs e)
         {
             _mainFrame.Navigate(new NewPatientPage());
-            AllPatBtn.Background = Brushes.Transparent;
-            MyPatBtn.Background = Brushes.Transparent;
-            NewPatBtn.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF945BF9"));
-            NewPatBtn.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#DDFFFFFF"));
-
-            AllPatBtn.Foreground = Brushes.Black;
-            MyPatBtn.Foreground = Brushes.Black;
-            NewPatBtn.Foreground = Brushes.White;
+            coloringTabs(NewPatBtn, AllPatBtn, MyPatBtn);
         }
 
         private void button_click_home(object sender, RoutedEventArgs e)
@@ -87,6 +70,17 @@ namespace ConsultationManager.Views
         private void button_click_logout(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void coloringTabs(Button puprpleBtn, Button transparantBtn1,Button transparantBtn2)
+        {
+            puprpleBtn.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF945BF9"));
+            transparantBtn1.Background = Brushes.Transparent;
+            transparantBtn2.Background = Brushes.Transparent;
+
+            puprpleBtn.Foreground = Brushes.White;
+            transparantBtn1.Foreground = Brushes.Black;
+            transparantBtn2.Foreground = Brushes.Black;
         }
     }
 }

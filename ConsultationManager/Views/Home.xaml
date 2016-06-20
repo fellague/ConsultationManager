@@ -18,10 +18,10 @@
             <dxlc:Tile Header="Patients" Click="showAllPatient" FontSize="30" HorizontalHeaderAlignment="Left" dxlc:FlowLayoutControl.IsFlowBreak="True" Background="White" Foreground="#FF471647" Size="Small">
                 <Image x:Name="image" Source="/ConsultationManager;component/Imgs/Home/old-patient.png" Stretch="Fill"/>
             </dxlc:Tile>
-            <dxlc:Tile Header="Hospitalisation" FontSize="18" HorizontalHeaderAlignment="Center" Background="#FF6C15D4" Foreground="White" Size="Small">
+            <dxlc:Tile Header="Hospitalisation" Click="showAllHospitalisation" FontSize="18" HorizontalHeaderAlignment="Center" Background="#FF6C15D4" Foreground="White" Size="Small">
                 <Image x:Name="image7" Source="/ConsultationManager;component/Imgs/Home/hospitalisation.png" />
             </dxlc:Tile>
-            <dxlc:Tile Header="Mes Patients" FontSize="28" HorizontalHeaderAlignment="Left"  VerticalHeaderAlignment="Top" Background="#FF6C15D4" Foreground="Black">
+            <dxlc:Tile Header="Mes Patients" Click="showMyPatient" FontSize="28" HorizontalHeaderAlignment="Left"  VerticalHeaderAlignment="Top" Background="#FF6C15D4" Foreground="Black">
                 <Image x:Name="image2" Source="/ConsultationManager;component/Imgs/Home/patient.png" Stretch="Fill"/>
             </dxlc:Tile>
             <!--<dxlc:Tile Header="Education Thérapeutique" HorizontalHeaderAlignment="Center" Background="#FF6C15D4" Foreground="White" FontSize="25">

@@ -71,11 +71,15 @@
     </ApplicationDefinition>
     <Compile Include="Commands\RunDialogUpdateRdvCommand.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Hospitalisation.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\RDV.cs" />
     <Compile Include="ViewModels\Employees\ListEmployeesViewModel.cs" />
+    <Compile Include="ViewModels\Hospitalisations\ListHospitalisationViewModel.cs" />
+    <Compile Include="ViewModels\Hospitalisations\NewDemandHospitalisationViewModel.cs" />
     <Compile Include="ViewModels\Patients\ListPatientViewModel.cs" />
     <Compile Include="ViewModels\RDVs\ListRvdViewModel.cs" />
+    <Compile Include="ViewModels\RDVs\NewRdvViewModel.cs" />
     <Compile Include="Views\Employees\AllEmployeePage.xaml.cs">
       <DependentUpon>AllEmployeePage.xaml</DependentUpon>
     </Compile>
@@ -97,8 +101,20 @@
     <Compile Include="Views\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Hospitalisations\ActiveHospitalisationPage.xaml.cs">
+      <DependentUpon>ActiveHospitalisationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Hospitalisations\AllHospitalisationPage.xaml.cs">
+      <DependentUpon>AllHospitalisationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Hospitalisations\NewDemandHospitalisationPage.xaml.cs">
+      <DependentUpon>NewDemandHospitalisationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MenuEmployeeWindow.xaml.cs">
       <DependentUpon>MenuEmployeeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuHospitalisationWindow.xaml.cs">
+      <DependentUpon>MenuHospitalisationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MenuRdvWindow.xaml.cs">
       <DependentUpon>MenuRdvWindow.xaml</DependentUpon>
@@ -124,8 +140,8 @@
     <Compile Include="Views\RDVs\MyTodayRdvPage.xaml.cs">
       <DependentUpon>MyTodayRdvPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RDVs\NewRdvWindow.xaml.cs">
-      <DependentUpon>NewRdvWindow.xaml</DependentUpon>
+    <Compile Include="Views\RDVs\NewRdvPage.xaml.cs">
+      <DependentUpon>NewRdvPage.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -167,7 +183,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Hospitalisations\ActiveHospitalisationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Hospitalisations\AllHospitalisationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Hospitalisations\NewDemandHospitalisationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MenuEmployeeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MenuHospitalisationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -203,7 +235,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RDVs\NewRdvWindow.xaml">
+    <Page Include="Views\RDVs\NewRdvPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

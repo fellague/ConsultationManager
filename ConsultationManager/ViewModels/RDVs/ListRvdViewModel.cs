@@ -57,11 +57,11 @@ namespace ConsultationManager.ViewModels.RDVs
         public void ShowDialogUpdateRvd()
         {
             //Debug.Assert(false, String.Format("{0} was updated.", Customer.Name));
-            NewRdvWindow view = new NewRdvWindow();
+            //NewRdvPage view = new NewRdvPage();
             //view.DataContext = childViewModel;
 
             //childViewModel.Info = Customer.Name + " was updated in the database";
-            view.ShowDialog();
+            //view.ShowDialog();
         }
 
 
@@ -106,7 +106,7 @@ namespace ConsultationManager.ViewModels.RDVs
             DateTime today = new DateTime(2016, 10, 13);
             foreach (RDV element in allList)
             {
-                if (element.NomMedecin == "mokrane" && element.PrenomMedecin == "fatiha" && element.DateRdv == today)
+                if (element.NomMedecin == "mokrane" && element.PrenomMedecin == "fatiha" && element.DateRdv.CompareTo(today)==0)
                 {
                     allMyList.Add(element);
                 }

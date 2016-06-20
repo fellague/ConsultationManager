@@ -29,7 +29,21 @@ namespace ConsultationManager.Views
         private void showAllPatient(object sender, EventArgs e)
         {
             this.Hide();
-            var form2 = new MenuPatientWindow();
+            var form2 = new MenuPatientWindow("all");
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
+        private void showMyPatient(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new MenuPatientWindow("my");
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
+        private void showAllHospitalisation(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new MenuHospitalisationWindow();
             form2.Closed += (s, args) => this.Close();
             form2.Show();
         }
