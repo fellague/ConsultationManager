@@ -62,7 +62,7 @@
                           materialDesign:TextFieldAssist.Hint="(Nombre de jours)" 
                            FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Stretch"
                           IsEditable="True"                          
-                          ItemsSource="{Binding ListInt}">
+                          ItemsSource="{Binding ListJours}">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel />
@@ -81,6 +81,6 @@
 
         </Grid>
 
-        <Button Grid.Column="1" Grid.Row="1">Ajouter</Button>
+        <Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width=" 250" Margin=" 0 0 50 50" FontSize="16">Ajouter</Button>
     </Grid>
 </Page>

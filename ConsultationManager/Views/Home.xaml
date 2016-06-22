@@ -64,6 +64,9 @@
             <dxlc:Tile Header="Emploi du Temps" HorizontalHeaderAlignment="Center" FontSize="28" Background="#FF6C15D4">
                 <Image x:Name="image6" Source="/ConsultationManager;component/Imgs/Home/schedule.png"/>
             </dxlc:Tile>
+            <dxlc:Tile Header="Dossiers Médicals" HorizontalHeaderAlignment="Center" FontSize="28" Background="#FF6C15D4">
+                <Image x:Name="image11" Source="/ConsultationManager;component/Imgs/Home/medical_files.png"/>
+            </dxlc:Tile>
 
             <dxlc:Tile Header="Agenda" Click="showAllRdv" Size="Small" FontSize="28" dxlc:FlowLayoutControl.IsFlowBreak="True" Background="#FF4B97DE">
                 <Image x:Name="image3" Source="/ConsultationManager;component/Imgs/Home/agenda.png"/>

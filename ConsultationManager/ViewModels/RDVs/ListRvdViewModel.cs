@@ -56,12 +56,12 @@ namespace ConsultationManager.ViewModels.RDVs
 
         public void ShowDialogUpdateRvd()
         {
-            //Debug.Assert(false, String.Format("{0} was updated.", Customer.Name));
-            //NewRdvPage view = new NewRdvPage();
+            //Debug.Assert(false, String.Format("{0} was updated.", listMyRdv.Name));
+            UpdateRdvWindow view = new UpdateRdvWindow();
             //view.DataContext = childViewModel;
 
             //childViewModel.Info = Customer.Name + " was updated in the database";
-            //view.ShowDialog();
+            view.ShowDialog();
         }
 
 

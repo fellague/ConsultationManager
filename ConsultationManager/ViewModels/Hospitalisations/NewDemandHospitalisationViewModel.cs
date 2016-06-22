@@ -8,7 +8,7 @@ namespace ConsultationManager.ViewModels.Hospitalisations
 {
     internal class NewDemandHospitalisationViewModel
     {
-        IList<int> listInt;
+        IList<int> listJours;
         IList<string> listPatient;
 
         public NewDemandHospitalisationViewModel()
@@ -21,7 +21,7 @@ namespace ConsultationManager.ViewModels.Hospitalisations
             listPatient.Add("Kader Ejjappouni");
             listPatient.Add("Will Pharel");
 
-            listInt = new List<int>(Enumerable.Range(0, 100));
+            listJours = new List<int>(Enumerable.Range(1, 100));
         }
 
         public IList<string> ListPatient
@@ -31,11 +31,11 @@ namespace ConsultationManager.ViewModels.Hospitalisations
                 return listPatient;
             }
         }
-        public IList<int> ListInt
+        public IList<int> ListJours
         {
             get
             {
-                return listInt;
+                return listJours;
             }
         }
 

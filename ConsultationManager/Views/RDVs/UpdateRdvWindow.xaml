@@ -1,12 +1,12 @@
-﻿<Page x:Class="ConsultationManager.Views.RDVs.NewRdvPage"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:local="clr-namespace:ConsultationManager.Views.RDVs"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+﻿<Window x:Class="ConsultationManager.Views.RDVs.UpdateRdvWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:ConsultationManager.Views.RDVs"
+        mc:Ignorable="d"
+        Title="UpdateRdvWindow">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*"/>
@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <WrapPanel>
-            <TextBlock  FontSize="24">Nouveau Rendez-Vous</TextBlock>
+            <TextBlock  FontSize="24">Modifier le Rendez-Vous</TextBlock>
         </WrapPanel>
 
         <Grid Grid.Row="1" Grid.ColumnSpan="2">
@@ -38,17 +38,6 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
-
-            <TextBlock Text="Patient" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <ComboBox Grid.Column="1" 
-                          FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Stretch"
-                          ItemsSource="{Binding ListPatient}">
-                <ComboBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel />
-                    </ItemsPanelTemplate>
-                </ComboBox.ItemsPanel>
-            </ComboBox>
 
             <TextBlock Grid.Row="1" Text="Rendez-Vous Après" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
             <WrapPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
@@ -74,7 +63,7 @@
                 </ComboBox>
                 <TextBlock Text="Jours" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 0 10 0"></TextBlock>
             </WrapPanel>
-            
+
             <TextBlock Grid.Row="2" Text="Date du Rendez-Vous" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
             <DatePicker Grid.Row="2" Grid.Column="1" materialDesign:TextFieldAssist.Hint="JJ,MM,AAAA" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
 
@@ -84,4 +73,4 @@
 
         <Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width=" 250" Margin=" 0 0 50 50" FontSize="16">Ajouter</Button>
     </Grid>
-</Page>
+</Window>

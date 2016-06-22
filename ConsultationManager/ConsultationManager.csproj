@@ -143,6 +143,9 @@
     <Compile Include="Views\RDVs\NewRdvPage.xaml.cs">
       <DependentUpon>NewRdvPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\RDVs\UpdateRdvWindow.xaml.cs">
+      <DependentUpon>UpdateRdvWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -239,6 +242,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\RDVs\UpdateRdvWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -316,7 +323,12 @@
     <Resource Include="Imgs\Home\roles.png" />
     <Resource Include="Imgs\Home\staff.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Imgs\Home\dossier_medical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imgs\Home\medical_files.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

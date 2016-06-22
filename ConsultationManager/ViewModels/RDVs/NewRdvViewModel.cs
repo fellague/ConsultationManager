@@ -9,6 +9,8 @@ namespace ConsultationManager.ViewModels.RDVs
     internal class NewRdvViewModel
     {
         IList<string> listPatient;
+        IList<int> listMois;
+        IList<int> listJours;
 
         public NewRdvViewModel()
         {
@@ -19,6 +21,9 @@ namespace ConsultationManager.ViewModels.RDVs
             listPatient.Add("Kayta Kader");
             listPatient.Add("Kader Ejjappouni");
             listPatient.Add("Will Pharel");
+
+            listMois = new List<int>(Enumerable.Range(1, 24));
+            listJours = new List<int>(Enumerable.Range(1, 30));
         }
 
         public IList<string> ListPatient
@@ -26,6 +31,20 @@ namespace ConsultationManager.ViewModels.RDVs
             get
             {
                 return listPatient;
+            }
+        }
+        public IList<int> ListMois
+        {
+            get
+            {
+                return listMois;
+            }
+        }
+        public IList<int> ListJours
+        {
+            get
+            {
+                return listJours;
             }
         }
     }

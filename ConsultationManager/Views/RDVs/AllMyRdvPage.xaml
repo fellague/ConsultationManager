@@ -22,7 +22,7 @@
                     <!--<ColumnDefinition Width="*" />-->
                 </Grid.ColumnDefinitions>
                 <Grid>
-                    <ListBox ItemsSource="{Binding ListAllMyRvd}" HorizontalContentAlignment="Stretch">
+                    <ListBox x:Name="listMyRdv" ItemsSource="{Binding ListAllMyRvd}" HorizontalContentAlignment="Stretch">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -60,7 +60,8 @@
                                         <Button >Consulter Maintenant</Button>
                                         <materialDesign:PopupBox Margin="32" ToolTip="Plus d'Opionts">
                                             <StackPanel>
-                                                <Button  Command="{Binding RunDialogCommand}"
+                                                <Button  
+                                                    Command="{Binding DataContext.RunDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
                                                     Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
                                                     ToolTip="Modifier le Rendez-Vous">
                                                     <materialDesign:PackIcon Kind="Pencil" Height="24" Width="24" />
