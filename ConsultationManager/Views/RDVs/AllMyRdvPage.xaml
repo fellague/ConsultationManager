@@ -22,7 +22,7 @@
                     <!--<ColumnDefinition Width="*" />-->
                 </Grid.ColumnDefinitions>
                 <Grid>
-                    <ListBox x:Name="listMyRdv" ItemsSource="{Binding ListAllMyRvd}" HorizontalContentAlignment="Stretch">
+                    <ListBox x:Name="listMyRdv" ItemsSource="{Binding ListAllMyRvd}" SelectedItem="{Binding SelectedRDV, Mode=TwoWay}" HorizontalContentAlignment="Stretch">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -57,11 +57,14 @@
                                     </WrapPanel>
 
                                     <WrapPanel Grid.Column="1" Grid.RowSpan="3">
-                                        <Button >Consulter Maintenant</Button>
+                                        <Button>
+                                            Consulter Maintenant
+                                        </Button>
                                         <materialDesign:PopupBox Margin="32" ToolTip="Plus d'Opionts">
                                             <StackPanel>
                                                 <Button  
                                                     Command="{Binding DataContext.RunDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                    CommandParameter="{Binding}"
                                                     Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
                                                     ToolTip="Modifier le Rendez-Vous">
                                                     <materialDesign:PackIcon Kind="Pencil" Height="24" Width="24" />
@@ -84,6 +87,16 @@
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
+
+                        <!--<ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Style.Triggers>
+                                    <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                        <Setter Property="IsSelected" Value="True"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListBox.ItemContainerStyle>-->
                     </ListBox>
                 </Grid>
             </Grid>

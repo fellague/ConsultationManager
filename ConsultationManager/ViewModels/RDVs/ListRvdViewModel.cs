@@ -8,14 +8,16 @@ using ConsultationManager.Views.RDVs;
 using System.Windows.Input;
 using ConsultationManager.Commands;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace ConsultationManager.ViewModels.RDVs
 {
-    internal class ListRvdViewModel
+    internal class ListRvdViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<RDV> listAllRvd;
         private ObservableCollection<RDV> listAllMyRvd;
         private ObservableCollection<RDV> listAllMyTodayRvd;
+        private RDV selectedRDV = null;
 
         public ListRvdViewModel()
         {
@@ -24,6 +26,7 @@ namespace ConsultationManager.ViewModels.RDVs
             listAllMyTodayRvd = CreateListAllMyTodayRdv();
 
             RunDialogCommand = new RunDialogUpdateRdvCommand(this);
+            //RunDialogCommand = new RelayCommand(EditSelectedUser, () => SelectedUser != null);
         }
 
         public ObservableCollection<RDV> ListAllRvd
@@ -48,15 +51,30 @@ namespace ConsultationManager.ViewModels.RDVs
             }
         }
 
+        public RDV SelectedRDV
+        {
+            get
+            {
+                return selectedRDV;
+            }
+            set
+            {
+                selectedRDV = value;
+                Console.WriteLine("changed " + selectedRDV.NomPatient);
+                OnPropertyChanged("SelectedRDV");
+            }
+        }
+
         public ICommand RunDialogCommand
         {
             get;
             private set;
         }
 
-        public void ShowDialogUpdateRvd()
+        public void ShowDialogUpdateRvd(RDV rdv)
         {
             //Debug.Assert(false, String.Format("{0} was updated.", listMyRdv.Name));
+            //Console.WriteLine("Yow Yow" + selectedRDV.NomPatient);
             UpdateRdvWindow view = new UpdateRdvWindow();
             //view.DataContext = childViewModel;
 
@@ -113,5 +131,20 @@ namespace ConsultationManager.ViewModels.RDVs
             }
             return allMyList;
         }
+
+        #region InotifyPropertyChanged Members
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        #endregion
     }
 }
