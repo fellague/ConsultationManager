@@ -7,7 +7,7 @@ using System.Windows.Input;
 using ConsultationManager.ViewModels.RDVs;
 using ConsultationManager.Models;
 
-namespace ConsultationManager.Commands
+namespace ConsultationManager.Commands.RDVs
 {
     class RunDialogUpdateRdvCommand : ICommand
     {
@@ -35,9 +35,7 @@ namespace ConsultationManager.Commands
 
         public void Execute(object parameter)
         {
-            Console.WriteLine("Show dialog command has executed");
             var selectedRDV = parameter as RDV;
-            Console.WriteLine("parameter "+ selectedRDV.NomPatient);
             viewModel.ShowDialogUpdateRvd(selectedRDV);
         }
 

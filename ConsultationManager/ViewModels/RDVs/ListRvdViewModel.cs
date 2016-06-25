@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using ConsultationManager.Models;
 using ConsultationManager.Views.RDVs;
 using System.Windows.Input;
-using ConsultationManager.Commands;
+using ConsultationManager.Commands.RDVs;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
@@ -18,6 +18,7 @@ namespace ConsultationManager.ViewModels.RDVs
         private ObservableCollection<RDV> listAllMyRvd;
         private ObservableCollection<RDV> listAllMyTodayRvd;
         private RDV selectedRDV = null;
+        private UpdateRdvWindow dialogUpdateView;
 
         public ListRvdViewModel()
         {
@@ -26,7 +27,6 @@ namespace ConsultationManager.ViewModels.RDVs
             listAllMyTodayRvd = CreateListAllMyTodayRdv();
 
             RunDialogCommand = new RunDialogUpdateRdvCommand(this);
-            //RunDialogCommand = new RelayCommand(EditSelectedUser, () => SelectedUser != null);
         }
 
         public ObservableCollection<RDV> ListAllRvd
@@ -60,8 +60,20 @@ namespace ConsultationManager.ViewModels.RDVs
             set
             {
                 selectedRDV = value;
-                Console.WriteLine("changed " + selectedRDV.NomPatient);
+                Console.WriteLine("ListRvdViewModel : SelectedRDV changed " + selectedRDV.NomPatient);
                 OnPropertyChanged("SelectedRDV");
+            }
+        }
+        public UpdateRdvWindow DialogUpdateView
+        {
+            get
+            {
+                return dialogUpdateView;
+            }
+            set
+            {
+                dialogUpdateView = value;
+                OnPropertyChanged("DialogUpdateView");
             }
         }
 
@@ -75,11 +87,22 @@ namespace ConsultationManager.ViewModels.RDVs
         {
             //Debug.Assert(false, String.Format("{0} was updated.", listMyRdv.Name));
             //Console.WriteLine("Yow Yow" + selectedRDV.NomPatient);
-            UpdateRdvWindow view = new UpdateRdvWindow();
-            //view.DataContext = childViewModel;
+            Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.DateRdv);
+            dialogUpdateView = new UpdateRdvWindow();
+            dialogUpdateView.DataContext = new UpdateRdvViewModel(rdv, this);
 
             //childViewModel.Info = Customer.Name + " was updated in the database";
-            view.ShowDialog();
+            dialogUpdateView.ShowDialog();
+        }
+
+        public void CloseDialogUpdateRvd(RDV updRdv)
+        {
+            //Debug.Assert(false, String.Format("{0} was updated.", listMyRdv.Name));
+            Console.WriteLine("ListRvdViewModel : Dialog closed with updated RDV  " + updRdv.DateRdv);
+
+            //childViewModel.Info = Customer.Name + " was updated in the database";
+            //selectedRDV = updRdv;
+            dialogUpdateView.Close();
         }
 
 
@@ -124,7 +147,7 @@ namespace ConsultationManager.ViewModels.RDVs
             DateTime today = new DateTime(2016, 10, 13);
             foreach (RDV element in allList)
             {
-                if (element.NomMedecin == "mokrane" && element.PrenomMedecin == "fatiha" && element.DateRdv.CompareTo(today)==0)
+                if (element.NomMedecin == "mokrane" && element.PrenomMedecin == "fatiha" && element.DateRdv.Date==today.Date)
                 {
                     allMyList.Add(element);
                 }

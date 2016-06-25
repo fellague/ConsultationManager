@@ -69,7 +69,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\RunDialogUpdateRdvCommand.cs" />
+    <Compile Include="Commands\RDVs\RunDialogUpdateRdvCommand.cs" />
+    <Compile Include="Commands\RDVs\UpdateRdvCommand.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Hospitalisation.cs" />
     <Compile Include="Models\Patient.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="ViewModels\Patients\ListPatientViewModel.cs" />
     <Compile Include="ViewModels\RDVs\ListRvdViewModel.cs" />
     <Compile Include="ViewModels\RDVs\NewRdvViewModel.cs" />
+    <Compile Include="ViewModels\RDVs\UpdateRdvViewModel.cs" />
     <Compile Include="Views\Employees\AllEmployeePage.xaml.cs">
       <DependentUpon>AllEmployeePage.xaml</DependentUpon>
     </Compile>
