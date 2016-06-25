@@ -7,6 +7,7 @@ using ConsultationManager.Models;
 using ConsultationManager.Views.RDVs;
 using System.Windows.Input;
 using ConsultationManager.Commands.RDVs;
+using ConsultationManager.Commands;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
@@ -27,6 +28,7 @@ namespace ConsultationManager.ViewModels.RDVs
             listAllMyTodayRvd = CreateListAllMyTodayRdv();
 
             RunDialogCommand = new RunDialogUpdateRdvCommand(this);
+            RemoveSelectedRdvCommand = new RelayCommand(param => this.Delete(param));
         }
 
         public ObservableCollection<RDV> ListAllRvd
@@ -60,7 +62,7 @@ namespace ConsultationManager.ViewModels.RDVs
             set
             {
                 selectedRDV = value;
-                Console.WriteLine("ListRvdViewModel : SelectedRDV changed " + selectedRDV.NomPatient);
+                //Console.WriteLine("ListRvdViewModel : SelectedRDV changed " + selectedRDV.NomPatient);
                 OnPropertyChanged("SelectedRDV");
             }
         }
@@ -78,6 +80,12 @@ namespace ConsultationManager.ViewModels.RDVs
         }
 
         public ICommand RunDialogCommand
+        {
+            get;
+            private set;
+        }
+
+        public RelayCommand RemoveSelectedRdvCommand
         {
             get;
             private set;
@@ -103,6 +111,13 @@ namespace ConsultationManager.ViewModels.RDVs
             //childViewModel.Info = Customer.Name + " was updated in the database";
             //selectedRDV = updRdv;
             dialogUpdateView.Close();
+        }
+
+        public void Delete(object selectedRdv)
+        {
+            Console.WriteLine("ListRvdViewModel : Remove RDV  " );
+            var rdv = selectedRdv as RDV;
+            this.listAllMyRvd.Remove(rdv);
         }
 
 

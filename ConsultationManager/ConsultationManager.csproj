@@ -71,6 +71,7 @@
     </ApplicationDefinition>
     <Compile Include="Commands\RDVs\RunDialogUpdateRdvCommand.cs" />
     <Compile Include="Commands\RDVs\UpdateRdvCommand.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Hospitalisation.cs" />
     <Compile Include="Models\Patient.cs" />

@@ -69,7 +69,10 @@
                                                     ToolTip="Modifier le Rendez-Vous">
                                                     <materialDesign:PackIcon Kind="Pencil" Height="24" Width="24" />
                                                 </Button>
-                                                <Button  Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
+                                                <Button  
+                                                    Command="{Binding DataContext.RemoveSelectedRdvCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
                                                     ToolTip="Annuler le Rendez-vous">
                                                     <materialDesign:PackIcon Kind="Delete" Height="24" Width="24" />
                                                 </Button>
