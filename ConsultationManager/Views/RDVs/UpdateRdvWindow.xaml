@@ -42,7 +42,8 @@
             <WrapPanel Orientation="Horizontal" Grid.Column="1">
                 <ComboBox
                           FontSize="16" VerticalAlignment="Center" Width="100"
-                          ItemsSource="{Binding ListMois}">
+                          ItemsSource="{Binding ListMois}"
+                          SelectedItem="{Binding DiffMois, Mode=TwoWay}">
                     <ComboBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <VirtualizingStackPanel />
@@ -53,7 +54,8 @@
 
                 <ComboBox
                           FontSize="16" VerticalAlignment="Center" Width="100"  Margin="30 0 10 0"
-                          ItemsSource="{Binding ListJours}">
+                          ItemsSource="{Binding ListJours}"
+                          SelectedItem="{Binding DiffJours, Mode=TwoWay}">
                     <ComboBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <VirtualizingStackPanel />

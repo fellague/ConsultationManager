@@ -27,7 +27,9 @@ namespace ConsultationManager.ViewModels.RDVs
             listAllMyRvd = CreateListAllMyRdv();
             listAllMyTodayRvd = CreateListAllMyTodayRdv();
 
-            RunDialogCommand = new RunDialogUpdateRdvCommand(this);
+            //RunDialogCommand = new RunDialogUpdateRdvCommand(this);
+            RunDialogCommand = new RelayCommand(param => this.ShowDialogUpdateRvd(param));
+
             RemoveSelectedRdvCommand = new RelayCommand(param => this.Delete(param));
         }
 
@@ -91,25 +93,18 @@ namespace ConsultationManager.ViewModels.RDVs
             private set;
         }
 
-        public void ShowDialogUpdateRvd(RDV rdv)
+        public void ShowDialogUpdateRvd(object selectedRdv)
         {
-            //Debug.Assert(false, String.Format("{0} was updated.", listMyRdv.Name));
-            //Console.WriteLine("Yow Yow" + selectedRDV.NomPatient);
+            var rdv = selectedRdv as RDV;
             Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.DateRdv);
             dialogUpdateView = new UpdateRdvWindow();
             dialogUpdateView.DataContext = new UpdateRdvViewModel(rdv, this);
-
-            //childViewModel.Info = Customer.Name + " was updated in the database";
             dialogUpdateView.ShowDialog();
         }
 
         public void CloseDialogUpdateRvd(RDV updRdv)
         {
-            //Debug.Assert(false, String.Format("{0} was updated.", listMyRdv.Name));
             Console.WriteLine("ListRvdViewModel : Dialog closed with updated RDV  " + updRdv.DateRdv);
-
-            //childViewModel.Info = Customer.Name + " was updated in the database";
-            //selectedRDV = updRdv;
             dialogUpdateView.Close();
         }
 

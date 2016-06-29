@@ -45,7 +45,7 @@
                                     </WrapPanel>
                                     <WrapPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 5">
                                         <TextBlock Text="Dans le "></TextBlock>
-                                        <TextBlock Text="{Binding Path=DateRdv,  StringFormat=d}" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=DateRdv,  StringFormat='dd/MM/yyy'}" FontWeight="Bold"></TextBlock>
                                         <TextBlock Text=" à "></TextBlock>
                                         <TextBlock Text="{Binding Path=DateRdv,  StringFormat=t}" FontWeight="Bold"></TextBlock>
                                     </WrapPanel>
@@ -53,7 +53,7 @@
                                         <TextBlock Text="Creé Par "></TextBlock>
                                         <TextBlock Text="{Binding Path=CreePar}" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
                                         <TextBlock Text="Dans le "></TextBlock>
-                                        <TextBlock Text="{Binding Path=CreeDans,  StringFormat=d}" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=CreeDans,  StringFormat='dd/MM/yyy'}" FontWeight="Bold"></TextBlock>
                                     </WrapPanel>
 
                                     <WrapPanel Grid.Column="1" Grid.RowSpan="3">
