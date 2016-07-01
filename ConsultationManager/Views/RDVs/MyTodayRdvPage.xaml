@@ -44,7 +44,9 @@
                                     <WrapPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 5">
                                         <TextBlock Text="Dans le "></TextBlock>
                                         <TextBlock Text="{Binding Path=DateRdv,  StringFormat=d}" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text=" à "></TextBlock>
+                                        <TextBlock Text=", position "></TextBlock>
+                                        <TextBlock Text="{Binding Path=Rang}" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text=" sur la fille d'attente, heure éstimé à "></TextBlock>
                                         <TextBlock Text="{Binding Path=DateRdv,  StringFormat=t}" FontWeight="Bold"></TextBlock>
                                     </WrapPanel>
                                     <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 5">

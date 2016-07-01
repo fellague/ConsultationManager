@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Data;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using ConsultationManager.Commands;
 
 namespace ConsultationManager.ViewModels.RDVs
 {
@@ -30,6 +31,7 @@ namespace ConsultationManager.ViewModels.RDVs
             listJours = new ObservableCollection<int>(Enumerable.Range(0, 30));
             
             UpdateRdvCommand = new UpdateRdvCommand(this, vmLi);
+            CancelCommand = new RelayCommand(o => ((Window)o).Close());
         }
 
         public RDV UpdatedRdv
@@ -46,7 +48,7 @@ namespace ConsultationManager.ViewModels.RDVs
             get
             {
                 int Mois = 0;
-                while (updatedRdv.DateRdv.CompareTo(DateTime.Now.AddMonths(++Mois)) >= 0) { }
+                while (updatedRdv.DateRdv.CompareTo(DateTime.Now.Date.AddMonths(++Mois)) >= 0) { }
                 diffMois = --Mois;
                 Console.WriteLine("DiffMois get changed" + diffMois);
                 return diffMois;
@@ -55,7 +57,7 @@ namespace ConsultationManager.ViewModels.RDVs
             {
                 diffMois = value;
                 Console.WriteLine("DiffMois set changed "+diffMois);
-                updatedRdv.DateRdv = DateTime.Now.AddMonths(diffMois).AddDays(diffJours);
+                updatedRdv.DateRdv = DateTime.Now.Date.AddMonths(diffMois).AddDays(diffJours);
                 OnPropertyChanged("DiffMois");
             }
         }
@@ -93,6 +95,11 @@ namespace ConsultationManager.ViewModels.RDVs
         }
 
         public ICommand UpdateRdvCommand
+        {
+            get;
+            private set;
+        }
+        public ICommand CancelCommand
         {
             get;
             private set;

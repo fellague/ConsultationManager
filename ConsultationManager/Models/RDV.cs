@@ -14,16 +14,18 @@ namespace ConsultationManager.Models
         private string nomMedecin;
         private string prenomMedecin;
         private DateTime dateRdv;
+        private int rang;
         private DateTime creeDans;
         private string creePar;
 
-        public RDV(string nomPatient, string prenomPatient, string nomMedecin, string prenomMedecin, DateTime dateRdv, DateTime creeDans, string creePar)
+        public RDV(string nomPatient, string prenomPatient, string nomMedecin, string prenomMedecin, DateTime dateRdv, int rang, DateTime creeDans, string creePar)
         {
             NomPatient = nomPatient;
             PrenomPatient = prenomPatient;
             NomMedecin = nomMedecin;
             PrenomMedecin = prenomMedecin;
             DateRdv = dateRdv;
+            Rang = rang;
             CreeDans = creeDans;
             CreePar = creePar;
         }
@@ -86,6 +88,18 @@ namespace ConsultationManager.Models
             {
                 dateRdv = value;
                 OnPropertyChanged("DateRdv");
+            }
+        }
+        public int Rang
+        {
+            get
+            {
+                return rang;
+            }
+            set
+            {
+                rang = value;
+                OnPropertyChanged("Rang");
             }
         }
         public DateTime CreeDans

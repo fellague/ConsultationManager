@@ -6,7 +6,8 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ConsultationManager.Views.RDVs"
         mc:Ignorable="d"
-        Title="UpdateRdvWindow" Width="650" Height="390">
+        Title="UpdateRdvWindow" Width="650" Height="390"
+        WindowStartupLocation="CenterScreen">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -66,17 +67,24 @@
             </WrapPanel>
 
             <TextBlock Grid.Row="1" Text="Date du Rendez-Vous" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <DatePicker Grid.Row="1" Grid.Column="1" 
+            <TextBlock Grid.Row="1" Grid.Column="1"  Text="{Binding Path=UpdatedRdv.DateRdv, Mode=TwoWay,  StringFormat='dd/MM/yyy'}" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <!--<DatePicker Grid.Row="1" Grid.Column="1" 
                         SelectedDate="{Binding Path=UpdatedRdv.DateRdv, Mode=TwoWay}" 
-                        materialDesign:TextFieldAssist.Hint="JJ,MM,AAAA" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                        materialDesign:TextFieldAssist.Hint="JJ,MM,AAAA" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>-->
 
             <TextBlock Grid.Row="2" Text="Temps du Rendez-Vous" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
             <materialDesign:TimePicker SelectedTime="{Binding Path=UpdatedRdv.DateRdv, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" materialDesign:TextFieldAssist.Hint="HH:MM" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
         </Grid>
 
         <WrapPanel Orientation="Horizontal" Grid.Row="2" Margin="0 30 50 30" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-            <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin=" 0 0 10 0" FontSize="16">Annuler</Button>
-            <Button Command="{Binding UpdateRdvCommand}" CommandParameter="{Binding UpdatedRdv}" x:Name="btnUpdate" VerticalAlignment="Bottom" FontSize="16">Modifier</Button>
+            <Button Command="{Binding CancelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin=" 0 0 10 0" FontSize="16">
+                Annuler
+            </Button>
+            <Button Command="{Binding UpdateRdvCommand}" CommandParameter="{Binding UpdatedRdv}" 
+                    x:Name="btnUpdate" VerticalAlignment="Bottom" FontSize="16">
+                Modifier
+            </Button>
         </WrapPanel>
         
     </Grid>
