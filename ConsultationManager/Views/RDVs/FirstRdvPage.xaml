@@ -1,4 +1,4 @@
-﻿<Page x:Class="ConsultationManager.Views.RDVs.FirstRdvPage"
+﻿<Page x:Class="ConsultationManager.Views.RDVs.MyTodayRdvPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -20,7 +20,7 @@
                     <!--<ColumnDefinition Width="*" />-->
                 </Grid.ColumnDefinitions>
                 <Grid>
-                    <ListBox ItemsSource="{Binding ListAllFirstRvd}" HorizontalContentAlignment="Stretch">
+                    <ListBox ItemsSource="{Binding ListAllMyTodayRvd}" HorizontalContentAlignment="Stretch">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>

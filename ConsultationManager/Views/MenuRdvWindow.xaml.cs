@@ -25,31 +25,37 @@ namespace ConsultationManager.Views
         {
             InitializeComponent();
             _frameRdv.Navigate(new AllRdvPage());
-            coloringTabs(AllRdvBtn, AllMyRdvBtn, MyTodayRdvBtn, NewRdvBtn);
+            coloringTabs(AllRdvBtn, AllMyRdvBtn, MyTodayRdvBtn, FirstRdvBtn, NewRdvBtn);
         }
 
         private void button_click_tout(object sender, RoutedEventArgs e)
         {
             _frameRdv.Navigate(new AllRdvPage());
-            coloringTabs(AllRdvBtn, AllMyRdvBtn, MyTodayRdvBtn, NewRdvBtn);
+            coloringTabs(AllRdvBtn, AllMyRdvBtn, MyTodayRdvBtn, FirstRdvBtn, NewRdvBtn);
         }
 
         private void button_click_tout_mes(object sender, RoutedEventArgs e)
         {
             _frameRdv.Navigate(new AllMyRdvPage());
-            coloringTabs(AllMyRdvBtn, AllRdvBtn, MyTodayRdvBtn, NewRdvBtn);
+            coloringTabs(AllMyRdvBtn, AllRdvBtn, MyTodayRdvBtn, FirstRdvBtn, NewRdvBtn);
         }
 
         private void button_click_ajourd(object sender, RoutedEventArgs e)
         {
             _frameRdv.Navigate(new MyTodayRdvPage());
-            coloringTabs(MyTodayRdvBtn, AllRdvBtn, AllMyRdvBtn, NewRdvBtn);
+            coloringTabs(MyTodayRdvBtn, AllRdvBtn, AllMyRdvBtn, FirstRdvBtn, NewRdvBtn);
+        }
+
+        private void button_click_first(object sender, RoutedEventArgs e)
+        {
+            _frameRdv.Navigate(new MyTodayRdvPage());
+            coloringTabs(FirstRdvBtn, MyTodayRdvBtn, AllRdvBtn, AllMyRdvBtn, NewRdvBtn);
         }
 
         private void button_click_nouveau(object sender, RoutedEventArgs e)
         {
             _frameRdv.Navigate(new NewRdvPage());
-            coloringTabs(NewRdvBtn, MyTodayRdvBtn, AllRdvBtn, AllMyRdvBtn);
+            coloringTabs(NewRdvBtn, MyTodayRdvBtn, AllRdvBtn, AllMyRdvBtn, FirstRdvBtn);
         }
 
         private void button_click_home(object sender, RoutedEventArgs e)
@@ -70,17 +76,19 @@ namespace ConsultationManager.Views
 
         }
 
-        private void coloringTabs(Button puprpleBtn, Button transparantBtn1, Button transparantBtn2, Button transparantBtn3)
+        private void coloringTabs(Button puprpleBtn, Button transparantBtn1, Button transparantBtn2, Button transparantBtn3, Button transparantBtn4)
         {
             puprpleBtn.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF945BF9"));
             transparantBtn1.Background = Brushes.Transparent;
             transparantBtn2.Background = Brushes.Transparent;
             transparantBtn3.Background = Brushes.Transparent;
+            transparantBtn4.Background = Brushes.Transparent;
 
             puprpleBtn.Foreground = Brushes.White;
             transparantBtn1.Foreground = Brushes.Black;
             transparantBtn2.Foreground = Brushes.Black;
             transparantBtn3.Foreground = Brushes.Black;
+            transparantBtn4.Foreground = Brushes.Black;
         }
     }
 }

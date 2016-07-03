@@ -18,6 +18,7 @@ namespace ConsultationManager.ViewModels.RDVs
         private ObservableCollection<RDV> listAllRvd;
         private ObservableCollection<RDV> listAllMyRvd;
         private ObservableCollection<RDV> listAllMyTodayRvd;
+        private ObservableCollection<RDV> listAllFirstRvd;
         //private RDV selectedRDV = null;
         private UpdateRdvWindow dialogUpdateView;
 
@@ -26,6 +27,7 @@ namespace ConsultationManager.ViewModels.RDVs
             listAllRvd = CreateRDVs();
             listAllMyRvd = CreateListAllMyRdv();
             listAllMyTodayRvd = CreateListAllMyTodayRdv();
+            listAllFirstRvd = CreateListAllFirstRdv();
 
             //RunDialogCommand = new RunDialogUpdateRdvCommand(this);
             RunDialogCommand = new RelayCommand(param => this.ShowDialogUpdateRvd(param));
@@ -52,6 +54,13 @@ namespace ConsultationManager.ViewModels.RDVs
             get
             {
                 return listAllMyTodayRvd;
+            }
+        }
+        public ObservableCollection<RDV> ListAllFirstRvd
+        {
+            get
+            {
+                return listAllFirstRvd;
             }
         }
 
@@ -87,7 +96,7 @@ namespace ConsultationManager.ViewModels.RDVs
             private set;
         }
 
-        public RelayCommand RemoveSelectedRdvCommand
+        public ICommand RemoveSelectedRdvCommand
         {
             get;
             private set;
@@ -158,6 +167,21 @@ namespace ConsultationManager.ViewModels.RDVs
             foreach (RDV element in allList)
             {
                 if (element.NomMedecin == "mokrane" && element.PrenomMedecin == "fatiha" && element.DateRdv.Date==today.Date)
+                {
+                    allMyList.Add(element);
+                }
+            }
+            return allMyList;
+        }
+
+        private ObservableCollection<RDV> CreateListAllFirstRdv()
+        {
+            ObservableCollection<RDV> allList = CreateRDVs();
+            ObservableCollection<RDV> allMyList = new ObservableCollection<RDV>();
+            DateTime today = new DateTime(2016, 10, 13);
+            foreach (RDV element in allList)
+            {
+                if (element.NomMedecin == "mokrane" && element.PrenomMedecin == "fatiha" && element.DateRdv.Date == today.Date)
                 {
                     allMyList.Add(element);
                 }

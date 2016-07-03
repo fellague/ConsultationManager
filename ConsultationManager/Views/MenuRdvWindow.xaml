@@ -29,6 +29,7 @@
                         <Button Name="AllRdvBtn" Click="button_click_tout"  Content="Tous Les Rendez-vous" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
                         <Button Name="AllMyRdvBtn" Click="button_click_tout_mes"  Content="Tous Mes Rendez-vous" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
                         <Button Name="MyTodayRdvBtn" Click="button_click_ajourd"  Content="Mes Rendez-vous d'aujourduit" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
+                        <Button Name="FirstRdvBtn" Click="button_click_first"  Content="Rendez-vous des nouvaux patients" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
                         <Button Name="NewRdvBtn" Click="button_click_nouveau"  Content="Nouveau Rendez-vous" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
                     </ItemsControl>
 
