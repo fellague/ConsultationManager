@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using ConsultationManager.Models;
 using ConsultationManager.Views.RDVs;
+using ConsultationManager.Views.Consultation;
+using ConsultationManager.ViewModels.Consultations;
 using System.Windows.Input;
 using ConsultationManager.Commands.RDVs;
 using ConsultationManager.Commands;
@@ -21,6 +23,7 @@ namespace ConsultationManager.ViewModels.RDVs
         private ObservableCollection<RDV> listAllFirstRvd;
         //private RDV selectedRDV = null;
         private UpdateRdvWindow dialogUpdateView;
+        private FirstConsultationWindow dialogFirstRdvView;
 
         public ListRvdViewModel()
         {
@@ -30,10 +33,12 @@ namespace ConsultationManager.ViewModels.RDVs
             listAllFirstRvd = CreateListAllFirstRdv();
 
             //RunDialogCommand = new RunDialogUpdateRdvCommand(this);
-            RunDialogCommand = new RelayCommand(param => this.ShowDialogUpdateRvd(param));
+            UpdateRdvDialogCommand = new RelayCommand(param => this.ShowDialogUpdateRvd(param));
+            FirstRdvDialogCommand = new RelayCommand(param => this.ShowDialogFirstConsult(param));
 
             RemoveSelectedRdvCommand = new RelayCommand(param => this.Delete(param));
         }
+        #region ListRvdViewModel Variables
 
         public ObservableCollection<RDV> ListAllRvd
         {
@@ -63,7 +68,20 @@ namespace ConsultationManager.ViewModels.RDVs
                 return listAllFirstRvd;
             }
         }
-
+        public UpdateRdvWindow DialogUpdateView
+        {
+            get
+            {
+                return dialogUpdateView;
+            }
+        }
+        public FirstConsultationWindow DialogFirstRdvView
+        {
+            get
+            {
+                return dialogFirstRdvView;
+            }
+        }
         //public RDV SelectedRDV
         //{
         //    get
@@ -77,20 +95,19 @@ namespace ConsultationManager.ViewModels.RDVs
         //        OnPropertyChanged("SelectedRDV");
         //    }
         //}
-        public UpdateRdvWindow DialogUpdateView
+
+        #endregion
+
+
+        #region ListRvdViewModel Commands
+
+        public ICommand UpdateRdvDialogCommand
         {
-            get
-            {
-                return dialogUpdateView;
-            }
-            //set
-            //{
-            //    dialogUpdateView = value;
-            //    OnPropertyChanged("DialogUpdateView");
-            //}
+            get;
+            private set;
         }
 
-        public ICommand RunDialogCommand
+        public ICommand FirstRdvDialogCommand
         {
             get;
             private set;
@@ -102,6 +119,8 @@ namespace ConsultationManager.ViewModels.RDVs
             private set;
         }
 
+        #endregion
+
         public void ShowDialogUpdateRvd(object selectedRdv)
         {
             var rdv = selectedRdv as RDV;
@@ -110,6 +129,16 @@ namespace ConsultationManager.ViewModels.RDVs
             dialogUpdateView.DataContext = new UpdateRdvViewModel(rdv, this);
             dialogUpdateView.ShowDialog();
         }
+
+        public void ShowDialogFirstConsult(object selectedRdv)
+        {
+            var rdv = selectedRdv as RDV;
+            Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.DateRdv);
+            dialogFirstRdvView = new FirstConsultationWindow();
+            dialogFirstRdvView.DataContext = new FirstConsultationViewModel(rdv);
+            dialogFirstRdvView.ShowDialog();
+        }
+
 
         public void CloseDialogUpdateRvd(RDV updRdv)
         {

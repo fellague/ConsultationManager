@@ -12,7 +12,7 @@
     <Grid Margin="10">
         <DockPanel>
             <WrapPanel DockPanel.Dock="Top">
-                <TextBlock  FontSize="24">Les Rendez-vous de mes patients d'aujourduit</TextBlock>
+                <TextBlock  FontSize="24">Les Rendez-vous des nouveaux patients</TextBlock>
             </WrapPanel>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -43,7 +43,7 @@
                                     </WrapPanel>
                                     <WrapPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 5">
                                         <TextBlock Text="Dans le "></TextBlock>
-                                        <TextBlock Text="{Binding Path=DateRdv,  StringFormat=d}" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=DateRdv,  StringFormat='dd/MM/yyy'}" FontWeight="Bold"></TextBlock>
                                         <TextBlock Text=", position "></TextBlock>
                                         <TextBlock Text="{Binding Path=Rang}" FontWeight="Bold"></TextBlock>
                                         <TextBlock Text=" sur la fille d'attente, heure éstimé à "></TextBlock>
@@ -53,15 +53,21 @@
                                         <TextBlock Text="Creé Par "></TextBlock>
                                         <TextBlock Text="{Binding Path=CreePar}" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
                                         <TextBlock Text="Dans le "></TextBlock>
-                                        <TextBlock Text="{Binding Path=CreeDans,  StringFormat=d}" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=CreeDans,  StringFormat='dd/MM/yyy'}" FontWeight="Bold"></TextBlock>
                                     </WrapPanel>
 
                                     <WrapPanel Grid.Column="1" Grid.RowSpan="3">
-                                        <Button >Consulter Maintenant</Button>
-                                        <materialDesign:PopupBox
+                                        <Button Command="{Binding DataContext.FirstRdvDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                CommandParameter="{Binding}">
+                                            Consulter Maintenant
+                                        </Button>
+                                        <!--<materialDesign:PopupBox
                                                          Margin="32" ToolTip="Plus d'Opionts">
                                             <StackPanel>
-                                                <Button  Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
+                                                <Button  
+                                                    Command="{Binding DataContext.UpdateRdvDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
                                                     ToolTip="Modifier le Rendez-Vous">
                                                     <materialDesign:PackIcon Kind="Pencil" Height="24" Width="24" />
                                                 </Button>
@@ -78,7 +84,7 @@
                                                     <materialDesign:PackIcon Kind="FolderPlus" Height="24" Width="24" />
                                                 </Button>
                                             </StackPanel>
-                                        </materialDesign:PopupBox>
+                                        </materialDesign:PopupBox>-->
                                     </WrapPanel>
                                 </Grid>
                             </DataTemplate>

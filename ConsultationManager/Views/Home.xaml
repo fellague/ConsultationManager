@@ -68,20 +68,20 @@
                 <Image x:Name="image11" Source="/ConsultationManager;component/Imgs/Home/medical_files.png"/>
             </dxlc:Tile>
 
-            <dxlc:Tile Header="Agenda" Click="showAllRdv" Size="Small" FontSize="28" dxlc:FlowLayoutControl.IsFlowBreak="True" Background="#FF4B97DE">
+            <dxlc:Tile Header="Rendez-vous" Click="showAllRdv" FontSize="28" HorizontalHeaderAlignment="Center" dxlc:FlowLayoutControl.IsFlowBreak="True" Background="#FF4B97DE">
                 <Image x:Name="image3" Source="/ConsultationManager;component/Imgs/Home/agenda.png"/>
             </dxlc:Tile>
             <dxlc:Tile Header="Messages" Size="Small" FontSize="25" HorizontalHeaderAlignment="Center" Background="#FF4B97DE" Foreground="White">
                 <Image x:Name="image8" Source="/ConsultationManager;component/Imgs/Home/messages.png"/>
             </dxlc:Tile>
-            <dxlc:Tile Header="Notifications" FontSize="28" HorizontalHeaderAlignment="Center" Background="#FF4B97DE" Foreground="White">
-                <Image x:Name="image4" Source="/ConsultationManager;component/Imgs/Home/notifications.png"/>
-            </dxlc:Tile>
             <dxlc:Tile Header="Transfert" Size="Small" FontSize="28"  HorizontalHeaderAlignment="Center" Background="#FF4B97DE" Foreground="White">
                 <Image x:Name="image10" Source="/ConsultationManager;component/Imgs/Home/transfert.png"/>
             </dxlc:Tile>
+            <dxlc:Tile Header="Notifications" FontSize="28" HorizontalHeaderAlignment="Center" Background="#FF4B97DE" Foreground="White">
+                <Image x:Name="image4" Source="/ConsultationManager;component/Imgs/Home/notifications.png"/>
+            </dxlc:Tile>
 
-            <dxlc:Tile Header="Profile" FontSize="28" HorizontalHeaderAlignment="Center" Background="#FF6C15D4" Foreground="White" Size="Small" dxlc:FlowLayoutControl.IsFlowBreak="True">
+            <dxlc:Tile Header="Profil" FontSize="28" HorizontalHeaderAlignment="Center" Background="#FF6C15D4" Foreground="White" Size="Small" dxlc:FlowLayoutControl.IsFlowBreak="True">
                 <Image x:Name="image9" Source="/ConsultationManager;component/Imgs/Home/profile-pic.png"/>
             </dxlc:Tile>
         </dxlc:TileLayoutControl>

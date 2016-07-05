@@ -39,6 +39,8 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
             <TextBlock Text="Nom" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
@@ -56,16 +58,22 @@
                 <ComboBoxItem>Femalle</ComboBoxItem>
             </ComboBox>
             
-            <TextBlock Grid.Row="4" Text="Lieu de Naissance" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBlock Grid.Row="4" Text="Origine Géographique" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
             <TextBox Grid.Row="4" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Lieu de Naissance"/>
 
-            <TextBlock Grid.Row="5" Text="Adresse" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBox Grid.Row="5" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Wilaya, Dayra Hay Numero 00"></TextBox>
+            <TextBlock Grid.Row="5" Text="Nationalité" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBox Grid.Row="5" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Paye"></TextBox>
 
-            <TextBlock Grid.Row="6" Text="Téléphone" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBox Grid.Row="6" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="06 66 66 66 66"></TextBox>
+            <TextBlock Grid.Row="6" Text="Profession" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBox Grid.Row="6" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Profession"></TextBox>
 
-            <CheckBox Content="Marrié" Grid.Row="7" Grid.Column="1" FontSize="16" VerticalAlignment="Center" ></CheckBox>
+            <TextBlock Grid.Row="7" Text="Adresse" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBox Grid.Row="7" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Wilaya, Dayra Hay Numero 00"></TextBox>
+
+            <TextBlock Grid.Row="8" Text="Téléphone" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBox Grid.Row="8" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="06 66 66 66 66"></TextBox>
+
+            <CheckBox Content="Marrié" Grid.Row="9" Grid.Column="1" FontSize="16" VerticalAlignment="Center" ></CheckBox>
 
         </Grid>
 

@@ -76,6 +76,7 @@
     <Compile Include="Models\Hospitalisation.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\RDV.cs" />
+    <Compile Include="ViewModels\Consultations\FirstConsultationViewModel.cs" />
     <Compile Include="ViewModels\Employees\ListEmployeesViewModel.cs" />
     <Compile Include="ViewModels\Hospitalisations\ListHospitalisationViewModel.cs" />
     <Compile Include="ViewModels\Hospitalisations\NewDemandHospitalisationViewModel.cs" />
@@ -83,6 +84,9 @@
     <Compile Include="ViewModels\RDVs\ListRvdViewModel.cs" />
     <Compile Include="ViewModels\RDVs\NewRdvViewModel.cs" />
     <Compile Include="ViewModels\RDVs\UpdateRdvViewModel.cs" />
+    <Compile Include="Views\Consultation\FirstConsultationWindow.xaml.cs">
+      <DependentUpon>FirstConsultationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Employees\AllEmployeePage.xaml.cs">
       <DependentUpon>AllEmployeePage.xaml</DependentUpon>
     </Compile>
@@ -164,6 +168,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Consultation\FirstConsultationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Employees\AllEmployeePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -339,6 +347,7 @@
   <ItemGroup>
     <Resource Include="Imgs\Home\medical_files.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -65,7 +65,7 @@
                                         <materialDesign:PopupBox Margin="32" ToolTip="Plus d'Opionts">
                                             <StackPanel>
                                                 <Button  
-                                                    Command="{Binding DataContext.RunDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                    Command="{Binding DataContext.UpdateRdvDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
                                                     CommandParameter="{Binding}"
                                                     Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
                                                     ToolTip="Modifier le Rendez-Vous">
