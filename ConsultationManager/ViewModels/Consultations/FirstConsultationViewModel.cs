@@ -21,8 +21,6 @@ namespace ConsultationManager.ViewModels.Consultations
         private AntecedentFamilial newAntecedFamil;
         private ObservableCollection<AntecedentPersonel> listAntecedentPersonel;
         private ObservableCollection<AntecedentFamilial> listAntecedentFamilial;
-        //private int diffMois;
-        //private int diffJours;
         private ObservableCollection<int> listMois;
         private ObservableCollection<int> listJours;
 
@@ -36,6 +34,8 @@ namespace ConsultationManager.ViewModels.Consultations
             RemoveAntecedPersCommand = new RelayCommand(param => DeleteAntecedPers(param));
             RemoveAntecedFamilCommand = new RelayCommand(param => DeleteAntecedFamil(param));
         }
+
+        #region FirstConsultationViewModel Variables
 
         public RDV RdvConsult
         {
@@ -100,21 +100,8 @@ namespace ConsultationManager.ViewModels.Consultations
                 return listJours;
             }
         }
-        //public int DiffMois
-        //{
-        //    get
-        //    {
-        //        return diffMois;
-        //    }
-        //}
 
-        //public int DiffJours
-        //{
-        //    get
-        //    {
-        //        return diffJours;
-        //    }
-        //}
+        #endregion
 
         #region FirstConsultationViewModel Commands
 
@@ -153,6 +140,8 @@ namespace ConsultationManager.ViewModels.Consultations
         }
 
         #endregion
+
+        #region FirstConsultationViewModel Methods
 
         public void ShowDialogNewAntecedPers()
         {
@@ -217,5 +206,7 @@ namespace ConsultationManager.ViewModels.Consultations
             var ant = selectedAntec as AntecedentFamilial;
             listAntecedentFamilial.Remove(ant);
         }
+
+        #endregion
     }
 }
