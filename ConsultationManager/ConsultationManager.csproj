@@ -72,6 +72,7 @@
     <Compile Include="Commands\RDVs\RunDialogUpdateRdvCommand.cs" />
     <Compile Include="Commands\RDVs\UpdateRdvCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Models\Antecedent.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Hospitalisation.cs" />
     <Compile Include="Models\Patient.cs" />
@@ -86,6 +87,9 @@
     <Compile Include="ViewModels\RDVs\UpdateRdvViewModel.cs" />
     <Compile Include="Views\Consultation\FirstConsultationWindow.xaml.cs">
       <DependentUpon>FirstConsultationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Consultation\NewAntecedentWindow.xaml.cs">
+      <DependentUpon>NewAntecedentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Employees\AllEmployeePage.xaml.cs">
       <DependentUpon>AllEmployeePage.xaml</DependentUpon>
@@ -169,6 +173,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\Consultation\FirstConsultationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Consultation\NewAntecedentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
