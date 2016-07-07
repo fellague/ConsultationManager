@@ -7,57 +7,29 @@ using System.Threading.Tasks;
 
 namespace ConsultationManager.Models
 {
-    class Antecedent : INotifyPropertyChanged
+    class AntecedentFamilial : INotifyPropertyChanged
     {
-        private string organe;
-        private int avMois;
-        private int avJours;
+        private string membre;
         private string description;
-
-        public Antecedent(string org, int mois, int jours, string descr)
+        public AntecedentFamilial(string memb, string descr)
         {
-            organe = org;
-            avMois = mois;
-            avJours = jours;
+            membre = memb;
             description = descr;
         }
 
-        public string Organe
+        public string Membre
         {
             get
             {
-                return organe;
+                return membre;
             }
             set
             {
-                organe = value;
-                OnPropertyChanged("Organe");
+                membre = value;
+                OnPropertyChanged("Membre");
             }
         }
-        public int AvMois
-        {
-            get
-            {
-                return avMois;
-            }
-            set
-            {
-                avMois = value;
-                OnPropertyChanged("AvMois");
-            }
-        }
-        public int AvJours
-        {
-            get
-            {
-                return avJours;
-            }
-            set
-            {
-                avJours = value;
-                OnPropertyChanged("AvJours");
-            }
-        }
+        
         public string Description
         {
             get
@@ -67,10 +39,9 @@ namespace ConsultationManager.Models
             set
             {
                 description = value;
-                OnPropertyChanged("Desrcription");
+                OnPropertyChanged("Description");
             }
         }
-
         #region InotifyPropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;

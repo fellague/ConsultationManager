@@ -1,4 +1,4 @@
-﻿<Window x:Class="ConsultationManager.Views.Consultation.NewAntecedentWindow"
+﻿<Window x:Class="ConsultationManager.Views.Consultation.NewAntecedPersWindow"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -33,14 +33,14 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="Organe" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBox Text="{Binding NewAntecedent.Organe}" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Nom de l'organe"></TextBox>
+            <TextBox Text="{Binding NewAntecedPers.Organe}" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Nom de l'organe"></TextBox>
 
             <TextBlock  Grid.Row="1" Text="Apparait avant" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
             <WrapPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="0 10 0 10">
                 <ComboBox
                           FontSize="16" VerticalAlignment="Center" Width="100"
                           ItemsSource="{Binding ListMois}"
-                          SelectedItem="{Binding NewAntecedent.AvMois, Mode=TwoWay}">
+                          SelectedItem="{Binding NewAntecedPers.AvMois, Mode=TwoWay}">
                     <ComboBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <VirtualizingStackPanel />
@@ -52,7 +52,7 @@
                 <ComboBox
                           FontSize="16" VerticalAlignment="Center" Width="100"  Margin="30 0 10 0"
                           ItemsSource="{Binding ListJours}"
-                          SelectedItem="{Binding NewAntecedent.AvJours, Mode=TwoWay}">
+                          SelectedItem="{Binding NewAntecedPers.AvJours, Mode=TwoWay}">
                     <ComboBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <VirtualizingStackPanel />
@@ -63,9 +63,9 @@
             </WrapPanel>
 
             <TextBlock Grid.Row="2" Text="Description" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 5 0 0" FontSize="16"></TextBlock>
-            <TextBox Text="{Binding NewAntecedent.Description}" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" MinLines="5" MaxLines="5" VerticalScrollBarVisibility="Auto" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Description"></TextBox>
+            <TextBox Text="{Binding NewAntecedPers.Description}" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" MinLines="5" MaxLines="5" VerticalScrollBarVisibility="Auto" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Description"></TextBox>
 
-            <Button Grid.Row="3" Command="{Binding AddAntecedentCommand}" CommandParameter="{Binding NewAntecedent}" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin=" 0 20 50 50" FontSize="16">Ajouter</Button>
+            <Button Grid.Row="3" Command="{Binding AddAntecedPersCommand}" CommandParameter="{Binding NewAntecedPers}" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin=" 0 20 50 50" FontSize="16">Ajouter</Button>
         </Grid>
 
         

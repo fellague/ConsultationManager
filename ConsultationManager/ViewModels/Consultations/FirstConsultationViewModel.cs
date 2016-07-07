@@ -15,10 +15,12 @@ namespace ConsultationManager.ViewModels.Consultations
     internal class FirstConsultationViewModel
     {
         private RDV rdvConsult;
-        private NewAntecedentWindow dialogNewAntecedent;
-        private Antecedent newAntecedent;
-        private ObservableCollection<Antecedent> listAntecedentPersonel;
-        private ObservableCollection<Antecedent> listAntecedentFamilal;
+        private NewAntecedPersWindow dialogNewAntecedPers;
+        private NewAntecedFamilWindow dialogNewAntecedFamil;
+        private AntecedentPersonel newAntecedPers;
+        private AntecedentFamilial newAntecedFamil;
+        private ObservableCollection<AntecedentPersonel> listAntecedentPersonel;
+        private ObservableCollection<AntecedentFamilial> listAntecedentFamilial;
         //private int diffMois;
         //private int diffJours;
         private ObservableCollection<int> listMois;
@@ -27,9 +29,12 @@ namespace ConsultationManager.ViewModels.Consultations
         public FirstConsultationViewModel(RDV rdv)
         {
             rdvConsult = rdv;
-            NewAntecedentoDialogCommand = new RelayCommand(param=>ShowDialogNewAntecedent());
-            listAntecedentPersonel = new ObservableCollection<Antecedent>();
-            RemoveAntecedentCommand = new RelayCommand(param => DeleteAntecedent(param));
+            NewAntecedPersDialogCommand = new RelayCommand(param=>ShowDialogNewAntecedPers());
+            NewAntecedFamilDialogCommand = new RelayCommand(param => ShowDialogNewAntecedFamil());
+            listAntecedentPersonel = new ObservableCollection<AntecedentPersonel>();
+            listAntecedentFamilial = new ObservableCollection<AntecedentFamilial>();
+            RemoveAntecedPersCommand = new RelayCommand(param => DeleteAntecedPers(param));
+            RemoveAntecedFamilCommand = new RelayCommand(param => DeleteAntecedFamil(param));
         }
 
         public RDV RdvConsult
@@ -39,25 +44,46 @@ namespace ConsultationManager.ViewModels.Consultations
                 return rdvConsult;
             }
         }
-        public NewAntecedentWindow DialogNewAntecedent
+        public NewAntecedPersWindow DialogNewAntecedPers
         {
             get
             {
-                return dialogNewAntecedent;
+                return dialogNewAntecedPers;
             }
         }
-        public Antecedent NewAntecedent
+        public NewAntecedFamilWindow DialogNewAntecedFamil
         {
             get
             {
-                return newAntecedent;
+                return dialogNewAntecedFamil;
             }
         }
-        public ObservableCollection<Antecedent> ListAntecedentPersonel
+        public AntecedentPersonel NewAntecedPers
+        {
+            get
+            {
+                return newAntecedPers;
+            }
+        }
+        public AntecedentFamilial NewAntecedFamil
+        {
+            get
+            {
+                return newAntecedFamil;
+            }
+        }
+        public ObservableCollection<AntecedentPersonel> ListAntecedentPersonel
         {
             get
             {
                 return listAntecedentPersonel;
+            }
+        }
+        public ObservableCollection<AntecedentFamilial> ListAntecedentFamilal
+        {
+            get
+            {
+                return listAntecedentFamilial;
             }
         }
         public ObservableCollection<int> ListMois
@@ -92,19 +118,35 @@ namespace ConsultationManager.ViewModels.Consultations
 
         #region FirstConsultationViewModel Commands
 
-        public ICommand NewAntecedentoDialogCommand
+        public ICommand NewAntecedPersDialogCommand
+        {
+            get;
+            private set;
+        }
+        public ICommand NewAntecedFamilDialogCommand
         {
             get;
             private set;
         }
 
-        public ICommand AddAntecedentCommand
+        public ICommand AddAntecedPersCommand
+        {
+            get;
+            private set;
+        }
+        public ICommand AddAntecedFamilCommand
         {
             get;
             private set;
         }
 
-        public ICommand RemoveAntecedentCommand
+        public ICommand RemoveAntecedPersCommand
+        {
+            get;
+            private set;
+        }
+
+        public ICommand RemoveAntecedFamilCommand
         {
             get;
             private set;
@@ -112,37 +154,68 @@ namespace ConsultationManager.ViewModels.Consultations
 
         #endregion
 
-        public void ShowDialogNewAntecedent()
+        public void ShowDialogNewAntecedPers()
         {
             Console.WriteLine("FirstConsultationViewModel : Dialog opened with RDV  ");
-            dialogNewAntecedent = new NewAntecedentWindow();
-            dialogNewAntecedent.DataContext = this;
+            dialogNewAntecedPers = new NewAntecedPersWindow();
+            dialogNewAntecedPers.DataContext = this;
             //dialogFirstRdvView = new FirstConsultationWindow();
             //dialogFirstRdvView.DataContext = new FirstConsultationViewModel(rdv);
-            AddAntecedentCommand = new RelayCommand(param => AjouterAntecedent(param));
+            AddAntecedPersCommand = new RelayCommand(param => AjouterAntecedPers(param));
             //diffMois = 0;
             //diffJours = 0;
             listMois = new ObservableCollection<int>(Enumerable.Range(0, 24));
             listJours = new ObservableCollection<int>(Enumerable.Range(0, 30));
-            newAntecedent = new Antecedent("", 0, 0, "");
-            dialogNewAntecedent.ShowDialog();
+            newAntecedPers = new AntecedentPersonel("", 0, 0, "");
+            dialogNewAntecedPers.ShowDialog();
+        }
+        public void ShowDialogNewAntecedFamil()
+        {
+            Console.WriteLine("FirstConsultationViewModel : Dialog opened with RDV  ");
+            dialogNewAntecedFamil = new NewAntecedFamilWindow();
+            dialogNewAntecedFamil.DataContext = this;
+            //dialogFirstRdvView = new FirstConsultationWindow();
+            //dialogFirstRdvView.DataContext = new FirstConsultationViewModel(rdv);
+            AddAntecedFamilCommand = new RelayCommand(param => AjouterAntecedFamil(param));
+            //diffMois = 0;
+            //diffJours = 0;
+            listMois = new ObservableCollection<int>(Enumerable.Range(0, 24));
+            listJours = new ObservableCollection<int>(Enumerable.Range(0, 30));
+            newAntecedFamil = new AntecedentFamilial("", "");
+            dialogNewAntecedFamil.ShowDialog();
         }
 
-        public void AjouterAntecedent(object ant)
+        public void AjouterAntecedPers(object ant)
         {
-            var newAnteced = ant as Antecedent;
+            var newAnteced = ant as AntecedentPersonel;
             Console.WriteLine("FirstConsultationViewModel : Dialog Closed with RDV  "+newAnteced.Organe);
-            dialogNewAntecedent.Close();
+            dialogNewAntecedPers.Close();
             listAntecedentPersonel.Add(newAnteced);
             //dialogNewAntecedent.DataContext = this;
             //dialogFirstRdvView = new FirstConsultationWindow();
             //dialogFirstRdvView.DataContext = new FirstConsultationViewModel(rdv);
         }
-        public void DeleteAntecedent(object selectedAntec)
+        public void AjouterAntecedFamil(object ant)
+        {
+            var newAnteced = ant as AntecedentFamilial;
+            Console.WriteLine("FirstConsultationViewModel : Dialog Closed with RDV  " + newAnteced.Membre);
+            dialogNewAntecedFamil.Close();
+            listAntecedentFamilial.Add(newAnteced);
+            //dialogNewAntecedent.DataContext = this;
+            //dialogFirstRdvView = new FirstConsultationWindow();
+            //dialogFirstRdvView.DataContext = new FirstConsultationViewModel(rdv);
+        }
+        public void DeleteAntecedPers(object selectedAntec)
         {
             Console.WriteLine("FirstConsultationViewModel : Remove RDV  ");
-            var ant = selectedAntec as Antecedent;
+            var ant = selectedAntec as AntecedentPersonel;
             listAntecedentPersonel.Remove(ant);
+        }
+        public void DeleteAntecedFamil(object selectedAntec)
+        {
+            Console.WriteLine("FirstConsultationViewModel : Remove RDV  ");
+            var ant = selectedAntec as AntecedentFamilial;
+            listAntecedentFamilial.Remove(ant);
         }
     }
 }

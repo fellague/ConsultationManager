@@ -18,9 +18,9 @@ namespace ConsultationManager.Views.Consultation
     /// <summary>
     /// Interaction logic for NewAntecedentUserControl.xaml
     /// </summary>
-    public partial class NewAntecedentWindow : Window
+    public partial class NewAntecedFamilWindow : Window
     {
-        public NewAntecedentWindow()
+        public NewAntecedFamilWindow()
         {
             InitializeComponent();
         }
