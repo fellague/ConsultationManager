@@ -1,4 +1,4 @@
-﻿<Page x:Class="ConsultationManager.Views.RDVs.FirstRdvPage"
+﻿<Page x:Class="ConsultationManager.Views.RDVs.MyTodayRdvPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -57,7 +57,10 @@
                                     </WrapPanel>
 
                                     <WrapPanel Grid.Column="1" Grid.RowSpan="3">
-                                        <Button >Consulter Maintenant</Button>
+                                        <Button Command="{Binding DataContext.ConsultationDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                CommandParameter="{Binding}">
+                                            Consulter Maintenant
+                                        </Button>
                                         <materialDesign:PopupBox
                                                          Margin="32" ToolTip="Plus d'Opionts">
                                             <StackPanel>

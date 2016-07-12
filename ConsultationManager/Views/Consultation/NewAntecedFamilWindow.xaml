@@ -31,16 +31,14 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Organe" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBox Text="{Binding NewAntecedFamil.Membre}" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Nom de l'organe"></TextBox>
+            <TextBlock Text="Membre" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBox Text="{Binding NewAntecedFamil.Membre}" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Membre de famille"></TextBox>
 
-            
             <TextBlock Grid.Row="1" Text="Description" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 5 0 0" FontSize="16"></TextBlock>
             <TextBox Text="{Binding NewAntecedFamil.Description}" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" MinLines="5" MaxLines="5" VerticalScrollBarVisibility="Auto" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Description"></TextBox>
 
             <Button Grid.Row="2" Command="{Binding AddAntecedFamilCommand}" CommandParameter="{Binding NewAntecedFamil}" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin=" 0 20 50 50" FontSize="16">Ajouter</Button>
         </Grid>
 
-        
     </Grid>
 </Window>

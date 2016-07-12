@@ -48,7 +48,7 @@ namespace ConsultationManager.Views
 
         private void button_click_first(object sender, RoutedEventArgs e)
         {
-            _frameRdv.Navigate(new MyTodayRdvPage());
+            _frameRdv.Navigate(new FirstRdvPage());
             coloringTabs(FirstRdvBtn, MyTodayRdvBtn, AllRdvBtn, AllMyRdvBtn, NewRdvBtn);
         }
 

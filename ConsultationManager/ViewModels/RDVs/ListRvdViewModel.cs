@@ -23,6 +23,7 @@ namespace ConsultationManager.ViewModels.RDVs
         private ObservableCollection<RDV> listAllFirstRvd;
         //private RDV selectedRDV = null;
         private UpdateRdvWindow dialogUpdateView;
+        private ConsultationWindow dialogConsultationView;
         private FirstConsultationWindow dialogFirstRdvView;
 
         public ListRvdViewModel()
@@ -34,6 +35,7 @@ namespace ConsultationManager.ViewModels.RDVs
 
             //RunDialogCommand = new RunDialogUpdateRdvCommand(this);
             UpdateRdvDialogCommand = new RelayCommand(param => this.ShowDialogUpdateRvd(param));
+            ConsultationDialogCommand = new RelayCommand(param => this.ShowDialogConsult(param));
             FirstRdvDialogCommand = new RelayCommand(param => this.ShowDialogFirstConsult(param));
 
             RemoveSelectedRdvCommand = new RelayCommand(param => this.Delete(param));
@@ -75,6 +77,13 @@ namespace ConsultationManager.ViewModels.RDVs
                 return dialogUpdateView;
             }
         }
+        public ConsultationWindow DialogConsultationView
+        {
+            get
+            {
+                return dialogConsultationView;
+            }
+        }
         public FirstConsultationWindow DialogFirstRdvView
         {
             get
@@ -107,6 +116,12 @@ namespace ConsultationManager.ViewModels.RDVs
             private set;
         }
 
+        public ICommand ConsultationDialogCommand
+        {
+            get;
+            private set;
+        }
+
         public ICommand FirstRdvDialogCommand
         {
             get;
@@ -128,6 +143,15 @@ namespace ConsultationManager.ViewModels.RDVs
             dialogUpdateView = new UpdateRdvWindow();
             dialogUpdateView.DataContext = new UpdateRdvViewModel(rdv, this);
             dialogUpdateView.ShowDialog();
+        }
+
+        public void ShowDialogConsult(object selectedRdv)
+        {
+            var rdv = selectedRdv as RDV;
+            Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.DateRdv);
+            dialogConsultationView = new ConsultationWindow();
+            dialogConsultationView.DataContext = new ConsultationViewModel(rdv);
+            dialogConsultationView.ShowDialog();
         }
 
         public void ShowDialogFirstConsult(object selectedRdv)

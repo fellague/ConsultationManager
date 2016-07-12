@@ -7,29 +7,29 @@ using System.Threading.Tasks;
 
 namespace ConsultationManager.Models
 {
-    class AntecedentFamilial : INotifyPropertyChanged
+    class RemarqueMedecin : INotifyPropertyChanged
     {
-        private string membre; //père, mère,frère
+        private string organe;
         private string description;
-        public AntecedentFamilial(string memb, string descr)
+        public RemarqueMedecin(string org, string descr)
         {
-            membre = memb;
+            organe = org;
             description = descr;
         }
 
-        public string Membre
+        public string Organe
         {
             get
             {
-                return membre;
+                return organe;
             }
             set
             {
-                membre = value;
-                OnPropertyChanged("Membre");
+                organe = value;
+                OnPropertyChanged("Organe");
             }
         }
-        
+
         public string Description
         {
             get
