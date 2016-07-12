@@ -77,6 +77,8 @@
     <Compile Include="Models\Consultation.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Hospitalisation.cs" />
+    <Compile Include="Models\Medicament.cs" />
+    <Compile Include="Models\Ordonnance.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\RDV.cs" />
     <Compile Include="Models\RemarqueMedecin.cs" />
@@ -94,6 +96,9 @@
     </Compile>
     <Compile Include="Views\Consultation\FirstConsultationWindow.xaml.cs">
       <DependentUpon>FirstConsultationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Consultation\NewMedicamentWindow.xaml.cs">
+      <DependentUpon>NewMedicamentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Consultation\NewAntecedFamilWindow.xaml.cs">
       <DependentUpon>NewAntecedFamilWindow.xaml</DependentUpon>
@@ -190,6 +195,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Consultation\FirstConsultationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Consultation\NewMedicamentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

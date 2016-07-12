@@ -17,20 +17,27 @@ namespace ConsultationManager.ViewModels.Consultations
         private Consultation consultation;
         private NewAntecedPersWindow dialogNewAntecedPers;
         private NewRemarqMedWindow dialogNewRemarqMed;
+        private NewMedicamentWindow dialogNewMedicament;
         private RemarqueMedecin newRemarqMed;
+        private Medicament newMedicament;
+        private Ordonnance ordonnance;
 
         private AntecedentPersonel newAntecedPers;
         private ObservableCollection<int> listMois;
         private ObservableCollection<int> listJours;
-        
+        private ObservableCollection<int> listNbFois;
+
         public ConsultationViewModel(RDV rdv)
         {
             this.rdvConsult = rdv;
             NewAntecedPersDialogCommand = new RelayCommand(param => ShowDialogNewAntecedPers());
             NewRemarqMedDialogCommand = new RelayCommand(param => ShowDialogNewRemarqMed());
+            NewMedicamentDialogCommand = new RelayCommand(param => ShowDialogNewMedicament());
             consultation = new Consultation(new ObservableCollection < AntecedentPersonel > (), new ObservableCollection < RemarqueMedecin > (), 0, 0, 0, 0, "", "");
+            ordonnance = new Ordonnance(new ObservableCollection<Medicament>());
             RemoveAntecedPersCommand = new RelayCommand(param => DeleteAntecedPers(param));
             RemoveRemarqMedCommand = new RelayCommand(param => DeleteRemarqMed(param));
+            RemoveMedicamentCommand = new RelayCommand(param => DeleteMedicament(param));
         }
 
         #region ConsultationViewModel Variables
@@ -77,6 +84,20 @@ namespace ConsultationManager.ViewModels.Consultations
                 return newRemarqMed;
             }
         }
+        public Medicament NewMedicament
+        {
+            get
+            {
+                return newMedicament;
+            }
+        }
+        public Ordonnance Ordonnance
+        {
+            get
+            {
+                return ordonnance;
+            }
+        }
         public ObservableCollection<int> ListMois
         {
             get
@@ -91,9 +112,16 @@ namespace ConsultationManager.ViewModels.Consultations
                 return listJours;
             }
         }
+        public ObservableCollection<int> ListNbFois
+        {
+            get
+            {
+                return listNbFois;
+            }
+        }
         #endregion
 
-        #region ConsultationViewModel Commands
+            #region ConsultationViewModel Commands
 
         public ICommand NewAntecedPersDialogCommand
         {
@@ -101,6 +129,12 @@ namespace ConsultationManager.ViewModels.Consultations
             private set;
         }
         public ICommand NewRemarqMedDialogCommand
+        {
+            get;
+            private set;
+        }
+
+        public ICommand NewMedicamentDialogCommand
         {
             get;
             private set;
@@ -116,14 +150,23 @@ namespace ConsultationManager.ViewModels.Consultations
             get;
             private set;
         }
+        public ICommand AddMedicamentCommand
+        {
+            get;
+            private set;
+        }
 
         public ICommand RemoveAntecedPersCommand
         {
             get;
             private set;
         }
-
         public ICommand RemoveRemarqMedCommand
+        {
+            get;
+            private set;
+        }
+        public ICommand RemoveMedicamentCommand
         {
             get;
             private set;
@@ -135,7 +178,7 @@ namespace ConsultationManager.ViewModels.Consultations
 
         public void ShowDialogNewAntecedPers()
         {
-            Console.WriteLine("FirstConsultationViewModel : Dialog opened with RDV  ");
+            Console.WriteLine("ConsultationViewModel : Dialog Antecedent Personnel opened with RDV  ");
             dialogNewAntecedPers = new NewAntecedPersWindow();
             dialogNewAntecedPers.DataContext = this;
             AddAntecedPersCommand = new RelayCommand(param => AjouterAntecedPers(param));
@@ -148,7 +191,7 @@ namespace ConsultationManager.ViewModels.Consultations
         }
         public void ShowDialogNewRemarqMed()
         {
-            Console.WriteLine("FirstConsultationViewModel : Dialog opened with RDV  ");
+            Console.WriteLine("ConsultationViewModel : Dialog Remarque Medecin opened with RDV  ");
             dialogNewRemarqMed = new NewRemarqMedWindow();
             dialogNewRemarqMed.DataContext = this;
             AddRemarqMedCommand = new RelayCommand(param => AjouterRemarqMed(param));
@@ -156,6 +199,18 @@ namespace ConsultationManager.ViewModels.Consultations
             listJours = new ObservableCollection<int>(Enumerable.Range(0, 30));
             newRemarqMed = new RemarqueMedecin("", "");
             dialogNewRemarqMed.ShowDialog();
+        }
+        public void ShowDialogNewMedicament()
+        {
+            Console.WriteLine("ConsultationViewModel : Dialog Ordonnance opened with RDV  ");
+            dialogNewMedicament = new NewMedicamentWindow();
+            dialogNewMedicament.DataContext = this;
+            AddMedicamentCommand = new RelayCommand(param => AjouterMedicament(param));
+            listMois = new ObservableCollection<int>(Enumerable.Range(0, 24));
+            listJours = new ObservableCollection<int>(Enumerable.Range(0, 30));
+            listNbFois = new ObservableCollection<int>(Enumerable.Range(1, 3));
+            newMedicament = new Medicament("", 0, 0, 1, "", "");
+            dialogNewMedicament.ShowDialog();
         }
 
         public void AjouterAntecedPers(object ant)
@@ -172,6 +227,13 @@ namespace ConsultationManager.ViewModels.Consultations
             dialogNewRemarqMed.Close();
             consultation.RemarquesMedecin.Add(newRemarqMed);
         }
+        public void AjouterMedicament(object med)
+        {
+            var newMed = med as Medicament;
+            Console.WriteLine("FirstConsultationViewModel : Dialog Closed with RDV  " + newMed.Nom);
+            dialogNewMedicament.Close();
+            ordonnance.ListMedicaments.Add(newMed);
+        }
         public void DeleteAntecedPers(object selectedAntec)
         {
             Console.WriteLine("FirstConsultationViewModel : Remove RDV  ");
@@ -183,6 +245,12 @@ namespace ConsultationManager.ViewModels.Consultations
             Console.WriteLine("FirstConsultationViewModel : Remove RDV  ");
             var rem = selectedRem as RemarqueMedecin;
             consultation.RemarquesMedecin.Remove(rem);
+        }
+        public void DeleteMedicament(object selectedMed)
+        {
+            Console.WriteLine("ConsultationViewModel : Remove RDV  ");
+            var med = selectedMed as Medicament;
+            ordonnance.ListMedicaments.Remove(med);
         }
 
         #endregion

@@ -14,7 +14,9 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
+            <RowDefinition  Height="auto"/>
             <RowDefinition  Height="*"/>
+            <RowDefinition  Height="auto"/>
         </Grid.RowDefinitions>
 
         <WrapPanel Orientation="Horizontal">
@@ -24,153 +26,215 @@
             <TextBlock Text="{Binding RdvConsult.NomPatient}" Margin="0 0 10 0" FontSize="22" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             <TextBlock Text="{Binding RdvConsult.PrenomPatient}"  FontSize="22" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         </WrapPanel>
-
-        <Grid Grid.Row="1" Grid.ColumnSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
+        <Border  Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                             ClipToBounds="True" Margin="20 10 20 10">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                </Grid.RowDefinitions>
-
-                <TextBlock Grid.ColumnSpan="2" Text="Tests" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="20" Margin="220 0 0 0"></TextBlock>
-
-                <TextBlock Grid.Row="1" Text="Poids" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
-                <TextBox Grid.Row="1" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Poids (Kg)"></TextBox>
-
-                <TextBlock Grid.Row="2" Text="TA" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
-                <TextBox Grid.Row="2" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="TA"></TextBox>
-
-                <TextBlock Grid.Row="3" Text="Tension" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
-                <TextBox Grid.Row="3" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Tension"></TextBox>
-
-                <TextBlock Grid.Row="4" Text="Température" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
-                <TextBox Grid.Row="4" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Température (Fr)"></TextBox>
-
-                <TextBlock Grid.Row="5" Text="Glycémique" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
-                <TextBox Grid.Row="5" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Glycémique"></TextBox>
-
-                <TextBlock Grid.Row="6" Text="Hymogloine" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
-                <TextBox Grid.Row="6" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Température (Fr)"></TextBox>
-
-                <TextBlock Grid.Row="7" Text="Jouindre un Fichier" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
-                <TextBox Grid.Row="7" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Température (Fr)"></TextBox>
-
-            </Grid>
-            <Grid Grid.Column="1" Margin="20 0 20 0">
-                <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="200"/>
-                    <RowDefinition Height="200"/>
-                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
 
-                <TextBlock Grid.ColumnSpan="2" Text="Commentaires" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="20" Margin="150 0 0 0"></TextBlock>
+                    <TextBlock Grid.ColumnSpan="2" Text="Tests" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="20" Margin="220 0 0 0"></TextBlock>
 
-                <TextBlock Grid.Row="1" Text="du Patient" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16" Margin="0 5 30 0"></TextBlock>
-                <Border Grid.Row="1" Grid.Column="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                    <TextBlock Grid.Row="1" Text="Poids" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
+                    <TextBox Grid.Row="1" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Poids (Kg)"></TextBox>
+
+                    <TextBlock Grid.Row="2" Text="TA" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
+                    <TextBox Grid.Row="2" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="TA"></TextBox>
+
+                    <TextBlock Grid.Row="3" Text="Tension" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
+                    <TextBox Grid.Row="3" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Tension"></TextBox>
+
+                    <TextBlock Grid.Row="4" Text="Température" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
+                    <TextBox Grid.Row="4" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Température (Fr)"></TextBox>
+
+                    <TextBlock Grid.Row="5" Text="Glycémique" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
+                    <TextBox Grid.Row="5" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Glycémique"></TextBox>
+
+                    <TextBlock Grid.Row="6" Text="Hymogloine" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
+                    <TextBox Grid.Row="6" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Température (Fr)"></TextBox>
+
+                    <TextBlock Grid.Row="7" Text="Jouindre un Fichier" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
+                    <TextBox Grid.Row="7" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Température (Fr)"></TextBox>
+
+                </Grid>
+                <Grid Grid.Column="1" Margin="20 0 20 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="200"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.ColumnSpan="2" Text="Commentaires" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="20" Margin="150 0 0 0"></TextBlock>
+
+                    <TextBlock Grid.Row="1" Text="du Patient" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16" Margin="0 5 30 0"></TextBlock>
+                    <Border Grid.Row="1" Grid.Column="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
                              ClipToBounds="True">
-                    <Grid>
-                        <ListBox x:Name="CommentPatListBox" ItemsSource="{Binding Consultation.CommentsPatient}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
+                        <Grid>
+                            <ListBox x:Name="CommentPatListBox" ItemsSource="{Binding Consultation.CommentsPatient}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
 
-                                        <WrapPanel>
-                                            <TextBlock Text="organe : " FontSize="16"></TextBlock>
-                                            <TextBlock Text="{Binding Path=Organe}" FontSize="16" FontWeight="Bold"></TextBlock>
-                                        </WrapPanel>
-                                        <WrapPanel Grid.Row="1">
-                                            <TextBlock Text="description : " FontSize="16"></TextBlock>
-                                            <TextBlock Text="{Binding Path=Description}" FontSize="16" FontWeight="Bold"></TextBlock>
-                                        </WrapPanel>
-                                        <Button Grid.Column="1" Grid.RowSpan="2"
-                                        Command="{Binding DataContext.RemoveAntecedPersCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
-                                        CommandParameter="{Binding}"
-                                        Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
-                                        ToolTip="Supprimer Antécédent">
-                                            <materialDesign:PackIcon Kind="Minus" Height="24" Width="24" />
-                                        </Button>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                        <Button  Command="{Binding NewAntecedPersDialogCommand}"
+                                            <WrapPanel>
+                                                <TextBlock Text="organe : " FontSize="16"></TextBlock>
+                                                <TextBlock Text="{Binding Path=Organe}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                            </WrapPanel>
+                                            <WrapPanel Grid.Row="1">
+                                                <TextBlock Text="description : " FontSize="16"></TextBlock>
+                                                <TextBlock Text="{Binding Path=Description}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                            </WrapPanel>
+                                            <Button Grid.Column="1" Grid.RowSpan="2"
+                                                Command="{Binding DataContext.RemoveAntecedPersCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                CommandParameter="{Binding}"
+                                                Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                                                ToolTip="Supprimer Antécédent">
+                                                <materialDesign:PackIcon Kind="Minus" Height="24" Width="24" />
+                                            </Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <Button  Command="{Binding NewAntecedPersDialogCommand}"
                         Style="{StaticResource MaterialDesignFloatingActionMiniButton}" HorizontalAlignment="Right" VerticalAlignment="Bottom" ToolTip="Ajouter un Antécédent Personnel">
-                            <materialDesign:PackIcon Kind="PlaylistPlus" Height="24" Width="24" />
-                        </Button>
-                    </Grid>
-                </Border>
+                                <materialDesign:PackIcon Kind="PlaylistPlus" Height="24" Width="24" />
+                            </Button>
+                        </Grid>
+                    </Border>
 
-                <TextBlock Grid.Row="2" Text="du Médecin" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16" Margin="0 5 30 0"></TextBlock>
-                <Border Grid.Row="2" Grid.Column="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
-                             ClipToBounds="True" Margin="0 5 0 0">
-                    <Grid>
-                        <ListBox x:Name="CommentMedListBox" ItemsSource="{Binding Consultation.RemarquesMedecin}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="2" Text="du Médecin" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16" Margin="0 5 30 0"></TextBlock>
+                    <Border Grid.Row="2" Grid.Column="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                             ClipToBounds="True" Margin="0 5 0 10">
+                        <Grid>
+                            <ListBox x:Name="CommentMedListBox" ItemsSource="{Binding Consultation.RemarquesMedecin}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
 
-                                        <WrapPanel>
-                                            <TextBlock Text="organe : " FontSize="16"></TextBlock>
-                                            <TextBlock Text="{Binding Path=Organe}" FontSize="16" FontWeight="Bold"></TextBlock>
-                                        </WrapPanel>
-                                        <WrapPanel Grid.Row="1">
-                                            <TextBlock Text="description : " FontSize="16"></TextBlock>
-                                            <TextBlock Text="{Binding Path=Description}" FontSize="16" FontWeight="Bold"></TextBlock>
-                                        </WrapPanel>
-                                        <Button Grid.Column="1" Grid.RowSpan="2"
+                                            <WrapPanel>
+                                                <TextBlock Text="organe : " FontSize="16"></TextBlock>
+                                                <TextBlock Text="{Binding Path=Organe}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                            </WrapPanel>
+                                            <WrapPanel Grid.Row="1">
+                                                <TextBlock Text="description : " FontSize="16"></TextBlock>
+                                                <TextBlock Text="{Binding Path=Description}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                            </WrapPanel>
+                                            <Button Grid.Column="1" Grid.RowSpan="2"
                                         Command="{Binding DataContext.RemoveRemarqMedCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
                                         CommandParameter="{Binding}"
                                         Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
-                                        ToolTip="Supprimer Antécédent">
-                                            <materialDesign:PackIcon Kind="Minus" Height="24" Width="24" />
-                                        </Button>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                        <Button  Command="{Binding NewRemarqMedDialogCommand}"
-                        Style="{StaticResource MaterialDesignFloatingActionMiniButton}" HorizontalAlignment="Right" VerticalAlignment="Bottom" ToolTip="Ajouter un Antécédent Personnel">
-                            <materialDesign:PackIcon Kind="PlaylistPlus" Height="24" Width="24" />
-                        </Button>
-                    </Grid>
-                </Border>
+                                        ToolTip="Supprimer la Remarque">
+                                                <materialDesign:PackIcon Kind="Minus" Height="24" Width="24" />
+                                            </Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <Button  Command="{Binding NewRemarqMedDialogCommand}"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniButton}" HorizontalAlignment="Right" VerticalAlignment="Bottom" ToolTip="Ajouter une Remraque">
+                                <materialDesign:PackIcon Kind="PlaylistPlus" Height="24" Width="24" />
+                            </Button>
+                        </Grid>
+                    </Border>
+                </Grid>
             </Grid>
+        </Border>
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="20 0 20 20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.ColumnSpan="2" Text="Ordonnance" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="20" Margin="220 0 0 0"></TextBlock>
+            <Border Grid.Row="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                             ClipToBounds="True">
+                <Grid>
+                    <ListBox x:Name="OrdonnanceListBox" ItemsSource="{Binding Ordonnance.ListMedicaments}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <WrapPanel>
+                                        <TextBlock Text="Médicament : " FontSize="16"></TextBlock>
+                                        <TextBlock Text="{Binding Path=Nom}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text=", (" FontSize="16"></TextBlock>
+                                        <TextBlock Text="{Binding Path=NbFoisJours}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text=" fois par jours)" FontSize="16"></TextBlock>
+                                    </WrapPanel>
+                                    <WrapPanel Grid.Row="1">
+                                        <TextBlock Text="Pendant : " FontSize="16"></TextBlock>
+                                        <TextBlock Text="{Binding Path=PeriodeMois}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text=" Mois et " FontSize="16"></TextBlock>
+                                        <TextBlock Text="{Binding Path=PeriodeJours}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text=" Jours" FontSize="16"></TextBlock>
+                                    </WrapPanel>
+                                    <WrapPanel Grid.Row="2">
+                                        <TextBlock Text="description : " FontSize="16"></TextBlock>
+                                        <TextBlock Text="{Binding Path=Remarque}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                    </WrapPanel>
+                                    <Button Grid.Column="1" Grid.RowSpan="2"
+                                            Command="{Binding DataContext.RemoveMedicamentCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                            CommandParameter="{Binding}"
+                                            Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                                            ToolTip="Supprimer Médicament">
+                                        <materialDesign:PackIcon Kind="Minus" Height="24" Width="24" />
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Button  Command="{Binding NewMedicamentDialogCommand}"
+                            Style="{StaticResource MaterialDesignFloatingActionMiniButton}" HorizontalAlignment="Right" VerticalAlignment="Bottom" ToolTip="Ajouter une Préscription">
+                        <materialDesign:PackIcon Kind="PlaylistPlus" Height="24" Width="24" />
+                    </Button>
+                </Grid>
+            </Border>
         </Grid>
-        <Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="250" Margin=" 0 0 50 50" FontSize="16">Ajouter</Button>
+        <Button Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="250" Margin=" 0 0 50 50" FontSize="16">Ajouter</Button>
     </Grid>
 </Window>
