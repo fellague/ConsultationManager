@@ -22,9 +22,10 @@ namespace ConsultationManager.ViewModels.RDVs
         private ObservableCollection<RDV> listAllMyTodayRvd;
         private ObservableCollection<RDV> listAllFirstRvd;
         //private RDV selectedRDV = null;
-        private UpdateRdvWindow dialogUpdateView;
-        private ConsultationWindow dialogConsultationView;
-        private FirstConsultationWindow dialogFirstRdvView;
+        private UpdateRdvWindow dialogUpdate;
+        private ConsultationWindow dialogConsultation;
+        private FirstConsultationWindow dialogFirstConsultation;
+        private ConsultConclusionWindow dialogConsltConclusion;
 
         public ListRvdViewModel()
         {
@@ -74,21 +75,21 @@ namespace ConsultationManager.ViewModels.RDVs
         {
             get
             {
-                return dialogUpdateView;
+                return dialogUpdate;
             }
         }
         public ConsultationWindow DialogConsultationView
         {
             get
             {
-                return dialogConsultationView;
+                return dialogConsultation;
             }
         }
         public FirstConsultationWindow DialogFirstRdvView
         {
             get
             {
-                return dialogFirstRdvView;
+                return dialogFirstConsultation;
             }
         }
         //public RDV SelectedRDV
@@ -140,34 +141,47 @@ namespace ConsultationManager.ViewModels.RDVs
         {
             var rdv = selectedRdv as RDV;
             Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.DateRdv);
-            dialogUpdateView = new UpdateRdvWindow();
-            dialogUpdateView.DataContext = new UpdateRdvViewModel(rdv, this);
-            dialogUpdateView.ShowDialog();
+            dialogUpdate = new UpdateRdvWindow();
+            dialogUpdate.DataContext = new UpdateRdvViewModel(rdv, this);
+            dialogUpdate.ShowDialog();
         }
 
         public void ShowDialogConsult(object selectedRdv)
         {
             var rdv = selectedRdv as RDV;
             Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.DateRdv);
-            dialogConsultationView = new ConsultationWindow();
-            dialogConsultationView.DataContext = new ConsultationViewModel(rdv);
-            dialogConsultationView.ShowDialog();
+            dialogConsultation = new ConsultationWindow();
+            dialogConsultation.DataContext = new ConsultationViewModel(rdv, this);
+            dialogConsultation.ShowDialog();
         }
 
         public void ShowDialogFirstConsult(object selectedRdv)
         {
             var rdv = selectedRdv as RDV;
             Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.DateRdv);
-            dialogFirstRdvView = new FirstConsultationWindow();
-            dialogFirstRdvView.DataContext = new FirstConsultationViewModel(rdv);
-            dialogFirstRdvView.ShowDialog();
+            dialogFirstConsultation = new FirstConsultationWindow();
+            dialogFirstConsultation.DataContext = new FirstConsultationViewModel(rdv);
+            dialogFirstConsultation.ShowDialog();
         }
+
+        public void ShowDialogConsultConclusion(RDV selectedRdv, Consultation consult)
+        {
+            RDV rdv = selectedRdv;
+            Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.DateRdv);
+            dialogConsltConclusion = new ConsultConclusionWindow();
+            dialogConsltConclusion.DataContext = new ConsultConclusionViewModel(rdv, consult, this);
+
+            //dialogConsultation.Hide();
+            dialogConsultation.Close();
+            dialogConsltConclusion.ShowDialog();
+        }
+        
 
 
         public void CloseDialogUpdateRvd(RDV updRdv)
         {
             Console.WriteLine("ListRvdViewModel : Dialog closed with updated RDV  " + updRdv.DateRdv);
-            dialogUpdateView.Close();
+            dialogUpdate.Close();
         }
 
         public void Delete(object selectedRdv)

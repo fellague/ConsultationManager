@@ -49,6 +49,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -74,15 +76,20 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Models\AntecedentFamilial.cs" />
     <Compile Include="Models\AntecedentPersonel.cs" />
+    <Compile Include="Models\CompteRendu.cs" />
     <Compile Include="Models\Consultation.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Hospitalisation.cs" />
+    <Compile Include="Models\LettreOrientation.cs" />
     <Compile Include="Models\Medicament.cs" />
     <Compile Include="Models\Ordonnance.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\RDV.cs" />
     <Compile Include="Models\RemarqueMedecin.cs" />
+    <Compile Include="Models\Traitement.cs" />
+    <Compile Include="Models\TraitementsComplemtaires.cs" />
     <Compile Include="ViewModels\Consultations\ConsultationViewModel.cs" />
+    <Compile Include="ViewModels\Consultations\ConsultConclusionViewModel.cs" />
     <Compile Include="ViewModels\Consultations\FirstConsultationViewModel.cs" />
     <Compile Include="ViewModels\Employees\ListEmployeesViewModel.cs" />
     <Compile Include="ViewModels\Hospitalisations\ListHospitalisationViewModel.cs" />
@@ -91,6 +98,9 @@
     <Compile Include="ViewModels\RDVs\ListRvdViewModel.cs" />
     <Compile Include="ViewModels\RDVs\NewRdvViewModel.cs" />
     <Compile Include="ViewModels\RDVs\UpdateRdvViewModel.cs" />
+    <Compile Include="Views\Consultation\ConsultConclusionWindow.xaml.cs">
+      <DependentUpon>ConsultConclusionWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Consultation\ConsultationWindow.xaml.cs">
       <DependentUpon>ConsultationWindow.xaml</DependentUpon>
     </Compile>
@@ -108,6 +118,9 @@
     </Compile>
     <Compile Include="Views\Consultation\NewRemarqMedWindow.xaml.cs">
       <DependentUpon>NewRemarqMedWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Consultation\NewTraitemComplWindow.xaml.cs">
+      <DependentUpon>NewTraitemComplWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Employees\AllEmployeePage.xaml.cs">
       <DependentUpon>AllEmployeePage.xaml</DependentUpon>
@@ -190,6 +203,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Consultation\ConsultConclusionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Consultation\ConsultationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -211,6 +228,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Consultation\NewRemarqMedWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Consultation\NewTraitemComplWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
