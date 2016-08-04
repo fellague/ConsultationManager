@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ConsultationManagerClient.Views.Patients;
+using ConsultationManagerClient.ViewModels.Patients;
 
 namespace ConsultationManagerClient.Views
 {
@@ -20,17 +21,20 @@ namespace ConsultationManagerClient.Views
     /// </summary>
     public partial class MenuPatientWindow : Window
     {
+        ListPatientViewModel patientsVM;
+
         public MenuPatientWindow(string tab)
         {
             InitializeComponent();
+            patientsVM = new ListPatientViewModel();
             if (tab == "all")
             {
-                _mainFrame.Navigate(new AllPatientsPage());
+                _mainFrame.Navigate(new AllPatientsPage(patientsVM));
                 coloringTabs(AllPatBtn,MyPatBtn,NewPatBtn);
             }
             if (tab == "my")
             {
-                _mainFrame.Navigate(new MyPatientsPage());
+                _mainFrame.Navigate(new MyPatientsPage(patientsVM));
                 coloringTabs(MyPatBtn, AllPatBtn, NewPatBtn);
             }
             
@@ -38,19 +42,19 @@ namespace ConsultationManagerClient.Views
 
         private void button_click_tout(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new AllPatientsPage());
+            _mainFrame.Navigate(new AllPatientsPage(patientsVM));
             coloringTabs(AllPatBtn, MyPatBtn, NewPatBtn);
         }
 
         private void button_click_mes(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new MyPatientsPage());
+            _mainFrame.Navigate(new MyPatientsPage(patientsVM));
             coloringTabs(MyPatBtn, AllPatBtn, NewPatBtn);
         }
 
         private void button_click_nouveau(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new NewPatientPage());
+            _mainFrame.Navigate(new NewPatientPage(patientsVM));
             coloringTabs(NewPatBtn, AllPatBtn, MyPatBtn);
         }
 

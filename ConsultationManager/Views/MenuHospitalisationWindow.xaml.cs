@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ConsultationManagerClient.Views.Hospitalisations;
+using ConsultationManagerClient.ViewModels.Hospitalisations;
 
 namespace ConsultationManagerClient.Views
 {
@@ -20,23 +21,26 @@ namespace ConsultationManagerClient.Views
     /// </summary>
     public partial class MenuHospitalisationWindow : Window
     {
+        ListHospitalisationViewModel hospitVM;
+
         public MenuHospitalisationWindow()
         {
             InitializeComponent();
-            _mainFrame.Navigate(new AllHospitalisationPage());
+            hospitVM = new ListHospitalisationViewModel();
+            _mainFrame.Navigate(new AllHospitalisationPage(hospitVM));
             coloringTabs(AllHospBtn, ActiveHospBtn, NewHospBtn);
         }
 
 
         private void button_click_tout(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new AllHospitalisationPage());
+            _mainFrame.Navigate(new AllHospitalisationPage(hospitVM));
             coloringTabs(AllHospBtn, ActiveHospBtn, NewHospBtn);
         }
 
         private void button_click_active(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new ActiveHospitalisationPage());
+            _mainFrame.Navigate(new ActiveHospitalisationPage(hospitVM));
             coloringTabs(ActiveHospBtn, AllHospBtn, NewHospBtn);
         }
         private void button_click_nouveau(object sender, RoutedEventArgs e)

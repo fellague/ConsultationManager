@@ -21,10 +21,10 @@ namespace ConsultationManagerClient.Views.Employees
     /// </summary>
     public partial class MedecinsPage : Page
     {
-        public MedecinsPage()
+        internal MedecinsPage(ListEmployeesViewModel employeeVM)
         {
             InitializeComponent();
-            DataContext = new ListEmployeesViewModel();
+            DataContext = employeeVM;
         }
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ConsultationManagerClient.ViewModels.Patients;
 
 namespace ConsultationManagerClient.Views.Patients
 {
@@ -20,9 +21,10 @@ namespace ConsultationManagerClient.Views.Patients
     /// </summary>
     public partial class NewPatientPage : Page
     {
-        public NewPatientPage()
+        internal NewPatientPage(ListPatientViewModel patientsVM)
         {
             InitializeComponent();
+            DataContext = patientsVM;
         }
     }
 }

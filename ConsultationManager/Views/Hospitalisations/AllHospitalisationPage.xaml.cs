@@ -21,11 +21,11 @@ namespace ConsultationManagerClient.Views.Hospitalisations
     /// </summary>
     public partial class AllHospitalisationPage : Page
     {
-        public AllHospitalisationPage()
+        internal AllHospitalisationPage(ListHospitalisationViewModel hospitVM)
         {
             InitializeComponent();
 
-            DataContext = new ListHospitalisationViewModel();
+            DataContext = hospitVM;
         }
     }
 }

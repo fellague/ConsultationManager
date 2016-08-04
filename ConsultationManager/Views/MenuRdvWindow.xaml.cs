@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ConsultationManagerClient.Views.RDVs;
 using ConsultationManagerClient.Models;
+using ConsultationManagerClient.ViewModels.RDVs;
 
 namespace ConsultationManagerClient.Views
 {
@@ -21,34 +22,38 @@ namespace ConsultationManagerClient.Views
     /// </summary>
     public partial class MenuRdvWindow : Window
     {
+        ListRvdViewModel rdvVM;
+
         public MenuRdvWindow()
         {
             InitializeComponent();
-            _frameRdv.Navigate(new AllRdvPage());
+            rdvVM = new ListRvdViewModel();
+
+            _frameRdv.Navigate(new AllRdvPage(rdvVM));
             coloringTabs(AllRdvBtn, AllMyRdvBtn, MyTodayRdvBtn, FirstRdvBtn, NewRdvBtn);
         }
 
         private void button_click_tout(object sender, RoutedEventArgs e)
         {
-            _frameRdv.Navigate(new AllRdvPage());
+            _frameRdv.Navigate(new AllRdvPage(rdvVM));
             coloringTabs(AllRdvBtn, AllMyRdvBtn, MyTodayRdvBtn, FirstRdvBtn, NewRdvBtn);
         }
 
         private void button_click_tout_mes(object sender, RoutedEventArgs e)
         {
-            _frameRdv.Navigate(new AllMyRdvPage());
+            _frameRdv.Navigate(new AllMyRdvPage(rdvVM));
             coloringTabs(AllMyRdvBtn, AllRdvBtn, MyTodayRdvBtn, FirstRdvBtn, NewRdvBtn);
         }
 
         private void button_click_ajourd(object sender, RoutedEventArgs e)
         {
-            _frameRdv.Navigate(new MyTodayRdvPage());
+            _frameRdv.Navigate(new MyTodayRdvPage(rdvVM));
             coloringTabs(MyTodayRdvBtn, AllRdvBtn, AllMyRdvBtn, FirstRdvBtn, NewRdvBtn);
         }
 
         private void button_click_first(object sender, RoutedEventArgs e)
         {
-            _frameRdv.Navigate(new FirstRdvPage());
+            _frameRdv.Navigate(new FirstRdvPage(rdvVM));
             coloringTabs(FirstRdvBtn, MyTodayRdvBtn, AllRdvBtn, AllMyRdvBtn, NewRdvBtn);
         }
 

@@ -21,10 +21,10 @@ namespace ConsultationManagerClient.Views.Employees
     /// </summary>
     public partial class ChefServicePage : Page
     {
-        public ChefServicePage()
+        internal ChefServicePage(ListEmployeesViewModel employeeVM)
         {
             InitializeComponent();
-            DataContext = new ListEmployeesViewModel();
+            DataContext = employeeVM;
         }
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ConsultationManagerClient.Views.Employees;
+using ConsultationManagerClient.ViewModels.Employees;
 
 namespace ConsultationManagerClient.Views
 {
@@ -20,44 +21,47 @@ namespace ConsultationManagerClient.Views
     /// </summary>
     public partial class MenuEmployeeWindow : Window
     {
+        ListEmployeesViewModel employeesVM;
+
         public MenuEmployeeWindow()
         {
             InitializeComponent();
+            employeesVM = new ListEmployeesViewModel();
 
-            _mainFrame.Navigate(new AllEmployeePage());
+            _mainFrame.Navigate(new AllEmployeePage(employeesVM));
             coloringTabs(AllEmplBtn, chefServiceBtn, medecinsBtn, infirmierBtn, assistantBtn, NewEmplBtn);
         }
 
         private void button_click_tout(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new AllEmployeePage());
+            _mainFrame.Navigate(new AllEmployeePage(employeesVM));
             coloringTabs(AllEmplBtn, chefServiceBtn, medecinsBtn, infirmierBtn, assistantBtn, NewEmplBtn);
         }
 
         private void button_click_chefServ(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new ChefServicePage());
+            _mainFrame.Navigate(new ChefServicePage(employeesVM));
             coloringTabs(chefServiceBtn, AllEmplBtn, medecinsBtn, infirmierBtn, assistantBtn, NewEmplBtn);
         }
         private void button_click_medecin(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new MedecinsPage());
+            _mainFrame.Navigate(new MedecinsPage(employeesVM));
             coloringTabs(medecinsBtn, AllEmplBtn, chefServiceBtn, infirmierBtn, assistantBtn, NewEmplBtn);
         }
         private void button_click_infirmier(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new InfirmiersPage());
+            _mainFrame.Navigate(new InfirmiersPage(employeesVM));
             coloringTabs(infirmierBtn, AllEmplBtn, chefServiceBtn, medecinsBtn, assistantBtn, NewEmplBtn);
         }
         private void button_click_assistant(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new AssistantsPage());
+            _mainFrame.Navigate(new AssistantsPage(employeesVM));
             coloringTabs(assistantBtn, AllEmplBtn, chefServiceBtn, medecinsBtn, infirmierBtn, NewEmplBtn);
         }
 
         private void button_click_nouveau(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new NewEmployeePage());
+            _mainFrame.Navigate(new NewEmployeePage(employeesVM));
             coloringTabs(NewEmplBtn, AllEmplBtn, chefServiceBtn, medecinsBtn, infirmierBtn, assistantBtn);
         }
 

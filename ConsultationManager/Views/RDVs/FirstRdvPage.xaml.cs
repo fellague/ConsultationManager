@@ -21,10 +21,10 @@ namespace ConsultationManagerClient.Views.RDVs
     /// </summary>
     public partial class FirstRdvPage : Page
     {
-        public FirstRdvPage()
+        internal FirstRdvPage(ListRvdViewModel rdvVM)
         {
             InitializeComponent();
-            DataContext = new ListRvdViewModel();
+            DataContext = rdvVM;
         }
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ConsultationManagerClient.ViewModels.Employees;
 
 namespace ConsultationManagerClient.Views.Employees
 {
@@ -20,9 +21,10 @@ namespace ConsultationManagerClient.Views.Employees
     /// </summary>
     public partial class NewEmployeePage : Page
     {
-        public NewEmployeePage()
+        internal NewEmployeePage(ListEmployeesViewModel employeeVM)
         {
             InitializeComponent();
+            DataContext = employeeVM;
         }
     }
 }
