@@ -114,7 +114,7 @@
                                             <Button Grid.Column="1" Grid.RowSpan="2"
                                                 Command="{Binding DataContext.RemoveAntecedPersCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
                                                 CommandParameter="{Binding}"
-                                                Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                                                Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
                                                 ToolTip="Supprimer Antécédent">
                                                 <materialDesign:PackIcon Kind="Minus" Height="24" Width="24" />
                                             </Button>
@@ -157,7 +157,7 @@
                                             <Button Grid.Column="1" Grid.RowSpan="2"
                                         Command="{Binding DataContext.RemoveRemarqMedCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
                                         CommandParameter="{Binding}"
-                                        Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                                        Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
                                         ToolTip="Supprimer la Remarque">
                                                 <materialDesign:PackIcon Kind="Minus" Height="24" Width="24" />
                                             </Button>

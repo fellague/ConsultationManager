@@ -59,7 +59,7 @@
                                     <WrapPanel Grid.Column="1" Grid.RowSpan="3">
                                         <Button Command="{Binding DataContext.ConsultationDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
                                                 CommandParameter="{Binding}">
-                                            Consulter Maintenant
+                                            Consulter
                                         </Button>
                                         <materialDesign:PopupBox
                                                          Margin="32" ToolTip="Plus d'Opionts">

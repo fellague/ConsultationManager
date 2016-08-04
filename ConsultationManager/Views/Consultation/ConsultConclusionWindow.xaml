@@ -18,6 +18,7 @@
             <RowDefinition  Height="*"/>
             <RowDefinition  Height="*"/>
         </Grid.RowDefinitions>
+        
         <WrapPanel Orientation="Horizontal" Grid.ColumnSpan="2">
             <TextBlock Text="Cloture de la Consultation  Numéro " FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             <TextBlock Text="3" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
@@ -25,6 +26,7 @@
             <TextBlock Text="{Binding RdvConsult.NomPatient}" Margin="0 0 10 0" FontSize="22" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             <TextBlock Text="{Binding RdvConsult.PrenomPatient}"  FontSize="22" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         </WrapPanel>
+        
         <Border Grid.Row="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
                              ClipToBounds="True" Margin="20 0 20 20">
             <Grid >
@@ -36,8 +38,69 @@
                 <TextBlock Grid.ColumnSpan="2" Text="Ordonnance" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="20" Margin="220 0 0 0"></TextBlock>
 
                 <Grid Grid.Row="1">
-                    <ListBox x:Name="OrdonnanceListBox" ItemsSource="{Binding Ordonnance.ListMedicaments}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <DockPanel LastChildFill="True">
+                        <Grid DockPanel.Dock="Top" Height="30">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" FontSize="16" FontWeight="Bold">Médicament</Label>
+                            <Label Grid.Column="1" FontSize="16" FontWeight="Bold">Durée</Label>
+                            <Label Grid.Column="2" FontSize="16" FontWeight="Bold">Description</Label>
+                        </Grid>
+                        <ItemsPresenter></ItemsPresenter>
+                    </DockPanel>
+                    <ListBox x:Name="OrdonnanceListBox" ItemsSource="{Binding Ordonnance.ListMedicaments}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch" Grid.Row="1">
                         <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <WrapPanel>
+                                        <TextBlock Text="{Binding Path=Nom}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                    </WrapPanel>
+                                    
+                                    <WrapPanel Grid.Column="1">
+                                        <TextBlock Text="{Binding Path=PeriodeMois}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text=" Mois et " FontSize="16"></TextBlock>
+                                        <TextBlock Text="{Binding Path=PeriodeJours}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text=" Jours" FontSize="16"></TextBlock>
+                                    </WrapPanel>
+                                    <WrapPanel Grid.Column="1" Grid.Row="1">
+                                        <TextBlock Text="{Binding Path=NbFoisJours}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text=" fois par jours" FontSize="16"></TextBlock>
+                                    </WrapPanel>
+                                    <WrapPanel Grid.Column="2">
+                                        <TextBlock Text="{Binding Path=Remarque}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                    </WrapPanel>
+                                    <Button Grid.Column="3"
+                                            Command="{Binding DataContext.RemoveMedicamentCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                            CommandParameter="{Binding}"
+                                            Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                                            ToolTip="Supprimer Médicament">
+                                        <materialDesign:PackIcon Kind="Minus" Height="24" Width="24" />
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        <!--<ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -71,12 +134,12 @@
                                     <Button Grid.Column="1" Grid.RowSpan="2"
                                             Command="{Binding DataContext.RemoveMedicamentCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
                                             CommandParameter="{Binding}"
-                                            Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                                            Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
                                             ToolTip="Supprimer Médicament">
                                         <materialDesign:PackIcon Kind="Minus" Height="24" Width="24" />
                                     </Button>
                                 </Grid>
-                            </DataTemplate>
+                            </DataTemplate>-->
                         </ListBox.ItemTemplate>
                     </ListBox>
                     <Button  Command="{Binding NewMedicamentDialogCommand}"
@@ -86,6 +149,7 @@
                 </Grid>
             </Grid>
         </Border>
+
         <Border Grid.Row="1" Grid.Column="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
                              ClipToBounds="True" Margin="20 0 20 20">
             <Grid >
@@ -121,7 +185,7 @@
                                     <Button Grid.Column="1" Grid.RowSpan="2"
                                             Command="{Binding DataContext.RemoveTraitementCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
                                             CommandParameter="{Binding}"
-                                            Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                                            Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
                                             ToolTip="Supprimer Médicament">
                                         <materialDesign:PackIcon Kind="Minus" Height="24" Width="24" />
                                     </Button>
@@ -212,7 +276,7 @@
                                     <Button Grid.Column="1" Grid.RowSpan="2"
                                             Command="{Binding DataContext.RemoveConseilCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
                                             CommandParameter="{Binding}"
-                                            Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                                            Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
                                             ToolTip="Supprimer Médicament">
                                         <materialDesign:PackIcon Kind="Minus" Height="24" Width="24" />
                                     </Button>
@@ -247,7 +311,28 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.ColumnSpan="2" Text="Prochaine Etape" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="20" Margin="220 0 0 0"></TextBlock>
+                <TextBlock Text="Prochaine Etape" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                <WrapPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                    
+                        <RadioButton GroupName="Temps" Content="Prochaine Consultation" FontSize="16"/>
+                        <RadioButton GroupName="Temps" Content="Hospitalisation" FontSize="16"/>
+                        <RadioButton GroupName="Temps" Content="Transfert" FontSize="16"/>
+                        <RadioButton GroupName="Temps" Content="Chirurgie" FontSize="16"/>
+
+                    <!--<Button Margin="10 5 10 0" Style="{DynamicResource MaterialDesignFlatButton}" FontSize="16" ToolTip="Rendez-vous pour la prochaine consultation">
+                        Prochaine Consultation
+                    </Button>
+                    <Button Margin="10 5 10 0" Style="{DynamicResource MaterialDesignFlatButton}" FontSize="16" ToolTip="Demande d'hospitalisation">
+                        Hospitalisation
+                    </Button>
+                    <Button Margin="10 5 10 0" Style="{DynamicResource MaterialDesignFlatButton}" FontSize="16" ToolTip="Transférer vers un autre Service">
+                        Transfert
+                    </Button>
+                    <Button Margin="10 5 10 0" Style="{DynamicResource MaterialDesignFlatButton}" FontSize="16" ToolTip="Demande d'une Chirurgie">
+                        Chirurgie
+                    </Button>-->
+                </WrapPanel>
             </Grid>
         </Border>
 
