@@ -77,8 +77,11 @@
             <dxlc:Tile Header="Transfert" Size="Small" FontSize="28"  HorizontalHeaderAlignment="Center" Background="#FF4B97DE" Foreground="White">
                 <Image x:Name="image10" Source="/ConsultationManager;component/Imgs/Home/transfert.png"/>
             </dxlc:Tile>
-            <dxlc:Tile Header="Notifications" FontSize="28" HorizontalHeaderAlignment="Center" Background="#FF4B97DE" Foreground="White">
+            <dxlc:Tile Header="Notifications" Size="Small" FontSize="20" HorizontalHeaderAlignment="Center" Background="#FF4B97DE" Foreground="White">
                 <Image x:Name="image4" Source="/ConsultationManager;component/Imgs/Home/notifications.png"/>
+            </dxlc:Tile>
+            <dxlc:Tile Header="Pathologies" Click="showPathologies" Size="Small" FontSize="23" HorizontalHeaderAlignment="Center" Background="#FF4B97DE" Foreground="White">
+                <Image x:Name="image5" Source="/ConsultationManager;component/Imgs/Home/pathologies.png"/>
             </dxlc:Tile>
 
             <dxlc:Tile Header="Profil" FontSize="28" HorizontalHeaderAlignment="Center" Background="#FF6C15D4" Foreground="White" Size="Small" dxlc:FlowLayoutControl.IsFlowBreak="True">

@@ -83,6 +83,7 @@
     <Compile Include="Models\LettreOrientation.cs" />
     <Compile Include="Models\Medicament.cs" />
     <Compile Include="Models\Ordonnance.cs" />
+    <Compile Include="Models\Pathologie.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\RDV.cs" />
     <Compile Include="Models\RemarqueMedecin.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="ViewModels\Employees\ListEmployeesViewModel.cs" />
     <Compile Include="ViewModels\Hospitalisations\ListHospitalisationViewModel.cs" />
     <Compile Include="ViewModels\Hospitalisations\NewDemandHospitalisationViewModel.cs" />
+    <Compile Include="ViewModels\Pathologies\PathologiesViewModel.cs" />
     <Compile Include="ViewModels\Patients\ListPatientViewModel.cs" />
     <Compile Include="ViewModels\RDVs\ListRvdViewModel.cs" />
     <Compile Include="ViewModels\RDVs\NewRdvViewModel.cs" />
@@ -158,11 +160,20 @@
     <Compile Include="Views\MenuHospitalisationWindow.xaml.cs">
       <DependentUpon>MenuHospitalisationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MenuPathologieWindow.xaml.cs">
+      <DependentUpon>MenuPathologieWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MenuRdvWindow.xaml.cs">
       <DependentUpon>MenuRdvWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MenuPatientWindow.xaml.cs">
       <DependentUpon>MenuPatientWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pathologies\NewPathologiePage.xaml.cs">
+      <DependentUpon>NewPathologiePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pathologies\PathologiesPage.xaml.cs">
+      <DependentUpon>PathologiesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Patients\AllPatientsPage.xaml.cs">
       <DependentUpon>AllPatientsPage.xaml</DependentUpon>
@@ -283,11 +294,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MenuPathologieWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MenuRdvWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MenuPatientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pathologies\NewPathologiePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pathologies\PathologiesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -410,7 +433,9 @@
   <ItemGroup>
     <Resource Include="Imgs\Home\medical_files.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Imgs\Home\pathologies.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
