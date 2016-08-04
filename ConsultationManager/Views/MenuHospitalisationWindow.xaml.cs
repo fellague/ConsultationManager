@@ -11,9 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ConsultationManager.Views.Hospitalisations;
+using ConsultationManagerClient.Views.Hospitalisations;
 
-namespace ConsultationManager.Views
+namespace ConsultationManagerClient.Views
 {
     /// <summary>
     /// Interaction logic for MenuHospitalisationWindow.xaml

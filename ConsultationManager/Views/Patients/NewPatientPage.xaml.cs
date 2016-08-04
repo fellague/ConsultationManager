@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ConsultationManager.Views.Patients
+namespace ConsultationManagerClient.Views.Patients
 {
     /// <summary>
     /// Interaction logic for NewPatientPage.xaml

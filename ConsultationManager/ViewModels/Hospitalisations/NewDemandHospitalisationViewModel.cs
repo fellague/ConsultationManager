@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsultationManager.ViewModels.Hospitalisations
+namespace ConsultationManagerClient.ViewModels.Hospitalisations
 {
     internal class NewDemandHospitalisationViewModel
     {

@@ -12,10 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ConsultationManager.Models;
-using ConsultationManager.ViewModels.RDVs;
+using ConsultationManagerClient.Models;
+using ConsultationManagerClient.ViewModels.RDVs;
 
-namespace ConsultationManager.Views.RDVs
+namespace ConsultationManagerClient.Views.RDVs
 {
     /// <summary>
     /// Interaction logic for AllRdvPage.xaml

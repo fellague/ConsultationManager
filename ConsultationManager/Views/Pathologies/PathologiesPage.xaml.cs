@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ConsultationManager.ViewModels.Pathologies;
+using ConsultationManagerClient.ViewModels.Pathologies;
 
-namespace ConsultationManager.Views.Pathologies
+namespace ConsultationManagerClient.Views.Pathologies
 {
     /// <summary>
     /// Interaction logic for PathologiesPage.xaml

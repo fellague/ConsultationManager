@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ConsultationManager.ViewModels.Patients;
+using ConsultationManagerClient.ViewModels.Patients;
 
-namespace ConsultationManager.Views.Patients
+namespace ConsultationManagerClient.Views.Patients
 {
     /// <summary>
     /// Interaction logic for MyPatientsPage.xaml

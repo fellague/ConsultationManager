@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ConsultationManager.ViewModels.Hospitalisations;
+using ConsultationManagerClient.ViewModels.Hospitalisations;
 
-namespace ConsultationManager.Views.Hospitalisations
+namespace ConsultationManagerClient.Views.Hospitalisations
 {
     /// <summary>
     /// Interaction logic for ActiveHospitalisationPage.xaml

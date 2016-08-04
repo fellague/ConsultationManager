@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsultationManager.ViewModels.RDVs
+namespace ConsultationManagerClient.ViewModels.RDVs
 {
     internal class NewRdvViewModel
     {

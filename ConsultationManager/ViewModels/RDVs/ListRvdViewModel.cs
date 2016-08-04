@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsultationManager.Models;
-using ConsultationManager.Views.RDVs;
-using ConsultationManager.Views.Consultation;
-using ConsultationManager.ViewModels.Consultations;
+using ConsultationManagerClient.Models;
+using ConsultationManagerClient.Views.RDVs;
+using ConsultationManagerClient.Views.Consultation;
+using ConsultationManagerClient.ViewModels.Consultations;
 using System.Windows.Input;
-using ConsultationManager.Commands.RDVs;
-using ConsultationManager.Commands;
+using ConsultationManagerClient.Commands.RDVs;
+using ConsultationManagerClient.Commands;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
-namespace ConsultationManager.ViewModels.RDVs
+namespace ConsultationManagerClient.ViewModels.RDVs
 {
     internal class ListRvdViewModel : INotifyPropertyChanged
     {

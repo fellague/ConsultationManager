@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsultationManager.Models;
+using ConsultationManagerClient.Models;
 using System.Collections.ObjectModel;
 
-namespace ConsultationManager.ViewModels.Employees
+namespace ConsultationManagerClient.ViewModels.Employees
 {
     internal class ListEmployeesViewModel
     {

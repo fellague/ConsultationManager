@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using ConsultationManager.Models;
-using ConsultationManager.ViewModels.RDVs;
+using ConsultationManagerClient.Models;
+using ConsultationManagerClient.ViewModels.RDVs;
 
-namespace ConsultationManager.Commands.RDVs
+namespace ConsultationManagerClient.Commands.RDVs
 {
     class UpdateRdvCommand: ICommand
     {

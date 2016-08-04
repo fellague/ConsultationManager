@@ -1,10 +1,10 @@
-﻿<Window x:Class="ConsultationManager.Views.Consultation.NewRemarqMedWindow"
+﻿<Window x:Class="ConsultationManagerClient.Views.Consultation.NewRemarqMedWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:local="clr-namespace:ConsultationManager.Views.Consultation"
+        xmlns:local="clr-namespace:ConsultationManagerClient.Views.Consultation"
         mc:Ignorable="d" WindowStyle="None"
         Height="270" Width="550" WindowStartupLocation="CenterScreen">
     <Grid>

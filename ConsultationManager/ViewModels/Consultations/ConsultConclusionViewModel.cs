@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsultationManager.Models;
-using ConsultationManager.ViewModels.RDVs;
+using ConsultationManagerClient.Models;
+using ConsultationManagerClient.ViewModels.RDVs;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using ConsultationManager.Views.Consultation;
-using ConsultationManager.Commands;
+using ConsultationManagerClient.Views.Consultation;
+using ConsultationManagerClient.Commands;
 using System.ComponentModel;
 
-namespace ConsultationManager.ViewModels.Consultations
+namespace ConsultationManagerClient.ViewModels.Consultations
 {
     internal class ConsultConclusionViewModel : INotifyPropertyChanged
     {

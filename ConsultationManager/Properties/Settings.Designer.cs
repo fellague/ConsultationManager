@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ConsultationManager.Properties
+namespace ConsultationManagerClient.Properties
 {
 
 

@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ConsultationManager.Views
+namespace ConsultationManagerClient.Views
 {
     /// <summary>
     /// Interaction logic for Home.xaml
@@ -23,8 +23,8 @@ namespace ConsultationManager.Views
         {
             InitializeComponent();
         }
-        public List<EducationContent> EducationContents { get { return ConsultationManager.Views.EducationContents.DataSource; } }
-        public List<EmployeeContent> EmployeeContents { get { return ConsultationManager.Views.EmployeeContents.DataSource; } }
+        public List<EducationContent> EducationContents { get { return ConsultationManagerClient.Views.EducationContents.DataSource; } }
+        public List<EmployeeContent> EmployeeContents { get { return ConsultationManagerClient.Views.EmployeeContents.DataSource; } }
 
         private void showAllPatient(object sender, EventArgs e)
         {

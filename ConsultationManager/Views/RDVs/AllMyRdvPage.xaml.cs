@@ -14,10 +14,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MaterialDesignColors;
 using MaterialDesignThemes;
-using ConsultationManager.Models;
-using ConsultationManager.ViewModels.RDVs;
+using ConsultationManagerClient.Models;
+using ConsultationManagerClient.ViewModels.RDVs;
 
-namespace ConsultationManager.Views.RDVs
+namespace ConsultationManagerClient.Views.RDVs
 {
     /// <summary>
     /// Interaction logic for AllMyRdvPage.xaml

@@ -11,9 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ConsultationManager.Views.Patients;
+using ConsultationManagerClient.Views.Patients;
 
-namespace ConsultationManager.Views
+namespace ConsultationManagerClient.Views
 {
     /// <summary>
     /// Interaction logic for NavBarWindow.xaml

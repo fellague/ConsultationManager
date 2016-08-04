@@ -4,9 +4,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsultationManager.Models;
+using ConsultationManagerClient.Models;
 
-namespace ConsultationManager.ViewModels.Pathologies
+namespace ConsultationManagerClient.ViewModels.Pathologies
 {
     internal class PathologiesViewModel
     {

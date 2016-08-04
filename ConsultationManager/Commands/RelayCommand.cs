@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace ConsultationManager.Commands
+namespace ConsultationManagerClient.Commands
 {
     class RelayCommand : ICommand
     {

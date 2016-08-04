@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsultationManager.Models;
-using ConsultationManager.Commands;
-using ConsultationManager.Views.Consultation;
+using ConsultationManagerClient.Models;
+using ConsultationManagerClient.Commands;
+using ConsultationManagerClient.Views.Consultation;
 using System.Windows.Input;
 using MaterialDesignThemes.Wpf;
 using System.Collections.ObjectModel;
 
-namespace ConsultationManager.ViewModels.Consultations
+namespace ConsultationManagerClient.ViewModels.Consultations
 {
     internal class FirstConsultationViewModel
     {

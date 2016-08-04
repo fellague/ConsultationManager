@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsultationManager.Models
+namespace ConsultationManagerClient.Models
 {
     class LettreOrientation : INotifyPropertyChanged
     {

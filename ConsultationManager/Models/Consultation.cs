@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace ConsultationManager.Models
+namespace ConsultationManagerClient.Models
 {
     class Consultation : INotifyPropertyChanged
     {

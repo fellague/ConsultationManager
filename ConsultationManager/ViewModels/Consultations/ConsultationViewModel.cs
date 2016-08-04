@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsultationManager.Models;
+using ConsultationManagerClient.Models;
 using System.Collections.ObjectModel;
-using ConsultationManager.Views.Consultation;
+using ConsultationManagerClient.Views.Consultation;
 using System.Windows.Input;
-using ConsultationManager.Commands;
-using ConsultationManager.ViewModels.RDVs;
+using ConsultationManagerClient.Commands;
+using ConsultationManagerClient.ViewModels.RDVs;
 
-namespace ConsultationManager.ViewModels.Consultations
+namespace ConsultationManagerClient.ViewModels.Consultations
 {
     internal class ConsultationViewModel
     {

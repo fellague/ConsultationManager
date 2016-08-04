@@ -11,9 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ConsultationManager.Views.Employees;
+using ConsultationManagerClient.Views.Employees;
 
-namespace ConsultationManager.Views
+namespace ConsultationManagerClient.Views
 {
     /// <summary>
     /// Interaction logic for MenuEmployeeWindow.xaml

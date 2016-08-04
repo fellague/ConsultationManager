@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsultationManager.Models;
-using ConsultationManager.Commands.RDVs;
+using ConsultationManagerClient.Models;
+using ConsultationManagerClient.Commands.RDVs;
 using System.Windows.Input;
 using System.Windows;
 using System.Windows.Data;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
-using ConsultationManager.Commands;
+using ConsultationManagerClient.Commands;
 
-namespace ConsultationManager.ViewModels.RDVs
+namespace ConsultationManagerClient.ViewModels.RDVs
 {
     internal class UpdateRdvViewModel : INotifyPropertyChanged
     {

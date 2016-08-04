@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsultationManager.Models;
-using ConsultationManager.Views.RDVs;
+using ConsultationManagerClient.Models;
+using ConsultationManagerClient.Views.RDVs;
 using System.Windows.Input;
-using ConsultationManager.Commands;
+using ConsultationManagerClient.Commands;
 using System.Collections.ObjectModel;
 
-namespace ConsultationManager.ViewModels.Patients
+namespace ConsultationManagerClient.ViewModels.Patients
 {
     internal class ListPatientViewModel
     {

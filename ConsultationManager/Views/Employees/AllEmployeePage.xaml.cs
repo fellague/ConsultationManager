@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ConsultationManager.ViewModels.Employees;
+using ConsultationManagerClient.ViewModels.Employees;
 
-namespace ConsultationManager.Views.Employees
+namespace ConsultationManagerClient.Views.Employees
 {
     /// <summary>
     /// Interaction logic for AllEmployeePage.xaml
