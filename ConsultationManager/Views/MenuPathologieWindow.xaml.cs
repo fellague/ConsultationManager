@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ConsultationManagerClient.Views.Pathologies;
+using ConsultationManagerClient.ViewModels.Pathologies;
 
 namespace ConsultationManagerClient.Views
 {
@@ -20,16 +21,19 @@ namespace ConsultationManagerClient.Views
     /// </summary>
     public partial class MenuPathologieWindow : Window
     {
+        PathologiesViewModel pathologieVM;
+
         public MenuPathologieWindow()
         {
             InitializeComponent();
-            _framePathologies.Navigate(new PathologiesPage());
+            pathologieVM = new PathologiesViewModel();
+            _framePathologies.Navigate(new PathologiesPage(pathologieVM));
             coloringTabs(PathologiesBtn, NewPathologieBtn);
         }
 
         private void button_click_tout(object sender, RoutedEventArgs e)
         {
-            _framePathologies.Navigate(new PathologiesPage());
+            _framePathologies.Navigate(new PathologiesPage(pathologieVM));
             coloringTabs(PathologiesBtn, NewPathologieBtn);
         }
 

@@ -21,10 +21,10 @@ namespace ConsultationManagerClient.Views.Pathologies
     /// </summary>
     public partial class PathologiesPage : Page
     {
-        public PathologiesPage()
+        internal PathologiesPage(PathologiesViewModel patholVM)
         {
             InitializeComponent();
-            DataContext = new PathologiesViewModel();
+            DataContext = patholVM;
         }
     }
 }
