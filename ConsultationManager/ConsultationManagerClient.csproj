@@ -168,6 +168,9 @@
     <Compile Include="Views\Pathologies\PathologiesPage.xaml.cs">
       <DependentUpon>PathologiesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pathologies\UpdateServicePage.xaml.cs">
+      <DependentUpon>UpdateServicePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Patients\AllPatientsPage.xaml.cs">
       <DependentUpon>AllPatientsPage.xaml</DependentUpon>
     </Compile>
@@ -307,6 +310,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Pathologies\UpdateServicePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Patients\AllPatientsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -435,6 +442,7 @@
       <Name>ConsultationManagerServer</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -11,12 +11,23 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
 {
     internal class PathologiesViewModel : INotifyPropertyChanged
     {
+
+
         private RestClient client = new RestClient("http://localhost:64183/");
         private ObservableCollection<Pathologie> listPathologies;
+        private Service service;
 
         public PathologiesViewModel()
         {
             listPathologies = new ObservableCollection<Pathologie>();
+            service = new Service();
+            service.Nom = "Endochrinoe";
+            service.DateOuverture = DateTime.Now;
+            service.Domaine = "dkjsc sdlksc sdlksc sdlksd lksd dlk sdlksd sdlksd sdlksd sdclksd lksd sdlksd sdlkn cdlksd dlkze sdlkn sdsdnd sdlk";
+            service.Adresse = "Chlef hay essalem n 3";
+            service.Telephones.Add("021 87 54 43");
+            service.Telephones.Add("021 27 53 43");
+
             CreatePathologies();
         }
 
@@ -30,6 +41,19 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
             {
                 listPathologies = value;
                 OnPropertyChanged("ListPathologies");
+            }
+        }
+
+        public Service Service
+        {
+            get
+            {
+                return service;
+            }
+            set
+            {
+                service = value;
+                OnPropertyChanged("Service");
             }
         }
 

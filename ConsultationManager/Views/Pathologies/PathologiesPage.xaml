@@ -10,9 +10,70 @@
       Title="PathologiesPage">
 
     <Grid Margin="10">
-        <DockPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition  Height="*"/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel>
+            <TextBlock  FontSize="24">Détails du Service</TextBlock>
+        </WrapPanel>
+
+        <Border Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                             ClipToBounds="True" Margin="20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="120"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Nom" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+                <TextBlock Text="{Binding Service.Nom}" Grid.Column="1" FontSize="16" VerticalAlignment="Center" FontWeight="DemiBold"></TextBlock>
+
+                <TextBlock Grid.Row="1" Text="Date d'ouverture" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Service.DateOuverture}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" FontWeight="DemiBold"></TextBlock>
+
+                <!--<DatePicker Grid.Row="2" Grid.Column="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>-->
+
+                <TextBlock Grid.Row="2" Text="Domaine" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16"></TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Service.Domaine}" TextWrapping="Wrap" FontSize="16" VerticalAlignment="Center" FontWeight="DemiBold"></TextBlock>
+
+                <TextBlock Grid.Row="3" Text="Adresse" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Service.Adresse}" FontSize="16" VerticalAlignment="Center" FontWeight="DemiBold"></TextBlock>
+
+                <TextBlock Grid.Row="4" Text="Téléphones" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" Margin="20"></TextBlock>
+                <ListBox Grid.Row="4" Grid.Column="1" x:Name="TelephonesListBox" ItemsSource="{Binding Service.Telephones}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch" Margin="20 10 20 10">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <WrapPanel>
+                                    <TextBlock Text="{Binding}" FontSize="16" FontWeight="DemiBold"></TextBlock>
+                                </WrapPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </Border>
+        
+
+        <DockPanel Grid.Row="2" Grid.ColumnSpan="2">
             <WrapPanel DockPanel.Dock="Top">
-                <TextBlock  FontSize="24">La liste des Pathologies</TextBlock>
+                <TextBlock  FontSize="20">La liste des Pathologies</TextBlock>
             </WrapPanel>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -23,12 +84,12 @@
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel Width="{Binding (FrameworkElement.ActualWidth), 
-                                        RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
-                                        ItemWidth="{Binding (ListView.View).ItemWidth, 
-                                        RelativeSource={RelativeSource AncestorType=ListView}}"
-                                        MinWidth="{Binding ItemWidth, RelativeSource={RelativeSource Self}}"
-                                        ItemHeight="{Binding (ListView.View).ItemHeight, 
-                                        RelativeSource={RelativeSource AncestorType=ListView}}" />
+                                    RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
+                                    ItemWidth="{Binding (ListView.View).ItemWidth, 
+                                    RelativeSource={RelativeSource AncestorType=ListView}}"
+                                    MinWidth="{Binding ItemWidth, RelativeSource={RelativeSource Self}}"
+                                    ItemHeight="{Binding (ListView.View).ItemHeight, 
+                                    RelativeSource={RelativeSource AncestorType=ListView}}" />
                             </ItemsPanelTemplate>
                         </ListView.ItemsPanel>
                         <ListView.ItemTemplate>
@@ -44,13 +105,13 @@
                                             <TextBlock Text="{Binding Path = Description}" FontSize="14"></TextBlock>
                                         </WrapPanel>
                                         <!--<WrapPanel>
-                                            <TextBlock Text="Ajouté Par : " FontSize="14"></TextBlock>
-                                            <TextBlock Text="{Binding Path = CreePar}" FontSize="14"></TextBlock>
-                                        </WrapPanel>
-                                        <WrapPanel>
-                                            <TextBlock Text="Dans le : " FontSize="14"></TextBlock>
-                                            <TextBlock Text="{Binding Path = CreeDans,  StringFormat=d}" FontSize="14"></TextBlock>
-                                        </WrapPanel>-->
+                                        <TextBlock Text="Ajouté Par : " FontSize="14"></TextBlock>
+                                        <TextBlock Text="{Binding Path = CreePar}" FontSize="14"></TextBlock>
+                                    </WrapPanel>
+                                    <WrapPanel>
+                                        <TextBlock Text="Dans le : " FontSize="14"></TextBlock>
+                                        <TextBlock Text="{Binding Path = CreeDans,  StringFormat=d}" FontSize="14"></TextBlock>
+                                    </WrapPanel>-->
 
                                     </WrapPanel>
                                 </materialDesign:Card>

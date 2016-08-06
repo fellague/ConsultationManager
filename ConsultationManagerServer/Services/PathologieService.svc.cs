@@ -46,11 +46,11 @@ namespace ConsultationManagerServer.Services
         private ObservableCollection<Pathologie> CreatePathologies()
         {
             ObservableCollection<Pathologie> list = new ObservableCollection<Pathologie>();
-            //list.Add(new Pathologie("1", "Thyroide", "c'est une patholgie qui tklcs lj djlsjd sdflkjds lskdjns clkcd cdkljcd sdlk"));
-            //list.Add(new Pathologie("2", "Cancer", "lkqskxc okqsxl qslkqskl xkl,xs xlkx xlk poqpx qsozaf sdzeed"));
-            //list.Add(new Pathologie("3", "Diabetre", "zsdef sdlk sdcl,k cdmlksd epoied ioue oiusd diou"));
-            //list.Add(new Pathologie("4", "Cardiologue", "oeuzi ezioefz eoiuef epfoize fpoiezpo zefoizef ezofioe zefoiuez zefiouez"));
-            //list.Add(new Pathologie("5", "Poumon", "efzke eoizef zefoief zeoif zelfe zeflkeff zeklef elkjef zeflkj"));
+            list.Add(new Pathologie("1", "Thyroide", "c'est une patholgie qui tklcs lj djlsjd sdflkjds lskdjns clkcd cdkljcd sdlk"));
+            list.Add(new Pathologie("2", "Cancer", "lkqskxc okqsxl qslkqskl xkl,xs xlkx xlk poqpx qsozaf sdzeed"));
+            list.Add(new Pathologie("3", "Diabetre", "zsdef sdlk sdcl,k cdmlksd epoied ioue oiusd diou"));
+            list.Add(new Pathologie("4", "Cardiologue", "oeuzi ezioefz eoiuef epfoize fpoiezpo zefoizef ezofioe zefoiuez zefiouez"));
+            list.Add(new Pathologie("5", "Poumon", "efzke eoizef zefoief zeoif zelfe zeflkeff zeklef elkjef zeflkj"));
             return list;
         }
     }

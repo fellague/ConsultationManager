@@ -17,11 +17,11 @@ using System.Windows.Shapes;
 namespace ConsultationManagerClient.Views.Pathologies
 {
     /// <summary>
-    /// Interaction logic for NewPathologiePage.xaml
+    /// Interaction logic for UpdateServicePage.xaml
     /// </summary>
-    public partial class NewPathologiePage : Page
+    public partial class UpdateServicePage : Page
     {
-        internal NewPathologiePage(PathologiesViewModel patholVM)
+        internal UpdateServicePage(PathologiesViewModel patholVM)
         {
             InitializeComponent();
             DataContext = patholVM;

@@ -85,6 +85,7 @@
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\RDV.cs" />
     <Compile Include="Models\RemarqueMedecin.cs" />
+    <Compile Include="Models\Service.cs" />
     <Compile Include="Models\Traitement.cs" />
     <Compile Include="Models\TraitementsComplemtaires.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
