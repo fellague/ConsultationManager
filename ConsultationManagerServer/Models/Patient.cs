@@ -1,35 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
-namespace ConsultationManagerClient.Models
+namespace ConsultationManagerServer.Models
 {
-    class Employee: INotifyPropertyChanged
+    [DataContract]
+    public class Patient: INotifyPropertyChanged
     {
         private string nom;
         private string prenom;
-        private string role;
         private DateTime dateNaiss;
+        private string raison;
         private string adresse;
         private string telephone;
+        private bool mariee;
         private DateTime creeDans;
         private string creePar;
 
-        public Employee(string nom, string prenom, string role, DateTime dateNaiss, string adresse, string telephone, DateTime creeDans, string creePar)
+        public Patient(string nom, string prenom, DateTime dateNaiss, string raison, string adresse, string telephone, bool mariee, DateTime creeDans, string creePar)
         {
             Nom = nom;
             Prenom = prenom;
-            Role = role;
             DateNaiss = dateNaiss;
+            Raison = raison;
             Adresse = adresse;
             Telephone = telephone;
+            Mariee = mariee;
             CreeDans = creeDans;
             CreePar = creePar;
         }
 
+        [DataMember]
         public string Nom
         {
             get
@@ -42,6 +43,8 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("Nom");
             }
         }
+
+        [DataMember]
         public string Prenom
         {
             get
@@ -54,18 +57,8 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("Prenom");
             }
         }
-        public string Role
-        {
-            get
-            {
-                return role;
-            }
-            set
-            {
-                role = value;
-                OnPropertyChanged("Role");
-            }
-        }
+
+        [DataMember]
         public DateTime DateNaiss
         {
             get
@@ -78,6 +71,22 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("DateNaiss");
             }
         }
+
+        [DataMember]
+        public string Raison
+        {
+            get
+            {
+                return raison;
+            }
+            set
+            {
+                raison = value;
+                OnPropertyChanged("Raison");
+            }
+        }
+
+        [DataMember]
         public string Adresse
         {
             get
@@ -90,6 +99,8 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("Adresse");
             }
         }
+
+        [DataMember]
         public string Telephone
         {
             get
@@ -102,6 +113,22 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("Telephone");
             }
         }
+
+        [DataMember]
+        public bool Mariee
+        {
+            get
+            {
+                return mariee;
+            }
+            set
+            {
+                mariee = value;
+                OnPropertyChanged("Mariee");
+            }
+        }
+
+        [DataMember]
         public DateTime CreeDans
         {
             get
@@ -114,6 +141,8 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("CreeDans");
             }
         }
+
+        [DataMember]
         public string CreePar
         {
             get

@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ConsultationManagerClient.Models;
+using ConsultationManagerServer.Models;
 using ConsultationManagerClient.Commands;
 using ConsultationManagerClient.Views.Consultation;
 using System.Windows.Input;
-using MaterialDesignThemes.Wpf;
 using System.Collections.ObjectModel;
 
 namespace ConsultationManagerClient.ViewModels.Consultations

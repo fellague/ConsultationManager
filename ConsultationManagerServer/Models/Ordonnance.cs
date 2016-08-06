@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
-namespace ConsultationManagerClient.Models
+namespace ConsultationManagerServer.Models
 {
-    class Ordonnance : INotifyPropertyChanged
+    [DataContract]
+    public class Ordonnance : INotifyPropertyChanged
     {
         private ObservableCollection<Medicament> listMedicaments;
 
@@ -17,6 +14,7 @@ namespace ConsultationManagerClient.Models
             this.listMedicaments = listMedicaments;
         }
 
+        [DataMember]
         public ObservableCollection<Medicament> ListMedicaments
         {
             get

@@ -2,21 +2,24 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsultationManagerClient.Models
+namespace ConsultationManagerServer.Models
 {
-    class Pathologie : INotifyPropertyChanged
+    [DataContract]
+    public class Traitement : INotifyPropertyChanged
     {
         private string nom; //père, mère,frère
         private string description;
-        public Pathologie(string nom, string descr)
+        public Traitement(string nom, string descr)
         {
             this.nom = nom;
             description = descr;
         }
 
+        [DataMember]
         public string Nom
         {
             get
@@ -30,6 +33,7 @@ namespace ConsultationManagerClient.Models
             }
         }
 
+        [DataMember]
         public string Description
         {
             get

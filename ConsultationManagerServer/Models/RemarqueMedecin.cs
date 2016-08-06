@@ -1,27 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
+using System.Runtime.Serialization;
 
-namespace ConsultationManagerClient.Models
+namespace ConsultationManagerServer.Models
 {
-    class AntecedentPersonel : INotifyPropertyChanged
+    [DataContract]
+    public class RemarqueMedecin : INotifyPropertyChanged
     {
         private string organe;
-        private int avMois;
-        private int avJours;
         private string description;
-
-        public AntecedentPersonel(string org, int mois, int jours, string descr)
+        public RemarqueMedecin(string org, string descr)
         {
             organe = org;
-            avMois = mois;
-            avJours = jours;
             description = descr;
         }
 
+        [DataMember]
         public string Organe
         {
             get
@@ -34,30 +27,8 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("Organe");
             }
         }
-        public int AvMois
-        {
-            get
-            {
-                return avMois;
-            }
-            set
-            {
-                avMois = value;
-                OnPropertyChanged("AvMois");
-            }
-        }
-        public int AvJours
-        {
-            get
-            {
-                return avJours;
-            }
-            set
-            {
-                avJours = value;
-                OnPropertyChanged("AvJours");
-            }
-        }
+
+        [DataMember]
         public string Description
         {
             get
@@ -70,7 +41,6 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("Description");
             }
         }
-
         #region InotifyPropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -1,35 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
+using System.Runtime.Serialization;
 
-namespace ConsultationManagerClient.Models
+namespace ConsultationManagerServer.Models
 {
-    class Traitement : INotifyPropertyChanged
+    [DataContract]
+    public class AntecedentFamilial : INotifyPropertyChanged
     {
-        private string nom; //père, mère,frère
+        private string membre; //père, mère,frère
         private string description;
-        public Traitement(string nom, string descr)
+
+        public AntecedentFamilial(string memb, string descr)
         {
-            this.nom = nom;
+            membre = memb;
             description = descr;
         }
 
-        public string Nom
+        [DataMember]
+        public string Membre
         {
             get
             {
-                return nom;
+                return membre;
             }
             set
             {
-                nom = value;
-                OnPropertyChanged("Nom");
+                membre = value;
+                OnPropertyChanged("Membre");
             }
         }
 
+        [DataMember]
         public string Description
         {
             get

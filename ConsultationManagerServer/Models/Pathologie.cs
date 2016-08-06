@@ -1,49 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
+using System.Runtime.Serialization;
 
-namespace ConsultationManagerClient.Models
+namespace ConsultationManagerServer.Models
 {
-    class LettreOrientation : INotifyPropertyChanged
+    [DataContract]
+    public class Pathologie : INotifyPropertyChanged
     {
-        private string destination;
-        private string motif;
+        private string id;
+        private string nom; //père, mère,frère
         private string description;
-
-        public LettreOrientation(string destination, string motif, string description)
+        public Pathologie(string id, string nom, string descr)
         {
-            this.destination = destination;
-            this.motif = motif;
-            this.description = description;
+            this.id = id;
+            this.nom = nom;
+            description = descr;
         }
 
-        public string Destination
+        [DataMember]
+        public string Id
         {
             get
             {
-                return destination;
+                return id;
             }
             set
             {
-                destination = value;
-                OnPropertyChanged("Destination");
+                id = value;
+                OnPropertyChanged("Id");
             }
         }
-        public string Motif
+
+        [DataMember]
+        public string Nom
         {
             get
             {
-                return motif;
+                return nom;
             }
             set
             {
-                motif = value;
-                OnPropertyChanged("Motif");
+                nom = value;
+                OnPropertyChanged("Nom");
             }
         }
+
+        [DataMember]
         public string Description
         {
             get
@@ -56,7 +57,6 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("Description");
             }
         }
-
         #region InotifyPropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;

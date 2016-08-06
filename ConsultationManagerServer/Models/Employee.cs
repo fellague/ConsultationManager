@@ -1,37 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
-namespace ConsultationManagerClient.Models
+namespace ConsultationManagerServer.Models
 {
-    class Hospitalisation : INotifyPropertyChanged
+    [DataContract]
+    public class Employee: INotifyPropertyChanged
     {
         private string nom;
         private string prenom;
-        private string salle;
-        private string lit;
-        private DateTime dateDebut;
-        private DateTime dateFinPrevu;
-        private DateTime dateFinReel;
+        private string role;
+        private DateTime dateNaiss;
+        private string adresse;
+        private string telephone;
         private DateTime creeDans;
         private string creePar;
 
-        public Hospitalisation(string nom, string prenom, string salle, string lit, DateTime dateDebut, DateTime dateFinPrevu, DateTime dateFinReel, DateTime creeDans, string creePar)
+        public Employee(string nom, string prenom, string role, DateTime dateNaiss, string adresse, string telephone, DateTime creeDans, string creePar)
         {
             Nom = nom;
             Prenom = prenom;
-            Salle = salle;
-            Lit = lit;
-            DateDebut = dateDebut;
-            DateFinPrevu = dateFinPrevu;
-            DateFinReel = dateFinReel;
+            Role = role;
+            DateNaiss = dateNaiss;
+            Adresse = adresse;
+            Telephone = telephone;
             CreeDans = creeDans;
             CreePar = creePar;
         }
 
+        [DataMember]
         public string Nom
         {
             get
@@ -44,6 +41,8 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("Nom");
             }
         }
+
+        [DataMember]
         public string Prenom
         {
             get
@@ -56,66 +55,64 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("Prenom");
             }
         }
-        public string Salle
+
+        [DataMember]
+        public string Role
         {
             get
             {
-                return salle;
+                return role;
             }
             set
             {
-                salle = value;
-                OnPropertyChanged("Salle");
+                role = value;
+                OnPropertyChanged("Role");
             }
         }
-        public string Lit
+
+        [DataMember]
+        public DateTime DateNaiss
         {
             get
             {
-                return lit;
+                return dateNaiss;
             }
             set
             {
-                lit = value;
-                OnPropertyChanged("Lit");
+                dateNaiss = value;
+                OnPropertyChanged("DateNaiss");
             }
         }
-        public DateTime DateDebut
+
+        [DataMember]
+        public string Adresse
         {
             get
             {
-                return dateDebut;
+                return adresse;
             }
             set
             {
-                dateDebut = value;
-                OnPropertyChanged("DateDebut");
+                adresse = value;
+                OnPropertyChanged("Adresse");
             }
         }
-        public DateTime DateFinPrevu
+
+        [DataMember]
+        public string Telephone
         {
             get
             {
-                return dateFinPrevu;
+                return telephone;
             }
             set
             {
-                dateFinPrevu = value;
-                OnPropertyChanged("DateFinPrevu");
+                telephone = value;
+                OnPropertyChanged("Telephone");
             }
         }
-        public DateTime DateFinReel
-        {
-            get
-            {
-                return dateFinReel;
-            }
-            set
-            {
-                dateFinReel = value;
-                OnPropertyChanged("DateFinReel");
-            }
-        }
+
+        [DataMember]
         public DateTime CreeDans
         {
             get
@@ -128,6 +125,8 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("CreeDans");
             }
         }
+
+        [DataMember]
         public string CreePar
         {
             get

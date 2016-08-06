@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
-namespace ConsultationManagerClient.Models
+namespace ConsultationManagerServer.Models
 {
-    class TraitementsComplemtaires : INotifyPropertyChanged
+    [DataContract]
+    public class TraitementsComplemtaires : INotifyPropertyChanged
     {
         private ObservableCollection<Traitement> listTraitements;
 
@@ -17,6 +14,7 @@ namespace ConsultationManagerClient.Models
             this.listTraitements = listTraitements;
         }
 
+        [DataMember]
         public ObservableCollection<Traitement> ListTraitements
         {
             get

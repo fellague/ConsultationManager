@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using ConsultationManagerClient.ViewModels.RDVs;
-using ConsultationManagerClient.Models;
+using ConsultationManagerServer.Models;
 
 namespace ConsultationManagerClient.Commands.RDVs
 {

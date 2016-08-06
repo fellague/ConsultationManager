@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ConsultationManagerClient.Models;
+using ConsultationManagerServer.Models;
 using System.Collections.ObjectModel;
 
 namespace ConsultationManagerClient.ViewModels.Hospitalisations

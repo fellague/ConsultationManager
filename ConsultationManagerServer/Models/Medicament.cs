@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
+using System.Runtime.Serialization;
 
-namespace ConsultationManagerClient.Models
+namespace ConsultationManagerServer.Models
 {
-    class Medicament : INotifyPropertyChanged
+    [DataContract]
+    public class Medicament : INotifyPropertyChanged
     {
         private string nom;
         private int periodeMois;
@@ -26,6 +23,7 @@ namespace ConsultationManagerClient.Models
             this.remarque = remarque;
         }
 
+        [DataMember]
         public string Nom
         {
             get
@@ -38,6 +36,8 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("Nom");
             }
         }
+
+        [DataMember]
         public int PeriodeMois
         {
             get
@@ -50,6 +50,8 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("PeriodeMois");
             }
         }
+
+        [DataMember]
         public int PeriodeJours
         {
             get
@@ -62,6 +64,8 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("PeriodeJours");
             }
         }
+
+        [DataMember]
         public int NbFoisJours
         {
             get
@@ -74,6 +78,8 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("NbFoisJours");
             }
         }
+
+        [DataMember]
         public string Temps
         {
             get
@@ -86,6 +92,8 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("Temps");
             }
         }
+
+        [DataMember]
         public string Remarque
         {
             get

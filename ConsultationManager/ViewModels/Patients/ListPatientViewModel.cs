@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ConsultationManagerClient.Models;
-using ConsultationManagerClient.Views.RDVs;
-using System.Windows.Input;
-using ConsultationManagerClient.Commands;
+using ConsultationManagerServer.Models;
 using System.Collections.ObjectModel;
 
 namespace ConsultationManagerClient.ViewModels.Patients

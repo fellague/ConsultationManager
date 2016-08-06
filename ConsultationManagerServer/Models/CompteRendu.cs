@@ -1,35 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
+using System.Runtime.Serialization;
 
-namespace ConsultationManagerClient.Models
+namespace ConsultationManagerServer.Models
 {
-    class RemarqueMedecin : INotifyPropertyChanged
+    [DataContract]
+    public class CompteRendu : INotifyPropertyChanged
     {
-        private string organe;
         private string description;
-        public RemarqueMedecin(string org, string descr)
+
+        public CompteRendu(string description)
         {
-            organe = org;
-            description = descr;
+            this.description = description;
         }
 
-        public string Organe
-        {
-            get
-            {
-                return organe;
-            }
-            set
-            {
-                organe = value;
-                OnPropertyChanged("Organe");
-            }
-        }
-
+        [DataMember]
         public string Description
         {
             get
@@ -42,6 +26,7 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("Description");
             }
         }
+
         #region InotifyPropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+using System.Runtime.Serialization;
 
-namespace ConsultationManagerClient.Models
+namespace ConsultationManagerServer.Models
 {
-    class Consultation : INotifyPropertyChanged
+    [DataContract]
+    public class Consultation : INotifyPropertyChanged
     {
         private ObservableCollection<AntecedentPersonel> commentsPatient;
         private ObservableCollection<RemarqueMedecin> remarquesMedecin;
@@ -34,6 +30,7 @@ namespace ConsultationManagerClient.Models
 
         }
 
+        [DataMember]
         public ObservableCollection<AntecedentPersonel> CommentsPatient
         {
             get
@@ -41,6 +38,8 @@ namespace ConsultationManagerClient.Models
                 return commentsPatient;
             }
         }
+
+        [DataMember]
         public ObservableCollection<RemarqueMedecin> RemarquesMedecin
         {
             get
@@ -48,6 +47,8 @@ namespace ConsultationManagerClient.Models
                 return remarquesMedecin;
             }
         }
+
+        [DataMember]
         public int Poids
         {
             get
@@ -55,6 +56,8 @@ namespace ConsultationManagerClient.Models
                 return poids;
             }
         }
+
+        [DataMember]
         public int TA
         {
             get
@@ -62,6 +65,8 @@ namespace ConsultationManagerClient.Models
                 return ta;
             }
         }
+
+        [DataMember]
         public int Tension
         {
             get
@@ -69,6 +74,8 @@ namespace ConsultationManagerClient.Models
                 return tension;
             }
         }
+
+        [DataMember]
         public int Temperature
         {
             get
@@ -76,6 +83,8 @@ namespace ConsultationManagerClient.Models
                 return temperature;
             }
         }
+
+        [DataMember]
         public string Glycemique
         {
             get
@@ -83,6 +92,8 @@ namespace ConsultationManagerClient.Models
                 return glycemique;
             }
         }
+
+        [DataMember]
         public string Hymoglobine
         {
             get

@@ -1,37 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
-namespace ConsultationManagerClient.Models
+namespace ConsultationManagerServer.Models
 {
-    class Patient: INotifyPropertyChanged
+    [DataContract]
+    public class Hospitalisation : INotifyPropertyChanged
     {
         private string nom;
         private string prenom;
-        private DateTime dateNaiss;
-        private string raison;
-        private string adresse;
-        private string telephone;
-        private bool mariee;
+        private string salle;
+        private string lit;
+        private DateTime dateDebut;
+        private DateTime dateFinPrevu;
+        private DateTime dateFinReel;
         private DateTime creeDans;
         private string creePar;
 
-        public Patient(string nom, string prenom, DateTime dateNaiss, string raison, string adresse, string telephone, bool mariee, DateTime creeDans, string creePar)
+        public Hospitalisation(string nom, string prenom, string salle, string lit, DateTime dateDebut, DateTime dateFinPrevu, DateTime dateFinReel, DateTime creeDans, string creePar)
         {
             Nom = nom;
             Prenom = prenom;
-            DateNaiss = dateNaiss;
-            Raison = raison;
-            Adresse = adresse;
-            Telephone = telephone;
-            Mariee = mariee;
+            Salle = salle;
+            Lit = lit;
+            DateDebut = dateDebut;
+            DateFinPrevu = dateFinPrevu;
+            DateFinReel = dateFinReel;
             CreeDans = creeDans;
             CreePar = creePar;
         }
 
+        [DataMember]
         public string Nom
         {
             get
@@ -44,6 +43,8 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("Nom");
             }
         }
+
+        [DataMember]
         public string Prenom
         {
             get
@@ -56,66 +57,78 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("Prenom");
             }
         }
-        public DateTime DateNaiss
+
+        [DataMember]
+        public string Salle
         {
             get
             {
-                return dateNaiss;
+                return salle;
             }
             set
             {
-                dateNaiss = value;
-                OnPropertyChanged("DateNaiss");
+                salle = value;
+                OnPropertyChanged("Salle");
             }
         }
-        public string Raison
+
+        [DataMember]
+        public string Lit
         {
             get
             {
-                return raison;
+                return lit;
             }
             set
             {
-                raison = value;
-                OnPropertyChanged("Raison");
+                lit = value;
+                OnPropertyChanged("Lit");
             }
         }
-        public string Adresse
+
+        [DataMember]
+        public DateTime DateDebut
         {
             get
             {
-                return adresse;
+                return dateDebut;
             }
             set
             {
-                adresse = value;
-                OnPropertyChanged("Adresse");
+                dateDebut = value;
+                OnPropertyChanged("DateDebut");
             }
         }
-        public string Telephone
+
+        [DataMember]
+        public DateTime DateFinPrevu
         {
             get
             {
-                return telephone;
+                return dateFinPrevu;
             }
             set
             {
-                telephone = value;
-                OnPropertyChanged("Telephone");
+                dateFinPrevu = value;
+                OnPropertyChanged("DateFinPrevu");
             }
         }
-        public bool Mariee
+
+        [DataMember]
+        public DateTime DateFinReel
         {
             get
             {
-                return mariee;
+                return dateFinReel;
             }
             set
             {
-                mariee = value;
-                OnPropertyChanged("Mariee");
+                dateFinReel = value;
+                OnPropertyChanged("DateFinReel");
             }
         }
+
+        [DataMember]
         public DateTime CreeDans
         {
             get
@@ -128,6 +141,8 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("CreeDans");
             }
         }
+
+        [DataMember]
         public string CreePar
         {
             get

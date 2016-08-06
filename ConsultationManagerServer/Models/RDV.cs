@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsultationManagerClient.Models
+namespace ConsultationManagerServer.Models
 {
-    class RDV : INotifyPropertyChanged
+    [DataContract]
+    public class RDV : INotifyPropertyChanged
     {
         private string nomPatient;
         private string prenomPatient;
@@ -30,6 +32,7 @@ namespace ConsultationManagerClient.Models
             CreePar = creePar;
         }
 
+        [DataMember]
         public string NomPatient
         {
             get
@@ -42,6 +45,8 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("NomPatient");
             }
         }
+
+        [DataMember]
         public string PrenomPatient
         {
             get
@@ -54,6 +59,8 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("PrenomPatient");
             }
         }
+
+        [DataMember]
         public string NomMedecin
         {
             get
@@ -66,6 +73,8 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("NomMedecin");
             }
         }
+
+        [DataMember]
         public string PrenomMedecin
         {
             get
@@ -78,6 +87,8 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("PrenomMedecin");
             }
         }
+
+        [DataMember]
         public DateTime DateRdv
         {
             get
@@ -90,6 +101,8 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("DateRdv");
             }
         }
+
+        [DataMember]
         public int Rang
         {
             get
@@ -102,6 +115,8 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("Rang");
             }
         }
+
+        [DataMember]
         public DateTime CreeDans
         {
             get
@@ -114,6 +129,8 @@ namespace ConsultationManagerClient.Models
                 OnPropertyChanged("CreeDans");
             }
         }
+
+        [DataMember]
         public string CreePar
         {
             get

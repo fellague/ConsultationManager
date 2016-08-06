@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ConsultationManagerClient.Models;
+using ConsultationManagerServer.Models;
 using ConsultationManagerClient.Views.RDVs;
 using ConsultationManagerClient.Views.Consultation;
 using ConsultationManagerClient.ViewModels.Consultations;
 using System.Windows.Input;
-using ConsultationManagerClient.Commands.RDVs;
 using ConsultationManagerClient.Commands;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
