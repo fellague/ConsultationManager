@@ -6,6 +6,11 @@ using System.Windows;
 using System;
 using System.ComponentModel;
 using Newtonsoft.Json;
+using System.Web.Script.Serialization;
+using System.Linq;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
 
 namespace ConsultationManagerClient.ViewModels.Pathologies
 {
@@ -21,14 +26,14 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
         {
             listPathologies = new ObservableCollection<Pathologie>();
             service = new Service();
-            service.Nom = "Endochrinoe";
-            service.DateOuverture = DateTime.Now;
-            service.Domaine = "dkjsc sdlksc sdlksc sdlksd lksd dlk sdlksd sdlksd sdlksd sdclksd lksd sdlksd sdlkn cdlksd dlkze sdlkn sdsdnd sdlk";
-            service.Adresse = "Chlef hay essalem n 3";
-            service.Telephones.Add("021 87 54 43");
-            service.Telephones.Add("021 27 53 43");
+            //service.Nom = "Endochrinoe";
+            //service.DateOuverture = DateTime.Now;
+            //service.Domaine = "dkjsc sdlksc sdlksc sdlksd lksd dlk sdlksd sdlksd sdlksd sdclksd lksd sdlksd sdlkn cdlksd dlkze sdlkn sdsdnd sdlk";
+            //service.Adresse = "Chlef hay essalem n 3";
+            //service.Telephones.Add("021 87 54 43");
+            //service.Telephones.Add("021 27 53 43");
 
-            CreatePathologies();
+            GetPathologies();
         }
 
         public ObservableCollection<Pathologie> ListPathologies
@@ -57,19 +62,22 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
             }
         }
 
-        private void CreatePathologies()
+        private void GetPathologies()
         {
             var request = new RestRequest("Pathologies", Method.GET) { RequestFormat = RestSharp.DataFormat.Json };
             try
             {
-                client.ExecuteAsync<ObservableCollection<Pathologie>>(request, response =>
+                client.ExecuteAsync<Service>(request, response =>
                 {
                     if (response.StatusCode == HttpStatusCode.OK)
                     {
-                        ListPathologies = JsonConvert.DeserializeObject<ObservableCollection<Pathologie>>(response.Content);
+                        MessageBox.Show("There is a content for the response... "+response.Content);
+                        //MessageBox.Show("There is a content for the response... " + response.Data.Nom);
+
+                        Service = JsonConvert.DeserializeObject<Service>(response.Content);
+                        //MessageBox.Show("There is a content for the response... " + service.Nom + "  "+service.Pathologies[0].Nom);
                         //if (listPathologies.Count == 0)
-                        if (listPathologies.Count == 0)
-                            MessageBox.Show("There is 0 Pathologies...");
+                        //    MessageBox.Show("There is 0 Pathologies...");
                     }
                     else
                     {
@@ -107,6 +115,7 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
             //list.Add(new Pathologie("Poumon", "efzke eoizef zefoief zeoif zelfe zeflkeff zeklef elkjef zeflkj"));
             //return list;
         }
+        
 
         #region InotifyPropertyChanged Members
 

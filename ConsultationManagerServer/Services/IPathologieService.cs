@@ -15,8 +15,8 @@ namespace ConsultationManagerServer.Services
     public interface IPathologieService
     {
         [OperationContract]
-        [WebGet(UriTemplate = "", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        ObservableCollection<Pathologie> GetAllPathologies();
+        [WebGet(UriTemplate = "", ResponseFormat = WebMessageFormat.Json)]
+        Service GetAllPathologies();
 
         [OperationContract]
         [WebGet(UriTemplate = "{id}")]

@@ -47,8 +47,6 @@
                 <TextBlock Grid.Row="1" Text="Date d'ouverture" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
                 <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Service.DateOuverture}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" FontWeight="DemiBold"></TextBlock>
 
-                <!--<DatePicker Grid.Row="2" Grid.Column="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>-->
-
                 <TextBlock Grid.Row="2" Text="Domaine" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16"></TextBlock>
                 <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Service.Domaine}" TextWrapping="Wrap" FontSize="16" VerticalAlignment="Center" FontWeight="DemiBold"></TextBlock>
 
@@ -80,7 +78,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid>
-                    <ListView  x:Name="listViewPathologie" ItemsSource="{Binding ListPathologies}" >
+                    <ListView  x:Name="listViewPathologie" ItemsSource="{Binding Service.Pathologies}" >
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel Width="{Binding (FrameworkElement.ActualWidth), 
@@ -104,15 +102,6 @@
                                             <TextBlock Text="Déscription : " FontSize="14"></TextBlock>
                                             <TextBlock Text="{Binding Path = Description}" FontSize="14"></TextBlock>
                                         </WrapPanel>
-                                        <!--<WrapPanel>
-                                        <TextBlock Text="Ajouté Par : " FontSize="14"></TextBlock>
-                                        <TextBlock Text="{Binding Path = CreePar}" FontSize="14"></TextBlock>
-                                    </WrapPanel>
-                                    <WrapPanel>
-                                        <TextBlock Text="Dans le : " FontSize="14"></TextBlock>
-                                        <TextBlock Text="{Binding Path = CreeDans,  StringFormat=d}" FontSize="14"></TextBlock>
-                                    </WrapPanel>-->
-
                                     </WrapPanel>
                                 </materialDesign:Card>
                             </DataTemplate>

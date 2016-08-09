@@ -7,6 +7,7 @@ using System.Text;
 using ConsultationManagerServer.Models;
 using System.ServiceModel.Activation;
 using System.Collections.ObjectModel;
+using MongoDB.Bson;
 
 namespace ConsultationManagerServer.Services
 {
@@ -16,9 +17,19 @@ namespace ConsultationManagerServer.Services
     public class PathologieService : IPathologieService
     {
 
-        public ObservableCollection<Pathologie> GetAllPathologies()
+        public Service GetAllPathologies()
         {
-            return CreatePathologies();
+            Service service = new Service();
+            service.Id = "";
+            service.Nom = "Endochrinoe";
+            service.DateOuverture = DateTime.Now;
+            service.Domaine = "dkjsc sdlksc sdlksc sdlksd lksd dlk sdlksd sdlksd sdlksd sdclksd lksd sdlksd sdlkn cdlksd dlkze sdlkn sdsdnd sdlk";
+            service.Adresse = "Chlef hay essalem n 3";
+            service.Telephones.Add("021 87 54 43");
+            service.Telephones.Add("021 27 53 43");
+            service.Pathologies = CreatePathologies();
+
+            return service;
         }
 
         public Pathologie GetPathologie(string id)

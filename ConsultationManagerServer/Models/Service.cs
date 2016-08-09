@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.Serialization;
@@ -6,6 +9,7 @@ using System.Runtime.Serialization;
 namespace ConsultationManagerServer.Models
 {
     [DataContract]
+    [Serializable]
     public class Service : INotifyPropertyChanged
     {
         private string id;
@@ -14,25 +18,25 @@ namespace ConsultationManagerServer.Models
         private string domaine;
         private string adresse;
         private ObservableCollection<string> telephones;
-        private ObservableCollection<string> pathologies;
+        private ObservableCollection<Pathologie> pathologies;
 
         private DateTime creerDans;
         private string creePar;
 
         public Service()
         {
-            id = "";
             nom = "";
             dateOuverture = new DateTime();
             domaine = "";
             adresse = "";
             telephones = new ObservableCollection<string>();
-            pathologies = new ObservableCollection<string>();
+            pathologies = new ObservableCollection<Pathologie>();
             creerDans = DateTime.Now;
             creePar = "";
         }
 
         [DataMember]
+        [BsonId]
         public string Id
         {
             get
@@ -117,7 +121,7 @@ namespace ConsultationManagerServer.Models
         }
 
         [DataMember]
-        public ObservableCollection<string> Pathologies
+        public ObservableCollection<Pathologie> Pathologies
         {
             get
             {
