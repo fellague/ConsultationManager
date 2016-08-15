@@ -271,13 +271,86 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
             var updatePatholog = pathol as Pathologie;
             Console.WriteLine("PathologiesViewModel : Dialog Closed with Pathologie  " + updatePatholog.Nom);
             dialogUpdatePathol.Close();
-            //consultation.CommentsPatient.Add(newAnteced);
+
+            var request = new RestRequest("ServicePathologies/Pathologies/{id}", Method.PUT) { RequestFormat = RestSharp.DataFormat.Json };
+            JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+            {
+                DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+            };
+
+            var json = JsonConvert.SerializeObject(updatePatholog, microsoftDateFormatSettings);
+            request.AddParameter("application/json", json, ParameterType.RequestBody);
+            request.AddParameter("id", updatedPathologie.Id, ParameterType.UrlSegment);
+            try
+            {
+                client.ExecuteAsync(request, response =>
+                {
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        //MessageBox.Show("Client response : Pathologie have been saved... " + response.Content);
+                        Pathologie patholSave = JsonConvert.DeserializeObject<Pathologie>(response.Content);
+                        //MessageBox.Show("Client response : Pathologie have been saved... " + patholSave.Nom + " " + patholSave.Description);
+                        Application.Current.Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => ListPathologies.Add(patholSave)));
+                    }
+                    else
+                    {
+                        if (response.StatusCode == HttpStatusCode.NotFound)
+                            MessageBox.Show("404 : The ressource dose not exist...");
+                        else
+                            MessageBox.Show("Une Exeption est apparut...");
+                    }
+                });
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("An Exeption has accured" + error.Message);
+            }
         }
         public void DeletePathologie(object selectedPathologie)
         {
             Console.WriteLine("PathologiesViewModel : Remove Pathologie  ");
             var pathol = selectedPathologie as Pathologie;
-            listPathologies.Remove(pathol);
+            //listPathologies.Remove(pathol);
+
+            var request = new RestRequest("ServicePathologies/Pathologies/{id}", Method.DELETE) { RequestFormat = RestSharp.DataFormat.Json };
+            request.AddParameter("id", pathol.Id, ParameterType.UrlSegment);
+            try
+            {
+                client.ExecuteAsync(request, response =>
+                {
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        //Console.WriteLine("ContentElement  " + response.Content);
+                        MessageBox.Show("Pathologie is deleted... ");
+                        Application.Current.Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => listPathologies.Remove(pathol)));
+                    }
+                    else
+                    {
+                        if (response.StatusCode == HttpStatusCode.NotFound)
+                            MessageBox.Show("404 : The ressource dose not exist...");
+
+                        else
+                            MessageBox.Show("Une Exeption est apparut...");
+                    }
+
+                    //switch (response.StatusCode)
+                    //{
+                    //    case HttpStatusCode.OK:
+                    //        ListPathologies = JsonConvert.DeserializeObject<ObservableCollection<Pathologie>>(response.Content);
+                    //        break;
+                    //    case HttpStatusCode.NoContent:
+                    //        MessageBox.Show("There is 0 Pathologies...");
+                    //        break;
+                    //    default:
+                    //        MessageBox.Show("404 : The ressource dose not exist...");
+                    //        break;
+                    //}
+                });
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("An Exeption has accured" + error);
+            }
         }
         public void ShowDialogNewPathologie()
         {

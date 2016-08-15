@@ -13,6 +13,7 @@ using MongoDB.Bson;
 using System.Windows;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
+using MongoDB.Driver.Builders;
 
 namespace ConsultationManagerServer.Services
 {
@@ -25,8 +26,7 @@ namespace ConsultationManagerServer.Services
         {
             ServicePathologies servPathol = new ServicePathologies();
             //Service service = new Service();
-
-
+            
             DataBaseContext db = new DataBaseContext();
             servPathol.Service = db.Services.FindOne();
             if (servPathol.Service  == null)
@@ -122,11 +122,22 @@ namespace ConsultationManagerServer.Services
             //}
             return upService;
         }
-        
-        //public void DeletePathologie(string id)
-        //{
-        //    throw new NotImplementedException();
-        //}
+
+        public Pathologie UpdatePathologie(string id, Pathologie pathologie)
+        {
+            MessageBox.Show("Service Received an Update request for the pathologie..." + pathologie.Id);
+            DataBaseContext db = new DataBaseContext();
+            var query = Query.EQ("Id", pathologie.Id);
+            var update = Update.Set("Nom", pathologie.Nom).Set("Description", pathologie.Description);
+            var result = db.Pathologies.FindAndModify(query, null, update);
+            return pathologie;
+        }
+
+        public void DeletePathologie(string id)
+        {
+            DataBaseContext db = new DataBaseContext();
+            db.Pathologies.Remove(Query.EQ("Id", id));
+        }
 
         private Service CreateService()
         {

@@ -28,11 +28,15 @@ namespace ConsultationManagerServer.Services
         Pathologie AddPathologie(Pathologie pathologie);
 
         [OperationContract]
+        [WebInvoke(UriTemplate = "Pathologies/{id}", Method = "PUT")]
+        Pathologie UpdatePathologie(string id, Pathologie pathologie);
+
+        [OperationContract]
         [WebInvoke(UriTemplate = "{id}", Method = "PUT", ResponseFormat = WebMessageFormat.Json)]
         Service UpdateService(string id, Service service);
 
-        //[OperationContract]
-        //[WebInvoke(UriTemplate = "{id}", Method = "DELETE")]
-        //void DeletePathologie(string id);
+        [OperationContract]
+        [WebInvoke(UriTemplate = "Pathologies/{id}", Method = "DELETE")]
+        void DeletePathologie(string id);
     }
 }
