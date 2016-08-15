@@ -1,4 +1,4 @@
-﻿<Page x:Class="ConsultationManagerClient.Views.Pathologies.PathologiesPage"
+﻿<Page x:Class="ConsultationManagerClient.Views.Pathologies.ServiceDetailsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -45,10 +45,10 @@
                 <TextBlock Text="{Binding Service.Nom}" Grid.Column="1" FontSize="16" VerticalAlignment="Center" FontWeight="DemiBold"></TextBlock>
 
                 <TextBlock Grid.Row="1" Text="Date d'ouverture" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Service.DateOuverture}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" FontWeight="DemiBold"></TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Service.DateOuverture, StringFormat='dd/MM/yyy'}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" FontWeight="DemiBold"></TextBlock>
 
-                <TextBlock Grid.Row="2" Text="Domaine" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16"></TextBlock>
-                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Service.Domaine}" TextWrapping="Wrap" FontSize="16" VerticalAlignment="Center" FontWeight="DemiBold"></TextBlock>
+                <TextBlock Grid.Row="2" Text="Domaine" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" Margin="3"></TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Service.Domaine}" TextTrimming="CharacterEllipsis" TextWrapping="Wrap" FontSize="16" VerticalAlignment="Center" FontWeight="DemiBold"></TextBlock>
 
                 <TextBlock Grid.Row="3" Text="Adresse" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
                 <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Service.Adresse}" FontSize="16" VerticalAlignment="Center" FontWeight="DemiBold"></TextBlock>
@@ -78,7 +78,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid>
-                    <ListView  x:Name="listViewPathologie" ItemsSource="{Binding Service.Pathologies}" >
+                    <ListView  x:Name="listViewPathologie" ItemsSource="{Binding ListPathologies}" >
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel Width="{Binding (FrameworkElement.ActualWidth), 

@@ -27,7 +27,7 @@
                     <ItemsControl>
                         <Button Name="PathologiesBtn" Click="button_click_tout"  Content="Détail du Service" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
                         <Button Name="ApdateServiceDetailBtn" Click="button_click_update_service"  Content="Modifier le informations du Service" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
-                        <Button Name="NewPathologieBtn" Click="button_click_nouveau"  Content="Nouvelle Pathologie" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
+                        <!--<Button Name="NewPathologieBtn" Click="button_click_nouveau"  Content="Nouvelle Pathologie" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>-->
                     </ItemsControl>
 
                 </DockPanel>

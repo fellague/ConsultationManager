@@ -9,21 +9,29 @@ namespace ConsultationManagerServer
 {
     public class DataBaseContext
     {
-        private IMongoDatabase db;
+        private MongoDatabase db;
         public DataBaseContext()
         {
             MongoClientSettings settings = new MongoClientSettings();
             settings.Server = new MongoServerAddress("localhost", 27017);
             MongoClient client = new MongoClient(settings);
-            db = client.GetDatabase("ConsultationManagerDB");
-            //var collection = db.GetCollection<Service>("Service");
+            var server = client.GetServer();
+            db = server.GetDatabase("ConsultationManagerDB");
         }
 
-        public IMongoCollection<Service> Services
+        public MongoCollection<Service> Services
         {
             get
             {
                 return db.GetCollection<Service>("Service");
+            }
+        }
+
+        public MongoCollection<Pathologie> Pathologies
+        {
+            get
+            {
+                return db.GetCollection<Pathologie>("Pathologie");
             }
         }
     }

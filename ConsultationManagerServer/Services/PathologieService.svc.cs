@@ -5,9 +5,14 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using ConsultationManagerServer.Models;
+using ConsultationManagerServer.Models.SerializedModels;
+
 using System.ServiceModel.Activation;
 using System.Collections.ObjectModel;
 using MongoDB.Bson;
+using System.Windows;
+using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 
 namespace ConsultationManagerServer.Services
 {
@@ -16,53 +21,143 @@ namespace ConsultationManagerServer.Services
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class PathologieService : IPathologieService
     {
+        public ServicePathologies GetServiceDetails()
+        {
+            ServicePathologies servPathol = new ServicePathologies();
+            //Service service = new Service();
 
-        public Service GetAllPathologies()
+
+            DataBaseContext db = new DataBaseContext();
+            servPathol.Service = db.Services.FindOne();
+            if (servPathol.Service  == null)
+            {
+                MessageBox.Show("There is no service, a new service is initiated... ");
+                servPathol.Service = CreateService();
+            }
+            else
+            {
+                try
+                {
+                    //List<Pathologie> pathols = new List<Pathologie>();
+                    //servPathol.ListPthologie=db.Pathologies.FindAll()
+                    //pathols = db.Pathologies.AsQueryable().Where(p => p.IdService == service.Id).ToList();
+                    if (db.Pathologies.Exists())
+                    {
+                        var pathols = db.Pathologies.AsQueryable().Where(p => p.IdService == servPathol.Service.Id).ToList();
+                        //var pathols = db.Pathologies.FindAll().Where(p => p.IdService == service.Id).ToList();
+                        if (pathols.Count() > 0)
+                            foreach (Pathologie item in pathols)
+                                servPathol.ListPthologie.Add(item);
+                        else
+                        {
+                            MessageBox.Show("There is no pathologie for the service... ");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No Pathologies collection, No pathologie had ever been created... ");
+                        return servPathol;
+                    }
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show("A Server Exeption has accured" + error.Message);
+                }
+            }
+            return servPathol;
+        }
+
+        //public Pathologie GetPathologie(string id)
+        //{
+        //    //ObservableCollection<Pathologie> pathologs = CreatePathologies();
+        //    //Pathologie patholog = pathologs.Where(w => w.Id.Equals(id)).First();
+        //    Pathologie patholog = new Pathologie();
+        //    return patholog;
+        //}
+
+        public Pathologie AddPathologie(Pathologie pathologieSaved)
+        {
+            Pathologie patholog = new Pathologie();
+            ObservableCollection<Pathologie> listPathologies = new ObservableCollection<Pathologie>();
+
+
+            DataBaseContext db = new DataBaseContext();
+            db.Pathologies.Save(pathologieSaved);
+
+            //var pathologExist = db.Pathologies.AsQueryable().Where(p => p.Nom == pathologieSaved.Nom && p.IdService == pathologieSaved.IdService);
+            //if (pathologExist.Any() || !db.Pathologies.Exists())
+            //{
+            //    MessageBox.Show("Pathologie Saved... ");
+            //    db.Pathologies.Save(pathologieSaved);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Pathologie Already exist... ");
+            //}
+
+            return pathologieSaved;
+        }
+
+        public Service UpdateService(string id, Service upService)
+        {
+            MessageBox.Show("Service Received an Update request..."+ upService.Id);
+            DataBaseContext db = new DataBaseContext();
+            var update = new UpdateDocument {
+                { "$set", new BsonDocument("Nom", upService.Nom) },
+                { "$set", new BsonDocument("DateOuverture", upService.DateOuverture) },
+                { "$set", new BsonDocument("Domaine", upService.Domaine) },
+                { "$set", new BsonDocument("Adresse", upService.Adresse) }
+            };
+            var query2 =
+            from book in db.Services.FindAll()
+                where book.Id == upService.Id
+                select book;
+            var mongoQuery = ((MongoQueryable<Service>)query2).GetMongoQuery();
+            db.Services.Update(mongoQuery, update);
+            //upService = db.Services.Update("Content", upService);
+            //if (service == null)
+            //{
+            //    MessageBox.Show("There is no service, a new service is initiated... ");
+            //    service = CreateService();
+            //}
+            return upService;
+        }
+        
+        //public void DeletePathologie(string id)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        private Service CreateService()
         {
             Service service = new Service();
-            service.Id = "";
-            service.Nom = "Endochrinoe";
+
+            service.Nom = "Endochrinologie";
             service.DateOuverture = DateTime.Now;
-            service.Domaine = "dkjsc sdlksc sdlksc sdlksd lksd dlk sdlksd sdlksd sdlksd sdclksd lksd sdlksd sdlkn cdlksd dlkze sdlkn sdsdnd sdlk";
+            service.Domaine = "L’unité d’endocrinologie prend en charge des patients souffrant de maladies endocriniennes et assure le diagnostic, le traitement, le suivi et la prise en charge globale des patients, en mettant à leur disposition compétences, techniques de diagnostic et traitements les plus récents.";
             service.Adresse = "Chlef hay essalem n 3";
             service.Telephones.Add("021 87 54 43");
             service.Telephones.Add("021 27 53 43");
-            service.Pathologies = CreatePathologies();
-
+            DataBaseContext db = new DataBaseContext();
+            db.Services.Save(service);
             return service;
         }
 
-        public Pathologie GetPathologie(string id)
-        {
-            ObservableCollection<Pathologie> pathologs = CreatePathologies();
-            Pathologie patholog = pathologs.Where(w => w.Id.Equals(id)).First();
-            return patholog;
-        }
+        //private ObservableCollection<Pathologie> CreatePathologies()
+        //{
+        //    ObservableCollection<Pathologie> listPathologies = new ObservableCollection<Pathologie>();
 
-        public bool AddPathologie(Pathologie pathologie)
-        {
-            return true;
-        }
+        //    listPathologies.Add(new Pathologie { Nom = "Thyroide", Description = "c'est une patholgie qui tklcs lj djlsjd sdflkjds lskdjns clkcd cdkljcd sdlk" });
+        //    listPathologies.Add(new Pathologie { Nom = "Cancer", Description = "lkqskxc okqsxl qslkqskl xkl,xs xlkx xlk poqpx qsozaf sdzeed" });
+        //    listPathologies.Add(new Pathologie { Nom = "Diabetre", Description = "zsdef sdlk sdcl,k cdmlksd epoied ioue oiusd diou" });
+        //    listPathologies.Add(new Pathologie { Nom = "Cardiologue", Description = "oeuzi ezioefz eoiuef epfoize fpoiezpo zefoizef ezofioe zefoiuez zefiouez" });
+        //    listPathologies.Add(new Pathologie { Nom = "Poumon", Description = "efzke eoizef zefoief zeoif zelfe zeflkeff zeklef elkjef zeflkj" });
+        //    DataBaseContext db = new DataBaseContext();
+        //    foreach (Pathologie patholog in listPathologies)
+        //        db.Pathologies.Save(patholog);
+        //    //db.Services.Save(service);
+        //    return listPathologies;
+        //}
 
-        public void UpdatePathologie(string id, Pathologie pathologie)
-        {
-            throw new NotImplementedException();
-        }
-        
-        public void DeletePathologie(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        private ObservableCollection<Pathologie> CreatePathologies()
-        {
-            ObservableCollection<Pathologie> list = new ObservableCollection<Pathologie>();
-            list.Add(new Pathologie("1", "Thyroide", "c'est une patholgie qui tklcs lj djlsjd sdflkjds lskdjns clkcd cdkljcd sdlk"));
-            list.Add(new Pathologie("2", "Cancer", "lkqskxc okqsxl qslkqskl xkl,xs xlkx xlk poqpx qsozaf sdzeed"));
-            list.Add(new Pathologie("3", "Diabetre", "zsdef sdlk sdcl,k cdmlksd epoied ioue oiusd diou"));
-            list.Add(new Pathologie("4", "Cardiologue", "oeuzi ezioefz eoiuef epfoize fpoiezpo zefoizef ezofioe zefoiuez zefiouez"));
-            list.Add(new Pathologie("5", "Poumon", "efzke eoizef zefoief zeoif zelfe zeflkeff zeklef elkjef zeflkj"));
-            return list;
-        }
     }
 }

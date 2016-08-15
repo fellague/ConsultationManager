@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System.ComponentModel;
 using System.Runtime.Serialization;
 
 namespace ConsultationManagerServer.Models
@@ -6,27 +8,39 @@ namespace ConsultationManagerServer.Models
     [DataContract]
     public class Pathologie : INotifyPropertyChanged
     {
-        private string id;
-        private string nom; //père, mère,frère
+        private string idService;
+        private string nom; 
         private string description;
-        public Pathologie(string id, string nom, string descr)
+
+        public Pathologie()
         {
-            this.id = id;
-            this.nom = nom;
-            description = descr;
+            //this.id = "";
+            this.nom = "";
+            description = "";
+            idService = "";
         }
+
+        [BsonId]
+        public ObjectId _id { get; set; }
 
         [DataMember]
         public string Id
         {
+            get { return _id.ToString(); }
+            set { _id = ObjectId.Parse(value); }
+        }
+
+        [DataMember]
+        public string IdService
+        {
             get
             {
-                return id;
+                return idService;
             }
             set
             {
-                id = value;
-                OnPropertyChanged("Id");
+                idService = value;
+                OnPropertyChanged("IdService");
             }
         }
 

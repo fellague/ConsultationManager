@@ -19,9 +19,9 @@ namespace ConsultationManagerClient.Views.Pathologies
     /// <summary>
     /// Interaction logic for PathologiesPage.xaml
     /// </summary>
-    public partial class PathologiesPage : Page
+    public partial class ServiceDetailsPage : Page
     {
-        internal PathologiesPage(PathologiesViewModel patholVM)
+        internal ServiceDetailsPage(PathologiesViewModel patholVM)
         {
             InitializeComponent();
             DataContext = patholVM;

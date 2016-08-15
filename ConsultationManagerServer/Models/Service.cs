@@ -5,50 +5,61 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace ConsultationManagerServer.Models
 {
+    //[Serializable]
     [DataContract]
-    [Serializable]
-    public class Service : INotifyPropertyChanged
+    public class Service : INotifyPropertyChanged//, IMongoId
     {
-        private string id;
-        private string nom; //père, mère,frère
+        private string nom;
         private DateTime dateOuverture;
         private string domaine;
         private string adresse;
         private ObservableCollection<string> telephones;
-        private ObservableCollection<Pathologie> pathologies;
+        //private ObservableCollection<string> pathologiesId;
 
         private DateTime creerDans;
         private string creePar;
 
         public Service()
         {
+            //id = new ObjectId().ToString();
             nom = "";
             dateOuverture = new DateTime();
             domaine = "";
             adresse = "";
             telephones = new ObservableCollection<string>();
-            pathologies = new ObservableCollection<Pathologie>();
+            //pathologiesId = new ObservableCollection<string>();
             creerDans = DateTime.Now;
             creePar = "";
         }
 
-        [DataMember]
         [BsonId]
+        public ObjectId _id { get; set; }
+
+        [DataMember]
         public string Id
         {
-            get
-            {
-                return id;
-            }
-            set
-            {
-                id = value;
-                OnPropertyChanged("Id");
-            }
+            get { return _id.ToString(); }
+            set { _id = ObjectId.Parse(value); }
         }
+
+        //[DataMember]
+        //[BsonId]
+        //public string Id
+        //{
+        //    get
+        //    {
+        //        return id;
+        //    }
+        //    set
+        //    {
+        //        id = value;
+        //        OnPropertyChanged("Id");
+        //    }
+        //}
 
         [DataMember]
         public string Nom
@@ -120,19 +131,19 @@ namespace ConsultationManagerServer.Models
             }
         }
 
-        [DataMember]
-        public ObservableCollection<Pathologie> Pathologies
-        {
-            get
-            {
-                return pathologies;
-            }
-            set
-            {
-                pathologies = value;
-                OnPropertyChanged("Pathologies");
-            }
-        }
+        //[DataMember]
+        //public ObservableCollection<string> PathologiesId
+        //{
+        //    get
+        //    {
+        //        return pathologiesId;
+        //    }
+        //    set
+        //    {
+        //        pathologiesId = value;
+        //        OnPropertyChanged("PathologiesId");
+        //    }
+        //}
 
         [DataMember]
         public DateTime CreerDans

@@ -11,7 +11,7 @@
 
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -23,11 +23,9 @@
             <TextBlock  FontSize="24">Modifier le Service</TextBlock>
         </WrapPanel>
 
-        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+        <Grid Grid.Row="1" Margin="20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -42,7 +40,7 @@
             <TextBox Text="{Binding Service.Nom}" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Nom" Margin="20"></TextBox>
 
             <TextBlock Grid.Row="1" Text="Date d'ouverture" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="20"></TextBlock>
-            <DatePicker Grid.Row="1" Grid.Column="1" Text="{Binding Service.DateOuverture}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="20"/>
+            <DatePicker Grid.Row="1" Grid.Column="1" SelectedDate="{Binding Path=Service.DateOuverture, Mode=TwoWay}"  FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="20"/>
 
             <TextBlock Grid.Row="2" Text="Domaine" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" Margin="20"></TextBlock>
             <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Service.Domaine}" TextWrapping="Wrap" AcceptsReturn="True" MinLines="7" MaxLines="7" VerticalScrollBarVisibility="Auto"
@@ -95,9 +93,94 @@
                     </ListBox>
                 </Grid>
             </Border>
-
         </Grid>
 
-        <Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width=" 250" Margin=" 0 0 50 50" FontSize="16">Modifier</Button>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+              <TextBlock  FontSize="20">Les Pathologies du Service</TextBlock>
+            <Button  HorizontalAlignment="Right"
+                        Command="{Binding NewPathologieDialogCommand}"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="0 0 50 0"
+                        ToolTip="Ajouter une Pathologie">
+                <materialDesign:PackIcon Kind="Plus" Height="30" Width="30" />
+            </Button>
+            <Grid Grid.Row="1">
+                <ListBox ItemsSource="{Binding ListPathologies, Mode=TwoWay}" HorizontalContentAlignment="Stretch">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <!--<RowDefinition Height="Auto"/>-->
+                                </Grid.RowDefinitions>
+
+                                <WrapPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 0">
+                                    <TextBlock Text="{Binding Path=Nom}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="DemiBold"></TextBlock>
+                                    <!--<TextBlock Text="{Binding Path=PrenomPatient}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text=" assisté par le médecin " FontSize="16"></TextBlock>
+                                        <TextBlock Text="{Binding Path=NomMedecin}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=PrenomMedecin}" FontSize="16" FontWeight="Bold"></TextBlock>-->
+                                </WrapPanel>
+                                <WrapPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 5">
+                                    <TextBlock Text="{Binding Path=Description}" FontSize="16"></TextBlock>
+                                    <!--<TextBlock Text="{Binding Path=DateRdv,  StringFormat='dd/MM/yyy'}" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text=", position "></TextBlock>
+                                        <TextBlock Text="{Binding Path=Rang}" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text=" sur la fille d'attente, heure éstimé à "></TextBlock>
+                                        <TextBlock Text="{Binding Path=DateRdv,  StringFormat=t}" FontWeight="Bold"></TextBlock>-->
+                                </WrapPanel>
+
+                                <WrapPanel Grid.Column="1" Grid.RowSpan="3">
+                                    <materialDesign:PopupBox
+                                                         Margin="20" ToolTip="Plus d'Opionts">
+                                        <StackPanel>
+                                            <Button  
+                                                    Command="{Binding DataContext.UpdatePathologieDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
+                                                    ToolTip="Modifier la Pathologie">
+                                                <materialDesign:PackIcon Kind="Pencil" Height="24" Width="24" />
+                                            </Button>
+                                            <Button  
+                                                    Command="{Binding DataContext.RemovePathologieCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
+                                                    ToolTip="Supprimer la Pathologie">
+                                                <materialDesign:PackIcon Kind="Delete" Height="24" Width="24" />
+                                            </Button>
+                                            <!--<Button  Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
+                                                    ToolTip="Plus de Détails">
+                                                    <materialDesign:PackIcon Kind="Eye" Height="24" Width="24" />
+                                                </Button>
+                                                <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
+                                                    ToolTip="Voir Dossier Médical">
+                                                    <materialDesign:PackIcon Kind="FolderPlus" Height="24" Width="24" />
+                                                </Button>-->
+                                        </StackPanel>
+                                    </materialDesign:PopupBox>
+                                </WrapPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+            
+            <Button Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width=" 250" Margin=" 0 0 50 50" FontSize="16"
+                    Command="{Binding UpdateServiceCommand}" >
+                Modifier
+            </Button>
+        </Grid>
+
+        
     </Grid>
 </Page>

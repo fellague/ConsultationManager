@@ -103,7 +103,6 @@ namespace ConsultationManagerClient.ViewModels.RDVs
 
         #endregion
 
-
         #region ListRvdViewModel Commands
 
         public ICommand UpdateRdvDialogCommand
@@ -131,6 +130,8 @@ namespace ConsultationManagerClient.ViewModels.RDVs
         }
 
         #endregion
+
+        #region ListRvdViewModel Methodes
 
         public void ShowDialogUpdateRvd(object selectedRdv)
         {
@@ -250,6 +251,8 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             }
             return allMyList;
         }
+
+        #endregion
 
         #region InotifyPropertyChanged Members
 

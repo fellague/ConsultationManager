@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using ConsultationManagerServer.Models;
+using ConsultationManagerServer.Models.SerializedModels;
 using System.Collections.ObjectModel;
 
 namespace ConsultationManagerServer.Services
@@ -16,22 +17,22 @@ namespace ConsultationManagerServer.Services
     {
         [OperationContract]
         [WebGet(UriTemplate = "", ResponseFormat = WebMessageFormat.Json)]
-        Service GetAllPathologies();
+        ServicePathologies GetServiceDetails();
+
+        //[OperationContract]
+        //[WebGet(UriTemplate = "{id}")]
+        //Pathologie GetPathologie(string id);
 
         [OperationContract]
-        [WebGet(UriTemplate = "{id}")]
-        Pathologie GetPathologie(string id);
+        [WebInvoke(UriTemplate = "Pathologies", Method = "POST")]
+        Pathologie AddPathologie(Pathologie pathologie);
 
         [OperationContract]
-        [WebInvoke(UriTemplate = "", Method = "POST")]
-        bool AddPathologie(Pathologie pathologie);
+        [WebInvoke(UriTemplate = "{id}", Method = "PUT", ResponseFormat = WebMessageFormat.Json)]
+        Service UpdateService(string id, Service service);
 
-        [OperationContract]
-        [WebInvoke(UriTemplate = "{id}", Method = "PUT")]
-        void UpdatePathologie(string id, Pathologie pathologie);
-
-        [OperationContract]
-        [WebInvoke(UriTemplate = "{id}", Method = "DELETE")]
-        void DeletePathologie(string id);
+        //[OperationContract]
+        //[WebInvoke(UriTemplate = "{id}", Method = "DELETE")]
+        //void DeletePathologie(string id);
     }
 }

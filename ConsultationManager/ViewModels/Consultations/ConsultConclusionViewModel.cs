@@ -56,6 +56,8 @@ namespace ConsultationManagerClient.ViewModels.Consultations
             conseils = new ObservableCollection<string>();
             AddConseilCommand = new RelayCommand(param => AjouterConseil());
             RemoveConseilCommand = new RelayCommand(param => DeleteConseil(param));
+
+            compteRendu = new CompteRendu("");
         }
 
         #region ConsultationViewModel Variables

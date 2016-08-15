@@ -54,6 +54,11 @@
       <HintPath>..\packages\MongoDB.Driver.Core.2.2.4\lib\net45\MongoDB.Driver.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MongoDB.Driver.Legacy, Version=2.2.4.26, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\mongocsharpdriver.2.2.4\lib\net45\MongoDB.Driver.Legacy.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System.ServiceModel.Activation" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -98,6 +103,7 @@
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\RDV.cs" />
     <Compile Include="Models\RemarqueMedecin.cs" />
+    <Compile Include="Models\SerializedModels\ServicePathologies.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\Traitement.cs" />
     <Compile Include="Models\TraitementsComplemtaires.cs" />

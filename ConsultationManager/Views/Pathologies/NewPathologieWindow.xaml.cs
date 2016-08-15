@@ -1,5 +1,4 @@
-﻿using ConsultationManagerClient.ViewModels.Pathologies;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,20 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ConsultationManagerClient.Views.Pathologies
 {
     /// <summary>
-    /// Interaction logic for NewPathologiePage.xaml
+    /// Interaction logic for NewPathologieWindow.xaml
     /// </summary>
-    public partial class NewPathologiePage : Page
+    public partial class NewPathologieWindow : Window
     {
-        internal NewPathologiePage(PathologiesViewModel patholVM)
+        public NewPathologieWindow()
         {
             InitializeComponent();
-            DataContext = patholVM;
         }
     }
 }

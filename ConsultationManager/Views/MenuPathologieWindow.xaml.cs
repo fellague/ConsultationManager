@@ -27,27 +27,27 @@ namespace ConsultationManagerClient.Views
         {
             InitializeComponent();
             pathologieVM = new PathologiesViewModel();
-            _framePathologies.Navigate(new PathologiesPage(pathologieVM));
-            coloringTabs(PathologiesBtn, ApdateServiceDetailBtn, NewPathologieBtn);
+            _framePathologies.Navigate(new ServiceDetailsPage(pathologieVM));
+            coloringTabs(PathologiesBtn, ApdateServiceDetailBtn);
         }
 
         private void button_click_tout(object sender, RoutedEventArgs e)
         {
-            _framePathologies.Navigate(new PathologiesPage(pathologieVM));
-            coloringTabs(PathologiesBtn, ApdateServiceDetailBtn, NewPathologieBtn);
+            _framePathologies.Navigate(new ServiceDetailsPage(pathologieVM));
+            coloringTabs(PathologiesBtn, ApdateServiceDetailBtn);
         }
 
         private void button_click_update_service(object sender, RoutedEventArgs e)
         {
             _framePathologies.Navigate(new UpdateServicePage(pathologieVM));
-            coloringTabs(ApdateServiceDetailBtn, PathologiesBtn, NewPathologieBtn);
+            coloringTabs(ApdateServiceDetailBtn, PathologiesBtn);
         }
 
-        private void button_click_nouveau(object sender, RoutedEventArgs e)
-        {
-            _framePathologies.Navigate(new NewPathologiePage(pathologieVM));
-            coloringTabs(NewPathologieBtn, PathologiesBtn, ApdateServiceDetailBtn);
-        }
+        //private void button_click_nouveau(object sender, RoutedEventArgs e)
+        //{
+        //    _framePathologies.Navigate(new NewPathologiePage(pathologieVM));
+        //    coloringTabs(NewPathologieBtn, PathologiesBtn, ApdateServiceDetailBtn);
+        //}
 
         private void button_click_home(object sender, RoutedEventArgs e)
         {
@@ -67,15 +67,13 @@ namespace ConsultationManagerClient.Views
 
         }
 
-        private void coloringTabs(Button puprpleBtn, Button transparantBtn1, Button transparantBtn2)
+        private void coloringTabs(Button puprpleBtn, Button transparantBtn1)
         {
             puprpleBtn.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF945BF9"));
             transparantBtn1.Background = Brushes.Transparent;
-            transparantBtn2.Background = Brushes.Transparent;
 
             puprpleBtn.Foreground = Brushes.White;
             transparantBtn1.Foreground = Brushes.Black;
-            transparantBtn2.Foreground = Brushes.Black;
         }
     }
 }
