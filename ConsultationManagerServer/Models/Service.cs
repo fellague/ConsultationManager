@@ -11,27 +11,24 @@ namespace ConsultationManagerServer.Models
 {
     //[Serializable]
     [DataContract]
-    public class Service : INotifyPropertyChanged//, IMongoId
+    public class Service : INotifyPropertyChanged
     {
         private string nom;
         private DateTime dateOuverture;
         private string domaine;
         private string adresse;
         private ObservableCollection<string> telephones;
-        //private ObservableCollection<string> pathologiesId;
 
         private DateTime creerDans;
         private string creePar;
 
         public Service()
         {
-            //id = new ObjectId().ToString();
             nom = "";
             dateOuverture = new DateTime();
             domaine = "";
             adresse = "";
             telephones = new ObservableCollection<string>();
-            //pathologiesId = new ObservableCollection<string>();
             creerDans = DateTime.Now;
             creePar = "";
         }
@@ -45,21 +42,6 @@ namespace ConsultationManagerServer.Models
             get { return _id.ToString(); }
             set { _id = ObjectId.Parse(value); }
         }
-
-        //[DataMember]
-        //[BsonId]
-        //public string Id
-        //{
-        //    get
-        //    {
-        //        return id;
-        //    }
-        //    set
-        //    {
-        //        id = value;
-        //        OnPropertyChanged("Id");
-        //    }
-        //}
 
         [DataMember]
         public string Nom

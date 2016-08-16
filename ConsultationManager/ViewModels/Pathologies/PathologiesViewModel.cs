@@ -27,6 +27,7 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
 
         private RestClient client = new RestClient("http://localhost:64183/");
         private Service service;
+        private Service cloneService;
         private ObservableCollection<Pathologie> listPathologies;
 
         private string newTelephone;
@@ -198,15 +199,11 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
                 {
                     if (response.StatusCode == HttpStatusCode.OK)
                     {
-                        MessageBox.Show("There is a content for the response... "+response.Content);
-                        //Console.Write("There is a content for the response... " + response.Content);
-
+                        //MessageBox.Show("There is a content for the response... "+response.Content);
                         servPatholog = JsonConvert.DeserializeObject<ServicePathologies>(response.Content);
                         Service = servPatholog.Service;
+                        cloneService = Service;
                         ListPathologies = servPatholog.ListPthologie;
-
-                        //Console.WriteLine("ContentElement  " + response.Content);
-                        //MessageBox.Show("There is a content for the response... " + service.Nom + "  " + service.Id + "  "+service.Pathologies[0].Nom);
                         if (ListPathologies.Count == 0)
                             MessageBox.Show("There is 0 Pathologies...");
                     }
@@ -289,7 +286,6 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
                     {
                         //MessageBox.Show("Client response : Pathologie have been saved... " + response.Content);
                         Pathologie patholSave = JsonConvert.DeserializeObject<Pathologie>(response.Content);
-                        //MessageBox.Show("Client response : Pathologie have been saved... " + patholSave.Nom + " " + patholSave.Description);
                         Application.Current.Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => ListPathologies.Add(patholSave)));
                     }
                     else
@@ -404,67 +400,35 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
 
         private void UpdateService()
         {
+            
             var request = new RestRequest("ServicePathologies/{id}", Method.PUT) { RequestFormat = RestSharp.DataFormat.Json };
-            //request.JsonSerializer = new RestSharpJsonNetSerializer();
             request.AddParameter("id", service.Id, ParameterType.UrlSegment);
-            //request.AddHeader("Content-type", "application/json");
-
-            //request.AddJsonBody(new {
-            //    Nom = "Endochrinologie",
-            //    DateOuverture = "2016-08-10T04:56:02.421Z",
-            //    Domaine = "L’unité d’endocrinologie prend en charge des patients souffrant de maladies endocriniennes et assure le diagnostic, le traitement, le suivi et la prise en charge globale des patients, en mettant à leur disposition compétences, techniques de diagnostic et traitements les plus récents.",
-            //    Adresse = "Chlef hay essalem n 3",
-            //    Id = "57aab3e20fb7de267c01c3f0",
-            //    CreerDans = "2016-08-10T04:56:02.421Z",
-            //    CreePar = ""
-            //});
-
-            //var request = new RestRequest("Pathologies/"+service.Id, Method.PUT) { RequestFormat = RestSharp.DataFormat.Json };
-
-            //request.JsonSerializer = new RestSharpJsonNetSerializer();
             JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
             {
                 DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
             };
-
-            //request.AddBody(service);
-            //request.AddBody(JsonConvert.SerializeObject(service, microsoftDateFormatSettings));
-            //request.AddJsonBody(JsonConvert.SerializeObject(service, microsoftDateFormatSettings));
-            //request.AddBody(request.JsonSerializer.Serialize(service));
-            //request.AddJsonBody(service);
-            //request.AddJsonBody(JsonConvert.SerializeObject(service));
-            //request.AddJsonBody(request.JsonSerializer.Serialize(service));
-
-            //var json = JsonConvert.SerializeObject(service);
-            //var json = request.JsonSerializer.Serialize(service);
             var json = JsonConvert.SerializeObject(service, microsoftDateFormatSettings);
             request.AddParameter("application/json", json, ParameterType.RequestBody);
-            //MessageBox.Show("json :" + request.JsonSerializer.Serialize(service));
-            //MessageBox.Show("json :" + JsonConvert.SerializeObject(service, microsoftDateFormatSettings));
-            //Console.Write("json :" + request.JsonSerializer.Serialize(service));
-            //Console.Write("json :" + JsonConvert.SerializeObject(service, microsoftDateFormatSettings));
             try
             {
-                //MessageBox.Show("Service update... "+service.Nom + " " +service._id);
-                //client.Execute(request);
-                client.ExecuteAsync(request, response => {
-                    MessageBox.Show("respnse : "+client.BaseUrl + "  " + request.Resource+" "+response.StatusCode);
+                client.ExecuteAsync(request, response =>
+                {
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        //MessageBox.Show("Client response : Pathologie have been saved... " + response.Content);
+                        Service serviceSave = JsonConvert.DeserializeObject<Service>(response.Content);
+                        MessageBox.Show("Client response : Service have been saved... " + serviceSave.Nom);
+                        //Application.Current.Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => ));
+                    }
+                    else
+                    {
+                        Application.Current.Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => Service = cloneService));
+                        if (response.StatusCode == HttpStatusCode.NotFound)
+                            MessageBox.Show("404 : The ressource dose not exist...");
+                        else
+                            MessageBox.Show("Une Exeption est apparut...");
+                    }
                 });
-                //client.ExecuteAsync(request, response =>
-                //{
-                //    if (response.StatusCode == HttpStatusCode.OK)
-                //    {
-                //        MessageBox.Show("Service have been updated... ");
-
-                //    }
-                //    else
-                //    {
-                //        if (response.StatusCode == HttpStatusCode.NotFound)
-                //            MessageBox.Show("404 : The ressource dose not exist...");
-                //        else
-                //            MessageBox.Show("Une Exeption est apparut...");
-                //    }
-                //});
             }
             catch (Exception error)
             {

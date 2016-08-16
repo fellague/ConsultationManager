@@ -67,14 +67,6 @@ namespace ConsultationManagerServer.Services
             return servPathol;
         }
 
-        //public Pathologie GetPathologie(string id)
-        //{
-        //    //ObservableCollection<Pathologie> pathologs = CreatePathologies();
-        //    //Pathologie patholog = pathologs.Where(w => w.Id.Equals(id)).First();
-        //    Pathologie patholog = new Pathologie();
-        //    return patholog;
-        //}
-
         public Pathologie AddPathologie(Pathologie pathologieSaved)
         {
             Pathologie patholog = new Pathologie();
@@ -100,32 +92,22 @@ namespace ConsultationManagerServer.Services
 
         public Service UpdateService(string id, Service upService)
         {
-            MessageBox.Show("Service Received an Update request..."+ upService.Id);
+            MessageBox.Show("ServicePathologies service Received an Update request for the service..." + upService.Id);
             DataBaseContext db = new DataBaseContext();
-            var update = new UpdateDocument {
-                { "$set", new BsonDocument("Nom", upService.Nom) },
-                { "$set", new BsonDocument("DateOuverture", upService.DateOuverture) },
-                { "$set", new BsonDocument("Domaine", upService.Domaine) },
-                { "$set", new BsonDocument("Adresse", upService.Adresse) }
-            };
-            var query2 =
-            from book in db.Services.FindAll()
-                where book.Id == upService.Id
-                select book;
-            var mongoQuery = ((MongoQueryable<Service>)query2).GetMongoQuery();
-            db.Services.Update(mongoQuery, update);
-            //upService = db.Services.Update("Content", upService);
-            //if (service == null)
-            //{
-            //    MessageBox.Show("There is no service, a new service is initiated... ");
-            //    service = CreateService();
-            //}
+            var query = Query.EQ("Id", upService.Id);
+            var update = Update
+                .Set("Nom", upService.Nom)
+                .Set("DateOuverture", upService.DateOuverture)
+                .Set("Domaine", upService.Domaine)
+                .Set("Adresse", upService.Adresse)
+                .Set("Telephones", new BsonArray(upService.Telephones));
+            var result = db.Services.FindAndModify(query, null, update);
             return upService;
         }
 
         public Pathologie UpdatePathologie(string id, Pathologie pathologie)
         {
-            MessageBox.Show("Service Received an Update request for the pathologie..." + pathologie.Id);
+            MessageBox.Show("ServicePathologies service Received an Update request for the pathologie..." + pathologie.Id);
             DataBaseContext db = new DataBaseContext();
             var query = Query.EQ("Id", pathologie.Id);
             var update = Update.Set("Nom", pathologie.Nom).Set("Description", pathologie.Description);

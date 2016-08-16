@@ -14,7 +14,6 @@ namespace ConsultationManagerServer.Models
 
         public Pathologie()
         {
-            //this.id = "";
             this.nom = "";
             description = "";
             idService = "";
