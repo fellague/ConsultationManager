@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7745a124-4ed8-4499-8d76-4841ddf44b9b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:64183/Services/PathologieService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PathologieService.xsd" MetadataType="Schema" ID="20017212-40a5-4ddf-beb8-59f787374c1b" SourceId="1" SourceUrl="http://localhost:64183/Services/PathologieService.svc?xsd=xsd3" />
+    <MetadataFile FileName="PathologieService1.xsd" MetadataType="Schema" ID="dee74ce1-2368-4a2e-b792-5bc09cde9261" SourceId="1" SourceUrl="http://localhost:64183/Services/PathologieService.svc?xsd=xsd2" />
+    <MetadataFile FileName="PathologieService2.xsd" MetadataType="Schema" ID="22b26217-0490-4cd2-8306-d9561fd549ad" SourceId="1" SourceUrl="http://localhost:64183/Services/PathologieService.svc?xsd=xsd4" />
+    <MetadataFile FileName="PathologieService.wsdl" MetadataType="Wsdl" ID="b893d766-92f9-4c62-a4da-f11a1a175ffa" SourceId="1" SourceUrl="http://localhost:64183/Services/PathologieService.svc?wsdl" />
+    <MetadataFile FileName="PathologieService3.xsd" MetadataType="Schema" ID="b7e883f2-c8ee-48f8-aa94-9e3acd1c7c8d" SourceId="1" SourceUrl="http://localhost:64183/Services/PathologieService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PathologieService4.xsd" MetadataType="Schema" ID="b3d2fbe6-9fb1-4187-8043-ed31293b44b1" SourceId="1" SourceUrl="http://localhost:64183/Services/PathologieService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

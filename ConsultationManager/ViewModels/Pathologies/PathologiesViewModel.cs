@@ -20,6 +20,8 @@ using ConsultationManagerClient.Views.Pathologies;
 using System.Windows.Threading;
 using RestSharp.Authenticators;
 using System.ServiceModel.Security;
+using ConsultationManagerClient.Properties;
+using ConsultationManager.ServiceReferencePathologie;
 
 namespace ConsultationManagerClient.ViewModels.Pathologies
 {
@@ -195,49 +197,65 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
 
         private void GetServicePathologies()
         {
+            //ServicePathologies servPatholog = new ServicePathologies();
+            //var request = new RestRequest("ServicePathologies", Method.GET) { RequestFormat = RestSharp.DataFormat.Json };
+            //try
+            //{
+            //    client.ExecuteAsync<ServicePathologies>(request, response =>
+            //    {
+            //        if (response.StatusCode == HttpStatusCode.OK)
+            //        {
+            //            //MessageBox.Show("There is a content for the response... "+response.Content);
+            //            servPatholog = JsonConvert.DeserializeObject<ServicePathologies>(response.Content);
+            //            Service = servPatholog.Service;
+            //            cloneService = Service;
+            //            ListPathologies = servPatholog.ListPthologie;
+            //            if (ListPathologies.Count == 0)
+            //                MessageBox.Show("There is 0 Pathologies...");
+            //        }
+            //        else
+            //        {
+            //            if (response.StatusCode == HttpStatusCode.NotFound)
+            //                MessageBox.Show("404 : The ressource dose not exist...");
+
+            //            else
+            //                MessageBox.Show("Une Exeption est apparut..." + response.s);
+            //        }
+
+            //        //switch (response.StatusCode)
+            //        //{
+            //        //    case HttpStatusCode.OK:
+            //        //        ListPathologies = JsonConvert.DeserializeObject<ObservableCollection<Pathologie>>(response.Content);
+            //        //        break;
+            //        //    case HttpStatusCode.NoContent:
+            //        //        MessageBox.Show("There is 0 Pathologies...");
+            //        //        break;
+            //        //    default:
+            //        //        MessageBox.Show("404 : The ressource dose not exist...");
+            //        //        break;
+            //        //}
+            //    });
+            //}
+            //catch (Exception error)
+            //{
+            //    MessageBox.Show("An Exeption has accured" + error);
+            //}
+
             ServicePathologies servPatholog = new ServicePathologies();
-            var request = new RestRequest("ServicePathologies", Method.GET) { RequestFormat = RestSharp.DataFormat.Json };
-            try
-            {
-                client.ExecuteAsync<ServicePathologies>(request, response =>
-                {
-                    if (response.StatusCode == HttpStatusCode.OK)
-                    {
-                        //MessageBox.Show("There is a content for the response... "+response.Content);
-                        servPatholog = JsonConvert.DeserializeObject<ServicePathologies>(response.Content);
-                        Service = servPatholog.Service;
-                        cloneService = Service;
-                        ListPathologies = servPatholog.ListPthologie;
-                        if (ListPathologies.Count == 0)
-                            MessageBox.Show("There is 0 Pathologies...");
-                    }
-                    else
-                    {
-                        if (response.StatusCode == HttpStatusCode.NotFound)
-                            MessageBox.Show("404 : The ressource dose not exist...");
 
-                        else
-                            MessageBox.Show("Une Exeption est apparut..."+response.s);
-                    }
+            PathologieServiceClient psc = new PathologieServiceClient();
+            psc.ClientCredentials.UserName.UserName = "yoww";
+            psc.ClientCredentials.UserName.Password = "123";
+            psc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
+                                X509CertificateValidationMode.None;
 
-                    //switch (response.StatusCode)
-                    //{
-                    //    case HttpStatusCode.OK:
-                    //        ListPathologies = JsonConvert.DeserializeObject<ObservableCollection<Pathologie>>(response.Content);
-                    //        break;
-                    //    case HttpStatusCode.NoContent:
-                    //        MessageBox.Show("There is 0 Pathologies...");
-                    //        break;
-                    //    default:
-                    //        MessageBox.Show("404 : The ressource dose not exist...");
-                    //        break;
-                    //}
-                });
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show("An Exeption has accured" + error);
-            }
+            servPatholog = psc.GetServiceDetails();
+            Service = servPatholog.Service;
+            cloneService = Service;
+            ListPathologies = servPatholog.ListPthologie;
+            if (ListPathologies.Count == 0)
+                MessageBox.Show("There is 0 Pathologies...");
+             
         }
 
         public void AjouterTelephone()
