@@ -7,6 +7,9 @@ namespace ConsultationManagerServer.Models
     [DataContract]
     public class Employee: INotifyPropertyChanged
     {
+        private string userName;
+        private string password;
+
         private string nom;
         private string prenom;
         private string role;
@@ -16,16 +19,43 @@ namespace ConsultationManagerServer.Models
         private DateTime creeDans;
         private string creePar;
 
-        public Employee(string nom, string prenom, string role, DateTime dateNaiss, string adresse, string telephone, DateTime creeDans, string creePar)
+        public Employee()
         {
-            Nom = nom;
-            Prenom = prenom;
-            Role = role;
-            DateNaiss = dateNaiss;
-            Adresse = adresse;
-            Telephone = telephone;
-            CreeDans = creeDans;
-            CreePar = creePar;
+            Nom = "";
+            Prenom = "";
+            Role = "";
+            DateNaiss = new DateTime();
+            Adresse = "";
+            Telephone = "";
+            CreeDans = new DateTime();
+            CreePar = "";
+        }
+
+        [DataMember]
+        public string UserName
+        {
+            get
+            {
+                return userName;
+            }
+            set
+            {
+                userName = value;
+                OnPropertyChanged("UserName");
+            }
+        }
+        [DataMember]
+        public string Password
+        {
+            get
+            {
+                return password;
+            }
+            set
+            {
+                password = value;
+                OnPropertyChanged("Password");
+            }
         }
 
         [DataMember]

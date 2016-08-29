@@ -18,6 +18,8 @@ using System.Windows.Input;
 using ConsultationManagerClient.Commands;
 using ConsultationManagerClient.Views.Pathologies;
 using System.Windows.Threading;
+using RestSharp.Authenticators;
+using System.ServiceModel.Security;
 
 namespace ConsultationManagerClient.ViewModels.Pathologies
 {
@@ -45,6 +47,8 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
 
             newTelephone = "";
 
+            //client.ClientCertificates = new X509CertificateValidationMode();
+            client.Authenticator = new HttpBasicAuthenticator("yow", "123");
             GetServicePathologies();
 
             AddTelephoneCommand = new RelayCommand(param => AjouterTelephone());
@@ -213,7 +217,7 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
                             MessageBox.Show("404 : The ressource dose not exist...");
 
                         else
-                            MessageBox.Show("Une Exeption est apparut...");
+                            MessageBox.Show("Une Exeption est apparut..."+response.s);
                     }
 
                     //switch (response.StatusCode)
