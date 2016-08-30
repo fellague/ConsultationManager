@@ -5,6 +5,7 @@ using System.IdentityModel.Selectors;
 using System.Linq;
 using System.Web;
 using ConsultationManagerServer.Models;
+using MongoDB.Driver.Builders;
 
 namespace ConsultationManagerServer.App_Code.Authentication
 {
@@ -19,12 +20,20 @@ namespace ConsultationManagerServer.App_Code.Authentication
 
         public bool login(string userName, string passwd)
         {
-            List<Employee> list = new List<Employee>();
-            list.Add(new Employee { UserName = "yow", Password = "123" });
-            list.Add(new Employee { UserName = "yow2", Password = "456" });
-            list.Add(new Employee { UserName = "yow3", Password = "789" });
+            DataBaseContext db = new DataBaseContext();
+            var query = Query.And(Query.EQ("UserName", userName), Query.EQ("Password", passwd));
+            var result = db.Utilisateurs.FindAs<Utilisateur>(query).FirstOrDefault();
+            if (result == null)
+                return false;
+            else
+                return true;
 
-            return list.Count(acc => acc.UserName.Equals(userName) && acc.Password.Equals(passwd)) > 0;
+            //List<Utilisateur> list = new List<Utilisateur>();
+            //list.Add(new Utilisateur { UserName = "yow", Password = "123" });
+            //list.Add(new Utilisateur { UserName = "yow2", Password = "456" });
+            //list.Add(new Utilisateur { UserName = "yow3", Password = "789" });
+
+            //return list.Count(acc => acc.UserName.Equals(userName) && acc.Password.Equals(passwd)) > 0;
         }
     }
 }

@@ -34,5 +34,13 @@ namespace ConsultationManagerServer
                 return db.GetCollection<Pathologie>("Pathologie");
             }
         }
+
+        public MongoCollection<Utilisateur> Utilisateurs
+        {
+            get
+            {
+                return db.GetCollection<Utilisateur>("Utilisateur");
+            }
+        }
     }
 }

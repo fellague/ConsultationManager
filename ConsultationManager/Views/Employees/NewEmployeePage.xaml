@@ -42,13 +42,13 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="Nom" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBox Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Nom"></TextBox>
+            <TextBox Text="{Binding NewUtilisateur.Nom}" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Nom"></TextBox>
 
             <TextBlock Grid.Row="1" Text="Prénom" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBox Grid.Row="1" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Prénom"></TextBox>
+            <TextBox Text="{Binding NewUtilisateur.Prenom}" Grid.Row="1" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Prénom"></TextBox>
 
             <TextBlock Grid.Row="2" Text="Role" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <ComboBox Grid.Row="2" Grid.Column="1" FontSize="16">
+            <ComboBox SelectedItem="{Binding NewUtilisateur.Role}" SelectedIndex="1" Grid.Row="2" Grid.Column="1" FontSize="16">
                 <ComboBoxItem>Chef Service</ComboBoxItem>
                 <ComboBoxItem>Médecin</ComboBoxItem>
                 <ComboBoxItem>Infirmier</ComboBoxItem>
@@ -56,26 +56,26 @@
             </ComboBox>
 
             <TextBlock Grid.Row="3" Text="Date de Naissance" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <DatePicker Grid.Row="3" Grid.Column="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+            <DatePicker SelectedDate="{Binding Path=NewUtilisateur.DateNaiss, Mode=TwoWay}" Grid.Row="3" Grid.Column="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
 
             <TextBlock Grid.Row="4" Text="Sexe" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <ComboBox Grid.Row="4" Grid.Column="1" FontSize="16">
+            <ComboBox SelectedItem="{Binding NewUtilisateur.Sexe}" SelectedIndex="0" Grid.Row="4" Grid.Column="1" FontSize="16">
                 <ComboBoxItem>Malle</ComboBoxItem>
                 <ComboBoxItem>Femalle</ComboBoxItem>
             </ComboBox>
             
-            <TextBlock Grid.Row="5" Text="Lieu de Naissance" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBox Grid.Row="5" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Lieu de Naissance"/>
+            <TextBlock Grid.Row="5" Text="Spécialité" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBox Text="{Binding NewUtilisateur.Specialite}" Grid.Row="5" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Domaine de Spécialité"/>
 
             <TextBlock Grid.Row="6" Text="Adresse" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBox Grid.Row="6" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Wilaya, Dayra Hay Numero 00"></TextBox>
+            <TextBox Text="{Binding NewUtilisateur.Adresse}" Grid.Row="6" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Wilaya, Dayra Hay Numero 00"></TextBox>
 
             <TextBlock Grid.Row="7" Text="Téléphone" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBox Grid.Row="7" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="06 66 66 66 66"></TextBox>
+            <TextBox Text="{Binding NewUtilisateur.Telephone}" Grid.Row="7" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="06 66 66 66 66"></TextBox>
 
 
         </Grid>
 
-        <Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width=" 250" Margin=" 0 0 50 50" FontSize="16">Ajouter</Button>
+        <Button Grid.Column="1" Grid.Row="1" Command="{Binding AddUtilisateurCommand}" CommandParameter="{Binding NewUtilisateur}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width=" 250" Margin=" 0 0 50 50" FontSize="16">Ajouter</Button>
     </Grid>
 </Page>

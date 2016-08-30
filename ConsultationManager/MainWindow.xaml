@@ -45,7 +45,7 @@
                 <WrapPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Account" Foreground="{Binding ElementName=NameTextBox, Path=BorderBrush}"
                                              Width="30" Height="30" VerticalAlignment="Center"/>
-                    <TextBox x:Name="NameTextBox" materialDesign:TextFieldAssist.Hint="Pseudo" VerticalAlignment="Center" Width="314"
+                    <TextBox Text="{Binding UserName}" materialDesign:TextFieldAssist.Hint="Pseudo" VerticalAlignment="Center" Width="314"
                              Margin="5 0" BorderBrush="#89FFFFFF" FontSize="18" Foreground="White"/>
                 </WrapPanel>
 

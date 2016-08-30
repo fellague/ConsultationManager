@@ -1,11 +1,13 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 
 namespace ConsultationManagerServer.Models
 {
     [DataContract]
-    public class Employee: INotifyPropertyChanged
+    public class Utilisateur: INotifyPropertyChanged
     {
         private string userName;
         private string password;
@@ -14,21 +16,35 @@ namespace ConsultationManagerServer.Models
         private string prenom;
         private string role;
         private DateTime dateNaiss;
+        private string sexe;
+        private string specialite;
         private string adresse;
         private string telephone;
         private DateTime creeDans;
         private string creePar;
 
-        public Employee()
+        public Utilisateur()
         {
             Nom = "";
             Prenom = "";
             Role = "";
             DateNaiss = new DateTime();
+            Sexe = "";
+            Specialite = "";
             Adresse = "";
             Telephone = "";
             CreeDans = new DateTime();
             CreePar = "";
+        }
+
+        [BsonId]
+        public ObjectId _id { get; set; }
+
+        [DataMember]
+        public string Id
+        {
+            get { return _id.ToString(); }
+            set { _id = ObjectId.Parse(value); }
         }
 
         [DataMember]
@@ -111,6 +127,34 @@ namespace ConsultationManagerServer.Models
             {
                 dateNaiss = value;
                 OnPropertyChanged("DateNaiss");
+            }
+        }
+
+        [DataMember]
+        public string Sexe
+        {
+            get
+            {
+                return sexe;
+            }
+            set
+            {
+                sexe = value;
+                OnPropertyChanged("Sexe");
+            }
+        }
+
+        [DataMember]
+        public string Specialite
+        {
+            get
+            {
+                return specialite;
+            }
+            set
+            {
+                specialite = value;
+                OnPropertyChanged("Specialite");
             }
         }
 

@@ -84,11 +84,15 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Services\PathologieService.svc" />
+    <Content Include="Services\UtilisateurService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\UtilisateurService.svc.cs">
+      <DependentUpon>UtilisateurService.svc</DependentUpon>
+    </Compile>
     <Content Include="App_Code\Authentication\CustomValidator.cs" />
     <Compile Include="DataBaseContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -98,7 +102,7 @@
     <Compile Include="Models\AntecedentPersonel.cs" />
     <Compile Include="Models\CompteRendu.cs" />
     <Compile Include="Models\Consultation.cs" />
-    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Utilisateur.cs" />
     <Compile Include="Models\Hospitalisation.cs" />
     <Compile Include="Models\LettreOrientation.cs" />
     <Compile Include="Models\Medicament.cs" />
@@ -113,6 +117,7 @@
     <Compile Include="Models\TraitementsComplemtaires.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IPathologieService.cs" />
+    <Compile Include="Services\IUtilisateurService.cs" />
     <Compile Include="Services\PathologieService.svc.cs">
       <DependentUpon>PathologieService.svc</DependentUpon>
     </Compile>

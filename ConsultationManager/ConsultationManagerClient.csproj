@@ -105,6 +105,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ServiceReferenceUtilisateur\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\Consultations\ConsultationViewModel.cs" />
     <Compile Include="ViewModels\Consultations\ConsultConclusionViewModel.cs" />
     <Compile Include="ViewModels\Consultations\FirstConsultationViewModel.cs" />
@@ -112,7 +117,6 @@
     <Compile Include="ViewModels\Hospitalisations\ListHospitalisationViewModel.cs" />
     <Compile Include="ViewModels\Hospitalisations\NewDemandHospitalisationViewModel.cs" />
     <Compile Include="ViewModels\Pathologies\PathologiesViewModel.cs" />
-    <Compile Include="ViewModels\Pathologies\ServiceReferencePathologie.cs" />
     <Compile Include="ViewModels\Patients\ListPatientViewModel.cs" />
     <Compile Include="ViewModels\RDVs\ListRvdViewModel.cs" />
     <Compile Include="ViewModels\RDVs\NewRdvViewModel.cs" />
@@ -405,6 +409,7 @@
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Pathologie.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.ServicePathologies.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Service.datasource" />
+    <None Include="Properties\DataSources\ConsultationManagerServer.Models.Utilisateur.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -424,6 +429,16 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReferencePathologie\PathologieService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceUtilisateur\UtilisateurService.wsdl" />
+    <None Include="Service References\ServiceReferenceUtilisateur\UtilisateurService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceUtilisateur\UtilisateurService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceUtilisateur\UtilisateurService2.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -497,6 +512,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReferencePathologie\" />
+    <WCFMetadataStorage Include="Service References\ServiceReferenceUtilisateur\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceReferencePathologie\configuration91.svcinfo" />
@@ -506,6 +522,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceReferencePathologie\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceUtilisateur\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceUtilisateur\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceUtilisateur\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

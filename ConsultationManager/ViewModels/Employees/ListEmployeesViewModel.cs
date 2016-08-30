@@ -1,55 +1,75 @@
 ﻿using System;
 using ConsultationManagerServer.Models;
 using System.Collections.ObjectModel;
+using ConsultationManager.ServiceReferenceUtilisateur;
+using System.ServiceModel.Security;
+using System.Windows.Input;
+using ConsultationManagerClient.Commands;
+using System.Windows;
+using System.ComponentModel;
 
 namespace ConsultationManagerClient.ViewModels.Employees
 {
-    internal class ListEmployeesViewModel
+    internal class ListEmployeesViewModel : INotifyPropertyChanged
     {
-        private ObservableCollection<Employee> listAllEmployee;
-        private ObservableCollection<Employee> listMedecin;
-        private ObservableCollection<Employee> listInfirmier;
-        private ObservableCollection<Employee> listChefService;
-        private ObservableCollection<Employee> listAssistant;
+        private ObservableCollection<Utilisateur> listAllEmployee;
+        private ObservableCollection<Utilisateur> listMedecin;
+        private ObservableCollection<Utilisateur> listInfirmier;
+        private ObservableCollection<Utilisateur> listChefService;
+        private ObservableCollection<Utilisateur> listAssistant;
+
+        private Utilisateur newUtilisateur;
 
         public ListEmployeesViewModel()
         {
+            //listAllEmployee = CreateEmployees();
+            //listMedecin = CreateListMedecin();
+            //listInfirmier = CreateListInfirmier();
+            //listChefService = CreateListChefService();
+            //listAssistant = CreateListAssistant();
             listAllEmployee = CreateEmployees();
             listMedecin = CreateListMedecin();
             listInfirmier = CreateListInfirmier();
             listChefService = CreateListChefService();
             listAssistant = CreateListAssistant();
+
+            newUtilisateur = new Utilisateur();
+            newUtilisateur.DateNaiss = new DateTime(1980, 01, 01);
+
+            AddUtilisateurCommand = new RelayCommand(param => AjouterUtilisateur());
         }
 
-        public ObservableCollection<Employee> ListAllEmployee
+        #region ListEmployeesViewModel Variables
+
+        public ObservableCollection<Utilisateur> ListAllEmployee
         {
             get
             {
                 return listAllEmployee;
             }
         }
-        public ObservableCollection<Employee> ListMedecin
+        public ObservableCollection<Utilisateur> ListMedecin
         {
             get
             {
                 return listMedecin;
             }
         }
-        public ObservableCollection<Employee> ListInfirmier
+        public ObservableCollection<Utilisateur> ListInfirmier
         {
             get
             {
                 return listInfirmier;
             }
         }
-        public ObservableCollection<Employee> ListChefService
+        public ObservableCollection<Utilisateur> ListChefService
         {
             get
             {
                 return listChefService;
             }
         }
-        public ObservableCollection<Employee> ListAssistant
+        public ObservableCollection<Utilisateur> ListAssistant
         {
             get
             {
@@ -57,10 +77,40 @@ namespace ConsultationManagerClient.ViewModels.Employees
             }
         }
 
-        private ObservableCollection<Employee> CreateEmployees()
+        public Utilisateur NewUtilisateur
         {
-            ObservableCollection<Employee> list = new ObservableCollection<Employee>();
-            list.Add(new Employee{ Nom = "Bennouna", Prenom = "El khebith" });
+            get
+            {
+                return newUtilisateur;
+            }
+            set
+            {
+                newUtilisateur = value;
+                OnPropertyChanged("NewUtilisateur");
+            }
+        }
+
+        #endregion
+
+        #region ListEmployeesViewModel Commands
+
+        public ICommand AddUtilisateurCommand
+        {
+            get;
+            private set;
+        }
+
+        #endregion
+
+        #region ListEmployeesViewModel Methods
+
+        private ObservableCollection<Utilisateur> CreateEmployees()
+        {
+            ObservableCollection<Utilisateur> list = new ObservableCollection<Utilisateur>();
+            list.Add(new Utilisateur{ Nom = "Bennouna", Prenom = "El khebith" });
+
+            
+
             //list.Add(new Employee("Mimouni", "Soumia", "admin", new DateTime(1975, 7, 13), "chlef hay essalem n 3", "06 98 75 65 90", DateTime.Today, "admin"));
             //list.Add(new Employee("Jack", "Rodman", "infirmier", new DateTime(1965, 3, 23), "blida hay el amal n 98", "07 99 87 54 76", new DateTime(2009, 5, 10), "Mimouni Soumia"));
             //list.Add(new Employee("Sandra", "Sherry", "chef_service", new DateTime(1967, 1, 10), "alger harrach bouraoui A 33", "05 87 09 54 34", new DateTime(2008, 12, 22), "Mimouni Soumia"));
@@ -78,11 +128,11 @@ namespace ConsultationManagerClient.ViewModels.Employees
             return list;
         }
 
-        private ObservableCollection<Employee> CreateListMedecin()
+        private ObservableCollection<Utilisateur> CreateListMedecin()
         {
-            ObservableCollection<Employee> allList = CreateEmployees();
-            ObservableCollection<Employee> allMyList = new ObservableCollection<Employee>();
-            foreach (Employee element in allList)
+            ObservableCollection<Utilisateur> allList = CreateEmployees();
+            ObservableCollection<Utilisateur> allMyList = new ObservableCollection<Utilisateur>();
+            foreach (Utilisateur element in allList)
             {
                 if (element.Role == "medecin")
                 {
@@ -91,11 +141,11 @@ namespace ConsultationManagerClient.ViewModels.Employees
             }
             return allMyList;
         }
-        private ObservableCollection<Employee> CreateListInfirmier()
+        private ObservableCollection<Utilisateur> CreateListInfirmier()
         {
-            ObservableCollection<Employee> allList = CreateEmployees();
-            ObservableCollection<Employee> allMyList = new ObservableCollection<Employee>();
-            foreach (Employee element in allList)
+            ObservableCollection<Utilisateur> allList = CreateEmployees();
+            ObservableCollection<Utilisateur> allMyList = new ObservableCollection<Utilisateur>();
+            foreach (Utilisateur element in allList)
             {
                 if (element.Role == "infirmier")
                 {
@@ -104,11 +154,11 @@ namespace ConsultationManagerClient.ViewModels.Employees
             }
             return allMyList;
         }
-        private ObservableCollection<Employee> CreateListChefService()
+        private ObservableCollection<Utilisateur> CreateListChefService()
         {
-            ObservableCollection<Employee> allList = CreateEmployees();
-            ObservableCollection<Employee> allMyList = new ObservableCollection<Employee>();
-            foreach (Employee element in allList)
+            ObservableCollection<Utilisateur> allList = CreateEmployees();
+            ObservableCollection<Utilisateur> allMyList = new ObservableCollection<Utilisateur>();
+            foreach (Utilisateur element in allList)
             {
                 if (element.Role == "chef_service")
                 {
@@ -117,11 +167,11 @@ namespace ConsultationManagerClient.ViewModels.Employees
             }
             return allMyList;
         }
-        private ObservableCollection<Employee> CreateListAssistant()
+        private ObservableCollection<Utilisateur> CreateListAssistant()
         {
-            ObservableCollection<Employee> allList = CreateEmployees();
-            ObservableCollection<Employee> allMyList = new ObservableCollection<Employee>();
-            foreach (Employee element in allList)
+            ObservableCollection<Utilisateur> allList = CreateEmployees();
+            ObservableCollection<Utilisateur> allMyList = new ObservableCollection<Utilisateur>();
+            foreach (Utilisateur element in allList)
             {
                 if (element.Role == "assistant")
                 {
@@ -130,5 +180,54 @@ namespace ConsultationManagerClient.ViewModels.Employees
             }
             return allMyList;
         }
+
+        private void AjouterUtilisateur()
+        {
+            
+            var newUser = new Utilisateur();
+            UtilisateurServiceClient usc = new UtilisateurServiceClient();
+
+            usc.ClientCredentials.UserName.UserName = "mimouni";
+            usc.ClientCredentials.UserName.Password = "e8x_";
+            usc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
+                                X509CertificateValidationMode.None;
+
+            MessageBox.Show("Utilisateur Saved Request... " + newUtilisateur.Nom);
+            newUtilisateur.UserName = newUtilisateur.Nom;
+            newUtilisateur.Password = CreateRandomPassword(4);
+            newUtilisateur.CreeDans = DateTime.Now;
+            newUser = usc.AddUtilisateur(newUtilisateur);
+        }
+
+        private static string CreateRandomPassword(int passwordLength)
+        {
+            string allowedChars = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789!@?_-";
+            char[] chars = new char[passwordLength];
+            Random rd = new Random();
+
+            for (int i = 0; i < passwordLength; i++)
+            {
+                chars[i] = allowedChars[rd.Next(0, allowedChars.Length)];
+            }
+
+            return new string(chars);
+        }
+
+        #endregion
+
+        #region InotifyPropertyChanged Members
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        #endregion
     }
 }

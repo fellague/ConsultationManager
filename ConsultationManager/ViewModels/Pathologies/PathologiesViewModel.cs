@@ -244,7 +244,7 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
             ServicePathologies servPatholog = new ServicePathologies();
 
             PathologieServiceClient psc = new PathologieServiceClient();
-            psc.ClientCredentials.UserName.UserName = "yoww";
+            psc.ClientCredentials.UserName.UserName = "yow";
             psc.ClientCredentials.UserName.Password = "123";
             psc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
                                 X509CertificateValidationMode.None;
