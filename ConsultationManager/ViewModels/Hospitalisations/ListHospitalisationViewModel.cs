@@ -1,11 +1,13 @@
 ﻿using System;
 using ConsultationManagerServer.Models;
 using System.Collections.ObjectModel;
+using ConsultationManagerClient.ViewModels.Authentication;
 
 namespace ConsultationManagerClient.ViewModels.Hospitalisations
 {
     internal class ListHospitalisationViewModel
     {
+        private string nomUtilisateur;
         private ObservableCollection<Hospitalisation> listAllHospitalisation;
         private ObservableCollection<Hospitalisation> listActiveHospitalisation;
 
@@ -13,6 +15,7 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
         {
             listAllHospitalisation = CreateHospitalisations();
             listActiveHospitalisation = CreateListActiveHospitalisation();
+            nomUtilisateur = AuthenticationViewModel.AuthenticatedUser.Nom + " " + AuthenticationViewModel.AuthenticatedUser.Prenom;
         }
 
         public ObservableCollection<Hospitalisation> ListAllHospitalisation
@@ -27,6 +30,13 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             get
             {
                 return listActiveHospitalisation;
+            }
+        }
+        public string NomUtilisateur
+        {
+            get
+            {
+                return nomUtilisateur;
             }
         }
 

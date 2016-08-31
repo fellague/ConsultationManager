@@ -45,7 +45,7 @@
                 <WrapPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Account" Foreground="{Binding ElementName=NameTextBox, Path=BorderBrush}"
                                              Width="30" Height="30" VerticalAlignment="Center"/>
-                    <TextBox Text="{Binding UserName}" materialDesign:TextFieldAssist.Hint="Pseudo" VerticalAlignment="Center" Width="314"
+                    <TextBox x:Name="NameTextBox" Text="{Binding UserName}" materialDesign:TextFieldAssist.Hint="Pseudo" VerticalAlignment="Center" Width="314"
                              Margin="5 0" BorderBrush="#89FFFFFF" FontSize="18" Foreground="White"/>
                 </WrapPanel>
 
@@ -64,7 +64,10 @@
                 </Button>-->
                 <WrapPanel Background="#FF673AB7" Width="350"  Margin="0,10,0,0" HorizontalAlignment="Left" >
                     <Button x:Name="button" Content="Connecter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="350" Height="30"
-                             FontSize="18" Foreground="White" FontWeight="Bold" Click="button_Click">
+                            FontSize="18" Foreground="White" FontWeight="Bold"
+                            Command="{Binding LoginCommad}" 
+                            CommandParameter="{Binding ElementName=PasswordBox}">
+                        
                         <Button.Background>
                             <ImageBrush AlignmentX="Right" Stretch="None" ImageSource="Imgs/Login/login1.png"/>
 

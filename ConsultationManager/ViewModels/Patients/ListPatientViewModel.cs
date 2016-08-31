@@ -1,11 +1,15 @@
 ﻿using System;
 using ConsultationManagerServer.Models;
 using System.Collections.ObjectModel;
+using ConsultationManagerClient.ViewModels.Authentication;
+using System.Windows;
+using System.ComponentModel;
 
 namespace ConsultationManagerClient.ViewModels.Patients
 {
-    internal class ListPatientViewModel
+    internal class ListPatientViewModel : INotifyPropertyChanged
     {
+        private string nomUtilisateur;
         private ObservableCollection<Patient> listAllPatient;
         private ObservableCollection<Patient> listAllMyPatient;
 
@@ -13,7 +17,8 @@ namespace ConsultationManagerClient.ViewModels.Patients
         {
             listAllPatient = CreatePatients();
             listAllMyPatient = CreateListAllMyPatient();
-            
+
+            nomUtilisateur = AuthenticationViewModel.AuthenticatedUser.Nom + " " + AuthenticationViewModel.AuthenticatedUser.Prenom;
         }
 
         public ObservableCollection<Patient> ListAllPatient
@@ -28,6 +33,13 @@ namespace ConsultationManagerClient.ViewModels.Patients
             get
             {
                 return listAllMyPatient;
+            }
+        }
+        public string NomUtilisateur
+        {
+            get
+            {
+                return nomUtilisateur;
             }
         }
 
@@ -64,5 +76,20 @@ namespace ConsultationManagerClient.ViewModels.Patients
             }
             return allMyList;
         }
+
+        #region InotifyPropertyChanged Members
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        #endregion
     }
 }

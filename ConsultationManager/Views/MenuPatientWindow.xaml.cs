@@ -27,6 +27,7 @@ namespace ConsultationManagerClient.Views
         {
             InitializeComponent();
             patientsVM = new ListPatientViewModel();
+            this.DataContext = patientsVM;
             if (tab == "all")
             {
                 _mainFrame.Navigate(new AllPatientsPage(patientsVM));

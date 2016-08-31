@@ -39,6 +39,8 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
             <TextBlock Text="Nom" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
@@ -46,6 +48,8 @@
 
             <TextBlock Grid.Row="1" Text="Prénom" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
             <TextBox Text="{Binding NewUtilisateur.Prenom}" Grid.Row="1" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Prénom"></TextBox>
+
+            
 
             <TextBlock Grid.Row="2" Text="Role" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
             <ComboBox SelectedItem="{Binding NewUtilisateur.Role}" SelectedIndex="1" Grid.Row="2" Grid.Column="1" FontSize="16">
@@ -73,9 +77,17 @@
             <TextBlock Grid.Row="7" Text="Téléphone" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
             <TextBox Text="{Binding NewUtilisateur.Telephone}" Grid.Row="7" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="06 66 66 66 66"></TextBox>
 
+            <!--<TextBlock Grid.Row="8" Text="Nom d'Utilisateur" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBox Text="{Binding NewUtilisateur.UserName}" Grid.Row="8" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Prénom"></TextBox>
+
+            <TextBlock Grid.Row="9" Text="Mot de Passe" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <PasswordBox x:Name="MyPasswordBox" Grid.Row="9" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Prénom"></PasswordBox>
+
+            <TextBlock Grid.Row="1" Text="Confirmer Mot de Passe" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <PasswordBox x:Name="MyPasswordBoxConfirm" Grid.Row="1" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Prénom"></PasswordBox>-->
 
         </Grid>
 
-        <Button Grid.Column="1" Grid.Row="1" Command="{Binding AddUtilisateurCommand}" CommandParameter="{Binding NewUtilisateur}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width=" 250" Margin=" 0 0 50 50" FontSize="16">Ajouter</Button>
+        <Button Grid.Column="1" Grid.Row="1" Command="{Binding AddUtilisateurCommand}" CommandParameter="{Binding ElementName=MyPasswordBox}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width=" 250" Margin=" 0 0 50 50" FontSize="16">Ajouter</Button>
     </Grid>
 </Page>

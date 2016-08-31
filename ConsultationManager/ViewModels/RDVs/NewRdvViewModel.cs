@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ConsultationManagerClient.ViewModels.Authentication;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ConsultationManagerClient.ViewModels.RDVs

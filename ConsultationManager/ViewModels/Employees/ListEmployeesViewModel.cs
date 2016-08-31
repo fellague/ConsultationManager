@@ -7,11 +7,14 @@ using System.Windows.Input;
 using ConsultationManagerClient.Commands;
 using System.Windows;
 using System.ComponentModel;
+using System.Windows.Controls;
+using ConsultationManagerClient.ViewModels.Authentication;
 
 namespace ConsultationManagerClient.ViewModels.Employees
 {
     internal class ListEmployeesViewModel : INotifyPropertyChanged
     {
+        private string nomUtilisateur;
         private ObservableCollection<Utilisateur> listAllEmployee;
         private ObservableCollection<Utilisateur> listMedecin;
         private ObservableCollection<Utilisateur> listInfirmier;
@@ -27,6 +30,7 @@ namespace ConsultationManagerClient.ViewModels.Employees
             //listInfirmier = CreateListInfirmier();
             //listChefService = CreateListChefService();
             //listAssistant = CreateListAssistant();
+            nomUtilisateur = AuthenticationViewModel.AuthenticatedUser.Nom + " " + AuthenticationViewModel.AuthenticatedUser.Prenom;
             listAllEmployee = CreateEmployees();
             listMedecin = CreateListMedecin();
             listInfirmier = CreateListInfirmier();
@@ -36,7 +40,7 @@ namespace ConsultationManagerClient.ViewModels.Employees
             newUtilisateur = new Utilisateur();
             newUtilisateur.DateNaiss = new DateTime(1980, 01, 01);
 
-            AddUtilisateurCommand = new RelayCommand(param => AjouterUtilisateur());
+            AddUtilisateurCommand = new RelayCommand(param => AjouterUtilisateur(param));
         }
 
         #region ListEmployeesViewModel Variables
@@ -87,6 +91,13 @@ namespace ConsultationManagerClient.ViewModels.Employees
             {
                 newUtilisateur = value;
                 OnPropertyChanged("NewUtilisateur");
+            }
+        }
+        public string NomUtilisateur
+        {
+            get
+            {
+                return nomUtilisateur;
             }
         }
 
@@ -181,21 +192,24 @@ namespace ConsultationManagerClient.ViewModels.Employees
             return allMyList;
         }
 
-        private void AjouterUtilisateur()
+        private void AjouterUtilisateur(object param)
         {
             
             var newUser = new Utilisateur();
             UtilisateurServiceClient usc = new UtilisateurServiceClient();
+            //PasswordBox pwBox = param as PasswordBox;
 
             usc.ClientCredentials.UserName.UserName = "mimouni";
             usc.ClientCredentials.UserName.Password = "e8x_";
             usc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
                                 X509CertificateValidationMode.None;
-
-            MessageBox.Show("Utilisateur Saved Request... " + newUtilisateur.Nom);
+            
             newUtilisateur.UserName = newUtilisateur.Nom;
             newUtilisateur.Password = CreateRandomPassword(4);
+
+            //newUtilisateur.Password = pwBox.Password;
             newUtilisateur.CreeDans = DateTime.Now;
+            MessageBox.Show("Utilisateur Saved Request... " + newUtilisateur.Password);
             newUser = usc.AddUtilisateur(newUtilisateur);
         }
 

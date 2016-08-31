@@ -22,6 +22,7 @@ using RestSharp.Authenticators;
 using System.ServiceModel.Security;
 using ConsultationManagerClient.Properties;
 using ConsultationManager.ServiceReferencePathologie;
+using ConsultationManagerClient.ViewModels.Authentication;
 
 namespace ConsultationManagerClient.ViewModels.Pathologies
 {
@@ -42,6 +43,8 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
         private NewPathologieWindow dialogNewPathol;
         private Pathologie newPathologie;
 
+        private string nomUtilisateur;
+
         public PathologiesViewModel()
         {
             service = new Service();
@@ -61,6 +64,8 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
             NewPathologieDialogCommand = new RelayCommand(param => ShowDialogNewPathologie());
 
             UpdateServiceCommand = new RelayCommand(param => UpdateService());
+
+            nomUtilisateur = AuthenticationViewModel.AuthenticatedUser.Nom + " " + AuthenticationViewModel.AuthenticatedUser.Prenom;
         }
 
         #region ConsultationViewModel Variables
@@ -141,6 +146,13 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
             {
                 newPathologie = value;
                 OnPropertyChanged("NewPathologie");
+            }
+        }
+        public string NomUtilisateur
+        {
+            get
+            {
+                return nomUtilisateur;
             }
         }
 
@@ -244,8 +256,8 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
             ServicePathologies servPatholog = new ServicePathologies();
 
             PathologieServiceClient psc = new PathologieServiceClient();
-            psc.ClientCredentials.UserName.UserName = "yow";
-            psc.ClientCredentials.UserName.Password = "123";
+            psc.ClientCredentials.UserName.UserName = "mimouni";
+            psc.ClientCredentials.UserName.Password = "e8x_";
             psc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
                                 X509CertificateValidationMode.None;
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsultationManagerClient.ViewModels.Authentication;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             listPatient.Add("Kayta Kader");
             listPatient.Add("Kader Ejjappouni");
             listPatient.Add("Will Pharel");
-
+            
             listJours = new List<int>(Enumerable.Range(1, 100));
         }
 

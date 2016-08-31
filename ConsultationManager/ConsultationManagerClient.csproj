@@ -100,6 +100,11 @@
     <Compile Include="Commands\RDVs\RunDialogUpdateRdvCommand.cs" />
     <Compile Include="Commands\RDVs\UpdateRdvCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Service References\ServiceReferenceAuthentication\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServiceReferencePathologie\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -110,6 +115,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Authentication\AuthenticationViewModel.cs" />
     <Compile Include="ViewModels\Consultations\ConsultationViewModel.cs" />
     <Compile Include="ViewModels\Consultations\ConsultConclusionViewModel.cs" />
     <Compile Include="ViewModels\Consultations\FirstConsultationViewModel.cs" />
@@ -415,6 +421,16 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\ServiceReferenceAuthentication\AuthenticationService.wsdl" />
+    <None Include="Service References\ServiceReferenceAuthentication\AuthenticationService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceAuthentication\AuthenticationService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceAuthentication\AuthenticationService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ServiceReferencePathologie\PathologieService.wsdl" />
     <None Include="Service References\ServiceReferencePathologie\PathologieService.xsd">
       <SubType>Designer</SubType>
@@ -511,6 +527,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceReferenceAuthentication\" />
     <WCFMetadataStorage Include="Service References\ServiceReferencePathologie\" />
     <WCFMetadataStorage Include="Service References\ServiceReferenceUtilisateur\" />
   </ItemGroup>
@@ -534,6 +551,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceReferenceUtilisateur\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceAuthentication\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceAuthentication\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceAuthentication\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

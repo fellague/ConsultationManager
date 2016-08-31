@@ -27,6 +27,7 @@ namespace ConsultationManagerClient.Views
         {
             InitializeComponent();
             employeesVM = new ListEmployeesViewModel();
+            this.DataContext = employeesVM;
 
             _mainFrame.Navigate(new AllEmployeePage(employeesVM));
             coloringTabs(AllEmplBtn, chefServiceBtn, medecinsBtn, infirmierBtn, assistantBtn, NewEmplBtn);

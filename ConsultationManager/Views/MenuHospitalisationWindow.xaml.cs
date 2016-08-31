@@ -27,6 +27,8 @@ namespace ConsultationManagerClient.Views
         {
             InitializeComponent();
             hospitVM = new ListHospitalisationViewModel();
+            this.DataContext = hospitVM;
+
             _mainFrame.Navigate(new AllHospitalisationPage(hospitVM));
             coloringTabs(AllHospBtn, ActiveHospBtn, NewHospBtn);
         }

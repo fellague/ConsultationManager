@@ -7,6 +7,7 @@ using System.Windows.Input;
 using ConsultationManagerClient.Commands;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using ConsultationManagerClient.ViewModels.Authentication;
 
 namespace ConsultationManagerClient.ViewModels.RDVs
 {
@@ -22,12 +23,15 @@ namespace ConsultationManagerClient.ViewModels.RDVs
         private FirstConsultationWindow dialogFirstConsultation;
         private ConsultConclusionWindow dialogConsltConclusion;
 
+        private string nomUtilisateur;
+
         public ListRvdViewModel()
         {
             listAllRvd = CreateRDVs();
             listAllMyRvd = CreateListAllMyRdv();
             listAllMyTodayRvd = CreateListAllMyTodayRdv();
             listAllFirstRvd = CreateListAllFirstRdv();
+            nomUtilisateur = AuthenticationViewModel.AuthenticatedUser.Nom + " " + AuthenticationViewModel.AuthenticatedUser.Prenom;
 
             //RunDialogCommand = new RunDialogUpdateRdvCommand(this);
             UpdateRdvDialogCommand = new RelayCommand(param => this.ShowDialogUpdateRvd(param));
@@ -85,6 +89,13 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             get
             {
                 return dialogFirstConsultation;
+            }
+        }
+        public string NomUtilisateur
+        {
+            get
+            {
+                return nomUtilisateur;
             }
         }
         //public RDV SelectedRDV

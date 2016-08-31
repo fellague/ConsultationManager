@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ConsultationManagerClient.Views;
+using ConsultationManagerClient.ViewModels.Authentication;
 
 namespace ConsultationManagerClient
 {
@@ -24,14 +25,15 @@ namespace ConsultationManagerClient
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new AuthenticationViewModel();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
-            var form2 = new Home();
-            form2.Closed += (s, args) => this.Close();
-            form2.Show();
-        }
+        //private void button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    this.Hide();
+        //    var form2 = new Home();
+        //    form2.Closed += (s, args) => this.Close();
+        //    form2.Show();
+        //}
     }
 }

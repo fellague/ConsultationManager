@@ -47,6 +47,7 @@
                             <Button Click="button_click_about"  Content="A propos" Background="{x:Null}" FontSize="16" BorderBrush="{x:Null}"/>
                         </WrapPanel>
                         <WrapPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock Text="{Binding NomUtilisateur}" Margin="2,8,20,2" FontSize="16" FontWeight="DemiBold"/>
                             <Button Click="button_click_logout"  Content="Déconnexion" Margin="2,2,20,2" Background="{x:Null}" FontSize="16" BorderBrush="{x:Null}"/>
                         </WrapPanel>
                     </DockPanel>

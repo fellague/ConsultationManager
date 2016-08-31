@@ -6,6 +6,9 @@ using System.Linq;
 using System.Web;
 using ConsultationManagerServer.Models;
 using MongoDB.Driver.Builders;
+using System.ServiceModel;
+using System.Windows;
+using System.IdentityModel.Tokens;
 
 namespace ConsultationManagerServer.App_Code.Authentication
 {
@@ -13,9 +16,25 @@ namespace ConsultationManagerServer.App_Code.Authentication
     {
         public override void Validate(string userName, string password)
         {
-            if (login(userName, password))
-                return;
-            throw new NotImplementedException("Nom d'Utilsateur ou Mot de Passe Erroné");
+            try
+            {
+                if (login(userName, password))
+                    return;
+            }
+            catch (FaultException fe)
+            {
+                SecurityTokenValidationException stve = new SecurityTokenValidationException("Server : Invalid username or password");
+                throw new FaultException<SecurityTokenValidationException>(stve, stve.Message);
+            }
+            catch (CommunicationException ce)
+            {
+                throw new CommunicationException("communication fault");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("exeption");
+            }
+            //throw new NotImplementedException("Nom d'Utilsateur ou Mot de Passe Erroné");
         }
 
         public bool login(string userName, string passwd)

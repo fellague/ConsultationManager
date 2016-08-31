@@ -27,6 +27,8 @@ namespace ConsultationManagerClient.Views
         {
             InitializeComponent();
             pathologieVM = new PathologiesViewModel();
+            this.DataContext = pathologieVM;
+
             _framePathologies.Navigate(new ServiceDetailsPage(pathologieVM));
             coloringTabs(PathologiesBtn, ApdateServiceDetailBtn);
         }

@@ -17,6 +17,7 @@ namespace ConsultationManagerClient.Views
         {
             InitializeComponent();
             rdvVM = new ListRvdViewModel();
+            this.DataContext = rdvVM;
 
             _frameRdv.Navigate(new AllRdvPage(rdvVM));
             coloringTabs(AllRdvBtn, AllMyRdvBtn, MyTodayRdvBtn, FirstRdvBtn, NewRdvBtn);
