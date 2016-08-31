@@ -107,7 +107,7 @@ namespace ConsultationManagerServer.Services
 
         public Pathologie UpdatePathologie(string id, Pathologie pathologie)
         {
-            MessageBox.Show("ServicePathologies service Received an Update request for the pathologie..." + pathologie.Id);
+            //MessageBox.Show("ServicePathologies service Received an Update request for the pathologie..." + pathologie.Id);
             DataBaseContext db = new DataBaseContext();
             var query = Query.EQ("Id", pathologie.Id);
             var update = Update.Set("Nom", pathologie.Nom).Set("Description", pathologie.Description);

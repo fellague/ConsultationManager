@@ -466,40 +466,48 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
 
         private void UpdateService()
         {
-            
-            var request = new RestRequest("ServicePathologies/{id}", Method.PUT) { RequestFormat = RestSharp.DataFormat.Json };
-            request.AddParameter("id", service.Id, ParameterType.UrlSegment);
-            JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
-            {
-                DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
-            };
-            var json = JsonConvert.SerializeObject(service, microsoftDateFormatSettings);
-            request.AddParameter("application/json", json, ParameterType.RequestBody);
-            try
-            {
-                client.ExecuteAsync(request, response =>
-                {
-                    if (response.StatusCode == HttpStatusCode.OK)
-                    {
-                        //MessageBox.Show("Client response : Pathologie have been saved... " + response.Content);
-                        Service serviceSave = JsonConvert.DeserializeObject<Service>(response.Content);
-                        MessageBox.Show("Client response : Service have been saved... " + serviceSave.Nom);
-                        //Application.Current.Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => ));
-                    }
-                    else
-                    {
-                        Application.Current.Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => Service = cloneService));
-                        if (response.StatusCode == HttpStatusCode.NotFound)
-                            MessageBox.Show("404 : The ressource dose not exist...");
-                        else
-                            MessageBox.Show("Une Exeption est apparut...");
-                    }
-                });
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show("An Exeption has accured" + error.Message);
-            }
+            PathologieServiceClient psc = new PathologieServiceClient();
+            psc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
+            psc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
+            psc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
+                                X509CertificateValidationMode.None;
+
+            psc.UpdateService(service.Id, service);
+            MessageBox.Show("Le Service a été modifié... " + service.Nom);
+
+            //var request = new RestRequest("ServicePathologies/{id}", Method.PUT) { RequestFormat = RestSharp.DataFormat.Json };
+            //request.AddParameter("id", service.Id, ParameterType.UrlSegment);
+            //JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+            //{
+            //    DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+            //};
+            //var json = JsonConvert.SerializeObject(service, microsoftDateFormatSettings);
+            //request.AddParameter("application/json", json, ParameterType.RequestBody);
+            //try
+            //{
+            //    client.ExecuteAsync(request, response =>
+            //    {
+            //        if (response.StatusCode == HttpStatusCode.OK)
+            //        {
+            //            //MessageBox.Show("Client response : Pathologie have been saved... " + response.Content);
+            //            Service serviceSave = JsonConvert.DeserializeObject<Service>(response.Content);
+            //            MessageBox.Show("Client response : Service have been saved... " + serviceSave.Nom);
+            //            //Application.Current.Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => ));
+            //        }
+            //        else
+            //        {
+            //            Application.Current.Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => Service = cloneService));
+            //            if (response.StatusCode == HttpStatusCode.NotFound)
+            //                MessageBox.Show("404 : The ressource dose not exist...");
+            //            else
+            //                MessageBox.Show("Une Exeption est apparut...");
+            //        }
+            //    });
+            //}
+            //catch (Exception error)
+            //{
+            //    MessageBox.Show("An Exeption has accured" + error.Message);
+            //}
         }
 
         #endregion
