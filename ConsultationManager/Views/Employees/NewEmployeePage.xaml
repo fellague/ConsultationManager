@@ -52,18 +52,18 @@
             
 
             <TextBlock Grid.Row="2" Text="Role" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <ComboBox SelectedItem="{Binding NewUtilisateur.Role}" SelectedIndex="1" Grid.Row="2" Grid.Column="1" FontSize="16">
-                <ComboBoxItem>Chef Service</ComboBoxItem>
-                <ComboBoxItem>Médecin</ComboBoxItem>
-                <ComboBoxItem>Infirmier</ComboBoxItem>
-                <ComboBoxItem>Assistant</ComboBoxItem>
+            <ComboBox SelectedValuePath="Content" SelectedValue="{Binding NewUtilisateur.Role}" SelectedIndex="1" Grid.Row="2" Grid.Column="1" FontSize="16">
+                <ComboBoxItem Content="Chef Service"/>
+                <ComboBoxItem Content="Médecin"/>
+                <ComboBoxItem Content="Infirmier"/>
+                <ComboBoxItem Content="Assistant"/>
             </ComboBox>
 
             <TextBlock Grid.Row="3" Text="Date de Naissance" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
             <DatePicker SelectedDate="{Binding Path=NewUtilisateur.DateNaiss, Mode=TwoWay}" Grid.Row="3" Grid.Column="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
 
             <TextBlock Grid.Row="4" Text="Sexe" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <ComboBox SelectedItem="{Binding NewUtilisateur.Sexe}" SelectedIndex="0" Grid.Row="4" Grid.Column="1" FontSize="16">
+            <ComboBox SelectedValuePath="Content"  SelectedValue="{Binding NewUtilisateur.Sexe}" SelectedIndex="0" Grid.Row="4" Grid.Column="1" FontSize="16">
                 <ComboBoxItem>Malle</ComboBoxItem>
                 <ComboBoxItem>Femalle</ComboBoxItem>
             </ComboBox>

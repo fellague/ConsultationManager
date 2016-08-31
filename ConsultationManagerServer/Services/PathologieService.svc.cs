@@ -92,7 +92,7 @@ namespace ConsultationManagerServer.Services
 
         public Service UpdateService(string id, Service upService)
         {
-            MessageBox.Show("ServicePathologies service Received an Update request for the service..." + upService.Id);
+            //MessageBox.Show("ServicePathologies service Received an Update request for the service..." + upService.Id);
             DataBaseContext db = new DataBaseContext();
             var query = Query.EQ("Id", upService.Id);
             var update = Update

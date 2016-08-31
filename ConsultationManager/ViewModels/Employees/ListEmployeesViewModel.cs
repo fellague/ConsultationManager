@@ -31,7 +31,7 @@ namespace ConsultationManagerClient.ViewModels.Employees
             //listChefService = CreateListChefService();
             //listAssistant = CreateListAssistant();
             nomUtilisateur = AuthenticationViewModel.AuthenticatedUser.Nom + " " + AuthenticationViewModel.AuthenticatedUser.Prenom;
-            listAllEmployee = CreateEmployees();
+            listAllEmployee = GetEmployees();
             listMedecin = CreateListMedecin();
             listInfirmier = CreateListInfirmier();
             listChefService = CreateListChefService();
@@ -115,13 +115,17 @@ namespace ConsultationManagerClient.ViewModels.Employees
 
         #region ListEmployeesViewModel Methods
 
-        private ObservableCollection<Utilisateur> CreateEmployees()
+        private ObservableCollection<Utilisateur> GetEmployees()
         {
             ObservableCollection<Utilisateur> list = new ObservableCollection<Utilisateur>();
-            list.Add(new Utilisateur{ Nom = "Bennouna", Prenom = "El khebith" });
-
             
+            UtilisateurServiceClient usc = new UtilisateurServiceClient();
+            usc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
+            usc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
+            usc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
+                                X509CertificateValidationMode.None;
 
+            list = new ObservableCollection<Utilisateur>(usc.GetUtilisateurs());
             //list.Add(new Employee("Mimouni", "Soumia", "admin", new DateTime(1975, 7, 13), "chlef hay essalem n 3", "06 98 75 65 90", DateTime.Today, "admin"));
             //list.Add(new Employee("Jack", "Rodman", "infirmier", new DateTime(1965, 3, 23), "blida hay el amal n 98", "07 99 87 54 76", new DateTime(2009, 5, 10), "Mimouni Soumia"));
             //list.Add(new Employee("Sandra", "Sherry", "chef_service", new DateTime(1967, 1, 10), "alger harrach bouraoui A 33", "05 87 09 54 34", new DateTime(2008, 12, 22), "Mimouni Soumia"));
@@ -141,11 +145,10 @@ namespace ConsultationManagerClient.ViewModels.Employees
 
         private ObservableCollection<Utilisateur> CreateListMedecin()
         {
-            ObservableCollection<Utilisateur> allList = CreateEmployees();
             ObservableCollection<Utilisateur> allMyList = new ObservableCollection<Utilisateur>();
-            foreach (Utilisateur element in allList)
+            foreach (Utilisateur element in listAllEmployee)
             {
-                if (element.Role == "medecin")
+                if (element.Role == "Médecin")
                 {
                     allMyList.Add(element);
                 }
@@ -154,11 +157,10 @@ namespace ConsultationManagerClient.ViewModels.Employees
         }
         private ObservableCollection<Utilisateur> CreateListInfirmier()
         {
-            ObservableCollection<Utilisateur> allList = CreateEmployees();
             ObservableCollection<Utilisateur> allMyList = new ObservableCollection<Utilisateur>();
-            foreach (Utilisateur element in allList)
+            foreach (Utilisateur element in listAllEmployee)
             {
-                if (element.Role == "infirmier")
+                if (element.Role == "Infirmier")
                 {
                     allMyList.Add(element);
                 }
@@ -167,11 +169,10 @@ namespace ConsultationManagerClient.ViewModels.Employees
         }
         private ObservableCollection<Utilisateur> CreateListChefService()
         {
-            ObservableCollection<Utilisateur> allList = CreateEmployees();
             ObservableCollection<Utilisateur> allMyList = new ObservableCollection<Utilisateur>();
-            foreach (Utilisateur element in allList)
+            foreach (Utilisateur element in listAllEmployee)
             {
-                if (element.Role == "chef_service")
+                if (element.Role == "Chef Service")
                 {
                     allMyList.Add(element);
                 }
@@ -180,11 +181,10 @@ namespace ConsultationManagerClient.ViewModels.Employees
         }
         private ObservableCollection<Utilisateur> CreateListAssistant()
         {
-            ObservableCollection<Utilisateur> allList = CreateEmployees();
             ObservableCollection<Utilisateur> allMyList = new ObservableCollection<Utilisateur>();
-            foreach (Utilisateur element in allList)
+            foreach (Utilisateur element in listAllEmployee)
             {
-                if (element.Role == "assistant")
+                if (element.Role == "Assistant")
                 {
                     allMyList.Add(element);
                 }
@@ -199,18 +199,27 @@ namespace ConsultationManagerClient.ViewModels.Employees
             UtilisateurServiceClient usc = new UtilisateurServiceClient();
             //PasswordBox pwBox = param as PasswordBox;
 
-            usc.ClientCredentials.UserName.UserName = "mimouni";
-            usc.ClientCredentials.UserName.Password = "e8x_";
+            usc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
+            usc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
             usc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
                                 X509CertificateValidationMode.None;
             
             newUtilisateur.UserName = newUtilisateur.Nom;
             newUtilisateur.Password = CreateRandomPassword(4);
-
-            //newUtilisateur.Password = pwBox.Password;
+            newUtilisateur.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
             newUtilisateur.CreeDans = DateTime.Now;
             MessageBox.Show("Utilisateur Saved Request... " + newUtilisateur.Password);
             newUser = usc.AddUtilisateur(newUtilisateur);
+            listAllEmployee.Add(newUser);
+            ActualiserLists();
+        }
+
+        private void ActualiserLists()
+        {
+            listMedecin = CreateListMedecin();
+            listInfirmier = CreateListInfirmier();
+            listChefService = CreateListChefService();
+            listAssistant = CreateListAssistant();
         }
 
         private static string CreateRandomPassword(int passwordLength)

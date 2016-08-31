@@ -8,6 +8,7 @@ using ConsultationManagerServer.Models;
 using System.Collections.ObjectModel;
 using System.Windows;
 using MongoDB.Driver.Builders;
+using MongoDB.Driver.Linq;
 
 namespace ConsultationManagerServer.Services
 {
@@ -24,7 +25,17 @@ namespace ConsultationManagerServer.Services
 
         public ObservableCollection<Utilisateur> GetUtilisateurs()
         {
-            throw new NotImplementedException();
+            ObservableCollection<Utilisateur> users = new ObservableCollection<Utilisateur>();
+            DataBaseContext db = new DataBaseContext();
+            var usersRes = db.Utilisateurs.AsQueryable().ToList();
+            if (usersRes.Count() > 0)
+                foreach (Utilisateur item in usersRes)
+                    users.Add(item);
+            else
+            {
+                MessageBox.Show("There is no pathologie for the service... ");
+            }
+            return users;
         }
 
         public Utilisateur GetUtilisateurDetails(string id)
@@ -52,7 +63,7 @@ namespace ConsultationManagerServer.Services
                     //MessageBox.Show("kjnsk");
                 }
             }
-            MessageBox.Show("Utilisateur Saved... " + utilisateur.UserName + "  " + utilisateur.Password);
+            //MessageBox.Show("Utilisateur Saved... " + utilisateur.UserName + "  " + utilisateur.Password);
             return utilisateur;
         }
 

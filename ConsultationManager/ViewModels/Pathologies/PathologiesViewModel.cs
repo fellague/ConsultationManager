@@ -256,8 +256,8 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
             ServicePathologies servPatholog = new ServicePathologies();
 
             PathologieServiceClient psc = new PathologieServiceClient();
-            psc.ClientCredentials.UserName.UserName = "mimouni";
-            psc.ClientCredentials.UserName.Password = "e8x_";
+            psc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
+            psc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
             psc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
                                 X509CertificateValidationMode.None;
 
@@ -300,87 +300,109 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
         public void ModifierPathologie(object pathol)
         {
             var updatePatholog = pathol as Pathologie;
-            Console.WriteLine("PathologiesViewModel : Dialog Closed with Pathologie  " + updatePatholog.Nom);
+
+            PathologieServiceClient psc = new PathologieServiceClient();
+            psc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
+            psc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
+            psc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
+                                X509CertificateValidationMode.None;
+
+            updatePatholog = psc.UpdatePathologie(updatedPathologie.Id, updatedPathologie);
             dialogUpdatePathol.Close();
+            //Application.Current.Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => ListPathologies.Add(patholSave)));
 
-            var request = new RestRequest("ServicePathologies/Pathologies/{id}", Method.PUT) { RequestFormat = RestSharp.DataFormat.Json };
-            JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
-            {
-                DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
-            };
+            //Console.WriteLine("PathologiesViewModel : Dialog Closed with Pathologie  " + updatePatholog.Nom);
+            //dialogUpdatePathol.Close();
 
-            var json = JsonConvert.SerializeObject(updatePatholog, microsoftDateFormatSettings);
-            request.AddParameter("application/json", json, ParameterType.RequestBody);
-            request.AddParameter("id", updatedPathologie.Id, ParameterType.UrlSegment);
-            try
-            {
-                client.ExecuteAsync(request, response =>
-                {
-                    if (response.StatusCode == HttpStatusCode.OK)
-                    {
-                        //MessageBox.Show("Client response : Pathologie have been saved... " + response.Content);
-                        Pathologie patholSave = JsonConvert.DeserializeObject<Pathologie>(response.Content);
-                        Application.Current.Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => ListPathologies.Add(patholSave)));
-                    }
-                    else
-                    {
-                        if (response.StatusCode == HttpStatusCode.NotFound)
-                            MessageBox.Show("404 : The ressource dose not exist...");
-                        else
-                            MessageBox.Show("Une Exeption est apparut...");
-                    }
-                });
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show("An Exeption has accured" + error.Message);
-            }
+            //var request = new RestRequest("ServicePathologies/Pathologies/{id}", Method.PUT) { RequestFormat = RestSharp.DataFormat.Json };
+            //JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+            //{
+            //    DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+            //};
+
+            //var json = JsonConvert.SerializeObject(updatePatholog, microsoftDateFormatSettings);
+            //request.AddParameter("application/json", json, ParameterType.RequestBody);
+            //request.AddParameter("id", updatedPathologie.Id, ParameterType.UrlSegment);
+            //try
+            //{
+            //    client.ExecuteAsync(request, response =>
+            //    {
+            //        if (response.StatusCode == HttpStatusCode.OK)
+            //        {
+            //            //MessageBox.Show("Client response : Pathologie have been saved... " + response.Content);
+            //            Pathologie patholSave = JsonConvert.DeserializeObject<Pathologie>(response.Content);
+            //            Application.Current.Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => ListPathologies.Add(patholSave)));
+            //        }
+            //        else
+            //        {
+            //            if (response.StatusCode == HttpStatusCode.NotFound)
+            //                MessageBox.Show("404 : The ressource dose not exist...");
+            //            else
+            //                MessageBox.Show("Une Exeption est apparut...");
+            //        }
+            //    });
+            //}
+            //catch (Exception error)
+            //{
+            //    MessageBox.Show("An Exeption has accured" + error.Message);
+            //}
         }
         public void DeletePathologie(object selectedPathologie)
         {
-            Console.WriteLine("PathologiesViewModel : Remove Pathologie  ");
-            var pathol = selectedPathologie as Pathologie;
-            //listPathologies.Remove(pathol);
+            var deletedPatholog = selectedPathologie as Pathologie;
 
-            var request = new RestRequest("ServicePathologies/Pathologies/{id}", Method.DELETE) { RequestFormat = RestSharp.DataFormat.Json };
-            request.AddParameter("id", pathol.Id, ParameterType.UrlSegment);
-            try
-            {
-                client.ExecuteAsync(request, response =>
-                {
-                    if (response.StatusCode == HttpStatusCode.OK)
-                    {
-                        //Console.WriteLine("ContentElement  " + response.Content);
-                        MessageBox.Show("Pathologie is deleted... ");
-                        Application.Current.Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => listPathologies.Remove(pathol)));
-                    }
-                    else
-                    {
-                        if (response.StatusCode == HttpStatusCode.NotFound)
-                            MessageBox.Show("404 : The ressource dose not exist...");
+            PathologieServiceClient psc = new PathologieServiceClient();
+            psc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
+            psc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
+            psc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
+                                X509CertificateValidationMode.None;
 
-                        else
-                            MessageBox.Show("Une Exeption est apparut...");
-                    }
+            psc.DeletePathologie(deletedPatholog.Id);
+            listPathologies.Remove(deletedPatholog);
 
-                    //switch (response.StatusCode)
-                    //{
-                    //    case HttpStatusCode.OK:
-                    //        ListPathologies = JsonConvert.DeserializeObject<ObservableCollection<Pathologie>>(response.Content);
-                    //        break;
-                    //    case HttpStatusCode.NoContent:
-                    //        MessageBox.Show("There is 0 Pathologies...");
-                    //        break;
-                    //    default:
-                    //        MessageBox.Show("404 : The ressource dose not exist...");
-                    //        break;
-                    //}
-                });
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show("An Exeption has accured" + error);
-            }
+            //Console.WriteLine("PathologiesViewModel : Remove Pathologie  ");
+            //var pathol = selectedPathologie as Pathologie;
+            ////listPathologies.Remove(pathol);
+
+            //var request = new RestRequest("ServicePathologies/Pathologies/{id}", Method.DELETE) { RequestFormat = RestSharp.DataFormat.Json };
+            //request.AddParameter("id", pathol.Id, ParameterType.UrlSegment);
+            //try
+            //{
+            //    client.ExecuteAsync(request, response =>
+            //    {
+            //        if (response.StatusCode == HttpStatusCode.OK)
+            //        {
+            //            //Console.WriteLine("ContentElement  " + response.Content);
+            //            MessageBox.Show("Pathologie is deleted... ");
+            //            Application.Current.Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => listPathologies.Remove(pathol)));
+            //        }
+            //        else
+            //        {
+            //            if (response.StatusCode == HttpStatusCode.NotFound)
+            //                MessageBox.Show("404 : The ressource dose not exist...");
+
+            //            else
+            //                MessageBox.Show("Une Exeption est apparut...");
+            //        }
+
+            //        //switch (response.StatusCode)
+            //        //{
+            //        //    case HttpStatusCode.OK:
+            //        //        ListPathologies = JsonConvert.DeserializeObject<ObservableCollection<Pathologie>>(response.Content);
+            //        //        break;
+            //        //    case HttpStatusCode.NoContent:
+            //        //        MessageBox.Show("There is 0 Pathologies...");
+            //        //        break;
+            //        //    default:
+            //        //        MessageBox.Show("404 : The ressource dose not exist...");
+            //        //        break;
+            //        //}
+            //    });
+            //}
+            //catch (Exception error)
+            //{
+            //    MessageBox.Show("An Exeption has accured" + error);
+            //}
         }
         public void ShowDialogNewPathologie()
         {
@@ -392,44 +414,54 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
         }
         public void AjouterPathologie()
         {
-            dialogNewPathol.Close();
+            PathologieServiceClient psc = new PathologieServiceClient();
+            psc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
+            psc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
+            psc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
+                                X509CertificateValidationMode.None;
 
             newPathologie.IdService = service.Id;
-            
-            //ListPathologies.Add(newPathologie);
+            Pathologie newPatholog = psc.AddPathologie(newPathologie);
 
-            var request = new RestRequest("ServicePathologies/Pathologies", Method.POST) { RequestFormat = RestSharp.DataFormat.Json };
-            JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
-            {
-                DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
-            };
+            dialogNewPathol.Close();
+            ListPathologies.Add(newPatholog);
 
-            var json = JsonConvert.SerializeObject(newPathologie, microsoftDateFormatSettings);
-            request.AddParameter("application/json", json, ParameterType.RequestBody);
-            try
-            {
-                client.ExecuteAsync(request, response =>
-                {
-                    if (response.StatusCode == HttpStatusCode.OK)
-                    {
-                        //MessageBox.Show("Client response : Pathologie have been saved... " + response.Content);
-                        Pathologie patholSave = JsonConvert.DeserializeObject<Pathologie>(response.Content);
-                        //MessageBox.Show("Client response : Pathologie have been saved... " + patholSave.Nom + " " + patholSave.Description);
-                        Application.Current.Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => ListPathologies.Add(patholSave)));
-                    }
-                    else
-                    {
-                        if (response.StatusCode == HttpStatusCode.NotFound)
-                            MessageBox.Show("404 : The ressource dose not exist...");
-                        else
-                            MessageBox.Show("Une Exeption est apparut...");
-                    }
-                });
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show("An Exeption has accured" + error.Message);
-            }
+            //newPathologie.IdService = service.Id;
+
+            ////ListPathologies.Add(newPathologie);
+
+            //var request = new RestRequest("ServicePathologies/Pathologies", Method.POST) { RequestFormat = RestSharp.DataFormat.Json };
+            //JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+            //{
+            //    DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+            //};
+
+            //var json = JsonConvert.SerializeObject(newPathologie, microsoftDateFormatSettings);
+            //request.AddParameter("application/json", json, ParameterType.RequestBody);
+            //try
+            //{
+            //    client.ExecuteAsync(request, response =>
+            //    {
+            //        if (response.StatusCode == HttpStatusCode.OK)
+            //        {
+            //            //MessageBox.Show("Client response : Pathologie have been saved... " + response.Content);
+            //            Pathologie patholSave = JsonConvert.DeserializeObject<Pathologie>(response.Content);
+            //            //MessageBox.Show("Client response : Pathologie have been saved... " + patholSave.Nom + " " + patholSave.Description);
+            //            Application.Current.Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => ListPathologies.Add(patholSave)));
+            //        }
+            //        else
+            //        {
+            //            if (response.StatusCode == HttpStatusCode.NotFound)
+            //                MessageBox.Show("404 : The ressource dose not exist...");
+            //            else
+            //                MessageBox.Show("Une Exeption est apparut...");
+            //        }
+            //    });
+            //}
+            //catch (Exception error)
+            //{
+            //    MessageBox.Show("An Exeption has accured" + error.Message);
+            //}
         }
 
         private void UpdateService()
