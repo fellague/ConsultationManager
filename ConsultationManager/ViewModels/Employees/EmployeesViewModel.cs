@@ -9,10 +9,12 @@ using System.Windows;
 using System.ComponentModel;
 using System.Windows.Controls;
 using ConsultationManagerClient.ViewModels.Authentication;
+using ConsultationManagerServer.Models.SerializedModels;
+using ConsultationManager.ServiceReferencePathologie;
 
 namespace ConsultationManagerClient.ViewModels.Employees
 {
-    internal class ListEmployeesViewModel : INotifyPropertyChanged
+    internal class EmployeesViewModel : INotifyPropertyChanged
     {
         private string nomUtilisateur;
         private ObservableCollection<Utilisateur> listAllEmployee;
@@ -21,9 +23,14 @@ namespace ConsultationManagerClient.ViewModels.Employees
         private ObservableCollection<Utilisateur> listChefService;
         private ObservableCollection<Utilisateur> listAssistant;
 
-        private Utilisateur newUtilisateur;
 
-        public ListEmployeesViewModel()
+        
+
+        private Utilisateur newUtilisateur;
+        private ObservableCollection<Utilisateur> listMedecinSuperieur;
+        private ServicePathologies servicePathologies;
+
+        public EmployeesViewModel()
         {
             //listAllEmployee = CreateEmployees();
             //listMedecin = CreateListMedecin();
@@ -36,6 +43,9 @@ namespace ConsultationManagerClient.ViewModels.Employees
             listInfirmier = CreateListInfirmier();
             listChefService = CreateListChefService();
             listAssistant = CreateListAssistant();
+            listMedecinSuperieur = CreateListMedSup();
+
+            servicePathologies = GetServicePathols();
 
             newUtilisateur = new Utilisateur();
             newUtilisateur.DateNaiss = new DateTime(1980, 01, 01);
@@ -78,6 +88,21 @@ namespace ConsultationManagerClient.ViewModels.Employees
             get
             {
                 return listAssistant;
+            }
+        }
+        public ObservableCollection<Utilisateur> ListMedecinSuperieur
+        {
+            get
+            {
+                return listMedecinSuperieur;
+            }
+        }
+
+        public ServicePathologies ServicePathol
+        {
+            get
+            {
+                return servicePathologies;
             }
         }
 
@@ -142,6 +167,19 @@ namespace ConsultationManagerClient.ViewModels.Employees
             //list.Add(new Employee("Khoukhi", "Doukkich", "medecin", new DateTime(1990, 4, 20), "Chlef hay essalem nu 098", "07 76 98 09 54", new DateTime(2009, 4, 8), "Mimouni Soumia"));
             return list;
         }
+        private ServicePathologies GetServicePathols()
+        {
+            ServicePathologies serv = new ServicePathologies();
+
+            PathologieServiceClient psc = new PathologieServiceClient();
+            psc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
+            psc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
+            psc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
+                                X509CertificateValidationMode.None;
+
+            serv = psc.GetServiceDetails();
+            return serv;
+        }
 
         private ObservableCollection<Utilisateur> CreateListMedecin()
         {
@@ -191,6 +229,18 @@ namespace ConsultationManagerClient.ViewModels.Employees
             }
             return allMyList;
         }
+        private ObservableCollection<Utilisateur> CreateListMedSup()
+        {
+            ObservableCollection<Utilisateur> allMyList = new ObservableCollection<Utilisateur>();
+            foreach (Utilisateur element in listAllEmployee)
+            {
+                if (element.Role != "Assistant" && element.Role!= "Infirmier")
+                {
+                    allMyList.Add(element);
+                }
+            }
+            return allMyList;
+        }
 
         private void AjouterUtilisateur(object param)
         {
@@ -207,6 +257,7 @@ namespace ConsultationManagerClient.ViewModels.Employees
             newUtilisateur.UserName = newUtilisateur.Nom;
             newUtilisateur.Password = CreateRandomPassword(4);
             newUtilisateur.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
+            newUtilisateur.ServiceId = servicePathologies.Service.Id;
             newUtilisateur.CreeDans = DateTime.Now;
             MessageBox.Show("Utilisateur Saved Request... " + newUtilisateur.Password);
             newUser = usc.AddUtilisateur(newUtilisateur);

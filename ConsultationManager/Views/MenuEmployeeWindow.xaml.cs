@@ -21,12 +21,12 @@ namespace ConsultationManagerClient.Views
     /// </summary>
     public partial class MenuEmployeeWindow : Window
     {
-        ListEmployeesViewModel employeesVM;
+        EmployeesViewModel employeesVM;
 
         public MenuEmployeeWindow()
         {
             InitializeComponent();
-            employeesVM = new ListEmployeesViewModel();
+            employeesVM = new EmployeesViewModel();
             this.DataContext = employeesVM;
 
             _mainFrame.Navigate(new AllEmployeePage(employeesVM));

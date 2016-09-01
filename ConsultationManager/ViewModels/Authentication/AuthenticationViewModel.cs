@@ -91,7 +91,7 @@ namespace ConsultationManagerClient.ViewModels.Authentication
                     {
                         //MessageBox.Show("Nom utilisateur " + authenticatedUser.Id);
                         Application.Current.MainWindow.Hide();
-                        var form2 = new Home();
+                        var form2 = new ConsultationManagerClient.Views.Home();
                         form2.Closed += (s, args) => Application.Current.MainWindow.Close();
                         form2.Show();
                     }

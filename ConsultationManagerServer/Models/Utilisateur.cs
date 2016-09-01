@@ -1,6 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 
@@ -23,6 +24,10 @@ namespace ConsultationManagerServer.Models
         private DateTime creeDans;
         private string creePar;
 
+        private string medecinSup;
+        private string serviceId;
+        private string pathologieId;
+
         public Utilisateur()
         {
             Nom = "";
@@ -35,6 +40,10 @@ namespace ConsultationManagerServer.Models
             Telephone = "";
             CreeDans = new DateTime();
             CreePar = "";
+
+            medecinSup = "";
+            serviceId = "";
+            pathologieId = "";
         }
 
         [BsonId]
@@ -211,6 +220,46 @@ namespace ConsultationManagerServer.Models
             {
                 creePar = value;
                 OnPropertyChanged("CreePar");
+            }
+        }
+
+        [DataMember]
+        public string MedecinSup
+        {
+            get
+            {
+                return medecinSup;
+            }
+            set
+            {
+                medecinSup = value;
+                OnPropertyChanged("MedecinSup");
+            }
+        }
+        [DataMember]
+        public string ServiceId
+        {
+            get
+            {
+                return serviceId;
+            }
+            set
+            {
+                serviceId = value;
+                OnPropertyChanged("ServiceId");
+            }
+        }
+        [DataMember]
+        public string PathologieId
+        {
+            get
+            {
+                return pathologieId;
+            }
+            set
+            {
+                pathologieId = value;
+                OnPropertyChanged("PathologieId");
             }
         }
 

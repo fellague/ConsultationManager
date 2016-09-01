@@ -27,10 +27,12 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
@@ -51,32 +53,142 @@
 
             
 
-            <TextBlock Grid.Row="2" Text="Role" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <ComboBox SelectedValuePath="Content" SelectedValue="{Binding NewUtilisateur.Role}" SelectedIndex="1" Grid.Row="2" Grid.Column="1" FontSize="16">
-                <ComboBoxItem Content="Chef Service"/>
-                <ComboBoxItem Content="Médecin"/>
-                <ComboBoxItem Content="Infirmier"/>
-                <ComboBoxItem Content="Assistant"/>
-            </ComboBox>
+            
 
-            <TextBlock Grid.Row="3" Text="Date de Naissance" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <DatePicker SelectedDate="{Binding Path=NewUtilisateur.DateNaiss, Mode=TwoWay}" Grid.Row="3" Grid.Column="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+            <TextBlock Grid.Row="2" Text="Date de Naissance" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <DatePicker SelectedDate="{Binding Path=NewUtilisateur.DateNaiss, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
 
-            <TextBlock Grid.Row="4" Text="Sexe" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <ComboBox SelectedValuePath="Content"  SelectedValue="{Binding NewUtilisateur.Sexe}" SelectedIndex="0" Grid.Row="4" Grid.Column="1" FontSize="16">
+            <TextBlock Grid.Row="3" Text="Sexe" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <ComboBox SelectedValuePath="Content"  SelectedValue="{Binding NewUtilisateur.Sexe}" SelectedIndex="0" Grid.Row="3" Grid.Column="1" FontSize="16">
                 <ComboBoxItem>Malle</ComboBoxItem>
                 <ComboBoxItem>Femalle</ComboBoxItem>
             </ComboBox>
             
-            <TextBlock Grid.Row="5" Text="Spécialité" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBox Text="{Binding NewUtilisateur.Specialite}" Grid.Row="5" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Domaine de Spécialité"/>
+            <TextBlock Grid.Row="4" Text="Spécialité" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBox Text="{Binding NewUtilisateur.Specialite}" Grid.Row="4" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Domaine de Spécialité"/>
 
-            <TextBlock Grid.Row="6" Text="Adresse" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBox Text="{Binding NewUtilisateur.Adresse}" Grid.Row="6" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Wilaya, Dayra Hay Numero 00"></TextBox>
+            <TextBlock Grid.Row="5" Text="Adresse" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBox Text="{Binding NewUtilisateur.Adresse}" Grid.Row="5" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Wilaya, Dayra Hay Numero 00"></TextBox>
 
-            <TextBlock Grid.Row="7" Text="Téléphone" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBox Text="{Binding NewUtilisateur.Telephone}" Grid.Row="7" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="06 66 66 66 66"></TextBox>
+            <TextBlock Grid.Row="6" Text="Téléphone" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBox Text="{Binding NewUtilisateur.Telephone}" Grid.Row="6" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="06 66 66 66 66"></TextBox>
 
+
+            <TextBlock Grid.Column="2" Text="Role" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <ComboBox x:Name="ComboBoxRole" SelectedValuePath="Content" SelectedValue="{Binding NewUtilisateur.Role}" SelectedIndex="1" Grid.Column="3" FontSize="16">
+                <ComboBoxItem Content="Chef Service"/>
+                <ComboBoxItem Content="Médecin" Tag="ShowPathologies"/>
+                <ComboBoxItem Content="Infirmier"/>
+                <ComboBoxItem Content="Assistant" Tag="ShowMedecins"/>
+            </ComboBox>
+
+            <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Médecin Superieur" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">
+                </TextBlock>
+                <ComboBox Grid.Column="1" FontSize="16" 
+                          ItemsSource="{Binding Path=ListMedecinSuperieur}"
+                          SelectedValuePath="Id"
+                          SelectedValue="{Binding Path=NewUtilisateur.MedecinSup}" >
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0}  {1}">
+                                        <Binding Path="Nom"/>
+                                        <Binding Path="Prenom"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    <!--<ComboBoxItem>Halim fellague</ComboBoxItem>
+                    <ComboBoxItem>Safia Koidri</ComboBoxItem>
+                    <ComboBoxItem>Moh Flicha</ComboBoxItem>-->
+                </ComboBox>
+
+                <Grid.Style>
+                    <Style>
+                        <Setter Property="Grid.Visibility" Value="Collapsed"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger  
+                        Binding="{Binding ElementName=ComboBoxRole, Path=SelectedItem.Tag}" Value="ShowMedecins">
+                                <Setter Property="Grid.Visibility" Value="Visible"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Text="Pathologie Assigné" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">
+                </TextBlock>
+                <ComboBox Grid.Column="1" FontSize="16"
+                          ItemsSource="{Binding Path=ServicePathol.ListPthologie}"
+                          DisplayMemberPath="Nom"
+                          SelectedValuePath="Id"
+                          SelectedValue="{Binding Path=NewUtilisateur.PathologieId}">
+                    <!--<ComboBoxItem>Mimouni Khayra</ComboBoxItem>
+                    <ComboBoxItem>Halim Fellague</ComboBoxItem>-->
+                </ComboBox>
+
+                <Grid.Style>
+                    <Style>
+                        <Setter Property="Grid.Visibility" Value="Collapsed"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger  
+                        Binding="{Binding ElementName=ComboBoxRole, Path=SelectedItem.Tag}" Value="ShowPathologies">
+                                <Setter Property="Grid.Visibility" Value="Visible"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+            </Grid>
+            <!--<TextBlock Grid.Row="1" Grid.Column="2" Text="Médecin Superieur" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">
+                <TextBlock.Style>
+                    <Style>
+                        <Setter Property="TextBlock.Visibility" Value="Collapsed"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger  
+                        Binding="{Binding ElementName=ComboBoxRole, Path=SelectedItem.Tag}" Value="ShowMedecins">
+                                <Setter Property="TextBlock.Visibility" Value="Visible"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <ComboBox Grid.Row="1" Grid.Column="3" FontSize="16">
+                <ComboBoxItem>Mimouni Khayra</ComboBoxItem>
+                <ComboBoxItem>Halim Fellague</ComboBoxItem>
+                <ComboBox.Style>
+                    <Style>
+                        <Setter Property="ComboBox.Visibility" Value="Collapsed"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger  
+                        Binding="{Binding ElementName=ComboBoxRole, Path=SelectedItem.Tag}" Value="ShowMedecins">
+                                <Setter Property="ComboBox.Visibility" Value="Visible"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ComboBox.Style>
+            </ComboBox>-->
+
+            
             <!--<TextBlock Grid.Row="8" Text="Nom d'Utilisateur" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
             <TextBox Text="{Binding NewUtilisateur.UserName}" Grid.Row="8" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Prénom"></TextBox>
 

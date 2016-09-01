@@ -119,7 +119,7 @@
     <Compile Include="ViewModels\Consultations\ConsultationViewModel.cs" />
     <Compile Include="ViewModels\Consultations\ConsultConclusionViewModel.cs" />
     <Compile Include="ViewModels\Consultations\FirstConsultationViewModel.cs" />
-    <Compile Include="ViewModels\Employees\ListEmployeesViewModel.cs" />
+    <Compile Include="ViewModels\Employees\EmployeesViewModel.cs" />
     <Compile Include="ViewModels\Hospitalisations\ListHospitalisationViewModel.cs" />
     <Compile Include="ViewModels\Hospitalisations\NewDemandHospitalisationViewModel.cs" />
     <Compile Include="ViewModels\Pathologies\PathologiesViewModel.cs" />
