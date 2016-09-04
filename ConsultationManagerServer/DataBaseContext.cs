@@ -27,11 +27,11 @@ namespace ConsultationManagerServer
             }
         }
 
-        public MongoCollection<Pathologie> Pathologies
+        public MongoCollection<Consultation> Consultations
         {
             get
             {
-                return db.GetCollection<Pathologie>("Pathologie");
+                return db.GetCollection<Consultation>("Consultation");
             }
         }
 

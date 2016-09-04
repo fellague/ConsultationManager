@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 
@@ -7,101 +8,68 @@ namespace ConsultationManagerServer.Models
     [DataContract]
     public class Consultation : INotifyPropertyChanged
     {
-        private ObservableCollection<AntecedentPersonel> commentsPatient;
-        private ObservableCollection<RemarqueMedecin> remarquesMedecin;
-        //private FileStream tests;
-        private int poids;
-        private int ta;
-        private int tension;
-        private int temperature;
-        private string glycemique;
-        private string hymoglobine;
+        private string idService;
+        private string nom; 
+        private string description;
 
-        public Consultation(ObservableCollection<AntecedentPersonel> commentsPatient, ObservableCollection<RemarqueMedecin> remarquesMedecin, int poids, int ta, int tension, int temperature, string glycemique, string hymoglobine)
+        public Consultation()
         {
-            this.commentsPatient = commentsPatient;
-            this.remarquesMedecin = remarquesMedecin;
-            this.poids = poids;
-            this.ta = ta;
-            this.tension = tension;
-            this.temperature = temperature;
-            this.glycemique = glycemique;
-            this.hymoglobine = hymoglobine;
+            this.nom = "";
+            description = "";
+            idService = "";
+        }
 
+        [BsonId]
+        public ObjectId _id { get; set; }
+
+        [DataMember]
+        public string Id
+        {
+            get { return _id.ToString(); }
+            set { _id = ObjectId.Parse(value); }
         }
 
         [DataMember]
-        public ObservableCollection<AntecedentPersonel> CommentsPatient
+        public string IdService
         {
             get
             {
-                return commentsPatient;
+                return idService;
+            }
+            set
+            {
+                idService = value;
+                OnPropertyChanged("IdService");
             }
         }
 
         [DataMember]
-        public ObservableCollection<RemarqueMedecin> RemarquesMedecin
+        public string Nom
         {
             get
             {
-                return remarquesMedecin;
+                return nom;
+            }
+            set
+            {
+                nom = value;
+                OnPropertyChanged("Nom");
             }
         }
 
         [DataMember]
-        public int Poids
+        public string Description
         {
             get
             {
-                return poids;
+                return description;
             }
-        }
-
-        [DataMember]
-        public int TA
-        {
-            get
+            set
             {
-                return ta;
+                description = value;
+                OnPropertyChanged("Description");
             }
         }
-
-        [DataMember]
-        public int Tension
-        {
-            get
-            {
-                return tension;
-            }
-        }
-
-        [DataMember]
-        public int Temperature
-        {
-            get
-            {
-                return temperature;
-            }
-        }
-
-        [DataMember]
-        public string Glycemique
-        {
-            get
-            {
-                return glycemique;
-            }
-        }
-
-        [DataMember]
-        public string Hymoglobine
-        {
-            get
-            {
-                return hymoglobine;
-            }
-        }
-
         #region InotifyPropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;

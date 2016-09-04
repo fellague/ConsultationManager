@@ -1,0 +1,44 @@
+﻿<Window x:Class="ConsultationManagerClient.Views.Interviews.NewAntecedFamilWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:ConsultationManagerClient.Views.Interviews"
+             mc:Ignorable="d"  WindowStyle="None"
+             Height="270" Width="550" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition  Height="*"/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel>
+            <TextBlock  FontSize="24">Nouveau Antécédent Familial</TextBlock>
+        </WrapPanel>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Membre" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBox Text="{Binding NewAntecedFamil.Membre}" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Membre de famille"></TextBox>
+
+            <TextBlock Grid.Row="1" Text="Description" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 5 0 0" FontSize="16"></TextBlock>
+            <TextBox Text="{Binding NewAntecedFamil.Description}" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" MinLines="5" MaxLines="5" VerticalScrollBarVisibility="Auto" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Description"></TextBox>
+
+            <Button Grid.Row="2" Command="{Binding AddAntecedFamilCommand}" CommandParameter="{Binding NewAntecedFamil}" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin=" 0 20 50 50" FontSize="16">Ajouter</Button>
+        </Grid>
+
+    </Grid>
+</Window>

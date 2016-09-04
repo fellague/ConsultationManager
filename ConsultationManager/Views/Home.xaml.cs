@@ -58,7 +58,7 @@ namespace ConsultationManagerClient.Views
         private void showAllEmployees(object sender, EventArgs e)
         {
             this.Hide();
-            var form2 = new MenuEmployeeWindow();
+            var form2 = new MenuUserWindow();
             form2.Closed += (s, args) => this.Close();
             form2.Show();
         }
@@ -66,7 +66,7 @@ namespace ConsultationManagerClient.Views
         private void showPathologies(object sender, EventArgs e)
         {
             this.Hide();
-            var form2 = new MenuPathologieWindow();
+            var form2 = new MenuConsultationWindow();
             form2.Closed += (s, args) => this.Close();
             form2.Show();
         }
@@ -111,8 +111,8 @@ namespace ConsultationManagerClient.Views
     {
         public static readonly List<EmployeeContent> DataSource =
             new List<EmployeeContent> {
-                new EmployeeContent { HeaderCont = "Employées", TextCont = "Afficher et modifier la liste des employées", Photo = "/ConsultationManager;component/Imgs/Home/staff.jpg" },
-                new EmployeeContent { HeaderCont = "Accès", TextCont = "Controller les droits d'accès des employées", Photo = "/ConsultationManager;component/Imgs/Home/roles.png" }
+                new EmployeeContent { HeaderCont = "Utilisateurs", TextCont = "Afficher et modifier la liste des utilisateurs", Photo = "/ConsultationManager;component/Imgs/Home/staff.jpg" },
+                new EmployeeContent { HeaderCont = "Accès", TextCont = "Controller les droits d'accès des utilisateurs", Photo = "/ConsultationManager;component/Imgs/Home/roles.png" }
             };
     }
 

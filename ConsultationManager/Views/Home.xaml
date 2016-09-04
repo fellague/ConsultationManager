@@ -80,7 +80,7 @@
             <dxlc:Tile Header="Notifications" Size="Small" FontSize="20" HorizontalHeaderAlignment="Center" Background="#FF4B97DE" Foreground="White">
                 <Image x:Name="image4" Source="/ConsultationManager;component/Imgs/Home/notifications.png"/>
             </dxlc:Tile>
-            <dxlc:Tile Header="Pathologies" Click="showPathologies" Size="Small" FontSize="23" HorizontalHeaderAlignment="Center" Background="#FF4B97DE" Foreground="White">
+            <dxlc:Tile Header="Consultations" Click="showPathologies" Size="Small" FontSize="19" HorizontalHeaderAlignment="Center" Background="#FF4B97DE" Foreground="White">
                 <Image x:Name="image5" Source="/ConsultationManager;component/Imgs/Home/pathologies.png"/>
             </dxlc:Tile>
 

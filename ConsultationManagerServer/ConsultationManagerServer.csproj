@@ -85,7 +85,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Services\AuthenticationService.svc" />
-    <Content Include="Services\PathologieService.svc" />
+    <Content Include="Services\ConsultationService.svc" />
     <Content Include="Services\PatientService.svc" />
     <Content Include="Services\UtilisateurService.svc" />
     <Content Include="Web.config">
@@ -112,13 +112,13 @@
     <Compile Include="Models\AntecedentFamilial.cs" />
     <Compile Include="Models\AntecedentPersonel.cs" />
     <Compile Include="Models\CompteRendu.cs" />
-    <Compile Include="Models\Consultation.cs" />
+    <Compile Include="Models\Interview.cs" />
     <Compile Include="Models\Utilisateur.cs" />
     <Compile Include="Models\Hospitalisation.cs" />
     <Compile Include="Models\LettreOrientation.cs" />
     <Compile Include="Models\Medicament.cs" />
     <Compile Include="Models\Ordonnance.cs" />
-    <Compile Include="Models\Pathologie.cs" />
+    <Compile Include="Models\Consultation.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\RDV.cs" />
     <Compile Include="Models\RemarqueMedecin.cs" />
@@ -127,10 +127,10 @@
     <Compile Include="Models\Traitement.cs" />
     <Compile Include="Models\TraitementsComplemtaires.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\IPathologieService.cs" />
+    <Compile Include="Services\IConsultationService.cs" />
     <Compile Include="Services\IUtilisateurService.cs" />
-    <Compile Include="Services\PathologieService.svc.cs">
-      <DependentUpon>PathologieService.svc</DependentUpon>
+    <Compile Include="Services\ConsultationService.svc.cs">
+      <DependentUpon>ConsultationService.svc</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

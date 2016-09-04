@@ -105,7 +105,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\ServiceReferencePathologie\Reference.cs">
+    <Compile Include="Service References\ServiceReferenceConsultation\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -121,58 +121,58 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Authentication\AuthenticationViewModel.cs" />
-    <Compile Include="ViewModels\Consultations\ConsultationViewModel.cs" />
-    <Compile Include="ViewModels\Consultations\ConsultConclusionViewModel.cs" />
-    <Compile Include="ViewModels\Consultations\FirstConsultationViewModel.cs" />
-    <Compile Include="ViewModels\Employees\EmployeesViewModel.cs" />
+    <Compile Include="ViewModels\Interviews\InterviewViewModel.cs" />
+    <Compile Include="ViewModels\Interviews\InterviewConclusionViewModel.cs" />
+    <Compile Include="ViewModels\Interviews\FirstInterviewViewModel.cs" />
+    <Compile Include="ViewModels\Utilisateurs\UsersViewModel.cs" />
     <Compile Include="ViewModels\Hospitalisations\ListHospitalisationViewModel.cs" />
     <Compile Include="ViewModels\Hospitalisations\NewDemandHospitalisationViewModel.cs" />
-    <Compile Include="ViewModels\Pathologies\PathologiesViewModel.cs" />
+    <Compile Include="ViewModels\Consultations\ConsultationsViewModel.cs" />
     <Compile Include="ViewModels\Patients\PatientsViewModel.cs" />
     <Compile Include="ViewModels\RDVs\ListRvdViewModel.cs" />
     <Compile Include="ViewModels\RDVs\NewRdvViewModel.cs" />
     <Compile Include="ViewModels\RDVs\UpdateRdvViewModel.cs" />
-    <Compile Include="Views\Consultation\ConsultConclusionWindow.xaml.cs">
-      <DependentUpon>ConsultConclusionWindow.xaml</DependentUpon>
+    <Compile Include="Views\Interviews\InterviewConclusionWindow.xaml.cs">
+      <DependentUpon>InterviewConclusionWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Consultation\ConsultationWindow.xaml.cs">
-      <DependentUpon>ConsultationWindow.xaml</DependentUpon>
+    <Compile Include="Views\Interviews\InterviewWindow.xaml.cs">
+      <DependentUpon>InterviewWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Consultation\FirstConsultationWindow.xaml.cs">
-      <DependentUpon>FirstConsultationWindow.xaml</DependentUpon>
+    <Compile Include="Views\Interviews\FirstInterviewWindow.xaml.cs">
+      <DependentUpon>FirstInterviewWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Consultation\NewMedicamentWindow.xaml.cs">
+    <Compile Include="Views\Interviews\NewMedicamentWindow.xaml.cs">
       <DependentUpon>NewMedicamentWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Consultation\NewAntecedFamilWindow.xaml.cs">
+    <Compile Include="Views\Interviews\NewAntecedFamilWindow.xaml.cs">
       <DependentUpon>NewAntecedFamilWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Consultation\NewAntecedPersWindow.xaml.cs">
+    <Compile Include="Views\Interviews\NewAntecedPersWindow.xaml.cs">
       <DependentUpon>NewAntecedPersWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Consultation\NewRemarqMedWindow.xaml.cs">
+    <Compile Include="Views\Interviews\NewRemarqMedWindow.xaml.cs">
       <DependentUpon>NewRemarqMedWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Consultation\NewTraitemComplWindow.xaml.cs">
+    <Compile Include="Views\Interviews\NewTraitemComplWindow.xaml.cs">
       <DependentUpon>NewTraitemComplWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Employees\AllEmployeePage.xaml.cs">
-      <DependentUpon>AllEmployeePage.xaml</DependentUpon>
+    <Compile Include="Views\Utilisateurs\AllUsersPage.xaml.cs">
+      <DependentUpon>AllUsersPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Employees\AssistantsPage.xaml.cs">
+    <Compile Include="Views\Utilisateurs\AssistantsPage.xaml.cs">
       <DependentUpon>AssistantsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Employees\ChefServicePage.xaml.cs">
+    <Compile Include="Views\Utilisateurs\ChefServicePage.xaml.cs">
       <DependentUpon>ChefServicePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Employees\InfirmiersPage.xaml.cs">
+    <Compile Include="Views\Utilisateurs\InfirmiersPage.xaml.cs">
       <DependentUpon>InfirmiersPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Employees\MedecinsPage.xaml.cs">
+    <Compile Include="Views\Utilisateurs\MedecinsPage.xaml.cs">
       <DependentUpon>MedecinsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Employees\NewEmployeePage.xaml.cs">
-      <DependentUpon>NewEmployeePage.xaml</DependentUpon>
+    <Compile Include="Views\Utilisateurs\NewUserPage.xaml.cs">
+      <DependentUpon>NewUserPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
@@ -186,14 +186,14 @@
     <Compile Include="Views\Hospitalisations\NewDemandHospitalisationPage.xaml.cs">
       <DependentUpon>NewDemandHospitalisationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MenuEmployeeWindow.xaml.cs">
-      <DependentUpon>MenuEmployeeWindow.xaml</DependentUpon>
+    <Compile Include="Views\MenuUtilisateurWindow.xaml.cs">
+      <DependentUpon>MenuUtilisateurWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MenuHospitalisationWindow.xaml.cs">
       <DependentUpon>MenuHospitalisationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MenuPathologieWindow.xaml.cs">
-      <DependentUpon>MenuPathologieWindow.xaml</DependentUpon>
+    <Compile Include="Views\MenuConsultationWindow.xaml.cs">
+      <DependentUpon>MenuConsultationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MenuRdvWindow.xaml.cs">
       <DependentUpon>MenuRdvWindow.xaml</DependentUpon>
@@ -201,16 +201,16 @@
     <Compile Include="Views\MenuPatientWindow.xaml.cs">
       <DependentUpon>MenuPatientWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pathologies\NewPathologieWindow.xaml.cs">
-      <DependentUpon>NewPathologieWindow.xaml</DependentUpon>
+    <Compile Include="Views\Consultations\NewConsultationWindow.xaml.cs">
+      <DependentUpon>NewConsultationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pathologies\ServiceDetailsPage.xaml.cs">
+    <Compile Include="Views\Consultations\ServiceDetailsPage.xaml.cs">
       <DependentUpon>ServiceDetailsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pathologies\UpdatePathologieWindow.xaml.cs">
-      <DependentUpon>UpdatePathologieWindow.xaml</DependentUpon>
+    <Compile Include="Views\Consultations\UpdateConsultationWindow.xaml.cs">
+      <DependentUpon>UpdateConsultationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pathologies\UpdateServicePage.xaml.cs">
+    <Compile Include="Views\Consultations\UpdateServicePage.xaml.cs">
       <DependentUpon>UpdateServicePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Patients\AllPatientsPage.xaml.cs">
@@ -252,59 +252,59 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\Consultation\ConsultConclusionWindow.xaml">
+    <Page Include="Views\Interviews\InterviewConclusionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Consultation\ConsultationWindow.xaml">
+    <Page Include="Views\Interviews\InterviewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Consultation\FirstConsultationWindow.xaml">
+    <Page Include="Views\Interviews\FirstInterviewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Consultation\NewMedicamentWindow.xaml">
+    <Page Include="Views\Interviews\NewMedicamentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Consultation\NewAntecedFamilWindow.xaml">
+    <Page Include="Views\Interviews\NewAntecedFamilWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Consultation\NewAntecedPersWindow.xaml">
+    <Page Include="Views\Interviews\NewAntecedPersWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Consultation\NewRemarqMedWindow.xaml">
+    <Page Include="Views\Interviews\NewRemarqMedWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Consultation\NewTraitemComplWindow.xaml">
+    <Page Include="Views\Interviews\NewTraitemComplWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Employees\AllEmployeePage.xaml">
+    <Page Include="Views\Utilisateurs\AllUsersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Employees\AssistantsPage.xaml">
+    <Page Include="Views\Utilisateurs\AssistantsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Employees\ChefServicePage.xaml">
+    <Page Include="Views\Utilisateurs\ChefServicePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Employees\InfirmiersPage.xaml">
+    <Page Include="Views\Utilisateurs\InfirmiersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Employees\MedecinsPage.xaml">
+    <Page Include="Views\Utilisateurs\MedecinsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Employees\NewEmployeePage.xaml">
+    <Page Include="Views\Utilisateurs\NewUserPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -324,7 +324,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MenuEmployeeWindow.xaml">
+    <Page Include="Views\MenuUtilisateurWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -332,7 +332,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MenuPathologieWindow.xaml">
+    <Page Include="Views\MenuConsultationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -344,19 +344,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Pathologies\NewPathologieWindow.xaml">
+    <Page Include="Views\Consultations\NewConsultationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Pathologies\ServiceDetailsPage.xaml">
+    <Page Include="Views\Consultations\ServiceDetailsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Pathologies\UpdatePathologieWindow.xaml">
+    <Page Include="Views\Consultations\UpdateConsultationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Pathologies\UpdateServicePage.xaml">
+    <Page Include="Views\Consultations\UpdateServicePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -417,6 +417,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ConsultationManagerServer.Models.Consultation.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Pathologie.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Patient.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.ServicePathologies.datasource" />
@@ -437,20 +438,20 @@
     <None Include="Service References\ServiceReferenceAuthentication\AuthenticationService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReferencePathologie\PathologieService.wsdl" />
-    <None Include="Service References\ServiceReferencePathologie\PathologieService.xsd">
+    <None Include="Service References\ServiceReferenceConsultation\ConsultationService.wsdl" />
+    <None Include="Service References\ServiceReferenceConsultation\ConsultationService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReferencePathologie\PathologieService1.xsd">
+    <None Include="Service References\ServiceReferenceConsultation\ConsultationService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReferencePathologie\PathologieService2.xsd">
+    <None Include="Service References\ServiceReferenceConsultation\ConsultationService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReferencePathologie\PathologieService3.xsd">
+    <None Include="Service References\ServiceReferenceConsultation\ConsultationService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReferencePathologie\PathologieService4.xsd">
+    <None Include="Service References\ServiceReferenceConsultation\ConsultationService4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReferencePatient\PatientService.wsdl" />
@@ -547,21 +548,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReferenceAuthentication\" />
-    <WCFMetadataStorage Include="Service References\ServiceReferencePathologie\" />
+    <WCFMetadataStorage Include="Service References\ServiceReferenceConsultation\" />
     <WCFMetadataStorage Include="Service References\ServiceReferencePatient\" />
     <WCFMetadataStorage Include="Service References\ServiceReferenceUtilisateur\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ServiceReferencePathologie\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ServiceReferencePathologie\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ServiceReferencePathologie\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceReferenceUtilisateur\configuration91.svcinfo" />
@@ -595,6 +584,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceReferencePatient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceConsultation\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceConsultation\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceConsultation\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

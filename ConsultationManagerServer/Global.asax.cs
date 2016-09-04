@@ -16,7 +16,7 @@ namespace ConsultationManagerServer
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            RouteTable.Routes.Add(new ServiceRoute("ServicePathologies", new WebServiceHostFactory(), typeof(PathologieService)));
+            RouteTable.Routes.Add(new ServiceRoute("ServicePathologies", new WebServiceHostFactory(), typeof(ConsultationService)));
         }
 
         protected void Session_Start(object sender, EventArgs e)

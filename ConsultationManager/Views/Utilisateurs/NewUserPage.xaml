@@ -1,0 +1,172 @@
+﻿<Page x:Class="ConsultationManagerClient.Views.Users.NewUserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:ConsultationManagerClient.Views.Users"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="New User Page">
+
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition  Height="*"/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel>
+            <TextBlock  FontSize="24">Nouveau Utilisateur</TextBlock>
+        </WrapPanel>
+        
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Nom" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBox Text="{Binding NewUtilisateur.Nom}" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Nom"></TextBox>
+
+            <TextBlock Grid.Row="1" Text="Prénom" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBox Text="{Binding NewUtilisateur.Prenom}" Grid.Row="1" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Prénom"></TextBox>
+
+            
+
+            
+
+            <TextBlock Grid.Row="2" Text="Date de Naissance" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <DatePicker SelectedDate="{Binding Path=NewUtilisateur.DateNaiss, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+
+            <TextBlock Grid.Row="3" Text="Sexe" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <ComboBox SelectedValuePath="Content"  SelectedValue="{Binding NewUtilisateur.Sexe}" SelectedIndex="0" Grid.Row="3" Grid.Column="1" FontSize="16">
+                <ComboBoxItem>Malle</ComboBoxItem>
+                <ComboBoxItem>Femalle</ComboBoxItem>
+            </ComboBox>
+            
+            <TextBlock Grid.Row="4" Text="Spécialité" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBox Text="{Binding NewUtilisateur.Specialite}" Grid.Row="4" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Domaine de Spécialité"/>
+
+            <TextBlock Grid.Row="5" Text="Adresse" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBox Text="{Binding NewUtilisateur.Adresse}" Grid.Row="5" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Wilaya, Dayra Hay Numero 00"></TextBox>
+
+            <TextBlock Grid.Row="6" Text="Téléphone" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBox Text="{Binding NewUtilisateur.Telephone}" Grid.Row="6" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="06 66 66 66 66"></TextBox>
+
+
+            <TextBlock Grid.Column="2" Text="Role" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <ComboBox x:Name="ComboBoxRole" SelectedValuePath="Content" SelectedValue="{Binding NewUtilisateur.Role}" SelectedIndex="1" Grid.Column="3" FontSize="16">
+                <ComboBoxItem Content="Chef Service" Tag="ShowPathologies"/>
+                <ComboBoxItem Content="Médecin" Tag="ShowPathologies"/>
+                <ComboBoxItem Content="Infirmier"/>
+                <ComboBoxItem Content="Assistant" Tag="ShowMedecins"/>
+            </ComboBox>
+
+            <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Médecin Superieur" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">
+                </TextBlock>
+                <ComboBox Grid.Column="1" FontSize="16" 
+                          ItemsSource="{Binding Path=ListMedecinSuperieur}"
+                          SelectedValuePath="Id"
+                          SelectedValue="{Binding Path=NewUtilisateur.MedecinSup}" >
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0}  {1}">
+                                        <Binding Path="Nom"/>
+                                        <Binding Path="Prenom"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <Grid.Style>
+                    <Style>
+                        <Setter Property="Grid.Visibility" Value="Collapsed"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger  
+                        Binding="{Binding ElementName=ComboBoxRole, Path=SelectedItem.Tag}" Value="ShowMedecins">
+                                <Setter Property="Grid.Visibility" Value="Visible"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Pathologie Assigné" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">
+                </TextBlock>
+                <ComboBox Grid.Column="1" FontSize="16"
+                          ItemsSource="{Binding Path=ServicePathol.ListPthologie}"
+                          DisplayMemberPath="Nom"
+                          SelectedValuePath="Id"
+                          SelectedValue="{Binding Path=NewUtilisateur.PathologieId}">
+                </ComboBox>
+
+                <Grid.Style>
+                    <Style>
+                        <Setter Property="Grid.Visibility" Value="Collapsed"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger  
+                        Binding="{Binding ElementName=ComboBoxRole, Path=SelectedItem.Tag}" Value="ShowPathologies">
+                                <Setter Property="Grid.Visibility" Value="Visible"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+            </Grid>
+
+
+            <!--<TextBlock Grid.Row="8" Text="Nom d'Utilisateur" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBox Text="{Binding NewUtilisateur.UserName}" Grid.Row="8" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Prénom"></TextBox>
+
+            <TextBlock Grid.Row="9" Text="Mot de Passe" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <PasswordBox x:Name="MyPasswordBox" Grid.Row="9" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Prénom"></PasswordBox>
+
+            <TextBlock Grid.Row="1" Text="Confirmer Mot de Passe" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <PasswordBox x:Name="MyPasswordBoxConfirm" Grid.Row="1" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Prénom"></PasswordBox>-->
+
+        </Grid>
+
+        <Button Grid.Column="1" Grid.Row="1" Command="{Binding AddUtilisateurCommand}" CommandParameter="{Binding ElementName=MyPasswordBox}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width=" 250" Margin=" 0 0 50 50" FontSize="16">Ajouter</Button>
+    </Grid>
+</Page>

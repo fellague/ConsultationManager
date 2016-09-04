@@ -1,8 +1,8 @@
 ﻿using System;
 using ConsultationManagerServer.Models;
 using ConsultationManagerClient.Views.RDVs;
-using ConsultationManagerClient.Views.Consultation;
-using ConsultationManagerClient.ViewModels.Consultations;
+using ConsultationManagerClient.Views.Interviews;
+using ConsultationManagerClient.ViewModels.Interviews;
 using System.Windows.Input;
 using ConsultationManagerClient.Commands;
 using System.Collections.ObjectModel;
@@ -19,9 +19,9 @@ namespace ConsultationManagerClient.ViewModels.RDVs
         private ObservableCollection<RDV> listAllFirstRvd;
         //private RDV selectedRDV = null;
         private UpdateRdvWindow dialogUpdate;
-        private ConsultationWindow dialogConsultation;
-        private FirstConsultationWindow dialogFirstConsultation;
-        private ConsultConclusionWindow dialogConsltConclusion;
+        private InterviewWindow dialogConsultation;
+        private FirstInterviewWindow dialogFirstConsultation;
+        private InterviewConclusionWindow dialogConsltConclusion;
 
         private string nomUtilisateur;
 
@@ -77,14 +77,14 @@ namespace ConsultationManagerClient.ViewModels.RDVs
                 return dialogUpdate;
             }
         }
-        public ConsultationWindow DialogConsultationView
+        public InterviewWindow DialogConsultationView
         {
             get
             {
                 return dialogConsultation;
             }
         }
-        public FirstConsultationWindow DialogFirstRdvView
+        public FirstInterviewWindow DialogFirstRdvView
         {
             get
             {
@@ -157,8 +157,8 @@ namespace ConsultationManagerClient.ViewModels.RDVs
         {
             var rdv = selectedRdv as RDV;
             Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.DateRdv);
-            dialogConsultation = new ConsultationWindow();
-            dialogConsultation.DataContext = new ConsultationViewModel(rdv, this);
+            dialogConsultation = new InterviewWindow();
+            dialogConsultation.DataContext = new InterviewViewModel(rdv, this);
             dialogConsultation.ShowDialog();
         }
 
@@ -166,17 +166,17 @@ namespace ConsultationManagerClient.ViewModels.RDVs
         {
             var rdv = selectedRdv as RDV;
             Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.DateRdv);
-            dialogFirstConsultation = new FirstConsultationWindow();
-            dialogFirstConsultation.DataContext = new FirstConsultationViewModel(rdv);
+            dialogFirstConsultation = new FirstInterviewWindow();
+            dialogFirstConsultation.DataContext = new FirstInterviewViewModel(rdv);
             dialogFirstConsultation.ShowDialog();
         }
 
-        public void ShowDialogConsultConclusion(RDV selectedRdv, Consultation consult)
+        public void ShowDialogConsultConclusion(RDV selectedRdv, Interview consult)
         {
             RDV rdv = selectedRdv;
             Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.DateRdv);
-            dialogConsltConclusion = new ConsultConclusionWindow();
-            dialogConsltConclusion.DataContext = new ConsultConclusionViewModel(rdv, consult, this);
+            dialogConsltConclusion = new InterviewConclusionWindow();
+            dialogConsltConclusion.DataContext = new InterviewConclusionViewModel(rdv, consult, this);
 
             //dialogConsultation.Hide();
             dialogConsultation.Close();

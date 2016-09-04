@@ -12,12 +12,12 @@ namespace ConsultationManagerServer.Models.SerializedModels
     public class ServicePathologies : INotifyPropertyChanged
     {
         private Service service;
-        private ObservableCollection<Pathologie> listPthologie;
+        private ObservableCollection<Consultation> listPthologie;
 
         public ServicePathologies()
         {
             service = new Service();
-            listPthologie = new ObservableCollection<Pathologie>();
+            listPthologie = new ObservableCollection<Consultation>();
         }
 
         [DataMember]
@@ -35,7 +35,7 @@ namespace ConsultationManagerServer.Models.SerializedModels
         }
 
         [DataMember]
-        public ObservableCollection<Pathologie> ListPthologie
+        public ObservableCollection<Consultation> ListPthologie
         {
             get
             {
