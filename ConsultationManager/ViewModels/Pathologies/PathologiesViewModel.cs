@@ -28,10 +28,11 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
 {
     internal class PathologiesViewModel : INotifyPropertyChanged
     {
+        //private RestClient client = new RestClient("http://localhost:64183/");
 
-
-        private RestClient client = new RestClient("http://localhost:64183/");
+        private PathologieServiceClient psc = new PathologieServiceClient();
         private Service service;
+
         private Service cloneService;
         private ObservableCollection<Pathologie> listPathologies;
 
@@ -50,10 +51,16 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
             service = new Service();
             listPathologies = new ObservableCollection<Pathologie>();
 
+            psc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
+            psc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
+            psc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
+                                X509CertificateValidationMode.None;
+
             newTelephone = "";
 
             //client.ClientCertificates = new X509CertificateValidationMode();
-            client.Authenticator = new HttpBasicAuthenticator("yow", "123");
+            //client.Authenticator = new HttpBasicAuthenticator("yow", "123");
+
             GetServicePathologies();
 
             AddTelephoneCommand = new RelayCommand(param => AjouterTelephone());
@@ -255,19 +262,12 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
 
             ServicePathologies servPatholog = new ServicePathologies();
 
-            PathologieServiceClient psc = new PathologieServiceClient();
-            psc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
-            psc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
-            psc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
-                                X509CertificateValidationMode.None;
-
             servPatholog = psc.GetServiceDetails();
             Service = servPatholog.Service;
             cloneService = Service;
             ListPathologies = servPatholog.ListPthologie;
             if (ListPathologies.Count == 0)
                 MessageBox.Show("There is 0 Pathologies...");
-             
         }
 
         public void AjouterTelephone()
@@ -278,7 +278,6 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
                 service.Telephones.Add(newTelephone);
                 NewTelephone = "";
             }
-
         }
         public void DeleteTelephone(object selectedTelephone)
         {
@@ -300,13 +299,7 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
         public void ModifierPathologie(object pathol)
         {
             var updatePatholog = pathol as Pathologie;
-
-            PathologieServiceClient psc = new PathologieServiceClient();
-            psc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
-            psc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
-            psc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
-                                X509CertificateValidationMode.None;
-
+            
             updatePatholog = psc.UpdatePathologie(updatedPathologie.Id, updatedPathologie);
             dialogUpdatePathol.Close();
             //Application.Current.Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => ListPathologies.Add(patholSave)));
@@ -350,13 +343,7 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
         public void DeletePathologie(object selectedPathologie)
         {
             var deletedPatholog = selectedPathologie as Pathologie;
-
-            PathologieServiceClient psc = new PathologieServiceClient();
-            psc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
-            psc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
-            psc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
-                                X509CertificateValidationMode.None;
-
+            
             psc.DeletePathologie(deletedPatholog.Id);
             listPathologies.Remove(deletedPatholog);
 
@@ -414,12 +401,6 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
         }
         public void AjouterPathologie()
         {
-            PathologieServiceClient psc = new PathologieServiceClient();
-            psc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
-            psc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
-            psc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
-                                X509CertificateValidationMode.None;
-
             newPathologie.IdService = service.Id;
             Pathologie newPatholog = psc.AddPathologie(newPathologie);
 
@@ -466,12 +447,6 @@ namespace ConsultationManagerClient.ViewModels.Pathologies
 
         private void UpdateService()
         {
-            PathologieServiceClient psc = new PathologieServiceClient();
-            psc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
-            psc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
-            psc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
-                                X509CertificateValidationMode.None;
-
             psc.UpdateService(service.Id, service);
             MessageBox.Show("Le Service a été modifié... " + service.Nom);
 

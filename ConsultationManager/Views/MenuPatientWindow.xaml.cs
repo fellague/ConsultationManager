@@ -21,12 +21,12 @@ namespace ConsultationManagerClient.Views
     /// </summary>
     public partial class MenuPatientWindow : Window
     {
-        ListPatientViewModel patientsVM;
+        PatientsViewModel patientsVM;
 
         public MenuPatientWindow(string tab)
         {
             InitializeComponent();
-            patientsVM = new ListPatientViewModel();
+            patientsVM = new PatientsViewModel();
             this.DataContext = patientsVM;
             if (tab == "all")
             {

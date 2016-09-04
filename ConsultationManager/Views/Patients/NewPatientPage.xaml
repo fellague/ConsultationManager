@@ -27,56 +27,102 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Nom" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBox Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Nom"></TextBox>
+            <TextBlock Text="Nom" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 20 0 0"></TextBlock>
+            <TextBox Text="{Binding NewPatient.Nom}" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Nom" Margin="0 20 0 0"></TextBox>
 
-            <TextBlock Grid.Row="1" Text="Prénom" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBox Grid.Row="1" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Prénom"></TextBox>
+            <TextBlock Grid.Row="1" Text="Prénom" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 20 0 0"></TextBlock>
+            <TextBox Text="{Binding NewPatient.Prenom}" Grid.Row="1" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Prénom" Margin="0 20 0 0"></TextBox>
 
-            <TextBlock Grid.Row="2" Text="Date de Naissance" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <DatePicker Grid.Row="2" Grid.Column="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+            <TextBlock Grid.Row="2" Text="Date de Naissance" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 20 0 0"></TextBlock>
+            <DatePicker SelectedDate="{Binding Path=NewPatient.DateNaiss, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="0 20 0 0"/>
 
-            <TextBlock Grid.Row="3" Text="Sexe" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <ComboBox Grid.Row="3" Grid.Column="1" FontSize="16">
+            <TextBlock Grid.Row="3" Text="Sexe" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 20 0 0"></TextBlock>
+            <ComboBox SelectedValuePath="Content"  SelectedValue="{Binding NewPatient.Sexe}" Grid.Row="3" Grid.Column="1" FontSize="16" Margin="0 20 0 0">
                 <ComboBoxItem>Malle</ComboBoxItem>
                 <ComboBoxItem>Femalle</ComboBoxItem>
             </ComboBox>
+
+            <TextBlock Grid.Row="4" Text="Nationalité" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 20 0 0"></TextBlock>
+            <TextBox Text="{Binding NewPatient.Nationnalite}" Grid.Row="4" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Paye" Margin="0 20 0 0"></TextBox>
+
+            <CheckBox Content="Marrié" Grid.Row="5" Grid.Column="1" FontSize="16" VerticalAlignment="Center"  Margin="0 20 0 0"></CheckBox>
+
+            <TextBlock Grid.Row="6" Text="Origine Géographique" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 20 0 0"></TextBlock>
+            <TextBox Text="{Binding NewPatient.OrigineGeo}" Grid.Row="6" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Lieu de Naissance" Margin="0 20 0 0"/>
+
+            <TextBlock Grid.Column="2" Text="Adresse" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 20 0 0"></TextBlock>
+            <TextBox Text="{Binding NewPatient.Adresse}" Grid.Column="3" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Wilaya, Dayra Hay Numero 00" Margin="0 20 0 0"></TextBox>
+
+
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="Profession" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 20 0 0"></TextBlock>
+            <TextBox Text="{Binding NewPatient.Profession}" Grid.Row="1" Grid.Column="3" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Profession" Margin="0 20 0 0"></TextBox>
+
+            <TextBlock Grid.Row="2" Grid.Column="2" Text="Raison de la Visite" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 20 0 0"></TextBlock>
+            <TextBox Text="{Binding NewPatient.Raison}" Grid.Row="2" Grid.Column="3" Grid.RowSpan="3" TextWrapping="Wrap" AcceptsReturn="True" MinLines="5" MaxLines="5" VerticalScrollBarVisibility="Auto"
+                             FontSize="16" VerticalAlignment="Top" materialDesign:TextFieldAssist.Hint="Description à propos du patient" Margin="0 20 0 0"></TextBox>
+
+            <TextBlock Grid.Row="5" Grid.Column="2" Text="Téléphone" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" Margin="15"></TextBlock>
+            <Border Grid.Row="5" Grid.Column="3" Grid.RowSpan="4" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                             ClipToBounds="True" Margin="15">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBox Text="{Binding NewTelephone, Mode=TwoWay}" VerticalScrollBarVisibility="Auto" FontSize="16" HorizontalAlignment="Stretch" materialDesign:TextFieldAssist.Hint="021 66 66 66" Margin="20 0 0 0"></TextBox>
+                    <Button Grid.Column="1" Command="{Binding AddTelephoneCommand}"  Margin="0 0 20 0"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniButton}" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="Ajouter un Conseil">
+                        <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" />
+                    </Button>
+                    <ListBox Grid.Row="1" Grid.ColumnSpan="2" x:Name="TelephonesListBox" ItemsSource="{Binding NewPatient.Telephones}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch" Margin="20 10 20 10">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <WrapPanel>
+                                        <TextBlock Text="{Binding}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                    </WrapPanel>
+                                    <Button Grid.Column="1" Grid.RowSpan="2"
+                                            Command="{Binding DataContext.RemoveTelephoneCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                            CommandParameter="{Binding}"
+                                            Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                                            ToolTip="Supprimer Telephone">
+                                        <materialDesign:PackIcon Kind="Minus" Height="24" Width="24" />
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </Border>
+
             
-            <TextBlock Grid.Row="4" Text="Origine Géographique" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBox Grid.Row="4" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Lieu de Naissance"/>
-
-            <TextBlock Grid.Row="5" Text="Nationalité" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBox Grid.Row="5" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Paye"></TextBox>
-
-            <TextBlock Grid.Row="6" Text="Profession" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBox Grid.Row="6" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Profession"></TextBox>
-
-            <TextBlock Grid.Row="7" Text="Adresse" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBox Grid.Row="7" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Wilaya, Dayra Hay Numero 00"></TextBox>
-
-            <TextBlock Grid.Row="8" Text="Téléphone" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBox Grid.Row="8" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="06 66 66 66 66"></TextBox>
-
-            <CheckBox Content="Marrié" Grid.Row="9" Grid.Column="1" FontSize="16" VerticalAlignment="Center" ></CheckBox>
-
         </Grid>
 
-        <Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width=" 250" Margin=" 0 0 50 50" FontSize="16">Ajouter</Button>
+        <Button Command="{Binding AddPatientCommand}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width=" 250" Margin=" 0 0 50 50" FontSize="16">Ajouter</Button>
     </Grid>
 </Page>

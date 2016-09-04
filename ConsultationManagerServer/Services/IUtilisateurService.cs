@@ -14,9 +14,6 @@ namespace ConsultationManagerServer.Services
     public interface IUtilisateurService
     {
         [OperationContract]
-        Utilisateur GetUtilisateurAuthenticated(string username, string pwd);
-
-        [OperationContract]
         ObservableCollection<Utilisateur> GetUtilisateurs();
 
         [OperationContract]

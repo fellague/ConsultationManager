@@ -76,7 +76,7 @@
 
             <TextBlock Grid.Column="2" Text="Role" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
             <ComboBox x:Name="ComboBoxRole" SelectedValuePath="Content" SelectedValue="{Binding NewUtilisateur.Role}" SelectedIndex="1" Grid.Column="3" FontSize="16">
-                <ComboBoxItem Content="Chef Service"/>
+                <ComboBoxItem Content="Chef Service" Tag="ShowPathologies"/>
                 <ComboBoxItem Content="Médecin" Tag="ShowPathologies"/>
                 <ComboBoxItem Content="Infirmier"/>
                 <ComboBoxItem Content="Assistant" Tag="ShowMedecins"/>
@@ -109,9 +109,6 @@
                             </TextBlock>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
-                    <!--<ComboBoxItem>Halim fellague</ComboBoxItem>
-                    <ComboBoxItem>Safia Koidri</ComboBoxItem>
-                    <ComboBoxItem>Moh Flicha</ComboBoxItem>-->
                 </ComboBox>
 
                 <Grid.Style>
@@ -135,7 +132,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                
+
                 <TextBlock Text="Pathologie Assigné" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">
                 </TextBlock>
                 <ComboBox Grid.Column="1" FontSize="16"
@@ -143,8 +140,6 @@
                           DisplayMemberPath="Nom"
                           SelectedValuePath="Id"
                           SelectedValue="{Binding Path=NewUtilisateur.PathologieId}">
-                    <!--<ComboBoxItem>Mimouni Khayra</ComboBoxItem>
-                    <ComboBoxItem>Halim Fellague</ComboBoxItem>-->
                 </ComboBox>
 
                 <Grid.Style>
@@ -159,36 +154,8 @@
                     </Style>
                 </Grid.Style>
             </Grid>
-            <!--<TextBlock Grid.Row="1" Grid.Column="2" Text="Médecin Superieur" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">
-                <TextBlock.Style>
-                    <Style>
-                        <Setter Property="TextBlock.Visibility" Value="Collapsed"></Setter>
-                        <Style.Triggers>
-                            <DataTrigger  
-                        Binding="{Binding ElementName=ComboBoxRole, Path=SelectedItem.Tag}" Value="ShowMedecins">
-                                <Setter Property="TextBlock.Visibility" Value="Visible"></Setter>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBlock.Style>
-            </TextBlock>
-            <ComboBox Grid.Row="1" Grid.Column="3" FontSize="16">
-                <ComboBoxItem>Mimouni Khayra</ComboBoxItem>
-                <ComboBoxItem>Halim Fellague</ComboBoxItem>
-                <ComboBox.Style>
-                    <Style>
-                        <Setter Property="ComboBox.Visibility" Value="Collapsed"></Setter>
-                        <Style.Triggers>
-                            <DataTrigger  
-                        Binding="{Binding ElementName=ComboBoxRole, Path=SelectedItem.Tag}" Value="ShowMedecins">
-                                <Setter Property="ComboBox.Visibility" Value="Visible"></Setter>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </ComboBox.Style>
-            </ComboBox>-->
 
-            
+
             <!--<TextBlock Grid.Row="8" Text="Nom d'Utilisateur" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
             <TextBox Text="{Binding NewUtilisateur.UserName}" Grid.Row="8" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Prénom"></TextBox>
 

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 
@@ -11,23 +14,50 @@ namespace ConsultationManagerServer.Models
         private string prenom;
         private DateTime dateNaiss;
         private string raison;
+        private string origineGeo;
         private string adresse;
-        private string telephone;
+        private string nationnalite;
+        private string profession;
+        private ObservableCollection<string> telephones;
         private bool mariee;
+
         private DateTime creeDans;
         private string creePar;
 
-        public Patient(string nom, string prenom, DateTime dateNaiss, string raison, string adresse, string telephone, bool mariee, DateTime creeDans, string creePar)
+        private bool nouveau;
+        private string medecinResp;
+        private string serviceId;
+        private string pathologieId;
+
+        public Patient()
         {
-            Nom = nom;
-            Prenom = prenom;
-            DateNaiss = dateNaiss;
-            Raison = raison;
-            Adresse = adresse;
-            Telephone = telephone;
-            Mariee = mariee;
-            CreeDans = creeDans;
-            CreePar = creePar;
+            nom = "";
+            prenom = "";
+            dateNaiss = new DateTime();
+            raison = "";
+            origineGeo = "";
+            adresse = "";
+            nationnalite = "";
+            telephones = new ObservableCollection<string>();
+            mariee = false;
+
+            nouveau = true;
+            creeDans = new DateTime();
+            creePar = "";
+
+            medecinResp = "";
+            serviceId = "";
+            pathologieId = "";
+        }
+
+        [BsonId]
+        public ObjectId _id { get; set; }
+
+        [DataMember]
+        public string Id
+        {
+            get { return _id.ToString(); }
+            set { _id = ObjectId.Parse(value); }
         }
 
         [DataMember]
@@ -87,6 +117,20 @@ namespace ConsultationManagerServer.Models
         }
 
         [DataMember]
+        public string OrigineGeo
+        {
+            get
+            {
+                return origineGeo;
+            }
+            set
+            {
+                origineGeo = value;
+                OnPropertyChanged("OrigineGeo");
+            }
+        }
+
+        [DataMember]
         public string Adresse
         {
             get
@@ -101,15 +145,43 @@ namespace ConsultationManagerServer.Models
         }
 
         [DataMember]
-        public string Telephone
+        public string Nationnalite
         {
             get
             {
-                return telephone;
+                return nationnalite;
             }
             set
             {
-                telephone = value;
+                nationnalite = value;
+                OnPropertyChanged("Nationnalite");
+            }
+        }
+
+        [DataMember]
+        public string Profession
+        {
+            get
+            {
+                return profession;
+            }
+            set
+            {
+                profession = value;
+                OnPropertyChanged("Profession");
+            }
+        }
+
+        [DataMember]
+        public ObservableCollection<string> Telephones
+        {
+            get
+            {
+                return telephones;
+            }
+            set
+            {
+                telephones = value;
                 OnPropertyChanged("Telephone");
             }
         }
@@ -125,6 +197,20 @@ namespace ConsultationManagerServer.Models
             {
                 mariee = value;
                 OnPropertyChanged("Mariee");
+            }
+        }
+
+        [DataMember]
+        public bool Nouveau
+        {
+            get
+            {
+                return nouveau;
+            }
+            set
+            {
+                nouveau = value;
+                OnPropertyChanged("Nouveau");
             }
         }
 
@@ -153,6 +239,46 @@ namespace ConsultationManagerServer.Models
             {
                 creePar = value;
                 OnPropertyChanged("CreePar");
+            }
+        }
+
+        [DataMember]
+        public string MedecinResp
+        {
+            get
+            {
+                return medecinResp;
+            }
+            set
+            {
+                medecinResp = value;
+                OnPropertyChanged("MedecinSup");
+            }
+        }
+        [DataMember]
+        public string ServiceId
+        {
+            get
+            {
+                return serviceId;
+            }
+            set
+            {
+                serviceId = value;
+                OnPropertyChanged("ServiceId");
+            }
+        }
+        [DataMember]
+        public string PathologieId
+        {
+            get
+            {
+                return pathologieId;
+            }
+            set
+            {
+                pathologieId = value;
+                OnPropertyChanged("PathologieId");
             }
         }
 

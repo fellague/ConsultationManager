@@ -65,8 +65,7 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <TextBox Text="{Binding NewTelephone, Mode=TwoWay}" TextWrapping="Wrap" AcceptsReturn="True" MinLines="2" MaxLines="2" VerticalScrollBarVisibility="Auto"
-                                FontSize="16" HorizontalAlignment="Stretch" materialDesign:TextFieldAssist.Hint="021 66 66 66" Margin="20 0 0 0"></TextBox>
+                        <TextBox Text="{Binding NewTelephone, Mode=TwoWay}" VerticalScrollBarVisibility="Auto" FontSize="16" HorizontalAlignment="Stretch" materialDesign:TextFieldAssist.Hint="021 66 66 66" Margin="20 0 0 0"></TextBox>
                         <Button Grid.Column="1" Command="{Binding AddTelephoneCommand}"  Margin="0 0 20 0"
                         Style="{StaticResource MaterialDesignFloatingActionMiniButton}" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="Ajouter un Conseil">
                             <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" />

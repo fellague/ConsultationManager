@@ -21,7 +21,7 @@ namespace ConsultationManagerClient.Views.Patients
     /// </summary>
     public partial class NewPatientPage : Page
     {
-        internal NewPatientPage(ListPatientViewModel patientsVM)
+        internal NewPatientPage(PatientsViewModel patientsVM)
         {
             InitializeComponent();
             DataContext = patientsVM;

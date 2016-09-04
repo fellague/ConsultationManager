@@ -16,13 +16,6 @@ namespace ConsultationManagerServer.Services
     // NOTE: In order to launch WCF Test Client for testing this service, please select UtilisateurService.svc or UtilisateurService.svc.cs at the Solution Explorer and start debugging.
     public class UtilisateurService : IUtilisateurService
     {
-        
-
-        public Utilisateur GetUtilisateurAuthenticated(string username, string pwd)
-        {
-            throw new NotImplementedException();
-        }
-
         public ObservableCollection<Utilisateur> GetUtilisateurs()
         {
             ObservableCollection<Utilisateur> users = new ObservableCollection<Utilisateur>();
