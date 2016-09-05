@@ -1,0 +1,416 @@
+﻿<Page x:Class="ConsultationManager.Views.Plannings.UpdatePlanningPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:ConsultationManager.Views.Plannings"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="UpdatePlanningPage">
+
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition  Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel Orientation="Horizontal">
+            <TextBlock Text="Modification des Plannings des Consultations " FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        </WrapPanel>
+        <Grid  Grid.Row="1" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Selectionnez une Consultation" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <ComboBox x:Name="listPlanningsComboBox" FontSize="20" Grid.Column="1" Margin="30 0"
+                ItemsSource="{Binding Path=ListPlannings}"
+                DisplayMemberPath="Consult.Nom"
+                SelectedItem="{Binding SelectedConsultation}">
+            </ComboBox>
+        </Grid>
+        
+
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <DockPanel LastChildFill="True">
+                <Grid DockPanel.Dock="Top" Height="30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label FontSize="16" FontWeight="Bold">Dimanche</Label>
+                    <Label Grid.Column="1" FontSize="16" FontWeight="Bold">Lundi</Label>
+                    <Label Grid.Column="2" FontSize="16" FontWeight="Bold">Mardi</Label>
+                    <Label Grid.Column="3" FontSize="16" FontWeight="Bold">Mercredi</Label>
+                    <Label Grid.Column="4" FontSize="16" FontWeight="Bold">Jeudi</Label>
+                </Grid>
+                <ItemsPresenter></ItemsPresenter>
+            </DockPanel>
+            
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ComboBox FontSize="16" 
+                          ItemsSource="{Binding ListMedecinsDimanche, Mode=TwoWay}"
+                          SelectedItem="{Binding AddedMedecinDimanche}" >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0}  {1}">
+                                            <Binding Path="Nom"/>
+                                            <Binding Path="Prenom"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Button Grid.Column="1" HorizontalAlignment="Right"
+                        Command="{Binding AddMedecinDimancheCommand}"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="0 0 50 0"
+                        ToolTip="Ajouter le Médecin">
+                        <materialDesign:PackIcon Kind="Plus" Height="30" Width="30" />
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ListBox FontSize="16"  HorizontalContentAlignment="Stretch"
+                          ItemsSource="{Binding ElementName=listPlanningsComboBox, Path=SelectedItem.MedecinsDimanche}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0}  {1}">
+                                                <Binding Path="Nom"/>
+                                                <Binding Path="Prenom"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <Button Grid.Column="1" HorizontalAlignment="Right"
+                                        Command="{Binding DataContext.RemoveMedecinDimancheCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                        CommandParameter="{Binding}"
+                                        Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="0 0 50 0"
+                                        ToolTip="Supprimer le Médecin">
+                                        <materialDesign:PackIcon Kind="Minus"  Height="30" Width="30" />
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ComboBox FontSize="16" 
+                          ItemsSource="{Binding ListMedecinsLundi, Mode=TwoWay}"
+                          SelectedItem="{Binding AddedMedecinLundi}" >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0}  {1}">
+                                            <Binding Path="Nom"/>
+                                            <Binding Path="Prenom"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Button Grid.Column="1" HorizontalAlignment="Right"
+                        Command="{Binding AddMedecinLundiCommand}"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="0 0 50 0"
+                        ToolTip="Ajouter le Médecin">
+                        <materialDesign:PackIcon Kind="Plus" Height="30" Width="30" />
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ListBox FontSize="16"  HorizontalContentAlignment="Stretch"
+                          ItemsSource="{Binding ElementName=listPlanningsComboBox, Path=SelectedItem.MedecinsLundi}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0}  {1}">
+                                                <Binding Path="Nom"/>
+                                                <Binding Path="Prenom"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <Button Grid.Column="1" HorizontalAlignment="Right"
+                                        Command="{Binding DataContext.RemoveMedecinLundiCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                        CommandParameter="{Binding}"
+                                        Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="0 0 50 0"
+                                        ToolTip="Supprimer le Médecin">
+                                        <materialDesign:PackIcon Kind="Minus"  Height="30" Width="30" />
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                </Grid>
+
+                <Grid  Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ComboBox FontSize="16" 
+                          ItemsSource="{Binding ListMedecinsMardi, Mode=TwoWay}"
+                          SelectedItem="{Binding AddedMedecinMardi}" >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0}  {1}">
+                                            <Binding Path="Nom"/>
+                                            <Binding Path="Prenom"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Button Grid.Column="1" HorizontalAlignment="Right"
+                        Command="{Binding AddMedecinMardiCommand}"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="0 0 50 0"
+                        ToolTip="Ajouter le Médecin">
+                        <materialDesign:PackIcon Kind="Plus" Height="30" Width="30" />
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ListBox FontSize="16"  HorizontalContentAlignment="Stretch"
+                          ItemsSource="{Binding ElementName=listPlanningsComboBox, Path=SelectedItem.MedecinsMardi}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0}  {1}">
+                                                <Binding Path="Nom"/>
+                                                <Binding Path="Prenom"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <Button Grid.Column="1" HorizontalAlignment="Right"
+                                        Command="{Binding DataContext.RemoveMedecinMardiCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                        CommandParameter="{Binding}"
+                                        Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="0 0 50 0"
+                                        ToolTip="Supprimer le Médecin">
+                                        <materialDesign:PackIcon Kind="Minus"  Height="30" Width="30" />
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                </Grid>
+
+                <Grid Grid.Column="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ComboBox FontSize="16" 
+                          ItemsSource="{Binding ListMedecinsMercredi, Mode=TwoWay}"
+                          SelectedItem="{Binding AddedMedecinMercredi}" >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0}  {1}">
+                                            <Binding Path="Nom"/>
+                                            <Binding Path="Prenom"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Button Grid.Column="1" HorizontalAlignment="Right"
+                        Command="{Binding AddMedecinMercrediCommand}"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="0 0 50 0"
+                        ToolTip="Ajouter le Médecin">
+                        <materialDesign:PackIcon Kind="Plus" Height="30" Width="30" />
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ListBox FontSize="16" HorizontalContentAlignment="Stretch"
+                          ItemsSource="{Binding ElementName=listPlanningsComboBox, Path=SelectedItem.MedecinsMercredi}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0}  {1}">
+                                                <Binding Path="Nom"/>
+                                                <Binding Path="Prenom"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <Button Grid.Column="1" HorizontalAlignment="Right"
+                                        Command="{Binding DataContext.RemoveMedecinMercrediCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                        CommandParameter="{Binding}"
+                                        Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="0 0 50 0"
+                                        ToolTip="Supprimer le Médecin">
+                                        <materialDesign:PackIcon Kind="Minus"  Height="30" Width="30" />
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                </Grid>
+
+                <Grid Grid.Column="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ComboBox FontSize="16" 
+                          ItemsSource="{Binding ListMedecinsJeudi, Mode=TwoWay}"
+                          SelectedItem="{Binding AddedMedecinJeudi}" >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0}  {1}">
+                                            <Binding Path="Nom"/>
+                                            <Binding Path="Prenom"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Button Grid.Column="1" HorizontalAlignment="Right"
+                        Command="{Binding AddMedecinJeudiCommand}"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="0 0 50 0"
+                        ToolTip="Ajouter le Médecin">
+                        <materialDesign:PackIcon Kind="Plus" Height="30" Width="30" />
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ListBox FontSize="16" HorizontalContentAlignment="Stretch"
+                          ItemsSource="{Binding ElementName=listPlanningsComboBox, Path=SelectedItem.MedecinsJeudi}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0}  {1}">
+                                                <Binding Path="Nom"/>
+                                                <Binding Path="Prenom"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <Button Grid.Column="1" HorizontalAlignment="Right"
+                                        Command="{Binding DataContext.RemoveMedecinJeudiCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                        CommandParameter="{Binding}"
+                                        Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="0 0 50 0"
+                                        ToolTip="Supprimer le Médecin">
+                                        <materialDesign:PackIcon Kind="Minus"  Height="30" Width="30" />
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                </Grid>
+            </Grid>
+
+        </Grid>
+        <Button Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width=" 250" Margin=" 0 0 50 50" FontSize="16"
+                    Command="{Binding UpdatePlanningCommand}" >
+            Modifier
+        </Button>
+    </Grid>
+</Page>

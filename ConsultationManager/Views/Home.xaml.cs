@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsultationManager.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -59,6 +60,14 @@ namespace ConsultationManagerClient.Views
         {
             this.Hide();
             var form2 = new MenuUserWindow();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
+
+        private void showPlannings(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new MenuPlanningWindow();
             form2.Closed += (s, args) => this.Close();
             form2.Show();
         }

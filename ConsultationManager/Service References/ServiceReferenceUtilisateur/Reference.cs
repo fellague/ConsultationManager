@@ -15,12 +15,6 @@ namespace ConsultationManager.ServiceReferenceUtilisateur {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReferenceUtilisateur.IUtilisateurService")]
     public interface IUtilisateurService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilisateurService/GetUtilisateurAuthenticated", ReplyAction="http://tempuri.org/IUtilisateurService/GetUtilisateurAuthenticatedResponse")]
-        ConsultationManagerServer.Models.Utilisateur GetUtilisateurAuthenticated(string username, string pwd);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilisateurService/GetUtilisateurAuthenticated", ReplyAction="http://tempuri.org/IUtilisateurService/GetUtilisateurAuthenticatedResponse")]
-        System.Threading.Tasks.Task<ConsultationManagerServer.Models.Utilisateur> GetUtilisateurAuthenticatedAsync(string username, string pwd);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilisateurService/GetUtilisateurs", ReplyAction="http://tempuri.org/IUtilisateurService/GetUtilisateursResponse")]
         ConsultationManagerServer.Models.Utilisateur[] GetUtilisateurs();
         
@@ -77,14 +71,6 @@ namespace ConsultationManager.ServiceReferenceUtilisateur {
         
         public UtilisateurServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
-        }
-        
-        public ConsultationManagerServer.Models.Utilisateur GetUtilisateurAuthenticated(string username, string pwd) {
-            return base.Channel.GetUtilisateurAuthenticated(username, pwd);
-        }
-        
-        public System.Threading.Tasks.Task<ConsultationManagerServer.Models.Utilisateur> GetUtilisateurAuthenticatedAsync(string username, string pwd) {
-            return base.Channel.GetUtilisateurAuthenticatedAsync(username, pwd);
         }
         
         public ConsultationManagerServer.Models.Utilisateur[] GetUtilisateurs() {

@@ -143,7 +143,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IConsultationService_AddPathologie_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IConsultationService_AddConsultation_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -162,7 +162,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IConsultationService_AddPathologie_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IConsultationService_AddConsultation_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -181,7 +181,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IConsultationService_UpdatePathologie_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IConsultationService_UpdateConsultation_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -200,7 +200,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IConsultationService_UpdatePathologie_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IConsultationService_UpdateConsultation_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -257,7 +257,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IConsultationService_DeletePathologie_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IConsultationService_DeleteConsultation_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -276,7 +276,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IConsultationService_DeletePathologie_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IConsultationService_DeleteConsultation_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -310,17 +310,17 @@
   <wsdl:message name="IConsultationService_GetServiceDetails_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetServiceDetailsResponse" />
   </wsdl:message>
-  <wsdl:message name="IConsultationService_AddPathologie_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddPathologie" />
+  <wsdl:message name="IConsultationService_AddConsultation_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddConsultation" />
   </wsdl:message>
-  <wsdl:message name="IConsultationService_AddPathologie_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddPathologieResponse" />
+  <wsdl:message name="IConsultationService_AddConsultation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddConsultationResponse" />
   </wsdl:message>
-  <wsdl:message name="IConsultationService_UpdatePathologie_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdatePathologie" />
+  <wsdl:message name="IConsultationService_UpdateConsultation_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateConsultation" />
   </wsdl:message>
-  <wsdl:message name="IConsultationService_UpdatePathologie_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UpdatePathologieResponse" />
+  <wsdl:message name="IConsultationService_UpdateConsultation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateConsultationResponse" />
   </wsdl:message>
   <wsdl:message name="IConsultationService_UpdateService_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateService" />
@@ -328,32 +328,32 @@
   <wsdl:message name="IConsultationService_UpdateService_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateServiceResponse" />
   </wsdl:message>
-  <wsdl:message name="IConsultationService_DeletePathologie_InputMessage">
-    <wsdl:part name="parameters" element="tns:DeletePathologie" />
+  <wsdl:message name="IConsultationService_DeleteConsultation_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteConsultation" />
   </wsdl:message>
-  <wsdl:message name="IConsultationService_DeletePathologie_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DeletePathologieResponse" />
+  <wsdl:message name="IConsultationService_DeleteConsultation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteConsultationResponse" />
   </wsdl:message>
   <wsdl:portType name="IConsultationService">
     <wsdl:operation name="GetServiceDetails">
       <wsdl:input wsaw:Action="http://tempuri.org/IConsultationService/GetServiceDetails" message="tns:IConsultationService_GetServiceDetails_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConsultationService/GetServiceDetailsResponse" message="tns:IConsultationService_GetServiceDetails_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="AddPathologie">
-      <wsdl:input wsaw:Action="http://tempuri.org/IConsultationService/AddPathologie" message="tns:IConsultationService_AddPathologie_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConsultationService/AddPathologieResponse" message="tns:IConsultationService_AddPathologie_OutputMessage" />
+    <wsdl:operation name="AddConsultation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConsultationService/AddConsultation" message="tns:IConsultationService_AddConsultation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConsultationService/AddConsultationResponse" message="tns:IConsultationService_AddConsultation_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="UpdatePathologie">
-      <wsdl:input wsaw:Action="http://tempuri.org/IConsultationService/UpdatePathologie" message="tns:IConsultationService_UpdatePathologie_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConsultationService/UpdatePathologieResponse" message="tns:IConsultationService_UpdatePathologie_OutputMessage" />
+    <wsdl:operation name="UpdateConsultation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConsultationService/UpdateConsultation" message="tns:IConsultationService_UpdateConsultation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConsultationService/UpdateConsultationResponse" message="tns:IConsultationService_UpdateConsultation_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateService">
       <wsdl:input wsaw:Action="http://tempuri.org/IConsultationService/UpdateService" message="tns:IConsultationService_UpdateService_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConsultationService/UpdateServiceResponse" message="tns:IConsultationService_UpdateService_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="DeletePathologie">
-      <wsdl:input wsaw:Action="http://tempuri.org/IConsultationService/DeletePathologie" message="tns:IConsultationService_DeletePathologie_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConsultationService/DeletePathologieResponse" message="tns:IConsultationService_DeletePathologie_OutputMessage" />
+    <wsdl:operation name="DeleteConsultation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConsultationService/DeleteConsultation" message="tns:IConsultationService_DeleteConsultation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConsultationService/DeleteConsultationResponse" message="tns:IConsultationService_DeleteConsultation_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IConsultationService" type="tns:IConsultationService">
@@ -370,25 +370,25 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddPathologie">
-      <soap12:operation soapAction="http://tempuri.org/IConsultationService/AddPathologie" style="document" />
+    <wsdl:operation name="AddConsultation">
+      <soap12:operation soapAction="http://tempuri.org/IConsultationService/AddConsultation" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IConsultationService_AddPathologie_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IConsultationService_AddConsultation_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IConsultationService_AddPathologie_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IConsultationService_AddConsultation_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="UpdatePathologie">
-      <soap12:operation soapAction="http://tempuri.org/IConsultationService/UpdatePathologie" style="document" />
+    <wsdl:operation name="UpdateConsultation">
+      <soap12:operation soapAction="http://tempuri.org/IConsultationService/UpdateConsultation" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IConsultationService_UpdatePathologie_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IConsultationService_UpdateConsultation_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IConsultationService_UpdatePathologie_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IConsultationService_UpdateConsultation_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
@@ -403,14 +403,14 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DeletePathologie">
-      <soap12:operation soapAction="http://tempuri.org/IConsultationService/DeletePathologie" style="document" />
+    <wsdl:operation name="DeleteConsultation">
+      <soap12:operation soapAction="http://tempuri.org/IConsultationService/DeleteConsultation" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IConsultationService_DeletePathologie_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IConsultationService_DeleteConsultation_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IConsultationService_DeletePathologie_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IConsultationService_DeleteConsultation_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

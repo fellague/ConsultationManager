@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="ConsultationManagerServer.Services.PlanningService" CodeBehind="PlanningService.svc.cs" %>

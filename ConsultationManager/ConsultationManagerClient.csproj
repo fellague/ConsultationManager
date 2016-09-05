@@ -115,6 +115,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ServiceReferencePlanning\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServiceReferenceUtilisateur\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -124,6 +129,7 @@
     <Compile Include="ViewModels\Interviews\InterviewViewModel.cs" />
     <Compile Include="ViewModels\Interviews\InterviewConclusionViewModel.cs" />
     <Compile Include="ViewModels\Interviews\FirstInterviewViewModel.cs" />
+    <Compile Include="ViewModels\Plannings\PlanningsViewModel.cs" />
     <Compile Include="ViewModels\Utilisateurs\UsersViewModel.cs" />
     <Compile Include="ViewModels\Hospitalisations\ListHospitalisationViewModel.cs" />
     <Compile Include="ViewModels\Hospitalisations\NewDemandHospitalisationViewModel.cs" />
@@ -155,6 +161,15 @@
     </Compile>
     <Compile Include="Views\Interviews\NewTraitemComplWindow.xaml.cs">
       <DependentUpon>NewTraitemComplWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuPlanningWindow.xaml.cs">
+      <DependentUpon>MenuPlanningWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Plannings\AllPlanningsPage.xaml.cs">
+      <DependentUpon>AllPlanningsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Plannings\UpdatePlanningPage.xaml.cs">
+      <DependentUpon>UpdatePlanningPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Utilisateurs\AllUsersPage.xaml.cs">
       <DependentUpon>AllUsersPage.xaml</DependentUpon>
@@ -281,6 +296,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Interviews\NewTraitemComplWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MenuPlanningWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Plannings\AllPlanningsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Plannings\UpdatePlanningPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -420,6 +447,8 @@
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Consultation.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Pathologie.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Patient.datasource" />
+    <None Include="Properties\DataSources\ConsultationManagerServer.Models.Planning.datasource" />
+    <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.ConsultationMedecinsPlanning.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.ServicePathologies.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Service.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Utilisateur.datasource" />
@@ -465,6 +494,22 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReferencePatient\PatientService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferencePlanning\PlanningService.wsdl" />
+    <None Include="Service References\ServiceReferencePlanning\PlanningService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferencePlanning\PlanningService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferencePlanning\PlanningService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferencePlanning\PlanningService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferencePlanning\PlanningService4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReferenceUtilisateur\UtilisateurService.wsdl" />
@@ -550,31 +595,8 @@
     <WCFMetadataStorage Include="Service References\ServiceReferenceAuthentication\" />
     <WCFMetadataStorage Include="Service References\ServiceReferenceConsultation\" />
     <WCFMetadataStorage Include="Service References\ServiceReferencePatient\" />
+    <WCFMetadataStorage Include="Service References\ServiceReferencePlanning\" />
     <WCFMetadataStorage Include="Service References\ServiceReferenceUtilisateur\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ServiceReferenceUtilisateur\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ServiceReferenceUtilisateur\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ServiceReferenceUtilisateur\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ServiceReferenceAuthentication\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ServiceReferenceAuthentication\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ServiceReferenceAuthentication\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceReferencePatient\configuration91.svcinfo" />
@@ -596,6 +618,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceReferenceConsultation\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceAuthentication\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceAuthentication\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceAuthentication\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceUtilisateur\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceUtilisateur\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceUtilisateur\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferencePlanning\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferencePlanning\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferencePlanning\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

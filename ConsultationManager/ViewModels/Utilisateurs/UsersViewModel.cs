@@ -43,7 +43,7 @@ namespace ConsultationManagerClient.ViewModels.Users
             listInfirmier = CreateListInfirmier();
             listChefService = CreateListChefService();
             listAssistant = CreateListAssistant();
-            listMedecinSuperieur = CreateListMedSup();
+            //listMedecinSuperieur = CreateListMedSup();
 
             servicePathologies = GetServicePathols();
 
@@ -208,18 +208,18 @@ namespace ConsultationManagerClient.ViewModels.Users
             }
             return allMyList;
         }
-        private ObservableCollection<Utilisateur> CreateListMedSup()
-        {
-            ObservableCollection<Utilisateur> allMyList = new ObservableCollection<Utilisateur>();
-            foreach (Utilisateur element in listAllUsers)
-            {
-                if (element.Role != "Assistant" && element.Role!= "Infirmier")
-                {
-                    allMyList.Add(element);
-                }
-            }
-            return allMyList;
-        }
+        //private ObservableCollection<Utilisateur> CreateListMedSup()
+        //{
+        //    ObservableCollection<Utilisateur> allMyList = new ObservableCollection<Utilisateur>();
+        //    foreach (Utilisateur element in listAllUsers)
+        //    {
+        //        if (element.Role != "Assistant" && element.Role!= "Infirmier")
+        //        {
+        //            allMyList.Add(element);
+        //        }
+        //    }
+        //    return allMyList;
+        //}
 
         private void AjouterUtilisateur(object param)
         {
@@ -230,15 +230,15 @@ namespace ConsultationManagerClient.ViewModels.Users
             newUtilisateur.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
             newUtilisateur.ServiceId = servicePathologies.Service.Id;
             newUtilisateur.CreeDans = DateTime.Now;
-            MessageBox.Show("Day " + DateTime.Now.DayOfWeek.ToString());
-            if(NewUtilisateur.Role== "Assistant")
-            {
-                foreach(Utilisateur empl in listAllUsers)
-                {
-                    if(empl.Id == newUtilisateur.MedecinSup)
-                        newUtilisateur.PathologieId = empl.PathologieId;
-                }
-            }
+            //MessageBox.Show("Day " + DateTime.Now.DayOfWeek.ToString());
+            //if(NewUtilisateur.Role== "Assistant")
+            //{
+            //    foreach(Utilisateur empl in listAllUsers)
+            //    {
+            //        if(empl.Id == newUtilisateur.MedecinSup)
+            //            newUtilisateur.PathologieId = empl.PathologieId;
+            //    }
+            //}
             newUser = usc.AddUtilisateur(newUtilisateur);
             MessageBox.Show("Utilisateur Saved Request... " + newUtilisateur.Password);
 

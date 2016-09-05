@@ -43,6 +43,14 @@ namespace ConsultationManagerServer
             }
         }
 
+        public MongoCollection<Planning> Plannings
+        {
+            get
+            {
+                return db.GetCollection<Planning>("Planning");
+            }
+        }
+
         public MongoCollection<Patient> Patients
         {
             get

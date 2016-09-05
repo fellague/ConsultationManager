@@ -21,17 +21,17 @@ namespace ConsultationManager.ServiceReferenceConsultation {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultationService/GetServiceDetails", ReplyAction="http://tempuri.org/IConsultationService/GetServiceDetailsResponse")]
         System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.ServicePathologies> GetServiceDetailsAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultationService/AddPathologie", ReplyAction="http://tempuri.org/IConsultationService/AddPathologieResponse")]
-        ConsultationManagerServer.Models.Consultation AddPathologie(ConsultationManagerServer.Models.Consultation pathologie);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultationService/AddConsultation", ReplyAction="http://tempuri.org/IConsultationService/AddConsultationResponse")]
+        ConsultationManagerServer.Models.Consultation AddConsultation(ConsultationManagerServer.Models.Consultation pathologie);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultationService/AddPathologie", ReplyAction="http://tempuri.org/IConsultationService/AddPathologieResponse")]
-        System.Threading.Tasks.Task<ConsultationManagerServer.Models.Consultation> AddPathologieAsync(ConsultationManagerServer.Models.Consultation pathologie);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultationService/AddConsultation", ReplyAction="http://tempuri.org/IConsultationService/AddConsultationResponse")]
+        System.Threading.Tasks.Task<ConsultationManagerServer.Models.Consultation> AddConsultationAsync(ConsultationManagerServer.Models.Consultation pathologie);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultationService/UpdatePathologie", ReplyAction="http://tempuri.org/IConsultationService/UpdatePathologieResponse")]
-        ConsultationManagerServer.Models.Consultation UpdatePathologie(string id, ConsultationManagerServer.Models.Consultation pathologie);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultationService/UpdateConsultation", ReplyAction="http://tempuri.org/IConsultationService/UpdateConsultationResponse")]
+        ConsultationManagerServer.Models.Consultation UpdateConsultation(string id, ConsultationManagerServer.Models.Consultation pathologie);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultationService/UpdatePathologie", ReplyAction="http://tempuri.org/IConsultationService/UpdatePathologieResponse")]
-        System.Threading.Tasks.Task<ConsultationManagerServer.Models.Consultation> UpdatePathologieAsync(string id, ConsultationManagerServer.Models.Consultation pathologie);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultationService/UpdateConsultation", ReplyAction="http://tempuri.org/IConsultationService/UpdateConsultationResponse")]
+        System.Threading.Tasks.Task<ConsultationManagerServer.Models.Consultation> UpdateConsultationAsync(string id, ConsultationManagerServer.Models.Consultation pathologie);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultationService/UpdateService", ReplyAction="http://tempuri.org/IConsultationService/UpdateServiceResponse")]
         ConsultationManagerServer.Models.Service UpdateService(string id, ConsultationManagerServer.Models.Service service);
@@ -39,11 +39,11 @@ namespace ConsultationManager.ServiceReferenceConsultation {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultationService/UpdateService", ReplyAction="http://tempuri.org/IConsultationService/UpdateServiceResponse")]
         System.Threading.Tasks.Task<ConsultationManagerServer.Models.Service> UpdateServiceAsync(string id, ConsultationManagerServer.Models.Service service);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultationService/DeletePathologie", ReplyAction="http://tempuri.org/IConsultationService/DeletePathologieResponse")]
-        void DeletePathologie(string id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultationService/DeleteConsultation", ReplyAction="http://tempuri.org/IConsultationService/DeleteConsultationResponse")]
+        void DeleteConsultation(string id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultationService/DeletePathologie", ReplyAction="http://tempuri.org/IConsultationService/DeletePathologieResponse")]
-        System.Threading.Tasks.Task DeletePathologieAsync(string id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultationService/DeleteConsultation", ReplyAction="http://tempuri.org/IConsultationService/DeleteConsultationResponse")]
+        System.Threading.Tasks.Task DeleteConsultationAsync(string id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -81,20 +81,20 @@ namespace ConsultationManager.ServiceReferenceConsultation {
             return base.Channel.GetServiceDetailsAsync();
         }
         
-        public ConsultationManagerServer.Models.Consultation AddPathologie(ConsultationManagerServer.Models.Consultation pathologie) {
-            return base.Channel.AddPathologie(pathologie);
+        public ConsultationManagerServer.Models.Consultation AddConsultation(ConsultationManagerServer.Models.Consultation pathologie) {
+            return base.Channel.AddConsultation(pathologie);
         }
         
-        public System.Threading.Tasks.Task<ConsultationManagerServer.Models.Consultation> AddPathologieAsync(ConsultationManagerServer.Models.Consultation pathologie) {
-            return base.Channel.AddPathologieAsync(pathologie);
+        public System.Threading.Tasks.Task<ConsultationManagerServer.Models.Consultation> AddConsultationAsync(ConsultationManagerServer.Models.Consultation pathologie) {
+            return base.Channel.AddConsultationAsync(pathologie);
         }
         
-        public ConsultationManagerServer.Models.Consultation UpdatePathologie(string id, ConsultationManagerServer.Models.Consultation pathologie) {
-            return base.Channel.UpdatePathologie(id, pathologie);
+        public ConsultationManagerServer.Models.Consultation UpdateConsultation(string id, ConsultationManagerServer.Models.Consultation pathologie) {
+            return base.Channel.UpdateConsultation(id, pathologie);
         }
         
-        public System.Threading.Tasks.Task<ConsultationManagerServer.Models.Consultation> UpdatePathologieAsync(string id, ConsultationManagerServer.Models.Consultation pathologie) {
-            return base.Channel.UpdatePathologieAsync(id, pathologie);
+        public System.Threading.Tasks.Task<ConsultationManagerServer.Models.Consultation> UpdateConsultationAsync(string id, ConsultationManagerServer.Models.Consultation pathologie) {
+            return base.Channel.UpdateConsultationAsync(id, pathologie);
         }
         
         public ConsultationManagerServer.Models.Service UpdateService(string id, ConsultationManagerServer.Models.Service service) {
@@ -105,12 +105,12 @@ namespace ConsultationManager.ServiceReferenceConsultation {
             return base.Channel.UpdateServiceAsync(id, service);
         }
         
-        public void DeletePathologie(string id) {
-            base.Channel.DeletePathologie(id);
+        public void DeleteConsultation(string id) {
+            base.Channel.DeleteConsultation(id);
         }
         
-        public System.Threading.Tasks.Task DeletePathologieAsync(string id) {
-            return base.Channel.DeletePathologieAsync(id);
+        public System.Threading.Tasks.Task DeleteConsultationAsync(string id) {
+            return base.Channel.DeleteConsultationAsync(id);
         }
     }
 }

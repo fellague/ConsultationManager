@@ -25,11 +25,11 @@ namespace ConsultationManagerServer.Services
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Pathologies", Method = "POST")]
-        Consultation AddPathologie(Consultation pathologie);
+        Consultation AddConsultation(Consultation pathologie);
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Pathologies/{id}", Method = "PUT")]
-        Consultation UpdatePathologie(string id, Consultation pathologie);
+        Consultation UpdateConsultation(string id, Consultation pathologie);
 
         [OperationContract]
         [WebInvoke(UriTemplate = "{id}", Method = "PUT", ResponseFormat = WebMessageFormat.Json)]
@@ -37,6 +37,6 @@ namespace ConsultationManagerServer.Services
 
         [OperationContract]
         [WebInvoke(UriTemplate = "Pathologies/{id}", Method = "DELETE")]
-        void DeletePathologie(string id);
+        void DeleteConsultation(string id);
     }
 }

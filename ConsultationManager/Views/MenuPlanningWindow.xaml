@@ -1,13 +1,12 @@
-﻿<Window x:Class="ConsultationManagerClient.Views.MenuUserWindow"
+﻿<Window x:Class="ConsultationManager.Views.MenuPlanningWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:local="clr-namespace:ConsultationManagerClient.Views"
+        xmlns:local="clr-namespace:ConsultationManager.Views"
         mc:Ignorable="d"
-        Title="Utilisateurs" WindowState="Maximized">
-
+        Title="Planning" WindowState="Maximized">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -27,12 +26,8 @@
                                   HorizontalAlignment="Right" Margin="16"
                                   IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
                     <ItemsControl>
-                        <Button Name="AllEmplBtn" Click="button_click_tout"  Content="Tous les employées" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
-                        <Button Name="chefServiceBtn" Click="button_click_chefServ"  Content="Les chefs service" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
-                        <Button Name="medecinsBtn" Click="button_click_medecin"  Content="Les Médecins" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
-                        <Button Name="infirmierBtn" Click="button_click_infirmier"  Content="Les infirmiers" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
-                        <Button Name="assistantBtn" Click="button_click_assistant"  Content="Les assistants" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
-                        <Button Name="NewEmplBtn" Click="button_click_nouveau"  Content="Nouveau Employée" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
+                        <Button Name="PlanningsBtn" Click="button_click_tout"  Content="Les Plannings des Consultations" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
+                        <Button Name="UpdatePlanningBtn" Click="button_click_update"  Content="Mise à Jour des Plannings" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
                     </ItemsControl>
 
                 </DockPanel>

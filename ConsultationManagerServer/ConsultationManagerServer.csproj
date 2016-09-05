@@ -87,19 +87,26 @@
     <Content Include="Services\AuthenticationService.svc" />
     <Content Include="Services\ConsultationService.svc" />
     <Content Include="Services\PatientService.svc" />
+    <Content Include="Services\PlanningService.svc" />
     <Content Include="Services\UtilisateurService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Planning.cs" />
+    <Compile Include="Models\SerializedModels\ConsultationMedecinsPlanning.cs" />
     <Compile Include="Services\AuthenticationService.svc.cs">
       <DependentUpon>AuthenticationService.svc</DependentUpon>
     </Compile>
     <Compile Include="Services\IAuthenticationService.cs" />
     <Compile Include="Services\IPatientService.cs" />
+    <Compile Include="Services\IPlanningService.cs" />
     <Compile Include="Services\PatientService.svc.cs">
       <DependentUpon>PatientService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\PlanningService.svc.cs">
+      <DependentUpon>PlanningService.svc</DependentUpon>
     </Compile>
     <Compile Include="Services\UtilisateurService.svc.cs">
       <DependentUpon>UtilisateurService.svc</DependentUpon>

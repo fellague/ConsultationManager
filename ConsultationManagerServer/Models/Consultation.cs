@@ -9,6 +9,7 @@ namespace ConsultationManagerServer.Models
     public class Consultation : INotifyPropertyChanged
     {
         private string idService;
+        private string idPlanning;
         private string nom; 
         private string description;
 
@@ -17,6 +18,7 @@ namespace ConsultationManagerServer.Models
             this.nom = "";
             description = "";
             idService = "";
+            idPlanning = "";
         }
 
         [BsonId]
@@ -40,6 +42,20 @@ namespace ConsultationManagerServer.Models
             {
                 idService = value;
                 OnPropertyChanged("IdService");
+            }
+        }
+
+        [DataMember]
+        public string IdPlanning
+        {
+            get
+            {
+                return idPlanning;
+            }
+            set
+            {
+                idPlanning = value;
+                OnPropertyChanged("IdPlanning");
             }
         }
 

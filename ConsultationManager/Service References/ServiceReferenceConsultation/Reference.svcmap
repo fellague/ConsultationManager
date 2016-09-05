@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="018a9e3b-1d24-481e-9349-072c113d37fb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d6f878f2-bb49-4f77-bb06-6f239e89f8e8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,12 +22,12 @@
     <MetadataSource Address="http://localhost:64183/Services/ConsultationService.svc?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ConsultationService.xsd" MetadataType="Schema" ID="0ed45c81-b408-4a8d-9b3b-5f64df081296" SourceId="1" SourceUrl="http://localhost:64183/Services/ConsultationService.svc?xsd=xsd3" />
-    <MetadataFile FileName="ConsultationService1.xsd" MetadataType="Schema" ID="0ed48431-035d-49ed-8558-8079b464d3d4" SourceId="1" SourceUrl="http://localhost:64183/Services/ConsultationService.svc?xsd=xsd1" />
-    <MetadataFile FileName="ConsultationService2.xsd" MetadataType="Schema" ID="efa12dbd-26e0-41cf-bc68-476021df4ce8" SourceId="1" SourceUrl="http://localhost:64183/Services/ConsultationService.svc?xsd=xsd4" />
-    <MetadataFile FileName="ConsultationService3.xsd" MetadataType="Schema" ID="6f79642f-aa91-4c20-98be-b288ccf20c12" SourceId="1" SourceUrl="http://localhost:64183/Services/ConsultationService.svc?xsd=xsd2" />
-    <MetadataFile FileName="ConsultationService4.xsd" MetadataType="Schema" ID="b453ceb7-4231-41db-b9db-7397ad9f094c" SourceId="1" SourceUrl="http://localhost:64183/Services/ConsultationService.svc?xsd=xsd0" />
-    <MetadataFile FileName="ConsultationService.wsdl" MetadataType="Wsdl" ID="38af0fd4-834a-4764-8f4f-97fd121c6aeb" SourceId="1" SourceUrl="http://localhost:64183/Services/ConsultationService.svc?wsdl" />
+    <MetadataFile FileName="ConsultationService.xsd" MetadataType="Schema" ID="587ecb4f-4c59-4699-8ecc-314bcf8de172" SourceId="1" SourceUrl="http://localhost:64183/Services/ConsultationService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ConsultationService1.xsd" MetadataType="Schema" ID="e29a7d3e-878d-4fb6-ab8d-94494aaad30d" SourceId="1" SourceUrl="http://localhost:64183/Services/ConsultationService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ConsultationService2.xsd" MetadataType="Schema" ID="2c036479-eca9-42cd-b900-7b348b0ee776" SourceId="1" SourceUrl="http://localhost:64183/Services/ConsultationService.svc?xsd=xsd4" />
+    <MetadataFile FileName="ConsultationService3.xsd" MetadataType="Schema" ID="83e4f183-1d5f-45cf-a82a-3b53c78f061e" SourceId="1" SourceUrl="http://localhost:64183/Services/ConsultationService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ConsultationService4.xsd" MetadataType="Schema" ID="f45aa782-7028-4ea7-8459-c3e8bc23f891" SourceId="1" SourceUrl="http://localhost:64183/Services/ConsultationService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ConsultationService.wsdl" MetadataType="Wsdl" ID="4574b3c0-9909-4e0d-957d-a95f7fda3e45" SourceId="1" SourceUrl="http://localhost:64183/Services/ConsultationService.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

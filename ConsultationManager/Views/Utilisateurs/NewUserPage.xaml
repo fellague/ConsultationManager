@@ -76,13 +76,14 @@
 
             <TextBlock Grid.Column="2" Text="Role" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
             <ComboBox x:Name="ComboBoxRole" SelectedValuePath="Content" SelectedValue="{Binding NewUtilisateur.Role}" SelectedIndex="1" Grid.Column="3" FontSize="16">
-                <ComboBoxItem Content="Chef Service" Tag="ShowPathologies"/>
-                <ComboBoxItem Content="Médecin" Tag="ShowPathologies"/>
+                <ComboBoxItem Content="Administrateur"/>
+                <ComboBoxItem Content="Chef Service" Tag="ShowConsultations"/>
+                <ComboBoxItem Content="Médecin"/>
                 <ComboBoxItem Content="Infirmier"/>
-                <ComboBoxItem Content="Assistant" Tag="ShowMedecins"/>
+                <ComboBoxItem Content="Assistant" Tag="ShowConsultations"/>
             </ComboBox>
 
-            <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" >
+            <!--<Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>
@@ -116,13 +117,13 @@
                         <Setter Property="Grid.Visibility" Value="Collapsed"></Setter>
                         <Style.Triggers>
                             <DataTrigger  
-                        Binding="{Binding ElementName=ComboBoxRole, Path=SelectedItem.Tag}" Value="ShowMedecins">
+                        Binding="{Binding ElementName=ComboBoxRole, Path=SelectedItem.Tag}" Value="ShowConsultations">
                                 <Setter Property="Grid.Visibility" Value="Visible"></Setter>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </Grid.Style>
-            </Grid>
+            </Grid>-->
 
             <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" >
                 <Grid.ColumnDefinitions>
@@ -133,7 +134,7 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Pathologie Assigné" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">
+                <TextBlock Text="Consultation Assigné" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">
                 </TextBlock>
                 <ComboBox Grid.Column="1" FontSize="16"
                           ItemsSource="{Binding Path=ServicePathol.ListPthologie}"
@@ -147,7 +148,7 @@
                         <Setter Property="Grid.Visibility" Value="Collapsed"></Setter>
                         <Style.Triggers>
                             <DataTrigger  
-                        Binding="{Binding ElementName=ComboBoxRole, Path=SelectedItem.Tag}" Value="ShowPathologies">
+                        Binding="{Binding ElementName=ComboBoxRole, Path=SelectedItem.Tag}" Value="ShowConsultations">
                                 <Setter Property="Grid.Visibility" Value="Visible"></Setter>
                             </DataTrigger>
                         </Style.Triggers>

@@ -300,7 +300,7 @@ namespace ConsultationManagerClient.ViewModels.Consultations
         {
             var updatePatholog = pathol as Consultation;
             
-            updatePatholog = psc.UpdatePathologie(updatedPathologie.Id, updatedPathologie);
+            updatePatholog = psc.UpdateConsultation(updatedPathologie.Id, updatedPathologie);
             dialogUpdatePathol.Close();
             //Application.Current.Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => ListPathologies.Add(patholSave)));
 
@@ -344,7 +344,7 @@ namespace ConsultationManagerClient.ViewModels.Consultations
         {
             var deletedPatholog = selectedPathologie as Consultation;
             
-            psc.DeletePathologie(deletedPatholog.Id);
+            psc.DeleteConsultation(deletedPatholog.Id);
             listPathologies.Remove(deletedPatholog);
 
             //Console.WriteLine("PathologiesViewModel : Remove Pathologie  ");
@@ -402,7 +402,7 @@ namespace ConsultationManagerClient.ViewModels.Consultations
         public void AjouterPathologie()
         {
             newPathologie.IdService = service.Id;
-            Consultation newPatholog = psc.AddPathologie(newPathologie);
+            Consultation newPatholog = psc.AddConsultation(newPathologie);
 
             dialogNewPathol.Close();
             ListPathologies.Add(newPatholog);

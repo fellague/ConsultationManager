@@ -181,10 +181,10 @@ namespace ConsultationManagerClient.ViewModels.Patients
             {
                 newPatient.MedecinResp = AuthenticationViewModel.AuthenticatedUser.Id;
             }
-            if (AuthenticationViewModel.AuthenticatedUser.Role == "Assistant")
-            {
-                newPatient.MedecinResp = AuthenticationViewModel.AuthenticatedUser.MedecinSup;
-            }
+            //if (AuthenticationViewModel.AuthenticatedUser.Role == "Assistant")
+            //{
+            //    newPatient.MedecinResp = AuthenticationViewModel.AuthenticatedUser.MedecinSup;
+            //}
             newPatient.PathologieId = AuthenticationViewModel.AuthenticatedUser.PathologieId;
 
             newPat = psc.AddPatient(newPatient);

@@ -67,14 +67,23 @@ namespace ConsultationManagerServer.Services
             return servPathol;
         }
 
-        public Consultation AddPathologie(Consultation pathologieSaved)
+        public Consultation AddConsultation(Consultation consultSaved)
         {
             Consultation patholog = new Consultation();
             ObservableCollection<Consultation> listPathologies = new ObservableCollection<Consultation>();
 
 
             DataBaseContext db = new DataBaseContext();
-            db.Consultations.Save(pathologieSaved);
+            db.Consultations.Save(consultSaved);
+
+            Planning plan = new Planning();
+            plan.ConsultationId = consultSaved.Id;
+            db.Plannings.Save(plan);
+
+            var query = Query.EQ("Id", consultSaved.Id);
+            var update = Update
+                .Set("IdPlanning", plan.Id);
+            db.Consultations.FindAndModify(query, null, update);
 
             //var pathologExist = db.Pathologies.AsQueryable().Where(p => p.Nom == pathologieSaved.Nom && p.IdService == pathologieSaved.IdService);
             //if (pathologExist.Any() || !db.Pathologies.Exists())
@@ -87,7 +96,7 @@ namespace ConsultationManagerServer.Services
             //    MessageBox.Show("Pathologie Already exist... ");
             //}
 
-            return pathologieSaved;
+            return consultSaved;
         }
 
         public Service UpdateService(string id, Service upService)
@@ -105,17 +114,19 @@ namespace ConsultationManagerServer.Services
             return upService;
         }
 
-        public Consultation UpdatePathologie(string id, Consultation pathologie)
+        public Consultation UpdateConsultation(string id, Consultation pathologie)
         {
             //MessageBox.Show("ServicePathologies service Received an Update request for the pathologie..." + pathologie.Id);
             DataBaseContext db = new DataBaseContext();
             var query = Query.EQ("Id", pathologie.Id);
-            var update = Update.Set("Nom", pathologie.Nom).Set("Description", pathologie.Description);
+            var update = Update
+                .Set("Nom", pathologie.Nom)
+                .Set("Description", pathologie.Description);
             var result = db.Consultations.FindAndModify(query, null, update);
             return pathologie;
         }
 
-        public void DeletePathologie(string id)
+        public void DeleteConsultation(string id)
         {
             DataBaseContext db = new DataBaseContext();
             db.Consultations.Remove(Query.EQ("Id", id));

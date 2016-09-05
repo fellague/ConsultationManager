@@ -61,7 +61,7 @@
                     </DataTemplate>
                 </dxlc:Tile.ContentTemplate>
             </dxlc:Tile>
-            <dxlc:Tile Header="Emploi du Temps" HorizontalHeaderAlignment="Center" FontSize="28" Background="#FF6C15D4">
+            <dxlc:Tile Header="Emploi du Temps" Click="showPlannings" HorizontalHeaderAlignment="Center" FontSize="28" Background="#FF6C15D4">
                 <Image x:Name="image6" Source="/ConsultationManager;component/Imgs/Home/schedule.png"/>
             </dxlc:Tile>
             <dxlc:Tile Header="Dossiers Médicals" HorizontalHeaderAlignment="Center" FontSize="28" Background="#FF6C15D4">

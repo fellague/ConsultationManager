@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:64183/Services/UtilisateurService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" />
-  <xs:element name="GetUtilisateurAuthenticated">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetUtilisateurAuthenticatedResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="GetUtilisateurAuthenticatedResult" nillable="true" type="q1:Utilisateur" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="GetUtilisateurs">
     <xs:complexType>
       <xs:sequence />
@@ -24,7 +9,7 @@
   <xs:element name="GetUtilisateursResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="GetUtilisateursResult" nillable="true" type="q2:ArrayOfUtilisateur" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="GetUtilisateursResult" nillable="true" type="q1:ArrayOfUtilisateur" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -38,42 +23,42 @@
   <xs:element name="GetUtilisateurDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="GetUtilisateurDetailsResult" nillable="true" type="q3:Utilisateur" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="GetUtilisateurDetailsResult" nillable="true" type="q2:Utilisateur" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUtilisateur">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="utilisateur" nillable="true" type="q4:Utilisateur" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="utilisateur" nillable="true" type="q3:Utilisateur" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUtilisateurResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="AddUtilisateurResult" nillable="true" type="q5:Utilisateur" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="AddUtilisateurResult" nillable="true" type="q4:Utilisateur" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateUtilisateur">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="utilisateur" nillable="true" type="q6:Utilisateur" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="utilisateur" nillable="true" type="q5:Utilisateur" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateUtilisateurResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="UpdateUtilisateurResult" nillable="true" type="q7:Utilisateur" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="UpdateUtilisateurResult" nillable="true" type="q6:Utilisateur" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteUtilisateur">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="utilisateur" nillable="true" type="q8:Utilisateur" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="utilisateur" nillable="true" type="q7:Utilisateur" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -23,8 +23,7 @@ namespace ConsultationManagerServer.Models
         private string telephone;
         private DateTime creeDans;
         private string creePar;
-
-        private string medecinSup;
+        
         private string serviceId;
         private string pathologieId;
 
@@ -40,8 +39,7 @@ namespace ConsultationManagerServer.Models
             Telephone = "";
             CreeDans = new DateTime();
             CreePar = "";
-
-            medecinSup = "";
+            
             serviceId = "";
             pathologieId = "";
         }
@@ -223,19 +221,6 @@ namespace ConsultationManagerServer.Models
             }
         }
 
-        [DataMember]
-        public string MedecinSup
-        {
-            get
-            {
-                return medecinSup;
-            }
-            set
-            {
-                medecinSup = value;
-                OnPropertyChanged("MedecinSup");
-            }
-        }
         [DataMember]
         public string ServiceId
         {

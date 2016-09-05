@@ -9,8 +9,10 @@
       <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Nom" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PathologieId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Prenom" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Role" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Sexe" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Specialite" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Telephone" nillable="true" type="xs:string" />

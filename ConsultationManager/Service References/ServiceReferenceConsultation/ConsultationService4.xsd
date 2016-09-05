@@ -14,21 +14,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AddPathologie">
+  <xs:element name="AddConsultation">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="pathologie" nillable="true" type="q2:Consultation" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AddPathologieResponse">
+  <xs:element name="AddConsultationResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="AddPathologieResult" nillable="true" type="q3:Consultation" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="AddConsultationResult" nillable="true" type="q3:Consultation" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="UpdatePathologie">
+  <xs:element name="UpdateConsultation">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
@@ -36,10 +36,10 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="UpdatePathologieResponse">
+  <xs:element name="UpdateConsultationResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="UpdatePathologieResult" nillable="true" type="q5:Consultation" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="UpdateConsultationResult" nillable="true" type="q5:Consultation" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -58,14 +58,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="DeletePathologie">
+  <xs:element name="DeleteConsultation">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="DeletePathologieResponse">
+  <xs:element name="DeleteConsultationResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

@@ -26,7 +26,7 @@ namespace ConsultationManagerServer.Services
                     users.Add(item);
             else
             {
-                MessageBox.Show("There is no pathologie for the service... ");
+                MessageBox.Show("There is no users for the service... ");
             }
             return users;
         }
