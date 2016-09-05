@@ -32,15 +32,10 @@ namespace ConsultationManager.ViewModels.Plannings
         private ObservableCollection<Utilisateur> listMedecinsJeudi;
 
         private Utilisateur addedMedecinDimanche;
-        private Utilisateur removedMedecinDimanche;
         private Utilisateur addedMedecinLundi;
-        private Utilisateur removedMedecinLundi;
         private Utilisateur addedMedecinMardi;
-        private Utilisateur removedMedecinMardi;
         private Utilisateur addedMedecinMercredi;
-        private Utilisateur removedMedecinMercredi;
         private Utilisateur addedMedecinJeudi;
-        private Utilisateur removedMedecinJeudi;
 
         public PlanningsViewModel()
         {
@@ -57,6 +52,8 @@ namespace ConsultationManager.ViewModels.Plannings
             listMedecinsMardi = new ObservableCollection<Utilisateur>();
             listMedecinsMercredi = new ObservableCollection<Utilisateur>();
             listMedecinsJeudi = new ObservableCollection<Utilisateur>();
+
+            selectedConsultation = new ConsultationMedecinsPlanning();
 
             addedMedecinDimanche = new Utilisateur();
             addedMedecinLundi = new Utilisateur();
@@ -320,20 +317,23 @@ namespace ConsultationManager.ViewModels.Plannings
 
         public void ModifierPlanning()
         {
-            Planning planning = new Planning();
-            planning.Id = selectedConsultation.Consult.IdPlanning;
-            foreach (Utilisateur dimUser in selectedConsultation.MedecinsDimanche)
-                planning.MedecinsDimanche.Add(dimUser.Id);
-            foreach (Utilisateur lunUser in selectedConsultation.MedecinsLundi)
-                planning.MedecinsLundi.Add(lunUser.Id);
-            foreach (Utilisateur marUser in selectedConsultation.MedecinsMardi)
-                planning.MedecinsMardi.Add(marUser.Id);
-            foreach (Utilisateur merUser in selectedConsultation.MedecinsMercredi)
-                planning.MedecinsMercredi.Add(merUser.Id);
-            foreach (Utilisateur jeuUser in selectedConsultation.MedecinsJeudi)
-                planning.MedecinsJeudi.Add(jeuUser.Id);
-            psc.UpdatePlanning(planning);
-            MessageBox.Show("Le Planning de la Consultation a été Modifier");
+            if (SelectedConsultation.Consult.Nom != "")
+            {
+                Planning planning = new Planning();
+                planning.Id = selectedConsultation.Consult.IdPlanning;
+                foreach (Utilisateur dimUser in selectedConsultation.MedecinsDimanche)
+                    planning.MedecinsDimanche.Add(dimUser.Id);
+                foreach (Utilisateur lunUser in selectedConsultation.MedecinsLundi)
+                    planning.MedecinsLundi.Add(lunUser.Id);
+                foreach (Utilisateur marUser in selectedConsultation.MedecinsMardi)
+                    planning.MedecinsMardi.Add(marUser.Id);
+                foreach (Utilisateur merUser in selectedConsultation.MedecinsMercredi)
+                    planning.MedecinsMercredi.Add(merUser.Id);
+                foreach (Utilisateur jeuUser in selectedConsultation.MedecinsJeudi)
+                    planning.MedecinsJeudi.Add(jeuUser.Id);
+                psc.UpdatePlanning(planning);
+                MessageBox.Show("Le Planning de la Consultation a été Modifier");
+            }
         }
 
         public void AjouterMedecinDimanche()
@@ -423,6 +423,11 @@ namespace ConsultationManager.ViewModels.Plannings
 
         private void GetMedecin()
         {
+            ListMedecinsDimanche = new ObservableCollection<Utilisateur>();
+            ListMedecinsLundi = new ObservableCollection<Utilisateur>();
+            ListMedecinsMardi = new ObservableCollection<Utilisateur>();
+            ListMedecinsMercredi = new ObservableCollection<Utilisateur>();
+            ListMedecinsJeudi = new ObservableCollection<Utilisateur>();
             foreach (var item in listAllUsers)
             {
                 ListMedecinsDimanche.Add(item);
