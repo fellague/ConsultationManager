@@ -37,6 +37,8 @@ namespace ConsultationManager.ViewModels.Plannings
         private Utilisateur addedMedecinMercredi;
         private Utilisateur addedMedecinJeudi;
 
+        private string nomUtilisateur;
+
         public PlanningsViewModel()
         {
             psc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
@@ -52,6 +54,8 @@ namespace ConsultationManager.ViewModels.Plannings
             listMedecinsMardi = new ObservableCollection<Utilisateur>();
             listMedecinsMercredi = new ObservableCollection<Utilisateur>();
             listMedecinsJeudi = new ObservableCollection<Utilisateur>();
+
+            nomUtilisateur = AuthenticationViewModel.AuthenticatedUser.Nom + " " + AuthenticationViewModel.AuthenticatedUser.Prenom;
 
             selectedConsultation = new ConsultationMedecinsPlanning();
 
@@ -227,6 +231,13 @@ namespace ConsultationManager.ViewModels.Plannings
             }
         }
         
+        public string NomUtilisateur
+        {
+            get
+            {
+                return nomUtilisateur;
+            }
+        }
         #endregion
 
         #region PlanningsViewModel Commands
@@ -299,7 +310,7 @@ namespace ConsultationManager.ViewModels.Plannings
         private ObservableCollection<ConsultationMedecinsPlanning> GetPlannings()
         {
             ObservableCollection<ConsultationMedecinsPlanning> list = new ObservableCollection<ConsultationMedecinsPlanning>();
-            list = new ObservableCollection<ConsultationMedecinsPlanning>(psc.GetPlanning(AuthenticationViewModel.AuthenticatedUser.ServiceId));
+            list = new ObservableCollection<ConsultationMedecinsPlanning>(psc.GetAllPlannings(AuthenticationViewModel.AuthenticatedUser.ServiceId));
             return list;
         }
 
@@ -348,7 +359,6 @@ namespace ConsultationManager.ViewModels.Plannings
         {
             
             var user = selMed as Utilisateur;
-            MessageBox.Show("Remove meedecin  " +user.Nom);
             selectedConsultation.MedecinsDimanche.Remove(user);
             ListMedecinsDimanche.Add(user);
         }
@@ -365,7 +375,6 @@ namespace ConsultationManager.ViewModels.Plannings
         {
 
             var user = selMed as Utilisateur;
-            MessageBox.Show("Remove meedecin  " + user.Nom);
             selectedConsultation.MedecinsLundi.Remove(user);
             ListMedecinsLundi.Add(user);
         }
@@ -382,7 +391,6 @@ namespace ConsultationManager.ViewModels.Plannings
         {
 
             var user = selMed as Utilisateur;
-            MessageBox.Show("Remove meedecin  " + user.Nom);
             selectedConsultation.MedecinsMardi.Remove(user);
             ListMedecinsMardi.Add(user);
         }
@@ -399,7 +407,6 @@ namespace ConsultationManager.ViewModels.Plannings
         {
 
             var user = selMed as Utilisateur;
-            MessageBox.Show("Remove meedecin  " + user.Nom);
             selectedConsultation.MedecinsMercredi.Remove(user);
             ListMedecinsMercredi.Add(user);
         }
@@ -416,7 +423,6 @@ namespace ConsultationManager.ViewModels.Plannings
         {
 
             var user = selMed as Utilisateur;
-            MessageBox.Show("Remove meedecin  " + user.Nom);
             selectedConsultation.MedecinsJeudi.Remove(user);
             ListMedecinsJeudi.Add(user);
         }
@@ -438,8 +444,14 @@ namespace ConsultationManager.ViewModels.Plannings
             }
 
             var toRemove = listAllUsers.Where(user => selectedConsultation.MedecinsDimanche.Any(u => u.Id == user.Id) || user.Role == "Infirmier" || user.Role == "Assistant").ToList();
+            //foreach (var plan in listPlannings)
+            //    foreach (var item in plan.MedecinsDimanche)
+            //        if(!toRemove.Any(u => u.Id == item.Id))
+            //            toRemove.Add(item);
+            ////////////////////////////////////////tryed to remove patient who are not available in Dimanche in other Consultation
+
             foreach (var item in toRemove)
-                listMedecinsDimanche.Remove(item);
+                ListMedecinsDimanche.Remove(item);
 
             toRemove = listAllUsers.Where(user => selectedConsultation.MedecinsLundi.Any(u => u.Id == user.Id) || user.Role == "Infirmier" || user.Role == "Assistant").ToList();
             foreach (var item in toRemove)

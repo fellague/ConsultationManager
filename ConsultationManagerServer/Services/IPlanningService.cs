@@ -15,7 +15,10 @@ namespace ConsultationManagerServer.Services
     public interface IPlanningService
     {
         [OperationContract]
-        ObservableCollection<ConsultationMedecinsPlanning> GetPlanning(string serviceId);
+        ObservableCollection<ConsultationMedecinsPlanning> GetAllPlannings(string serviceId);
+
+        [OperationContract]
+        ConsultationMedecinsPlanning GetPlanning(string consultationId);
 
         [OperationContract]
         Planning UpdatePlanning(Planning planning);

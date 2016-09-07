@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -11,80 +13,68 @@ namespace ConsultationManagerServer.Models
     [DataContract]
     public class RDV : INotifyPropertyChanged
     {
-        private string nomPatient;
-        private string prenomPatient;
-        private string nomMedecin;
-        private string prenomMedecin;
+        private string patientId;
+        private string medecinRespId;
         private DateTime dateRdv;
         private int rang;
+        private bool dejaFait;
         private DateTime creeDans;
         private string creePar;
 
-        public RDV(string nomPatient, string prenomPatient, string nomMedecin, string prenomMedecin, DateTime dateRdv, int rang, DateTime creeDans, string creePar)
+        private string serviceId;
+        private string pathologieId;
+        private bool nouvPat;
+
+        public RDV()
         {
-            NomPatient = nomPatient;
-            PrenomPatient = prenomPatient;
-            NomMedecin = nomMedecin;
-            PrenomMedecin = prenomMedecin;
-            DateRdv = dateRdv;
-            Rang = rang;
-            CreeDans = creeDans;
-            CreePar = creePar;
+            patientId = "";
+            medecinRespId = "";
+            dateRdv = DateTime.Now;
+            rang = 1;
+            dejaFait = false;
+            creeDans = new DateTime();
+            creePar = "";
+
+            serviceId = "";
+            pathologieId = "";
+            nouvPat = true;
+        }
+
+        [BsonId]
+        public ObjectId _id { get; set; }
+
+        [DataMember]
+        public string Id
+        {
+            get { return _id.ToString(); }
+            set { _id = ObjectId.Parse(value); }
         }
 
         [DataMember]
-        public string NomPatient
+        public string PatientId
         {
             get
             {
-                return nomPatient;
+                return patientId;
             }
             set
             {
-                nomPatient = value;
-                OnPropertyChanged("NomPatient");
-            }
-        }
-
-        [DataMember]
-        public string PrenomPatient
-        {
-            get
-            {
-                return prenomPatient;
-            }
-            set
-            {
-                prenomPatient = value;
-                OnPropertyChanged("PrenomPatient");
-            }
-        }
-
-        [DataMember]
-        public string NomMedecin
-        {
-            get
-            {
-                return nomMedecin;
-            }
-            set
-            {
-                nomMedecin = value;
-                OnPropertyChanged("NomMedecin");
+                patientId = value;
+                OnPropertyChanged("PatientId");
             }
         }
 
         [DataMember]
-        public string PrenomMedecin
+        public string MedecinRespId
         {
             get
             {
-                return prenomMedecin;
+                return medecinRespId;
             }
             set
             {
-                prenomMedecin = value;
-                OnPropertyChanged("PrenomMedecin");
+                medecinRespId = value;
+                OnPropertyChanged("MedecinRespId");
             }
         }
 
@@ -117,6 +107,20 @@ namespace ConsultationManagerServer.Models
         }
 
         [DataMember]
+        public bool DejaFait
+        {
+            get
+            {
+                return dejaFait;
+            }
+            set
+            {
+                dejaFait = value;
+                OnPropertyChanged("DejaFait");
+            }
+        }
+
+        [DataMember]
         public DateTime CreeDans
         {
             get
@@ -144,6 +148,46 @@ namespace ConsultationManagerServer.Models
             }
         }
 
+        [DataMember]
+        public string ServiceId
+        {
+            get
+            {
+                return serviceId;
+            }
+            set
+            {
+                serviceId = value;
+                OnPropertyChanged("ServiceId");
+            }
+        }
+        [DataMember]
+        public string PathologieId
+        {
+            get
+            {
+                return pathologieId;
+            }
+            set
+            {
+                pathologieId = value;
+                OnPropertyChanged("PathologieId");
+            }
+        }
+
+        [DataMember]
+        public bool NouvPat
+        {
+            get
+            {
+                return nouvPat;
+            }
+            set
+            {
+                nouvPat = value;
+                OnPropertyChanged("NouvPat");
+            }
+        }
         #region InotifyPropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;

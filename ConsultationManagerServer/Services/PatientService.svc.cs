@@ -25,7 +25,7 @@ namespace ConsultationManagerServer.Services
             if (result == null)
             {
                 db.Patients.Save(patient);
-                MessageBox.Show("User Saved");
+                //MessageBox.Show("User Saved");
             }
             else
                 MessageBox.Show("Ce Patient Existe Déja");
@@ -73,8 +73,10 @@ namespace ConsultationManagerServer.Services
                 .Set("Raison", patient.Raison)
                 .Set("Adresse", patient.Adresse)
                 .Set("Telephones", new BsonArray(patient.Telephones))
-                .Set("Mariee", patient.Mariee);
-            var result = db.Services.FindAndModify(query, null, update);
+                .Set("Mariee", patient.Mariee)
+                .Set("Nouveau", patient.Nouveau)
+                .Set("MedecinResp", patient.MedecinResp);
+            var result = db.Patients.FindAndModify(query, null, update);
             return patient;
         }
     }

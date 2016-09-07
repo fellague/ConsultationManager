@@ -8,6 +8,7 @@ using ConsultationManager.ServiceReferencePatient;
 using System.ServiceModel.Security;
 using System.Windows.Input;
 using ConsultationManagerClient.Commands;
+using ConsultationManager.Views.Patients;
 
 namespace ConsultationManagerClient.ViewModels.Patients
 {
@@ -18,8 +19,12 @@ namespace ConsultationManagerClient.ViewModels.Patients
         private ObservableCollection<Patient> listAllPatient;
         private ObservableCollection<Patient> listAllMyPatient;
 
+        private ObservableCollection<Patient> listNewPatients;
+
         private Patient newPatient;
         private string newTelephone;
+
+        private NewPatientRdvWindow dialogNewPatRdv;
 
         public PatientsViewModel()
         {
@@ -32,6 +37,8 @@ namespace ConsultationManagerClient.ViewModels.Patients
             listAllPatient = GetPatients();
             listAllMyPatient = CreateListAllMyPatient();
 
+            listNewPatients = CreateListNewPatients();
+
             newPatient = new Patient();
             newTelephone = "";
             newPatient.DateNaiss = new DateTime(1980, 01, 01);
@@ -39,10 +46,11 @@ namespace ConsultationManagerClient.ViewModels.Patients
             AddTelephoneCommand = new RelayCommand(param => AjouterTelephone());
             RemoveTelephoneCommand = new RelayCommand(param => DeleteTelephone(param));
 
-            AddPatientCommand = new RelayCommand(param => AjouterUtilisateur(param));
+            AddPatientCommand = new RelayCommand(param => AjouterPatient(param));
+
+            OpenDialogRdvCommand = new RelayCommand(param => ShowDialogRdvNewPatient(param));
         }
         
-
         #region PatientsViewModel Variables
 
         public ObservableCollection<Patient> ListAllPatient
@@ -57,6 +65,13 @@ namespace ConsultationManagerClient.ViewModels.Patients
             get
             {
                 return listAllMyPatient;
+            }
+        }
+        public ObservableCollection<Patient> ListNewPatients
+        {
+            get
+            {
+                return listNewPatients;
             }
         }
 
@@ -94,6 +109,14 @@ namespace ConsultationManagerClient.ViewModels.Patients
             }
         }
 
+        public NewPatientRdvWindow DialogNewPatRdv
+        {
+            get
+            {
+                return dialogNewPatRdv;
+            }
+        }
+
         #endregion
 
         #region PatientsViewModel Commands
@@ -110,6 +133,12 @@ namespace ConsultationManagerClient.ViewModels.Patients
         }
 
         public ICommand AddPatientCommand
+        {
+            get;
+            private set;
+        }
+
+        public ICommand OpenDialogRdvCommand
         {
             get;
             private set;
@@ -153,6 +182,19 @@ namespace ConsultationManagerClient.ViewModels.Patients
             return allMyList;
         }
 
+        private ObservableCollection<Patient> CreateListNewPatients()
+        {
+            ObservableCollection<Patient> list = new ObservableCollection<Patient>();
+            foreach (Patient element in listAllPatient)
+            {
+                if (element.Nouveau && element.PathologieId == AuthenticationViewModel.AuthenticatedUser.PathologieId)
+                {
+                    list.Add(element);
+                }
+            }
+            return list;
+        }
+
         public void AjouterTelephone()
         {
             //var newCsl = csl as string;
@@ -169,35 +211,38 @@ namespace ConsultationManagerClient.ViewModels.Patients
             newPatient.Telephones.Remove(telephone);
         }
 
-        private void AjouterUtilisateur(object param)
+        private void AjouterPatient(object param)
         {
             var newPat = new Patient();
 
             newPatient.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
-            //newPatient.ServiceId = servicePathologies.Service.Id;
             newPatient.ServiceId = AuthenticationViewModel.AuthenticatedUser.ServiceId;
             newPatient.CreeDans = DateTime.Now;
-            if(AuthenticationViewModel.AuthenticatedUser.Role== "Chef Service"|| AuthenticationViewModel.AuthenticatedUser.Role == "Médecin")
-            {
-                newPatient.MedecinResp = AuthenticationViewModel.AuthenticatedUser.Id;
-            }
-            //if (AuthenticationViewModel.AuthenticatedUser.Role == "Assistant")
-            //{
-            //    newPatient.MedecinResp = AuthenticationViewModel.AuthenticatedUser.MedecinSup;
-            //}
             newPatient.PathologieId = AuthenticationViewModel.AuthenticatedUser.PathologieId;
 
             newPat = psc.AddPatient(newPatient);
-            MessageBox.Show("Patient Saved Request... " + newPat.Id);
+            MessageBox.Show("Patient " + newPat.Nom+" "+newPat.Prenom+" a été sauvegardé");
 
             listAllPatient.Add(newPat);
             NewPatient = new Patient();
             ActualiserLists();
         }
 
+
+        private void ShowDialogRdvNewPatient(object param)
+        {
+            Patient selPat = param as Patient;
+            dialogNewPatRdv = new NewPatientRdvWindow();
+            dialogNewPatRdv.DataContext = new RdvNewPatientViewModel(selPat, this);
+            //newPathologie = new Consultation();
+            //AddPathologieCommand = new RelayCommand(param => AjouterPathologie());
+            dialogNewPatRdv.ShowDialog();
+        }
+
         private void ActualiserLists()
         {
             listAllMyPatient = CreateListAllMyPatient();
+            listNewPatients = CreateListNewPatients();
         }
 
         #endregion

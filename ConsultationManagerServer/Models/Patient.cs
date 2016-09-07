@@ -25,6 +25,7 @@ namespace ConsultationManagerServer.Models
         private string creePar;
 
         private bool nouveau;
+        private string degreUrgence;
         private string medecinResp;
         private string serviceId;
         private string pathologieId;
@@ -42,6 +43,7 @@ namespace ConsultationManagerServer.Models
             mariee = false;
 
             nouveau = true;
+            degreUrgence = "";
             creeDans = new DateTime();
             creePar = "";
 
@@ -211,6 +213,20 @@ namespace ConsultationManagerServer.Models
             {
                 nouveau = value;
                 OnPropertyChanged("Nouveau");
+            }
+        }
+
+        [DataMember]
+        public string DegreUrgence
+        {
+            get
+            {
+                return degreUrgence;
+            }
+            set
+            {
+                degreUrgence = value;
+                OnPropertyChanged("DegreUrgence");
             }
         }
 

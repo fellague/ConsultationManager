@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d75bb132-26c3-49ac-8df8-4390f0e17f71" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="fa4f0cb9-5a4e-4251-ab52-4d87bf4ab385" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,15 +19,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address=" http://localhost:64183/Services/PlanningService.svc?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:64183/Services/PlanningService.svc?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="PlanningService.xsd" MetadataType="Schema" ID="7513406d-8291-4d1f-804c-24431ae84dfb" SourceId="1" SourceUrl="http://localhost:64183/Services/PlanningService.svc?xsd=xsd1" />
-    <MetadataFile FileName="PlanningService1.xsd" MetadataType="Schema" ID="307975e4-b555-408a-aa4d-eee76249f5d4" SourceId="1" SourceUrl="http://localhost:64183/Services/PlanningService.svc?xsd=xsd3" />
-    <MetadataFile FileName="PlanningService.wsdl" MetadataType="Wsdl" ID="7475b741-9b06-4419-a1fb-125791cc2010" SourceId="1" SourceUrl="http://localhost:64183/Services/PlanningService.svc?wsdl" />
-    <MetadataFile FileName="PlanningService2.xsd" MetadataType="Schema" ID="a23e93fd-d494-454f-a91d-63fcde8c3c7d" SourceId="1" SourceUrl="http://localhost:64183/Services/PlanningService.svc?xsd=xsd0" />
-    <MetadataFile FileName="PlanningService3.xsd" MetadataType="Schema" ID="93e3ec17-9f8f-4056-ad17-386d39c4dbc9" SourceId="1" SourceUrl="http://localhost:64183/Services/PlanningService.svc?xsd=xsd2" />
-    <MetadataFile FileName="PlanningService4.xsd" MetadataType="Schema" ID="050abc8b-78a0-4a3f-8cb3-c2e3da7507c7" SourceId="1" SourceUrl="http://localhost:64183/Services/PlanningService.svc?xsd=xsd4" />
+    <MetadataFile FileName="PlanningService.xsd" MetadataType="Schema" ID="0133f39f-5c86-4dc5-8d9f-dbec14a012ec" SourceId="1" SourceUrl="http://localhost:64183/Services/PlanningService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PlanningService1.xsd" MetadataType="Schema" ID="95e8455f-72b7-462f-9507-30c2884a5bea" SourceId="1" SourceUrl="http://localhost:64183/Services/PlanningService.svc?xsd=xsd3" />
+    <MetadataFile FileName="PlanningService.wsdl" MetadataType="Wsdl" ID="64724939-3b5d-470b-ae81-5e65f151db69" SourceId="1" SourceUrl="http://localhost:64183/Services/PlanningService.svc?wsdl" />
+    <MetadataFile FileName="PlanningService2.xsd" MetadataType="Schema" ID="a84e5751-a025-477a-8a5b-5f5a4f3a36af" SourceId="1" SourceUrl="http://localhost:64183/Services/PlanningService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PlanningService3.xsd" MetadataType="Schema" ID="4141a65a-d904-47e9-a5f7-a23e5b0fb7f8" SourceId="1" SourceUrl="http://localhost:64183/Services/PlanningService.svc?xsd=xsd2" />
+    <MetadataFile FileName="PlanningService4.xsd" MetadataType="Schema" ID="95c864ab-aa73-4941-903c-fa96089842ff" SourceId="1" SourceUrl="http://localhost:64183/Services/PlanningService.svc?xsd=xsd4" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

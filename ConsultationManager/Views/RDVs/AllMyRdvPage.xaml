@@ -22,11 +22,53 @@
                     <!--<ColumnDefinition Width="*" />-->
                 </Grid.ColumnDefinitions>
                 <Grid>
-                    <ListBox x:Name="listMyRdv" ItemsSource="{Binding ListAllMyRvd}" HorizontalContentAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <DockPanel LastChildFill="True">
+                        <Grid DockPanel.Dock="Top" Height="30">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="9*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" FontSize="16" FontWeight="Bold" Margin="10 0">Date</Label>
+                            <Label Grid.Column="1" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0">Position</Label>
+                            <Label Grid.Column="2" FontSize="16" FontWeight="Bold" Margin="10 0">Patient</Label>
+                            <Label Grid.Column="3" FontSize="16" FontWeight="Bold" Margin="10 0">Raison</Label>
+                            <Label Grid.Column="4" FontSize="16" FontWeight="Bold" Margin="10 0">Creé Dans</Label>
+                        </Grid>
+                        <ItemsPresenter></ItemsPresenter>
+                    </DockPanel>
+                    
+                    <ListBox x:Name="listMyRdv" ItemsSource="{Binding ListAllMyRvd}" Grid.Row="1" HorizontalContentAlignment="Stretch">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="9*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="{Binding Path=Rdv.DateRdv,  StringFormat='dd/MM/yyy'}" FontSize="16" FontWeight="DemiBold"></TextBlock>
+                                    <TextBlock Text="{Binding Path=Rdv.Rang}" Grid.Column="1" HorizontalAlignment="Center" FontSize="16" FontWeight="DemiBold"></TextBlock>
+
+                                    <WrapPanel Grid.Column="2" Margin="5, 0, 0, 0">
+                                        <TextBlock Text="{Binding Path=Patient.Nom}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="DemiBold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=Patient.Prenom}" FontSize="16" FontWeight="DemiBold"></TextBlock>
+                                    </WrapPanel>
+                                    <TextBlock Text="{Binding Path=Patient.Raison}" Grid.Column="3" FontSize="16"></TextBlock>
+                                    <TextBlock Text="{Binding Path=Rdv.CreeDans,  StringFormat='dd/MM/yyy'}" Grid.Column="4" Margin="15 0" FontSize="16" FontWeight="DemiBold"></TextBlock>
+                                    <!--<Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
@@ -37,32 +79,43 @@
                                     </Grid.RowDefinitions>
 
                                     <WrapPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 0">
-                                        <TextBlock Text="{Binding Path=NomPatient}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text="{Binding Path=PrenomPatient}" FontSize="16" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text=" assisté par le médecin " FontSize="16"></TextBlock>
-                                        <TextBlock Text="{Binding Path=NomMedecin}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text="{Binding Path=PrenomMedecin}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=Patient.Nom}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=Patient.Prenom}" FontSize="16" FontWeight="Bold"></TextBlock>
                                     </WrapPanel>
                                     <WrapPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 5">
                                         <TextBlock Text="Dans le "></TextBlock>
-                                        <TextBlock Text="{Binding Path=DateRdv,  StringFormat='dd/MM/yyy'}" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text=", position "></TextBlock>
-                                        <TextBlock Text="{Binding Path=Rang}" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text=" sur la fille d'attente, heure éstimé à "></TextBlock>
-                                        <TextBlock Text="{Binding Path=DateRdv,  StringFormat=t}" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=Rdv.DateRdv,  StringFormat='dd/MM/yyy'}" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text=", position sur la fille d'attente"></TextBlock>
+                                        <TextBlock Text="{Binding Path=Rdv.Rang}" FontWeight="Bold"></TextBlock>
                                     </WrapPanel>
                                     <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 5">
-                                        <TextBlock Text="Creé Par "></TextBlock>
-                                        <TextBlock Text="{Binding Path=CreePar}" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text="Dans le "></TextBlock>
-                                        <TextBlock Text="{Binding Path=CreeDans,  StringFormat='dd/MM/yyy'}" FontWeight="Bold"></TextBlock>
-                                    </WrapPanel>
+                                        <TextBlock Text="Creé dans le "></TextBlock>
+                                        <TextBlock Text="{Binding Path=Rdv.CreeDans,  StringFormat='dd/MM/yyy'}" FontWeight="Bold"></TextBlock>
+                                    </WrapPanel>-->
 
-                                    <WrapPanel Grid.Column="1" Grid.RowSpan="3">
-                                        <Button>
+                                    <WrapPanel Grid.Column="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <!--<Button>
                                             Consulter Maintenant
-                                        </Button>
-                                        <materialDesign:PopupBox Margin="32" ToolTip="Plus d'Opionts">
+                                        </Button>-->
+                                                <Button  
+                                                    Command="{Binding DataContext.UpdateRdvDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
+                                                    ToolTip="Modifier le Rendez-Vous">
+                                                    <materialDesign:PackIcon Kind="Pencil" Height="24" Width="24" />
+                                                </Button>
+                                                <Button  
+                                                    Command="{Binding DataContext.RemoveSelectedRdvCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="3"
+                                                    ToolTip="Reporter le Rendez-vous">
+                                                    <materialDesign:PackIcon Kind="RayStartArrow" Height="24" Width="24" />
+                                                </Button>
+                                                <!--<Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="3"
+                                                    ToolTip="Voir Dossier Médical">
+                                                    <materialDesign:PackIcon Kind="FolderPlus" Height="24" Width="24" />
+                                                </Button>-->
+                                                <!--<materialDesign:PopupBox Margin="32 10" ToolTip="Plus d'Opionts">
                                             <StackPanel>
                                                 <Button  
                                                     Command="{Binding DataContext.UpdateRdvDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
@@ -78,16 +131,16 @@
                                                     ToolTip="Annuler le Rendez-vous">
                                                     <materialDesign:PackIcon Kind="Delete" Height="24" Width="24" />
                                                 </Button>
-                                                <Button  Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
+                                                --><!--<Button  Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
                                                     ToolTip="Plus de Détails">
                                                     <materialDesign:PackIcon Kind="Eye" Height="24" Width="24" />
-                                                </Button>
+                                                </Button>--><!--
                                                 <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
                                                     ToolTip="Voir Dossier Médical">
                                                     <materialDesign:PackIcon Kind="FolderPlus" Height="24" Width="24" />
                                                 </Button>
                                             </StackPanel>
-                                        </materialDesign:PopupBox>
+                                        </materialDesign:PopupBox>-->
                                     </WrapPanel>
                                 </Grid>
                             </DataTemplate>

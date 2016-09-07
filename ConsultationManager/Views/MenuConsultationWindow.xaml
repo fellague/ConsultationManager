@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ConsultationManagerClient.Views"
         mc:Ignorable="d"
-        Title="Pathologies" WindowState="Maximized">
+        Title="Service" WindowState="Maximized">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

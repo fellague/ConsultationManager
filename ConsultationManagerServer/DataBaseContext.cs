@@ -58,5 +58,13 @@ namespace ConsultationManagerServer
                 return db.GetCollection<Patient>("Patient");
             }
         }
+
+        public MongoCollection<RDV> RDVs
+        {
+            get
+            {
+                return db.GetCollection<RDV>("RDV");
+            }
+        }
     }
 }

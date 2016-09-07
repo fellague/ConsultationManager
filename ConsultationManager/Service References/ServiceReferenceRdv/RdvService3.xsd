@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:64183/Services/RdvService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" />
+  <xs:import schemaLocation="http://localhost:64183/Services/RdvService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" />
+  <xs:element name="GetAllRdv">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idService" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRdvResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" minOccurs="0" name="GetAllRdvResult" nillable="true" type="q1:ArrayOfRdvPatientMedecin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRdvMedecin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idMedecin" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRdvMedecinResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" minOccurs="0" name="GetRdvMedecinResult" nillable="true" type="q2:ArrayOfRdvPatientMedecin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRdvConsultation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idConsultation" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRdvConsultationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" minOccurs="0" name="GetRdvConsultationResult" nillable="true" type="q3:ArrayOfRdvPatientMedecin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddRdv">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="rdv" nillable="true" type="q4:RDV" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddRdvResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="AddRdvResult" nillable="true" type="q5:RDV" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateRdv">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="rdv" nillable="true" type="q6:RDV" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateRdvResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="UpdateRdvResult" nillable="true" type="q7:RDV" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

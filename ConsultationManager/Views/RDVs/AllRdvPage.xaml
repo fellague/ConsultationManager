@@ -19,39 +19,58 @@
                     <!--<ColumnDefinition Width="*" />-->
                 </Grid.ColumnDefinitions>
                 <Grid>
-                    <ListBox ItemsSource="{Binding ListAllRvd}" HorizontalContentAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <DockPanel LastChildFill="True">
+                        <Grid DockPanel.Dock="Top" Height="30">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="9*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" FontSize="16" FontWeight="Bold" Margin="10 0">Date</Label>
+                            <Label Grid.Column="1" FontSize="16" FontWeight="Bold" Margin="10 0">Position</Label>
+                            <Label Grid.Column="2" FontSize="16" FontWeight="Bold" Margin="10 0">Patient</Label>
+                            <Label Grid.Column="3" FontSize="16" FontWeight="Bold" Margin="10 0">Médecin</Label>
+                            <Label Grid.Column="4" FontSize="16" FontWeight="Bold" Margin="10 0">Raison</Label>
+                            <Label Grid.Column="5" FontSize="16" FontWeight="Bold" Margin="10 0">Creé Dans</Label>
+                        </Grid>
+                        <ItemsPresenter></ItemsPresenter>
+                    </DockPanel>
+                    
+                    <ListBox ItemsSource="{Binding ListAllRvd}" Grid.Row="1" HorizontalContentAlignment="Stretch">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="9*"/>
+                                        <ColumnDefinition Width="2*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
 
-                                    <WrapPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 0">
-                                        <TextBlock Text="{Binding Path=NomPatient}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text="{Binding Path=PrenomPatient}" FontSize="16" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text=" assisté par le médecin " FontSize="16"></TextBlock>
-                                        <TextBlock Text="{Binding Path=NomMedecin}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text="{Binding Path=PrenomMedecin}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                    <TextBlock Text="{Binding Path=Rdv.DateRdv,  StringFormat='dd/MM/yyy'}" FontSize="16" FontWeight="DemiBold"></TextBlock>
+                                    <TextBlock Text="{Binding Path=Rdv.Rang}" Grid.Column="1" HorizontalAlignment="Center" FontSize="16" FontWeight="DemiBold"></TextBlock>
+
+                                    <WrapPanel Grid.Column="2" Margin="5, 0, 0, 0">
+                                        <TextBlock Text="{Binding Path=Patient.Nom}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="DemiBold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=Patient.Prenom}" FontSize="16" FontWeight="DemiBold"></TextBlock>
                                     </WrapPanel>
-                                    <WrapPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 5">
-                                        <TextBlock Text="Dans le "></TextBlock>
-                                        <TextBlock Text="{Binding Path=DateRdv,  StringFormat='dd/MM/yyy'}" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text=" à "></TextBlock>
-                                        <TextBlock Text="{Binding Path=DateRdv,  StringFormat=t}" FontWeight="Bold"></TextBlock>
+                                    <WrapPanel Grid.Column="3" Margin="5, 0, 0, 5">
+                                        <TextBlock Text="{Binding Path=Medecin.Nom}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="DemiBold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=Medecin.Prenom}" FontSize="16" FontWeight="DemiBold"></TextBlock>
                                     </WrapPanel>
-                                    <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 5">
-                                        <TextBlock Text="Creé Par "></TextBlock>
-                                        <TextBlock Text="{Binding Path=CreePar}" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text="Dans le "></TextBlock>
-                                        <TextBlock Text="{Binding Path=CreeDans,  StringFormat='dd/MM/yyy'}" FontWeight="Bold"></TextBlock>
-                                    </WrapPanel>
+                                    <TextBlock Text="{Binding Path=Patient.Raison}" Grid.Column="4" FontSize="16"></TextBlock>
+                                    <TextBlock Text="{Binding Path=Rdv.CreeDans,  StringFormat='dd/MM/yyy'}" Grid.Column="5" Margin="15 0" FontSize="16" FontWeight="DemiBold"></TextBlock>
+                                    
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>

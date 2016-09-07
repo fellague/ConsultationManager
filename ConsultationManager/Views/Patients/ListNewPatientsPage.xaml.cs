@@ -11,18 +11,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ConsultationManagerClient.Views.Consultations
+namespace ConsultationManager.Views.Patients
 {
     /// <summary>
-    /// Interaction logic for NewPathologieWindow.xaml
+    /// Interaction logic for ListNewPatientsPage.xaml
     /// </summary>
-    public partial class NewConsultationWindow : Window
+    public partial class ListNewPatientsPage : Page
     {
-        public NewConsultationWindow()
+        internal ListNewPatientsPage(PatientsViewModel patientsVM)
         {
             InitializeComponent();
+            DataContext = patientsVM;
         }
     }
 }

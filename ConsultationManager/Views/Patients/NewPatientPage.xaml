@@ -38,6 +38,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
@@ -62,22 +63,31 @@
 
             <CheckBox Content="Marrié" Grid.Row="5" Grid.Column="1" FontSize="16" VerticalAlignment="Center"  Margin="0 20 0 0"></CheckBox>
 
-            <TextBlock Grid.Row="6" Text="Origine Géographique" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 20 0 0"></TextBlock>
-            <TextBox Text="{Binding NewPatient.OrigineGeo}" Grid.Row="6" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Lieu de Naissance" Margin="0 20 0 0"/>
+            <TextBlock Grid.Row="6" Text="Profession" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 20 0 0"></TextBlock>
+            <TextBox Text="{Binding NewPatient.Profession}" Grid.Row="6" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Profession" Margin="0 20 0 0"></TextBox>
 
-            <TextBlock Grid.Column="2" Text="Adresse" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 20 0 0"></TextBlock>
-            <TextBox Text="{Binding NewPatient.Adresse}" Grid.Column="3" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Wilaya, Dayra Hay Numero 00" Margin="0 20 0 0"></TextBox>
+            <TextBlock Grid.Column="2" Text="Degré d'Urgence" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 20 0 0"></TextBlock>
+            <ComboBox SelectedValuePath="Content"  SelectedValue="{Binding NewPatient.DegreUrgence}" 
+                      HorizontalAlignment="Left" Width="50" Grid.Column="3" FontSize="20" Margin="40 20 0 0">
+                <ComboBoxItem>A</ComboBoxItem>
+                <ComboBoxItem>B</ComboBoxItem>
+                <ComboBoxItem>C</ComboBoxItem>
+                <ComboBoxItem>D</ComboBoxItem>
+                <ComboBoxItem>E</ComboBoxItem>
+            </ComboBox>
 
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="Adresse" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 20 0 0"></TextBlock>
+            <TextBox Text="{Binding NewPatient.Adresse}" Grid.Row="1" Grid.Column="3" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Wilaya, Dayra Hay Numero 00" Margin="0 20 0 0"></TextBox>
 
-            <TextBlock Grid.Row="1" Grid.Column="2" Text="Profession" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 20 0 0"></TextBlock>
-            <TextBox Text="{Binding NewPatient.Profession}" Grid.Row="1" Grid.Column="3" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Profession" Margin="0 20 0 0"></TextBox>
+            <TextBlock Grid.Row="2" Grid.Column="2" Text="Origine Géographique" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 20 0 0"></TextBlock>
+            <TextBox Text="{Binding NewPatient.OrigineGeo}" Grid.Row="2" Grid.Column="3" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Lieu de Naissance" Margin="0 20 0 0"/>
 
-            <TextBlock Grid.Row="2" Grid.Column="2" Text="Raison de la Visite" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 20 0 0"></TextBlock>
-            <TextBox Text="{Binding NewPatient.Raison}" Grid.Row="2" Grid.Column="3" Grid.RowSpan="3" TextWrapping="Wrap" AcceptsReturn="True" MinLines="5" MaxLines="5" VerticalScrollBarVisibility="Auto"
+            <TextBlock Grid.Row="3" Grid.Column="2" Text="Raison de la Visite" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 20 0 0"></TextBlock>
+            <TextBox Text="{Binding NewPatient.Raison}" Grid.Row="3" Grid.Column="3" Grid.RowSpan="3" TextWrapping="Wrap" AcceptsReturn="True" MinLines="5" MaxLines="5" VerticalScrollBarVisibility="Auto"
                              FontSize="16" VerticalAlignment="Top" materialDesign:TextFieldAssist.Hint="Description à propos du patient" Margin="0 20 0 0"></TextBox>
 
-            <TextBlock Grid.Row="5" Grid.Column="2" Text="Téléphone" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" Margin="15"></TextBlock>
-            <Border Grid.Row="5" Grid.Column="3" Grid.RowSpan="4" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+            <TextBlock Grid.Row="6" Grid.Column="2" Text="Téléphone" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" Margin="15"></TextBlock>
+            <Border Grid.Row="6" Grid.Column="3" Grid.RowSpan="4" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
                              ClipToBounds="True" Margin="15">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -119,8 +129,6 @@
                     </ListBox>
                 </Grid>
             </Border>
-
-            
         </Grid>
 
         <Button Command="{Binding AddPatientCommand}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width=" 250" Margin=" 0 0 50 50" FontSize="16">Ajouter</Button>

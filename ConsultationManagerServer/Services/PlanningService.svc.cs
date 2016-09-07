@@ -18,7 +18,7 @@ namespace ConsultationManagerServer.Services
     // NOTE: In order to launch WCF Test Client for testing this service, please select PlanningService.svc or PlanningService.svc.cs at the Solution Explorer and start debugging.
     public class PlanningService : IPlanningService
     {
-        public ObservableCollection<ConsultationMedecinsPlanning> GetPlanning(string serviceId)
+        public ObservableCollection<ConsultationMedecinsPlanning> GetAllPlannings(string serviceId)
         {
             ObservableCollection<ConsultationMedecinsPlanning> list = new ObservableCollection<ConsultationMedecinsPlanning>();
             ConsultationMedecinsPlanning consultMedsPlans = new ConsultationMedecinsPlanning();
@@ -67,6 +67,51 @@ namespace ConsultationManagerServer.Services
                 }
 
             return list;
+        }
+
+        public ConsultationMedecinsPlanning GetPlanning(string consultationId)
+        {
+            ConsultationMedecinsPlanning consultMedsPlans = new ConsultationMedecinsPlanning();
+
+            DataBaseContext db = new DataBaseContext();
+
+            var result = db.Consultations.AsQueryable().Where(p => p.Id == consultationId).First();
+            consultMedsPlans.Consult = result;
+
+            var plannings = db.Plannings.AsQueryable().Where(p => p.Id == consultMedsPlans.Consult.IdPlanning).First();
+
+            foreach (string idUser in plannings.MedecinsDimanche)
+            {
+                var users = db.Utilisateurs.AsQueryable().Where(p => p.Id == idUser).ToList();
+                foreach (Utilisateur user in users)
+                    consultMedsPlans.MedecinsDimanche.Add(user);
+            }
+            foreach (string idUser in plannings.MedecinsLundi)
+            {
+                var users = db.Utilisateurs.AsQueryable().Where(p => p.Id == idUser).ToList();
+                foreach (Utilisateur user in users)
+                    consultMedsPlans.MedecinsLundi.Add(user);
+            }
+            foreach (string idUser in plannings.MedecinsMardi)
+            {
+                var users = db.Utilisateurs.AsQueryable().Where(p => p.Id == idUser).ToList();
+                foreach (Utilisateur user in users)
+                    consultMedsPlans.MedecinsMardi.Add(user);
+            }
+            foreach (string idUser in plannings.MedecinsMercredi)
+            {
+                var users = db.Utilisateurs.AsQueryable().Where(p => p.Id == idUser).ToList();
+                foreach (Utilisateur user in users)
+                    consultMedsPlans.MedecinsMercredi.Add(user);
+            }
+            foreach (string idUser in plannings.MedecinsJeudi)
+            {
+                var users = db.Utilisateurs.AsQueryable().Where(p => p.Id == idUser).ToList();
+                foreach (Utilisateur user in users)
+                    consultMedsPlans.MedecinsJeudi.Add(user);
+            }
+
+            return consultMedsPlans;
         }
 
         public Planning UpdatePlanning(Planning planning)

@@ -15,11 +15,17 @@ namespace ConsultationManager.ServiceReferencePlanning {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReferencePlanning.IPlanningService")]
     public interface IPlanningService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlanningService/GetPlanning", ReplyAction="http://tempuri.org/IPlanningService/GetPlanningResponse")]
-        ConsultationManagerServer.Models.SerializedModels.ConsultationMedecinsPlanning[] GetPlanning(string serviceId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlanningService/GetAllPlannings", ReplyAction="http://tempuri.org/IPlanningService/GetAllPlanningsResponse")]
+        ConsultationManagerServer.Models.SerializedModels.ConsultationMedecinsPlanning[] GetAllPlannings(string serviceId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlanningService/GetAllPlannings", ReplyAction="http://tempuri.org/IPlanningService/GetAllPlanningsResponse")]
+        System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.ConsultationMedecinsPlanning[]> GetAllPlanningsAsync(string serviceId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlanningService/GetPlanning", ReplyAction="http://tempuri.org/IPlanningService/GetPlanningResponse")]
-        System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.ConsultationMedecinsPlanning[]> GetPlanningAsync(string serviceId);
+        ConsultationManagerServer.Models.SerializedModels.ConsultationMedecinsPlanning GetPlanning(string consultationId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlanningService/GetPlanning", ReplyAction="http://tempuri.org/IPlanningService/GetPlanningResponse")]
+        System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.ConsultationMedecinsPlanning> GetPlanningAsync(string consultationId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlanningService/UpdatePlanning", ReplyAction="http://tempuri.org/IPlanningService/UpdatePlanningResponse")]
         ConsultationManagerServer.Models.Planning UpdatePlanning(ConsultationManagerServer.Models.Planning planning);
@@ -55,12 +61,20 @@ namespace ConsultationManager.ServiceReferencePlanning {
                 base(binding, remoteAddress) {
         }
         
-        public ConsultationManagerServer.Models.SerializedModels.ConsultationMedecinsPlanning[] GetPlanning(string serviceId) {
-            return base.Channel.GetPlanning(serviceId);
+        public ConsultationManagerServer.Models.SerializedModels.ConsultationMedecinsPlanning[] GetAllPlannings(string serviceId) {
+            return base.Channel.GetAllPlannings(serviceId);
         }
         
-        public System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.ConsultationMedecinsPlanning[]> GetPlanningAsync(string serviceId) {
-            return base.Channel.GetPlanningAsync(serviceId);
+        public System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.ConsultationMedecinsPlanning[]> GetAllPlanningsAsync(string serviceId) {
+            return base.Channel.GetAllPlanningsAsync(serviceId);
+        }
+        
+        public ConsultationManagerServer.Models.SerializedModels.ConsultationMedecinsPlanning GetPlanning(string consultationId) {
+            return base.Channel.GetPlanning(consultationId);
+        }
+        
+        public System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.ConsultationMedecinsPlanning> GetPlanningAsync(string consultationId) {
+            return base.Channel.GetPlanningAsync(consultationId);
         }
         
         public ConsultationManagerServer.Models.Planning UpdatePlanning(ConsultationManagerServer.Models.Planning planning) {

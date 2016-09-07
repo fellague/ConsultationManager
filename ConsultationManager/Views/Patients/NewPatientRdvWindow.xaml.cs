@@ -1,5 +1,4 @@
-﻿using ConsultationManagerClient.ViewModels.Patients;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ConsultationManagerClient.Views.Consultations
+namespace ConsultationManager.Views.Patients
 {
     /// <summary>
-    /// Interaction logic for NewPathologieWindow.xaml
+    /// Interaction logic for NewPatientRdvWindow.xaml
     /// </summary>
-    public partial class NewConsultationWindow : Window
+    public partial class NewPatientRdvWindow : Window
     {
-        public NewConsultationWindow()
+        public NewPatientRdvWindow()
         {
             InitializeComponent();
         }

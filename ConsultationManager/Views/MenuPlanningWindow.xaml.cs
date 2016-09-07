@@ -29,6 +29,8 @@ namespace ConsultationManager.Views
             InitializeComponent();
 
             planningVM = new PlanningsViewModel();
+            this.DataContext = planningVM;
+
             _mainFrame.Navigate(new AllPlanningsPage(planningVM));
             coloringTabs(PlanningsBtn, UpdatePlanningBtn);
         }
