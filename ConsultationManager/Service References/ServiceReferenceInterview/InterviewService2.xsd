@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:64183/Services/InterviewService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" />
+  <xs:import schemaLocation="http://localhost:64183/Services/InterviewService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" />
+  <xs:element name="AddInterview">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="dossierMed" nillable="true" type="q1:Interview" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddInterviewResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="AddInterviewResult" nillable="true" type="q2:Interview" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetInterview">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idRdv" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetInterviewResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" minOccurs="0" name="GetInterviewResult" nillable="true" type="q3:InterviewDetail" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetInterviews">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="patient" nillable="true" type="q4:Patient" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetInterviewsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" minOccurs="0" name="GetInterviewsResult" nillable="true" type="q5:ArrayOfInterviewDetail" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateInterview">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="dossierMed" nillable="true" type="q6:Interview" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateInterviewResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="UpdateInterviewResult" nillable="true" type="q7:Interview" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteInterview">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteInterviewResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

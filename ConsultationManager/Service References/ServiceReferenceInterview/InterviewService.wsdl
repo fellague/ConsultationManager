@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="InterviewService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:64183/Services/InterviewService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:64183/Services/InterviewService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:64183/Services/InterviewService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" />
+      <xsd:import schemaLocation="http://localhost:64183/Services/InterviewService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.DossierMedicale" />
+      <xsd:import schemaLocation="http://localhost:64183/Services/InterviewService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" />
+      <xsd:import schemaLocation="http://localhost:64183/Services/InterviewService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IInterviewService_AddInterview_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddInterview" />
+  </wsdl:message>
+  <wsdl:message name="IInterviewService_AddInterview_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddInterviewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInterviewService_GetInterview_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInterview" />
+  </wsdl:message>
+  <wsdl:message name="IInterviewService_GetInterview_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInterviewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInterviewService_GetInterviews_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInterviews" />
+  </wsdl:message>
+  <wsdl:message name="IInterviewService_GetInterviews_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInterviewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInterviewService_UpdateInterview_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateInterview" />
+  </wsdl:message>
+  <wsdl:message name="IInterviewService_UpdateInterview_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateInterviewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInterviewService_DeleteInterview_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteInterview" />
+  </wsdl:message>
+  <wsdl:message name="IInterviewService_DeleteInterview_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteInterviewResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IInterviewService">
+    <wsdl:operation name="AddInterview">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterviewService/AddInterview" message="tns:IInterviewService_AddInterview_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterviewService/AddInterviewResponse" message="tns:IInterviewService_AddInterview_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInterview">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterviewService/GetInterview" message="tns:IInterviewService_GetInterview_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterviewService/GetInterviewResponse" message="tns:IInterviewService_GetInterview_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInterviews">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterviewService/GetInterviews" message="tns:IInterviewService_GetInterviews_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterviewService/GetInterviewsResponse" message="tns:IInterviewService_GetInterviews_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInterview">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterviewService/UpdateInterview" message="tns:IInterviewService_UpdateInterview_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterviewService/UpdateInterviewResponse" message="tns:IInterviewService_UpdateInterview_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInterview">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterviewService/DeleteInterview" message="tns:IInterviewService_DeleteInterview_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterviewService/DeleteInterviewResponse" message="tns:IInterviewService_DeleteInterview_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IInterviewService" type="tns:IInterviewService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddInterview">
+      <soap:operation soapAction="http://tempuri.org/IInterviewService/AddInterview" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInterview">
+      <soap:operation soapAction="http://tempuri.org/IInterviewService/GetInterview" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInterviews">
+      <soap:operation soapAction="http://tempuri.org/IInterviewService/GetInterviews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInterview">
+      <soap:operation soapAction="http://tempuri.org/IInterviewService/UpdateInterview" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInterview">
+      <soap:operation soapAction="http://tempuri.org/IInterviewService/DeleteInterview" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InterviewService">
+    <wsdl:port name="BasicHttpBinding_IInterviewService" binding="tns:BasicHttpBinding_IInterviewService">
+      <soap:address location="http://localhost:64183/Services/InterviewService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

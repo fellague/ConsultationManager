@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:64183/Services/InterviewService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" />
+  <xs:complexType name="InterviewDetail">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="Conclusion" nillable="true" type="q1:Conclusion" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="Interview" nillable="true" type="q2:Interview" />
+      <xs:element minOccurs="0" name="RdvPatientMedecin" nillable="true" type="tns:RdvPatientMedecin" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InterviewDetail" nillable="true" type="tns:InterviewDetail" />
+  <xs:complexType name="RdvPatientMedecin">
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="Medecin" nillable="true" type="q3:Utilisateur" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="Patient" nillable="true" type="q4:Patient" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="Rdv" nillable="true" type="q5:RDV" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RdvPatientMedecin" nillable="true" type="tns:RdvPatientMedecin" />
+  <xs:complexType name="ArrayOfInterviewDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InterviewDetail" nillable="true" type="tns:InterviewDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInterviewDetail" nillable="true" type="tns:ArrayOfInterviewDetail" />
+</xs:schema>

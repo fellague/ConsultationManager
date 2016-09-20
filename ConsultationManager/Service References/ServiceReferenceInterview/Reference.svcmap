@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="788cc502-91a2-44e5-a8ef-6defb40678ec" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:64183/Services/InterviewService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="InterviewService.wsdl" MetadataType="Wsdl" ID="ba88bcac-9d4a-4078-9c1c-64978bfaf4f2" SourceId="1" SourceUrl="http://localhost:64183/Services/InterviewService.svc?wsdl" />
+    <MetadataFile FileName="InterviewService.xsd" MetadataType="Schema" ID="f9ab1a6c-a347-4fee-8e25-e544b8835b60" SourceId="1" SourceUrl="http://localhost:64183/Services/InterviewService.svc?xsd=xsd4" />
+    <MetadataFile FileName="InterviewService1.xsd" MetadataType="Schema" ID="cfbd5c44-437f-4540-b509-ad017749c512" SourceId="1" SourceUrl="http://localhost:64183/Services/InterviewService.svc?xsd=xsd5" />
+    <MetadataFile FileName="InterviewService2.xsd" MetadataType="Schema" ID="12ef79b4-87a1-4241-afcd-9efbd9409624" SourceId="1" SourceUrl="http://localhost:64183/Services/InterviewService.svc?xsd=xsd0" />
+    <MetadataFile FileName="InterviewService3.xsd" MetadataType="Schema" ID="ee81508d-f608-48f7-a689-e61b32c89815" SourceId="1" SourceUrl="http://localhost:64183/Services/InterviewService.svc?xsd=xsd1" />
+    <MetadataFile FileName="InterviewService4.xsd" MetadataType="Schema" ID="67ca4c85-7e73-4ebc-97ba-7e863c36c139" SourceId="1" SourceUrl="http://localhost:64183/Services/InterviewService.svc?xsd=xsd2" />
+    <MetadataFile FileName="InterviewService5.xsd" MetadataType="Schema" ID="460731ba-3864-46cb-8159-9afc70decc06" SourceId="1" SourceUrl="http://localhost:64183/Services/InterviewService.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

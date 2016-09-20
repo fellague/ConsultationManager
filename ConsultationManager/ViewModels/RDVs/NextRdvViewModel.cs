@@ -413,9 +413,10 @@ namespace ConsultationManager.ViewModels.RDVs
             NewRdv.PathologieId = AuthenticationViewModel.AuthenticatedUser.PathologieId;
             NewRdv.NouvPat = false;
             rsc.AddRdv(NewRdv);
-            rdvsVM.ListAllFirstRvd.Remove(selectedRdv);
+            rdvsVM.ListAllMyTodayRvd.Remove(selectedRdv);
             rdvsVM.NextRdvWindow.Close();
             rdvsVM.DialogInterwiewConclusionView.Close();
+            rdvsVM.DialogInterviewView.Close();
         }
 
         #endregion

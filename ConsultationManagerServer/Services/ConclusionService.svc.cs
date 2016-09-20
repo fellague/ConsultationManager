@@ -7,6 +7,7 @@ using System.Text;
 using ConsultationManagerServer.Models;
 using MongoDB.Driver.Builders;
 using MongoDB.Bson;
+using System.Collections.ObjectModel;
 
 namespace ConsultationManagerServer.Services
 {
@@ -28,10 +29,13 @@ namespace ConsultationManagerServer.Services
                 var result = db.Interviews.FindAndModify(query, null, update);
 
                 var dossier = db.DossierMeds.FindAll().Where(p => p.IdPatient == conclusion.IdPatient).ToList().First();
-                dossier.IdInterviews.Add(conclusion.IdSource);
+                //dossier.IdInterviews.Add(conclusion.IdSource);
+                List<string> listId = new List<string>();
+                listId = dossier.IdInterviews.ToList();
+                listId.Add(conclusion.IdSource);
                 var query3 = Query.EQ("IdPatient", conclusion.IdPatient);
                 var update3 = Update
-                    .Set("idInterviews", new BsonArray(dossier.IdInterviews));
+                    .Set("IdInterviews", new BsonArray(listId));
                 var result4 = db.DossierMeds.FindAndModify(query3, null, update3);
             }
 

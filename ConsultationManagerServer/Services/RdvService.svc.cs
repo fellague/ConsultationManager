@@ -46,10 +46,8 @@ namespace ConsultationManagerServer.Services
         public List<RdvPatientMedecin> GetAllRdv(string idService)
         {
             DataBaseContext db = new DataBaseContext();
-            ObservableCollection<RDV> list = new ObservableCollection<RDV>();
             List<RdvPatientMedecin> listRDVs = new List<RdvPatientMedecin>();
             RdvPatientMedecin rdvPatientMedecin = new RdvPatientMedecin();
-            //var patients = db.Patients.AsQueryable().Where(p => p.ServiceId == idService).ToList();
             var rdvs = db.RDVs.FindAll().Where(p => p.ServiceId == idService && p.DejaFait == false).ToList();
             if (rdvs.Count() > 0)
                 foreach (RDV item in rdvs)

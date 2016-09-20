@@ -23,8 +23,8 @@
             <TextBlock Text="Consultation  Numéro " FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             <TextBlock Text="3" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             <TextBlock Text=" pour  " FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-            <TextBlock Text="{Binding RdvConsult.NomPatient}" Margin="0 0 10 0" FontSize="22" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-            <TextBlock Text="{Binding RdvConsult.PrenomPatient}"  FontSize="22" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Text="{Binding RdvConsult.Patient.Nom}" Margin="0 0 10 0" FontSize="22" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Text="{Binding RdvConsult.Patient.Prenom}"  FontSize="22" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         </WrapPanel>
         <Border  Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
                              ClipToBounds="True" Margin="20 10 20 10">
@@ -52,25 +52,25 @@
                     <TextBlock Grid.ColumnSpan="2" Text="Tests" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="20" Margin="220 0 0 0"></TextBlock>
 
                     <TextBlock Grid.Row="1" Text="Poids" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
-                    <TextBox Grid.Row="1" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Poids (Kg)"></TextBox>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Interview.Poids}" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Poids (Kg)"></TextBox>
 
                     <TextBlock Grid.Row="2" Text="TA" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
-                    <TextBox Grid.Row="2" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="TA"></TextBox>
+                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Interview.TA}" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="TA"></TextBox>
 
-                    <TextBlock Grid.Row="3" Text="Tension" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
-                    <TextBox Grid.Row="3" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Tension"></TextBox>
+                    <!--<TextBlock Grid.Row="3" Text="Tension" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
+                    <TextBox Grid.Row="3" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Tension"></TextBox>-->
 
-                    <TextBlock Grid.Row="4" Text="Température" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
-                    <TextBox Grid.Row="4" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Température (Fr)"></TextBox>
+                    <TextBlock Grid.Row="3" Text="Température" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
+                    <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Interview.Temperature}" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Température (Fr)"></TextBox>
 
-                    <TextBlock Grid.Row="5" Text="Glycémique" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
-                    <TextBox Grid.Row="5" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Glycémique"></TextBox>
+                    <TextBlock Grid.Row="4" Text="Taille" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
+                    <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Interview.Taille}" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Taille"></TextBox>
 
-                    <TextBlock Grid.Row="6" Text="Hymogloine" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
-                    <TextBox Grid.Row="6" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Température (Fr)"></TextBox>
+                    <!--<TextBlock Grid.Row="6" Text="Hymogloine" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
+                    <TextBox Grid.Row="6" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Température (Fr)"></TextBox>-->
 
-                    <TextBlock Grid.Row="7" Text="Jouindre un Fichier" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
-                    <TextBox Grid.Row="7" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Température (Fr)"></TextBox>
+                    <TextBlock Grid.Row="5" Text="Jouindre un Fichier" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
+                    <TextBox Grid.Row="5" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Fichiers"></TextBox>
 
                 </Grid>
                 <Grid Grid.Column="1" Margin="20 0 20 0">
@@ -90,7 +90,7 @@
                     <Border Grid.Row="1" Grid.Column="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
                              ClipToBounds="True">
                         <Grid>
-                            <ListBox x:Name="CommentPatListBox" ItemsSource="{Binding Consultation.CommentsPatient}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch">
+                            <ListBox x:Name="CommentPatListBox" ItemsSource="{Binding Interview.CommentsPatient}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -133,7 +133,7 @@
                     <Border Grid.Row="2" Grid.Column="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
                              ClipToBounds="True" Margin="0 5 0 10">
                         <Grid>
-                            <ListBox x:Name="CommentMedListBox" ItemsSource="{Binding Consultation.RemarquesMedecin}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch">
+                            <ListBox x:Name="CommentMedListBox" ItemsSource="{Binding Interview.RemarquesMedecin}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -175,7 +175,120 @@
             </Grid>
         </Border>
 
-        <Border Grid.Row="2" Grid.ColumnSpan="2" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+        <Border Grid.Row="2" Grid.ColumnSpan="2" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}" ClipToBounds="True" Margin="20 0 20 20" Padding="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="EXAMENS COMPLEMENTAIRES" Grid.ColumnSpan="3" FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 0"></TextBlock>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text=" TSH "  FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="0 4 0 0"></TextBlock>
+                        <TextBox Grid.Column="1" Text="{Binding Interview.Bilan.TSH}" FontSize="14" materialDesign:TextFieldAssist.Hint="Valeur"></TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text=" FT3 "  FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="0 4 0 0"></TextBlock>
+                        <TextBox Grid.Column="1" Text="{Binding Interview.Bilan.FT3}" FontSize="14" materialDesign:TextFieldAssist.Hint="Valeur"></TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text=" FT4 "  FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center"  Margin="0 4 0 0"></TextBlock>
+                        <TextBox Grid.Column="1" Text="{Binding Interview.Bilan.FT4}" FontSize="14" materialDesign:TextFieldAssist.Hint="Valeur"></TextBox>
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text=" TG "  FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="0 4 0 0"></TextBlock>
+                        <TextBox Grid.Column="1" Text="{Binding Interview.Bilan.TG}" FontSize="14" materialDesign:TextFieldAssist.Hint="Valeur"></TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text=" ACTG "  FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="0 4 0 0"></TextBlock>
+                        <TextBox Grid.Column="1" Text="{Binding Interview.Bilan.ACTG}" FontSize="14" materialDesign:TextFieldAssist.Hint="Valeur"></TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="2" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text=" ACTPO "  FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="0 4 0 0"></TextBlock>
+                        <TextBox Grid.Column="1" Text="{Binding Interview.Bilan.ACTPO}" FontSize="14" materialDesign:TextFieldAssist.Hint="Valeur"></TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="3" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text=" TCT "  FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center"  Margin="0 4 0 0"></TextBlock>
+                        <TextBox Grid.Column="1" Text="{Binding Interview.Bilan.TCT}" FontSize="14" materialDesign:TextFieldAssist.Hint="Valeur"></TextBox>
+                    </Grid>
+
+                    <Grid Grid.Column="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text=" T41 "  FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="0 4 0 0"></TextBlock>
+                        <TextBox Grid.Column="1" Text="{Binding Interview.Bilan.T41}" FontSize="14" materialDesign:TextFieldAssist.Hint="Valeur"></TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Grid.Column="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text=" T31 "  FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center"  Margin="0 4 0 0"></TextBlock>
+                        <TextBox Grid.Column="1" Text="{Binding Interview.Bilan.T31}" FontSize="14" materialDesign:TextFieldAssist.Hint="Valeur"></TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="2" Grid.Column="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text=" T4 "  FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="0 4 0 0"></TextBlock>
+                        <TextBox Grid.Column="1" Text="{Binding Interview.Bilan.T4}" FontSize="14" materialDesign:TextFieldAssist.Hint="Valeur"></TextBox>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
+        <!--<Border Grid.Row="2" Grid.ColumnSpan="2" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
                              ClipToBounds="True" Margin="20 0 20 20">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -236,7 +349,7 @@
 
                 </Grid>
             </Grid>
-        </Border>
+        </Border>-->
 
         <Button Command="{Binding SuivantCommand}" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="250" Margin=" 0 0 50 50" FontSize="16">Suivant</Button>
     </Grid>

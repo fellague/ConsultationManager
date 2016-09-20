@@ -336,10 +336,8 @@ namespace ConsultationManagerClient.ViewModels.Interviews
             intervConclus.CreeDans = DateTime.Now;
             intervConclus.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
             csc.AddConclusion(intervConclus);
-
             
             rdvsViewModel.NextRdvWindow.ShowDialog();
-            
         }
 
         #endregion

@@ -178,7 +178,7 @@ namespace ConsultationManagerServer.Models
 
             creeDans = new DateTime();
             creePar = "";
-    }
+        }
 
         [BsonId]
         public ObjectId _id { get; set; }

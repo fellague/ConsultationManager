@@ -120,6 +120,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ServiceReferenceInterview\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServiceReferencePatient\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -528,12 +533,14 @@
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Conclusion.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Consultation.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.DossierMed.datasource" />
+    <None Include="Properties\DataSources\ConsultationManagerServer.Models.Interview.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Pathologie.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Patient.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Planning.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.RDV.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.ConsultationMedecinsPlanning.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.DossierMedDetail.datasource" />
+    <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.InterviewDetail.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.ServicePathologies.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Service.datasource" />
@@ -596,6 +603,25 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReferenceDossierMed\DossierMedService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceInterview\InterviewService.wsdl" />
+    <None Include="Service References\ServiceReferenceInterview\InterviewService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceInterview\InterviewService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceInterview\InterviewService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceInterview\InterviewService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceInterview\InterviewService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceInterview\InterviewService5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReferencePatient\PatientService.wsdl" />
@@ -727,6 +753,7 @@
     <WCFMetadataStorage Include="Service References\ServiceReferenceConclusion\" />
     <WCFMetadataStorage Include="Service References\ServiceReferenceConsultation\" />
     <WCFMetadataStorage Include="Service References\ServiceReferenceDossierMed\" />
+    <WCFMetadataStorage Include="Service References\ServiceReferenceInterview\" />
     <WCFMetadataStorage Include="Service References\ServiceReferencePatient\" />
     <WCFMetadataStorage Include="Service References\ServiceReferencePlanning\" />
     <WCFMetadataStorage Include="Service References\ServiceReferenceRdv\" />
@@ -824,6 +851,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceReferenceRdv\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceInterview\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceInterview\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceInterview\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

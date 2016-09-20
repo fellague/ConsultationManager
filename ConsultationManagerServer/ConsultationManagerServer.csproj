@@ -88,6 +88,7 @@
     <Content Include="Services\ConclusionService.svc" />
     <Content Include="Services\ConsultationService.svc" />
     <Content Include="Services\DossierMedService.svc" />
+    <Content Include="Services\InterviewService.svc" />
     <Content Include="Services\PatientService.svc" />
     <Content Include="Services\PlanningService.svc" />
     <Content Include="Services\RdvService.svc" />
@@ -97,6 +98,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\DossierMedicale\Bilan.cs" />
     <Compile Include="Models\DossierMedicale\DossierMed.cs" />
     <Compile Include="Models\Conclusion.cs" />
     <Compile Include="Models\Hospitalisations\FicheGlycemique.cs" />
@@ -108,6 +110,7 @@
     <Compile Include="Models\SerializedModels\ConsultationMedecinsPlanning.cs" />
     <Compile Include="Models\SerializedModels\DossierMedDetail.cs" />
     <Compile Include="Models\SerializedModels\HospitalisationDetail.cs" />
+    <Compile Include="Models\SerializedModels\InterviewDetail.cs" />
     <Compile Include="Models\SerializedModels\RdvPatientMedecin.cs" />
     <Compile Include="Services\AuthenticationService.svc.cs">
       <DependentUpon>AuthenticationService.svc</DependentUpon>
@@ -121,6 +124,10 @@
     <Compile Include="Services\IAuthenticationService.cs" />
     <Compile Include="Services\IConclusionService.cs" />
     <Compile Include="Services\IDossierMedService.cs" />
+    <Compile Include="Services\IInterviewService.cs" />
+    <Compile Include="Services\InterviewService.svc.cs">
+      <DependentUpon>InterviewService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Services\IPatientService.cs" />
     <Compile Include="Services\IPlanningService.cs" />
     <Compile Include="Services\IRdvService.cs" />

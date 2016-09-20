@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using ConsultationManagerServer.Models.DossierMedicale;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.ObjectModel;
@@ -10,18 +11,21 @@ namespace ConsultationManagerServer.Models
     [DataContract]
     public class Interview : INotifyPropertyChanged
     {
+        private string numero;
+
         private ObservableCollection<AntecedentPersonel> commentsPatient;
         private ObservableCollection<RemarqueMedecin> remarquesMedecin;
-        //private FileStream tests;
         private string poids;
         private string ta;
-        private string tension;
         private string temperature;
         private string taille;
+        //private FileStream tests;
+        private Bilan bilan;
 
         private string idPatient;
         private string idMedecin;
         private string idConclusion;
+        private string idRdv;
 
         private DateTime creeDans;
         private string creePar;
@@ -33,13 +37,16 @@ namespace ConsultationManagerServer.Models
             this.remarquesMedecin = new ObservableCollection<RemarqueMedecin>();
             this.poids = "";
             this.ta = "";
-            this.tension = "";
+            this.numero = "";
             this.temperature = "";
             this.taille = "";
+
+            bilan = new Bilan();
 
             idPatient = "";
             idMedecin = "";
             idConclusion = "";
+            idRdv = "";
 
             creeDans = new DateTime();
             creePar = "";
@@ -57,11 +64,30 @@ namespace ConsultationManagerServer.Models
         }
 
         [DataMember]
+        public string Numero
+        {
+            get
+            {
+                return numero;
+            }
+            set
+            {
+                numero = value;
+                OnPropertyChanged("Numero");
+            }
+        }
+
+        [DataMember]
         public ObservableCollection<AntecedentPersonel> CommentsPatient
         {
             get
             {
                 return commentsPatient;
+            }
+            set
+            {
+                commentsPatient = value;
+                OnPropertyChanged("CommentsPatient");
             }
         }
 
@@ -72,6 +98,11 @@ namespace ConsultationManagerServer.Models
             {
                 return remarquesMedecin;
             }
+            set
+            {
+                remarquesMedecin = value;
+                OnPropertyChanged("RemarquesMedecin");
+            }
         }
 
         [DataMember]
@@ -80,6 +111,11 @@ namespace ConsultationManagerServer.Models
             get
             {
                 return poids;
+            }
+            set
+            {
+                poids = value;
+                OnPropertyChanged("Poids");
             }
         }
 
@@ -90,23 +126,24 @@ namespace ConsultationManagerServer.Models
             {
                 return ta;
             }
-        }
-
-        [DataMember]
-        public string Tension
-        {
-            get
+            set
             {
-                return tension;
+                ta = value;
+                OnPropertyChanged("TA");
             }
         }
-
+        
         [DataMember]
         public string Temperature
         {
             get
             {
                 return temperature;
+            }
+            set
+            {
+                temperature = value;
+                OnPropertyChanged("Temperature");
             }
         }
 
@@ -116,6 +153,25 @@ namespace ConsultationManagerServer.Models
             get
             {
                 return taille;
+            }
+            set
+            {
+                taille = value;
+                OnPropertyChanged("Taille");
+            }
+        }
+        
+        [DataMember]
+        public Bilan Bilan
+        {
+            get
+            {
+                return bilan;
+            }
+            set
+            {
+                bilan = value;
+                OnPropertyChanged("Bilan");
             }
         }
 
@@ -156,6 +212,19 @@ namespace ConsultationManagerServer.Models
             {
                 idConclusion = value;
                 OnPropertyChanged("IdConclusion");
+            }
+        }
+        [DataMember]
+        public string IdRdv
+        {
+            get
+            {
+                return idRdv;
+            }
+            set
+            {
+                idRdv = value;
+                OnPropertyChanged("IdRdv");
             }
         }
 
