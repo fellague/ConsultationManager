@@ -54,7 +54,7 @@ namespace ConsultationManagerClient.ViewModels.Patients
 
             OpenDialogRdvCommand = new RelayCommand(param => ShowDialogRdvNewPatient(param));
 
-            OpenDialogMedFolderCommand = new RelayCommand(param => ShowDialogDossierMedical(param));
+            //OpenDialogMedFolderCommand = new RelayCommand(param => ShowDialogDossierMedical(param));
         }
 
         
@@ -152,11 +152,11 @@ namespace ConsultationManagerClient.ViewModels.Patients
             private set;
         }
 
-        public ICommand OpenDialogMedFolderCommand
-        {
-            get;
-            private set;
-        }
+        //public ICommand OpenDialogMedFolderCommand
+        //{
+        //    get;
+        //    private set;
+        //}
 
         #endregion
 
@@ -252,15 +252,15 @@ namespace ConsultationManagerClient.ViewModels.Patients
             dialogNewPatRdv.ShowDialog();
         }
 
-        private void ShowDialogDossierMedical(object param)
-        {
-            Patient selPat = param as Patient;
-            dialoDossierMedical = new DossierMedicalWindow();
-            dialoDossierMedical.DataContext = new DossierMedicalViewModel(selPat);
-            //newPathologie = new Consultation();
-            //AddPathologieCommand = new RelayCommand(param => AjouterPathologie());
-            dialoDossierMedical.ShowDialog();
-        }
+        //private void ShowDialogDossierMedical(object param)
+        //{
+        //    Patient selPat = param as Patient;
+        //    dialoDossierMedical = new DossierMedicalWindow();
+        //    dialoDossierMedical.DataContext = new DossierMedicalViewModel();
+        //    //newPathologie = new Consultation();
+        //    //AddPathologieCommand = new RelayCommand(param => AjouterPathologie());
+        //    dialoDossierMedical.ShowDialog();
+        //}
 
         private void ActualiserLists()
         {

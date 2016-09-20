@@ -1,4 +1,5 @@
-﻿using ConsultationManager.Views.DossierMedicals;
+﻿using ConsultationManager.ViewModels.DossierMedicals;
+using ConsultationManager.Views.DossierMedicals;
 using ConsultationManager.Views.Patients;
 using ConsultationManagerClient.ViewModels.Patients;
 using ConsultationManagerClient.Views;
@@ -24,33 +25,33 @@ namespace ConsultationManager.Views
     /// </summary>
     public partial class MenuDossierMedWindow : Window
     {
-        PatientsViewModel patientsVM;
+        DossierMedicalViewModel dossiersVM;
 
         public MenuDossierMedWindow()
         {
             InitializeComponent();
 
-            patientsVM = new PatientsViewModel();
-            this.DataContext = patientsVM;
-            _mainFrame.Navigate(new MyDossierPage(patientsVM));
+            dossiersVM = new DossierMedicalViewModel();
+            this.DataContext = dossiersVM;
+            _mainFrame.Navigate(new MyDossierPage(dossiersVM));
             coloringTabs(MyPatBtn, AllPatBtn, ListNewPatBtn);
             
         }
         private void button_click_tout(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new AllDossiersPage(patientsVM));
+            _mainFrame.Navigate(new AllDossiersPage(dossiersVM));
             coloringTabs(AllPatBtn, MyPatBtn, ListNewPatBtn);
         }
 
         private void button_click_list_consulation(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new ConsultationDossiersPage(patientsVM));
+            _mainFrame.Navigate(new ConsultationDossiersPage(dossiersVM));
             coloringTabs(ListNewPatBtn, MyPatBtn, AllPatBtn);
         }
 
         private void button_click_mes(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new MyDossierPage(patientsVM));
+            _mainFrame.Navigate(new MyDossierPage(dossiersVM));
             coloringTabs(MyPatBtn, AllPatBtn, ListNewPatBtn);
         }
 

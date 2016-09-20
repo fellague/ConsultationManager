@@ -1,4 +1,5 @@
-﻿using ConsultationManagerClient.ViewModels.Patients;
+﻿using ConsultationManager.ViewModels.DossierMedicals;
+using ConsultationManagerClient.ViewModels.Patients;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,10 +22,10 @@ namespace ConsultationManager.Views.DossierMedicals
     /// </summary>
     public partial class MyDossierPage : Page
     {
-        internal MyDossierPage(PatientsViewModel patientsVM)
+        internal MyDossierPage(DossierMedicalViewModel dossiersVM)
         {
             InitializeComponent();
-            DataContext = patientsVM;
+            DataContext = dossiersVM;
         }
     }
 }
