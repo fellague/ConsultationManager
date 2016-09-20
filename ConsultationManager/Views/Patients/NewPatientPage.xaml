@@ -61,7 +61,7 @@
             <TextBlock Grid.Row="4" Text="Nationalité" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 20 0 0"></TextBlock>
             <TextBox Text="{Binding NewPatient.Nationnalite}" Grid.Row="4" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Paye" Margin="0 20 0 0"></TextBox>
 
-            <CheckBox Content="Marrié" Grid.Row="5" Grid.Column="1" FontSize="16" VerticalAlignment="Center"  Margin="0 20 0 0"></CheckBox>
+            <CheckBox Content="Marrié" IsChecked="{Binding NewPatient.Mariee}" Grid.Row="5" Grid.Column="1" FontSize="16" VerticalAlignment="Center"  Margin="0 20 0 0"></CheckBox>
 
             <TextBlock Grid.Row="6" Text="Profession" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 20 0 0"></TextBlock>
             <TextBox Text="{Binding NewPatient.Profession}" Grid.Row="6" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Profession" Margin="0 20 0 0"></TextBox>

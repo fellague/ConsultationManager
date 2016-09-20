@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ConsultationManagerClient.Views.Consultations"
         mc:Ignorable="d" WindowStyle="None"
-        Height="270" Width="550" WindowStartupLocation="CenterScreen">
+        Height="320" Width="600" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -38,7 +38,15 @@
             <TextBlock Grid.Row="1" Text="Description" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 5 0 0" FontSize="16"></TextBlock>
             <TextBox Text="{Binding UpdatedPathologie.Description}" Grid.Row="1" Grid.Column="1" MinLines="5" MaxLines="5" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Description"></TextBox>
 
-            <Button Grid.Row="2" Command="{Binding UpdatePathologieCommand}" CommandParameter="{Binding UpdatedPathologie}" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin=" 0 20 50 50" FontSize="16">Modifier</Button>
+            <WrapPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1"  Margin="0 30 50 30" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                <Button Command="{Binding CancelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin=" 0 0 10 0" FontSize="16">
+                    Annuler
+                </Button>
+                <Button Command="{Binding UpdatePathologieCommand}" VerticalAlignment="Bottom" FontSize="16">
+                    Confirmer
+                </Button>
+            </WrapPanel>
         </Grid>
 
     </Grid>

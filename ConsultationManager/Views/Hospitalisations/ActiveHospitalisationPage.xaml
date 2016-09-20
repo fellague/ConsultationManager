@@ -12,7 +12,7 @@
     <Grid Margin="10">
         <DockPanel>
             <WrapPanel DockPanel.Dock="Top">
-                <TextBlock  FontSize="24">La liste de toutes les hospitalisations</TextBlock>
+                <TextBlock  FontSize="24">La liste des hospitalisations Actives</TextBlock>
             </WrapPanel>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -20,43 +20,111 @@
                     <!--<ColumnDefinition Width="*" />-->
                 </Grid.ColumnDefinitions>
                 <Grid>
-                    <ListBox ItemsSource="{Binding ListActiveHospitalisation}" HorizontalContentAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <DockPanel LastChildFill="True">
+                        <Grid DockPanel.Dock="Top" Height="30">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Numéro</Label>
+                            <Label Grid.Column="1" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Patient</Label>
+                            <Label Grid.Column="2" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Date d'Entré</Label>
+                            <Label Grid.Column="3" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Date de Sortie Prévu</Label>
+                            <Label Grid.Column="4" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Salle</Label>
+                            <Label Grid.Column="5" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Lit</Label>
+                        </Grid>
+                        <ItemsPresenter></ItemsPresenter>
+                    </DockPanel>
+                    <ListBox ItemsSource="{Binding ListActiveHospitalisation}" HorizontalContentAlignment="Stretch" Grid.Row="1"
+                             AlternationCount="{Binding Path=ListActiveHospitalisation.Count}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="2*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
 
-                                    <WrapPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 0">
+                                    <TextBlock Text="{Binding Path=Num}" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"></TextBlock>
+                                    <WrapPanel Grid.Column="1" HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding Path=Nom}" FontSize="16" Margin="0 0 4 0" FontWeight="DemiBold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=Prenom}" FontSize="16" FontWeight="DemiBold"></TextBlock>
+                                    </WrapPanel>
+                                    <TextBlock Text="{Binding Path=DateDebut,  StringFormat='dd/MM/yyy'}" Grid.Column="2" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"></TextBlock>
+                                    <TextBlock Text="{Binding Path=DateFinPrevu,  StringFormat='dd/MM/yyy'}" Grid.Column="3" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"></TextBlock>
+                                    <TextBlock Text="{Binding Path=Salle}" Grid.Column="4" FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Center"></TextBlock>
+                                    <TextBlock Text="{Binding Path=Lit}" Grid.Column="5" FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Center"></TextBlock>
+                                    <WrapPanel Grid.Column="6" HorizontalAlignment="Right">
+                                        <Button Margin="5 0 5 0"
+                                            Command="{Binding DataContext.OpenDialogRdvCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                            CommandParameter="{Binding}"
+                                            Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                                            ToolTip="Suivie">
+                                            <materialDesign:PackIcon Kind="ChartLine" Height="24" Width="24" />
+                                        </Button>
+                                        <Button Margin="5 0 5 0"
+                                            Command="{Binding DataContext.OpenDialogRdvCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                            CommandParameter="{Binding}"
+                                            Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                                            ToolTip="Terminer l'Hospitalisation">
+                                            <materialDesign:PackIcon Kind="Logout" Height="24" Width="24" />
+                                        </Button>
+                                    </WrapPanel>
+                                    
+                                    
+                                    <!--<WrapPanel Grid.Row="0" Margin="5 0 0 0">
                                         <TextBlock Text="{Binding Path=Nom}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
                                         <TextBlock Text="{Binding Path=Prenom}" FontSize="16" FontWeight="Bold"></TextBlock>
                                         <TextBlock Text=" planifié de : " FontSize="16"></TextBlock>
-                                        <TextBlock Text="{Binding Path=DateDebut,  StringFormat=d}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=DateDebut,  StringFormat='dd/MM/yyy'}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
                                         <TextBlock Text=" jusqu'à : " FontSize="16"></TextBlock>
-                                        <TextBlock Text="{Binding Path=DateFinPrevu,  StringFormat=d}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=DateFinPrevu,  StringFormat='dd/MM/yyy'}" FontSize="16" FontWeight="Bold"></TextBlock>
                                     </WrapPanel>
-                                    <WrapPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 5">
+                                    <WrapPanel Grid.Row="1" Margin="5 0 0 5">
                                         <TextBlock Text="Dans la salle "></TextBlock>
                                         <TextBlock Text="{Binding Path=Salle}" FontWeight="Bold"></TextBlock>
                                         <TextBlock Text=" sur le lit "></TextBlock>
                                         <TextBlock Text="{Binding Path=Lit}" FontWeight="Bold"></TextBlock>
                                     </WrapPanel>
-                                    <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 5">
+                                    <WrapPanel Grid.Row="2" Margin="5, 0, 0, 5">
                                         <TextBlock Text="Creé Par "></TextBlock>
                                         <TextBlock Text="{Binding Path=CreePar}" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
                                         <TextBlock Text="Dans le "></TextBlock>
-                                        <TextBlock Text="{Binding Path=CreeDans,  StringFormat=d}" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=CreeDans,  StringFormat='dd/MM/yyy'}" FontWeight="Bold"></TextBlock>
                                     </WrapPanel>
+                                    
                                     <WrapPanel Grid.Column="1" Grid.RowSpan="3">
-                                        <Button >Terminer</Button>
-                                    </WrapPanel>
+                                        <Button Margin="5 0 5 0"
+                                            Command="{Binding DataContext.OpenDialogRdvCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                            CommandParameter="{Binding}"
+                                            Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                                            ToolTip="Suivie">
+                                            <materialDesign:PackIcon Kind="ChartLine" Height="24" Width="24" />
+                                        </Button>
+
+                                        <Button Margin="5 0 5 0"
+                                            Command="{Binding DataContext.OpenDialogRdvCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                            CommandParameter="{Binding}"
+                                            Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                                            ToolTip="Terminer l'Hospitalisation">
+                                            <materialDesign:PackIcon Kind="Logout" Height="24" Width="24" />
+                                        </Button>
+                                    </WrapPanel>-->
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
@@ -77,7 +145,7 @@
                         </WrapPanel>
                         <WrapPanel>
                             <TextBlock Text="Date de naissance : " FontSize="14"></TextBlock>
-                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.DateNaiss,  StringFormat=d}" FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.DateNaiss,  StringFormat='dd/MM/yyy'}" FontSize="14"></TextBlock>
                         </WrapPanel>
                         <WrapPanel>
                             <TextBlock Text="Raison Médical : " FontSize="14"></TextBlock>
@@ -97,7 +165,7 @@
                         </WrapPanel>
                         <WrapPanel>
                             <TextBlock Text="Dans le : " FontSize="14"></TextBlock>
-                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.CreeDans,  StringFormat=d}" FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.CreeDans,  StringFormat='dd/MM/yyy'}" FontSize="14"></TextBlock>
                         </WrapPanel>
 
                     </WrapPanel>

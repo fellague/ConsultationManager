@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b794a5f4-b334-4180-9041-2a6ee9bb8a8f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address=" http://localhost:64183/Services/ConclusionService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ConclusionService.xsd" MetadataType="Schema" ID="75ec43e3-b97c-4558-a261-fbeb1c265893" SourceId="1" SourceUrl="http://localhost:64183/Services/ConclusionService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ConclusionService1.xsd" MetadataType="Schema" ID="63ef1e86-63ae-4508-8ceb-449e24070688" SourceId="1" SourceUrl="http://localhost:64183/Services/ConclusionService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ConclusionService2.xsd" MetadataType="Schema" ID="9fa60e1e-9ff4-4d83-a5f3-ca1c8f35b742" SourceId="1" SourceUrl="http://localhost:64183/Services/ConclusionService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ConclusionService3.xsd" MetadataType="Schema" ID="8306ad13-260e-488f-92d2-b05f6330635b" SourceId="1" SourceUrl="http://localhost:64183/Services/ConclusionService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ConclusionService.wsdl" MetadataType="Wsdl" ID="24452d95-d7c0-423b-9294-8df21348b384" SourceId="1" SourceUrl="http://localhost:64183/Services/ConclusionService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

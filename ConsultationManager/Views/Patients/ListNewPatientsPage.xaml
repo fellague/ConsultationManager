@@ -94,16 +94,16 @@
                         <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding ElementName=listViewAcount, Path=SelectedItem.Prenom}" FontSize="14" FontWeight="DemiBold" Margin="0 5 0 5"></TextBlock>
 
                         <TextBlock Grid.Row="3" HorizontalAlignment="Right" Text="Code d'Uregence : " FontSize="14" Margin="0 5 0 5"></TextBlock>
-                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ElementName=listViewAcount, Path=SelectedItem.DegreUrgence,  StringFormat=d}" FontSize="14" FontWeight="DemiBold" Margin="0 5 0 5"></TextBlock>
+                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ElementName=listViewAcount, Path=SelectedItem.DegreUrgence,  StringFormat='dd/MM/yyy'}" FontSize="14" FontWeight="DemiBold" Margin="0 5 0 5"></TextBlock>
 
                         <TextBlock Grid.Row="4" HorizontalAlignment="Right" Text="Raison de la visite : " FontSize="14" Margin="0 5 0 5"></TextBlock>
                         <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding ElementName=listViewAcount, Path=SelectedItem.Raison}" TextWrapping="Wrap" FontSize="14" FontWeight="DemiBold" Margin="0 5 0 5"></TextBlock>
 
                         <TextBlock Grid.Row="5" HorizontalAlignment="Right" Text="Date de naissance : " FontSize="14" Margin="0 5 0 5"></TextBlock>
-                        <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding ElementName=listViewAcount, Path=SelectedItem.DateNaiss,  StringFormat=d}" FontSize="14" FontWeight="DemiBold" Margin="0 5 0 5"></TextBlock>
+                        <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding ElementName=listViewAcount, Path=SelectedItem.DateNaiss,  StringFormat='dd/MM/yyy'}" FontSize="14" FontWeight="DemiBold" Margin="0 5 0 5"></TextBlock>
 
                         <TextBlock Grid.Row="6" HorizontalAlignment="Right" Text="Profession : " FontSize="14" Margin="0 5 0 5"></TextBlock>
-                        <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding ElementName=listViewAcount, Path=SelectedItem.Profession,  StringFormat=d}" FontSize="14" FontWeight="DemiBold" Margin="0 5 0 5"></TextBlock>
+                        <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding ElementName=listViewAcount, Path=SelectedItem.Profession,  StringFormat='dd/MM/yyy'}" FontSize="14" FontWeight="DemiBold" Margin="0 5 0 5"></TextBlock>
 
                         <TextBlock Grid.Row="7" HorizontalAlignment="Right" Text="Adresse : " FontSize="14" Margin="0 5 0 5"></TextBlock>
                         <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding ElementName=listViewAcount, Path=SelectedItem.Adresse}" FontSize="14" FontWeight="DemiBold" Margin="0 5 0 5"></TextBlock>
@@ -125,7 +125,7 @@
                         </ListBox>
 
                         <TextBlock Grid.Row="10" HorizontalAlignment="Right" Text="Ajouté dans le : " FontSize="14" Margin="0 5 0 5"></TextBlock>
-                        <TextBlock Grid.Row="10" Grid.Column="1" Text="{Binding ElementName=listViewAcount, Path=SelectedItem.CreeDans,  StringFormat=d}" FontSize="14" FontWeight="DemiBold" Margin="0 5 0 5"></TextBlock>
+                        <TextBlock Grid.Row="10" Grid.Column="1" Text="{Binding ElementName=listViewAcount, Path=SelectedItem.CreeDans,  StringFormat='dd/MM/yyy'}" FontSize="14" FontWeight="DemiBold" Margin="0 5 0 5"></TextBlock>
                     </Grid>
                 </materialDesign:Card>
 

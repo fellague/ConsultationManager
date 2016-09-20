@@ -71,6 +71,7 @@ namespace ConsultationManagerClient.ViewModels.Consultations
             NewPathologieDialogCommand = new RelayCommand(param => ShowDialogNewPathologie());
 
             UpdateServiceCommand = new RelayCommand(param => UpdateService());
+            CancelCommand = new RelayCommand(o => ((Window)o).Close());
 
             nomUtilisateur = AuthenticationViewModel.AuthenticatedUser.Nom + " " + AuthenticationViewModel.AuthenticatedUser.Prenom;
         }
@@ -205,6 +206,11 @@ namespace ConsultationManagerClient.ViewModels.Consultations
         }
 
         public ICommand UpdateServiceCommand
+        {
+            get;
+            private set;
+        }
+        public ICommand CancelCommand
         {
             get;
             private set;

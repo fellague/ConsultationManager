@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DossierMedService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:64183/Services/DossierMedService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:64183/Services/DossierMedService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:64183/Services/DossierMedService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" />
+      <xsd:import schemaLocation="http://localhost:64183/Services/DossierMedService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" />
+      <xsd:import schemaLocation="http://localhost:64183/Services/DossierMedService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IDossierMedService_GetAllDossierMeds_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDossierMeds" />
+  </wsdl:message>
+  <wsdl:message name="IDossierMedService_GetAllDossierMeds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDossierMedsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDossierMedService_GetConsultDossierMeds_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetConsultDossierMeds" />
+  </wsdl:message>
+  <wsdl:message name="IDossierMedService_GetConsultDossierMeds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetConsultDossierMedsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDossierMedService_GetMedecinDossierMeds_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMedecinDossierMeds" />
+  </wsdl:message>
+  <wsdl:message name="IDossierMedService_GetMedecinDossierMeds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMedecinDossierMedsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDossierMedService_GetDossierMed_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDossierMed" />
+  </wsdl:message>
+  <wsdl:message name="IDossierMedService_GetDossierMed_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDossierMedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDossierMedService_AddDossierMed_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddDossierMed" />
+  </wsdl:message>
+  <wsdl:message name="IDossierMedService_AddDossierMed_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddDossierMedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDossierMedService_UpdateDossierMed_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDossierMed" />
+  </wsdl:message>
+  <wsdl:message name="IDossierMedService_UpdateDossierMed_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDossierMedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDossierMedService_DeleteDossierMed_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDossierMed" />
+  </wsdl:message>
+  <wsdl:message name="IDossierMedService_DeleteDossierMed_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDossierMedResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IDossierMedService">
+    <wsdl:operation name="GetAllDossierMeds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDossierMedService/GetAllDossierMeds" message="tns:IDossierMedService_GetAllDossierMeds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDossierMedService/GetAllDossierMedsResponse" message="tns:IDossierMedService_GetAllDossierMeds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConsultDossierMeds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDossierMedService/GetConsultDossierMeds" message="tns:IDossierMedService_GetConsultDossierMeds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDossierMedService/GetConsultDossierMedsResponse" message="tns:IDossierMedService_GetConsultDossierMeds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMedecinDossierMeds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDossierMedService/GetMedecinDossierMeds" message="tns:IDossierMedService_GetMedecinDossierMeds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDossierMedService/GetMedecinDossierMedsResponse" message="tns:IDossierMedService_GetMedecinDossierMeds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDossierMed">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDossierMedService/GetDossierMed" message="tns:IDossierMedService_GetDossierMed_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDossierMedService/GetDossierMedResponse" message="tns:IDossierMedService_GetDossierMed_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDossierMed">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDossierMedService/AddDossierMed" message="tns:IDossierMedService_AddDossierMed_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDossierMedService/AddDossierMedResponse" message="tns:IDossierMedService_AddDossierMed_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDossierMed">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDossierMedService/UpdateDossierMed" message="tns:IDossierMedService_UpdateDossierMed_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDossierMedService/UpdateDossierMedResponse" message="tns:IDossierMedService_UpdateDossierMed_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDossierMed">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDossierMedService/DeleteDossierMed" message="tns:IDossierMedService_DeleteDossierMed_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDossierMedService/DeleteDossierMedResponse" message="tns:IDossierMedService_DeleteDossierMed_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IDossierMedService" type="tns:IDossierMedService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllDossierMeds">
+      <soap:operation soapAction="http://tempuri.org/IDossierMedService/GetAllDossierMeds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConsultDossierMeds">
+      <soap:operation soapAction="http://tempuri.org/IDossierMedService/GetConsultDossierMeds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMedecinDossierMeds">
+      <soap:operation soapAction="http://tempuri.org/IDossierMedService/GetMedecinDossierMeds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDossierMed">
+      <soap:operation soapAction="http://tempuri.org/IDossierMedService/GetDossierMed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDossierMed">
+      <soap:operation soapAction="http://tempuri.org/IDossierMedService/AddDossierMed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDossierMed">
+      <soap:operation soapAction="http://tempuri.org/IDossierMedService/UpdateDossierMed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDossierMed">
+      <soap:operation soapAction="http://tempuri.org/IDossierMedService/DeleteDossierMed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DossierMedService">
+    <wsdl:port name="BasicHttpBinding_IDossierMedService" binding="tns:BasicHttpBinding_IDossierMedService">
+      <soap:address location="http://localhost:64183/Services/DossierMedService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

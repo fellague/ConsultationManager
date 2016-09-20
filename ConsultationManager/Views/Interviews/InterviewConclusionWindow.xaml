@@ -7,6 +7,9 @@
         xmlns:local="clr-namespace:ConsultationManagerClient.Views.Interviews"
         mc:Ignorable="d"
         Title="ConsultationConclusionWindow" WindowState="Maximized">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="b2v" />
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -57,7 +60,7 @@
                         </Grid>
                         <ItemsPresenter></ItemsPresenter>
                     </DockPanel>
-                    <ListBox x:Name="OrdonnanceListBox" ItemsSource="{Binding Ordonnance.ListMedicaments}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch" Grid.Row="1">
+                    <ListBox x:Name="OrdonnanceListBox" ItemsSource="{Binding IntervConclus.Ordonnance.ListMedicaments}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch" Grid.Row="1">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -77,7 +80,7 @@
                                     <WrapPanel>
                                         <TextBlock Text="{Binding Path=Nom}" FontSize="16" FontWeight="Bold"></TextBlock>
                                     </WrapPanel>
-                                    
+
                                     <WrapPanel Grid.Column="1">
                                         <TextBlock Text="{Binding Path=PeriodeMois}" FontSize="16" FontWeight="Bold"></TextBlock>
                                         <TextBlock Text=" Mois et " FontSize="16"></TextBlock>
@@ -100,46 +103,6 @@
                                     </Button>
                                 </Grid>
                             </DataTemplate>
-                        <!--<ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
-
-                                    <WrapPanel>
-                                        <TextBlock Text="Médicament : " FontSize="16"></TextBlock>
-                                        <TextBlock Text="{Binding Path=Nom}" FontSize="16" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text=", (" FontSize="16"></TextBlock>
-                                        <TextBlock Text="{Binding Path=NbFoisJours}" FontSize="16" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text=" fois par jours)" FontSize="16"></TextBlock>
-                                    </WrapPanel>
-                                    <WrapPanel Grid.Row="1">
-                                        <TextBlock Text="Pendant : " FontSize="16"></TextBlock>
-                                        <TextBlock Text="{Binding Path=PeriodeMois}" FontSize="16" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text=" Mois et " FontSize="16"></TextBlock>
-                                        <TextBlock Text="{Binding Path=PeriodeJours}" FontSize="16" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text=" Jours" FontSize="16"></TextBlock>
-                                    </WrapPanel>
-                                    <WrapPanel Grid.Row="2">
-                                        <TextBlock Text="description : " FontSize="16"></TextBlock>
-                                        <TextBlock Text="{Binding Path=Remarque}" FontSize="16" FontWeight="Bold"></TextBlock>
-                                    </WrapPanel>
-                                    <Button Grid.Column="1" Grid.RowSpan="2"
-                                            Command="{Binding DataContext.RemoveMedicamentCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
-                                            CommandParameter="{Binding}"
-                                            Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
-                                            ToolTip="Supprimer Médicament">
-                                        <materialDesign:PackIcon Kind="Minus" Height="24" Width="24" />
-                                    </Button>
-                                </Grid>
-                            </DataTemplate>-->
                         </ListBox.ItemTemplate>
                     </ListBox>
                     <Button  Command="{Binding NewMedicamentDialogCommand}"
@@ -161,7 +124,7 @@
                 <TextBlock Grid.ColumnSpan="2" Text="Traitements Complémentaires" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="20" Margin="220 0 0 0"></TextBlock>
 
                 <Grid Grid.Row="1">
-                    <ListBox x:Name="TraitementsListBox" ItemsSource="{Binding TraitementsCompl.ListTraitements}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch">
+                    <ListBox x:Name="TraitementsListBox" ItemsSource="{Binding IntervConclus.TraitementsCompl.ListTraitements}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -209,40 +172,6 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.ColumnSpan="2" Text="Lèttre d'Orientation" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="20" Margin="220 0 0 0"></TextBlock>
-
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="3*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    
-                    <TextBlock Text="Destination" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
-                    <TextBox Grid.Column="1" Text="{Binding LettreOrientation.Destination}" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Destination" Margin="0 5 30 0"></TextBox>
-
-                    <TextBlock Grid.Row="1" Text="Motif" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
-                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding LettreOrientation.Motif}" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Motif" Margin="0 5 30 0"></TextBox>
-
-                    <TextBlock Grid.Row="2" Text="Description" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16" Margin="0 5 30 0"></TextBlock>
-                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding LettreOrientation.Description}" TextWrapping="Wrap" AcceptsReturn="True" MinLines="5" MaxLines="5" VerticalScrollBarVisibility="Auto"
-                             FontSize="16" VerticalAlignment="Top" materialDesign:TextFieldAssist.Hint="Description" Margin="0 0 30 0"></TextBox>
-                </Grid>
-            </Grid>
-        </Border>
-
-        <Border Grid.Row="2" Grid.Column="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
-                             ClipToBounds="True" Margin="20 0 20 20">
-            <Grid >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
                 <TextBlock Grid.ColumnSpan="2" Text="Conseils (Régime)" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="20" Margin="220 0 0 0"></TextBlock>
 
                 <Grid Grid.Row="1">
@@ -261,7 +190,7 @@
                         Style="{StaticResource MaterialDesignFloatingActionMiniButton}" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="Ajouter un Conseil">
                         <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" />
                     </Button>
-                    <ListBox Grid.Row="1" Grid.ColumnSpan="2" x:Name="ConseilsListBox" ItemsSource="{Binding Conseils}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch" Margin="20 10 20 10">
+                    <ListBox Grid.Row="1" Grid.ColumnSpan="2" x:Name="ConseilsListBox" ItemsSource="{Binding IntervConclus.Conseils}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch" Margin="20 10 20 10">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -288,7 +217,7 @@
             </Grid>
         </Border>
 
-        <Border Grid.Row="3" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+        <Border Grid.Row="2" Grid.Column="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
                              ClipToBounds="True" Margin="20 0 20 20">
             <Grid >
                 <Grid.RowDefinitions>
@@ -298,12 +227,12 @@
 
                 <TextBlock Grid.ColumnSpan="2" Text="Compte Rendu" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="20" Margin="220 0 0 0"></TextBlock>
 
-                <TextBox Grid.Row="1" Text="{Binding CompteRendu.Description}" TextWrapping="Wrap" AcceptsReturn="True" MinLines="9" MaxLines="9" VerticalScrollBarVisibility="Auto"
+                <TextBox Grid.Row="1" Text="{Binding IntervConclus.CompteRendu.Description}" TextWrapping="Wrap" AcceptsReturn="True" MinLines="9" MaxLines="9" VerticalScrollBarVisibility="Auto"
                              FontSize="16" VerticalAlignment="Top" materialDesign:TextFieldAssist.Hint="Compte Rendu de la Consultation" Margin="30 0 30 0"></TextBox>
             </Grid>
         </Border>
 
-        <Border Grid.Row="3" Grid.Column="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+        <Border Grid.Row="3" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
                              ClipToBounds="True" Margin="20 0 20 20">
             <Grid >
                 <Grid.RowDefinitions>
@@ -314,27 +243,112 @@
                 <TextBlock Text="Prochaine Etape" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
                 <WrapPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                    
-                        <RadioButton GroupName="Temps" Content="Prochaine Consultation" FontSize="16"/>
-                        <RadioButton GroupName="Temps" Content="Hospitalisation" FontSize="16"/>
-                        <RadioButton GroupName="Temps" Content="Transfert" FontSize="16"/>
-                        <RadioButton GroupName="Temps" Content="Chirurgie" FontSize="16"/>
 
-                    <!--<Button Margin="10 5 10 0" Style="{DynamicResource MaterialDesignFlatButton}" FontSize="16" ToolTip="Rendez-vous pour la prochaine consultation">
-                        Prochaine Consultation
-                    </Button>
-                    <Button Margin="10 5 10 0" Style="{DynamicResource MaterialDesignFlatButton}" FontSize="16" ToolTip="Demande d'hospitalisation">
-                        Hospitalisation
-                    </Button>
-                    <Button Margin="10 5 10 0" Style="{DynamicResource MaterialDesignFlatButton}" FontSize="16" ToolTip="Transférer vers un autre Service">
-                        Transfert
-                    </Button>
-                    <Button Margin="10 5 10 0" Style="{DynamicResource MaterialDesignFlatButton}" FontSize="16" ToolTip="Demande d'une Chirurgie">
-                        Chirurgie
-                    </Button>-->
+                    <RadioButton GroupName="Temps" Content="Prochaine Consultation" Command="{Binding ShowDialogNextRdvCommand}" FontSize="16"/>
+                    <RadioButton x:Name="radioBtn1" GroupName="Temps" Content="Hospitalisation"  FontSize="16"/>
+                    <RadioButton x:Name="radioBtn2" GroupName="Temps" Content="Transfert" FontSize="16"/>
+                    <RadioButton x:Name="radioBtn3" GroupName="Temps" Content="Chirurgie" FontSize="16"/>
                 </WrapPanel>
             </Grid>
         </Border>
 
+        <Border Grid.Row="3" Grid.Column="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                ClipToBounds="True" Margin="20 0 20 20" 
+                Visibility="{Binding IsChecked,ElementName=radioBtn1,Converter={StaticResource b2v}}" >
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.ColumnSpan="2" Text="Lèttre d'Orientation D'Hospitalisation" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="20" Margin="220 0 0 0"></TextBlock>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Motif" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding LettreOrientation.Motif}" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Motif" Margin="0 5 30 0"></TextBox>
+
+                    <TextBlock Grid.Row="1" Text="Description" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16" Margin="0 5 30 0"></TextBlock>
+                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding LettreOrientation.Description}" TextWrapping="Wrap" AcceptsReturn="True" MinLines="5" MaxLines="5" VerticalScrollBarVisibility="Auto"
+                             FontSize="16" VerticalAlignment="Top" materialDesign:TextFieldAssist.Hint="Description" Margin="0 0 30 0"></TextBox>
+                </Grid>
+            </Grid>
+        </Border>
+        <Border Grid.Row="3" Grid.Column="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                ClipToBounds="True" Margin="20 0 20 20" 
+                Visibility="{Binding IsChecked,ElementName=radioBtn2,Converter={StaticResource b2v}}" >
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.ColumnSpan="2" Text="Lèttre d'Orientation (Transfert)" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="20" Margin="220 0 0 0"></TextBlock>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Destination" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
+                    <TextBox Grid.Column="1" Text="{Binding LettreOrientation.Destination}" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Destination" Margin="0 5 30 0"></TextBox>
+
+                    <TextBlock Grid.Row="1" Text="Motif" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding LettreOrientation.Motif}" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Motif" Margin="0 5 30 0"></TextBox>
+
+                    <TextBlock Grid.Row="2" Text="Description" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16" Margin="0 5 30 0"></TextBlock>
+                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding LettreOrientation.Description}" TextWrapping="Wrap" AcceptsReturn="True" MinLines="5" MaxLines="5" VerticalScrollBarVisibility="Auto"
+                             FontSize="16" VerticalAlignment="Top" materialDesign:TextFieldAssist.Hint="Description" Margin="0 0 30 0"></TextBox>
+                </Grid>
+            </Grid>
+        </Border>
+        <Border Grid.Row="3" Grid.Column="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                ClipToBounds="True" Margin="20 0 20 20" 
+                Visibility="{Binding IsChecked,ElementName=radioBtn3,Converter={StaticResource b2v}}" >
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.ColumnSpan="2" Text="Lèttre d'Orientation (Chirurgie)" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="20" Margin="220 0 0 0"></TextBlock>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Destination" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
+                    <TextBox Grid.Column="1" Text="{Binding LettreOrientation.Destination}" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Destination" Margin="0 5 30 0"></TextBox>
+
+                    <TextBlock Grid.Row="1" Text="Motif" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding LettreOrientation.Motif}" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Motif" Margin="0 5 30 0"></TextBox>
+
+                    <TextBlock Grid.Row="2" Text="Description" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16" Margin="0 5 30 0"></TextBlock>
+                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding LettreOrientation.Description}" TextWrapping="Wrap" AcceptsReturn="True" MinLines="5" MaxLines="5" VerticalScrollBarVisibility="Auto"
+                             FontSize="16" VerticalAlignment="Top" materialDesign:TextFieldAssist.Hint="Description" Margin="0 0 30 0"></TextBox>
+                </Grid>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

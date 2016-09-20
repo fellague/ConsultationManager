@@ -1,4 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 
@@ -10,24 +13,47 @@ namespace ConsultationManagerServer.Models
         private ObservableCollection<AntecedentPersonel> commentsPatient;
         private ObservableCollection<RemarqueMedecin> remarquesMedecin;
         //private FileStream tests;
-        private int poids;
-        private int ta;
-        private int tension;
-        private int temperature;
-        private string glycemique;
-        private string hymoglobine;
+        private string poids;
+        private string ta;
+        private string tension;
+        private string temperature;
+        private string taille;
 
-        public Interview(ObservableCollection<AntecedentPersonel> commentsPatient, ObservableCollection<RemarqueMedecin> remarquesMedecin, int poids, int ta, int tension, int temperature, string glycemique, string hymoglobine)
+        private string idPatient;
+        private string idMedecin;
+        private string idConclusion;
+
+        private DateTime creeDans;
+        private string creePar;
+
+
+        public Interview()
         {
-            this.commentsPatient = commentsPatient;
-            this.remarquesMedecin = remarquesMedecin;
-            this.poids = poids;
-            this.ta = ta;
-            this.tension = tension;
-            this.temperature = temperature;
-            this.glycemique = glycemique;
-            this.hymoglobine = hymoglobine;
+            this.commentsPatient = new ObservableCollection<AntecedentPersonel>();
+            this.remarquesMedecin = new ObservableCollection<RemarqueMedecin>();
+            this.poids = "";
+            this.ta = "";
+            this.tension = "";
+            this.temperature = "";
+            this.taille = "";
 
+            idPatient = "";
+            idMedecin = "";
+            idConclusion = "";
+
+            creeDans = new DateTime();
+            creePar = "";
+
+        }
+
+        [BsonId]
+        public ObjectId _id { get; set; }
+
+        [DataMember]
+        public string Id
+        {
+            get { return _id.ToString(); }
+            set { _id = ObjectId.Parse(value); }
         }
 
         [DataMember]
@@ -49,7 +75,7 @@ namespace ConsultationManagerServer.Models
         }
 
         [DataMember]
-        public int Poids
+        public string Poids
         {
             get
             {
@@ -58,7 +84,7 @@ namespace ConsultationManagerServer.Models
         }
 
         [DataMember]
-        public int TA
+        public string TA
         {
             get
             {
@@ -67,7 +93,7 @@ namespace ConsultationManagerServer.Models
         }
 
         [DataMember]
-        public int Tension
+        public string Tension
         {
             get
             {
@@ -76,7 +102,7 @@ namespace ConsultationManagerServer.Models
         }
 
         [DataMember]
-        public int Temperature
+        public string Temperature
         {
             get
             {
@@ -85,23 +111,82 @@ namespace ConsultationManagerServer.Models
         }
 
         [DataMember]
-        public string Glycemique
+        public string Taille
         {
             get
             {
-                return glycemique;
+                return taille;
             }
         }
 
         [DataMember]
-        public string Hymoglobine
+        public string IdPatient
         {
             get
             {
-                return hymoglobine;
+                return idPatient;
+            }
+            set
+            {
+                idPatient = value;
+                OnPropertyChanged("IdPatient");
+            }
+        }
+        [DataMember]
+        public string IdMedecin
+        {
+            get
+            {
+                return idMedecin;
+            }
+            set
+            {
+                idMedecin = value;
+                OnPropertyChanged("IdMedecin");
+            }
+        }
+        [DataMember]
+        public string IdConclusion
+        {
+            get
+            {
+                return idConclusion;
+            }
+            set
+            {
+                idConclusion = value;
+                OnPropertyChanged("IdConclusion");
             }
         }
 
+        [DataMember]
+        public DateTime CreeDans
+        {
+            get
+            {
+                return creeDans;
+            }
+            set
+            {
+                creeDans = value;
+                OnPropertyChanged("CreeDans");
+            }
+        }
+
+        [DataMember]
+        public string CreePar
+        {
+            get
+            {
+                return creePar;
+            }
+            set
+            {
+                creePar = value;
+                OnPropertyChanged("CreePar");
+            }
+        }
+        
         #region InotifyPropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;

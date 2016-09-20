@@ -1,8 +1,9 @@
-﻿using ConsultationManager.ServiceReferencePatient;
-using ConsultationManager.ServiceReferencePlanning;
+﻿using ConsultationManager.ServiceReferencePlanning;
 using ConsultationManager.ServiceReferenceRdv;
 using ConsultationManagerClient.Commands;
 using ConsultationManagerClient.ViewModels.Authentication;
+using ConsultationManagerClient.ViewModels.Patients;
+using ConsultationManagerClient.ViewModels.RDVs;
 using ConsultationManagerServer.Models;
 using ConsultationManagerServer.Models.SerializedModels;
 using System;
@@ -16,13 +17,13 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace ConsultationManagerClient.ViewModels.Patients
+namespace ConsultationManager.ViewModels.RDVs
 {
-    internal class RdvNewPatientViewModel : INotifyPropertyChanged
+    internal class NextRdvViewModel : INotifyPropertyChanged
     {
         private RdvServiceClient rsc = new RdvServiceClient();
-        private PatientsViewModel patientsVM;
-        private Patient selectedPatient;
+        private ListRvdViewModel rdvsVM;
+        private RdvPatientMedecin selectedRdv;
         private ConsultationMedecinsPlanning planning;
         private List<RdvPatientMedecin> listRdvsConsultation;
         private RDV newRdv;
@@ -39,45 +40,48 @@ namespace ConsultationManagerClient.ViewModels.Patients
         private ObservableCollection<int> listRangs;
         private DateTime heure;
 
-        public RdvNewPatientViewModel(Patient pat, PatientsViewModel pVM)
+        public NextRdvViewModel(RdvPatientMedecin rdv, ListRvdViewModel pVM)
         {
             rsc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
             rsc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
             rsc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
                                 X509CertificateValidationMode.None;
 
-            selectedPatient = pat;
-            patientsVM = pVM;
+            selectedRdv = rdv;
+            rdvsVM = pVM;
             planning = GetPlanningDetail();
 
-            listRdvsConsultation = GetRdvsConsultation(pat.PathologieId);
+            listRdvsConsultation = GetRdvsConsultation(rdv.Rdv.PathologieId);
 
             newRdv = new RDV();
+            newRdv.DateRdv = DateTime.Now.AddDays(1);
+
+            listRangs = new ObservableCollection<int>(Enumerable.Range(1, 18));
+            listMois = new ObservableCollection<int>(Enumerable.Range(0, 24));
+            listJours = new ObservableCollection<int>(Enumerable.Range(0, 30));
 
             listMedecins = GetMedecins(planning);
             selectedMedecin = new Utilisateur();
+            SelectedMedecin = selectedRdv.Medecin;
 
-            listMois = new ObservableCollection<int>(Enumerable.Range(0, 24));
-            listJours = new ObservableCollection<int>(Enumerable.Range(0, 30));
 
             //DiffMois = 3;
             //DiffJours = 0;
 
-            listRangs = new ObservableCollection<int>(Enumerable.Range(1, 18));
             heure = DateTime.Now;
             heure = new DateTime(heure.Year, heure.Month, heure.Day, 8, 0, 0);
 
-            AddRdvCommand = new RelayCommand(param => AjouterRdv());
+            AddNextRdvCommand = new RelayCommand(param => AjouterRdv());
             CancelCommand = new RelayCommand(o => ((Window)o).Close());
         }
 
         #region RdvNewPatientViewModel Variables
 
-        public Patient SelectedPatient
+        public RdvPatientMedecin SelectedPatient
         {
             get
             {
-                return selectedPatient;
+                return selectedRdv;
             }
         }
 
@@ -103,17 +107,25 @@ namespace ConsultationManagerClient.ViewModels.Patients
             set
             {
                 selectedMedecin = value;
+                //MessageBox.Show("Ancienne Date " + NewdRdv.DateRdv.DayOfWeek + " " + NewdRdv.DateRdv);
+                GetValideDate();
+                //MessageBox.Show("Nouvelle Date " + NewdRdv.DateRdv);
                 ListRangs = GetRangs();
                 OnPropertyChanged("SelectedMedecin");
             }
         }
 
-        public RDV NewdRdv
+        public RDV NewRdv
         {
             get
             {
                 //Console.WriteLine("UpdateRdvViewModel : difference date ( " + updatedRdv.DateRdv + " --- " + DateTime.Now + " )  is " + diffMois + " months and " + diffJours + " days");
                 return newRdv;
+            }
+            set
+            {
+                newRdv = value;
+                OnPropertyChanged("NewRdv");
             }
         }
 
@@ -132,7 +144,9 @@ namespace ConsultationManagerClient.ViewModels.Patients
                 diffMois = value;
                 //Console.WriteLine("DiffMois set changed " + diffMois);
                 newRdv.DateRdv = DateTime.Now.Date.AddMonths(diffMois).AddDays(diffJours);
+                //MessageBox.Show("Ancienne Date " + NewdRdv.DateRdv.DayOfWeek + " " + NewdRdv.DateRdv);
                 GetValideDate();
+                //MessageBox.Show("Nouvelle Date " + NewdRdv.DateRdv);
                 ListRangs = GetRangs();
                 OnPropertyChanged("DiffMois");
             }
@@ -197,8 +211,8 @@ namespace ConsultationManagerClient.ViewModels.Patients
             {
                 selectedRang = value;
                 heure = new DateTime(heure.Year, heure.Month, heure.Day, 8, 0, 0);
-                if(selectedRang < 12)
-                    Heure = Heure.AddMinutes((selectedRang - 1)* 20);
+                if (selectedRang < 12)
+                    Heure = Heure.AddMinutes((selectedRang - 1) * 20);
                 else
                     Heure = Heure.AddMinutes((selectedRang - 1) * 20 + 60);
                 OnPropertyChanged("SelectedRang");
@@ -221,7 +235,7 @@ namespace ConsultationManagerClient.ViewModels.Patients
 
         #region RdvNewPatientViewModel Commands
 
-        public ICommand AddRdvCommand
+        public ICommand AddNextRdvCommand
         {
             get;
             private set;
@@ -246,19 +260,19 @@ namespace ConsultationManagerClient.ViewModels.Patients
             psc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
                                 X509CertificateValidationMode.None;
 
-            return psc.GetPlanning(selectedPatient.PathologieId);
+            return psc.GetPlanning(selectedRdv.Rdv.PathologieId);
         }
 
         private ObservableCollection<Utilisateur> GetMedecins(ConsultationMedecinsPlanning plan)
         {
             List<Utilisateur> list = new List<Utilisateur>();
             //List<Utilisateur> list2 = new List<Utilisateur>();
-            foreach(Utilisateur usr in plan.MedecinsDimanche)
+            foreach (Utilisateur usr in plan.MedecinsDimanche)
             {
                 if (list.Count() == 0)
                     list = plan.MedecinsDimanche.ToList();
 
-                if (!list.Any(us => us.Id == usr.Id) )
+                if (!list.Any(us => us.Id == usr.Id))
                     list.Add(usr);
             }
             foreach (Utilisateur usr in plan.MedecinsLundi)
@@ -305,8 +319,8 @@ namespace ConsultationManagerClient.ViewModels.Patients
             bool foundDate = false;
             while (!foundDate)
             {
-                //MessageBox.Show("Old Date " + NewdRdv.DateRdv.DayOfWeek + " " + NewdRdv.DateRdv + " " + selectedMedecin.Id);
-                switch (newRdv.DateRdv.DayOfWeek)
+                //MessageBox.Show("Ancienne Date " + NewRdv.DateRdv.DayOfWeek + " " + NewRdv.DateRdv + " " + selectedMedecin.Id);
+                switch (NewRdv.DateRdv.DayOfWeek)
                 {
                     case DayOfWeek.Sunday:
                         foreach (Utilisateur usr in planning.MedecinsDimanche)
@@ -315,7 +329,7 @@ namespace ConsultationManagerClient.ViewModels.Patients
                                 foundDate = true;
                         }
                         if (!foundDate)
-                            NewdRdv.DateRdv = NewdRdv.DateRdv.AddDays(1);
+                            NewRdv.DateRdv = NewRdv.DateRdv.AddDays(1);
                         break;
                     case DayOfWeek.Monday:
                         foreach (Utilisateur usr in planning.MedecinsLundi)
@@ -324,7 +338,7 @@ namespace ConsultationManagerClient.ViewModels.Patients
                                 foundDate = true;
                         }
                         if (!foundDate)
-                            NewdRdv.DateRdv = NewdRdv.DateRdv.AddDays(1);
+                            NewRdv.DateRdv = NewRdv.DateRdv.AddDays(1);
                         break;
                     case DayOfWeek.Tuesday:
                         foreach (Utilisateur usr in planning.MedecinsMardi)
@@ -333,7 +347,7 @@ namespace ConsultationManagerClient.ViewModels.Patients
                                 foundDate = true;
                         }
                         if (!foundDate)
-                            NewdRdv.DateRdv = NewdRdv.DateRdv.AddDays(1);
+                            NewRdv.DateRdv = NewRdv.DateRdv.AddDays(1);
                         break;
                     case DayOfWeek.Wednesday:
                         foreach (Utilisateur usr in planning.MedecinsMercredi)
@@ -342,7 +356,7 @@ namespace ConsultationManagerClient.ViewModels.Patients
                                 foundDate = true;
                         }
                         if (!foundDate)
-                            NewdRdv.DateRdv = NewdRdv.DateRdv.AddDays(1);
+                            NewRdv.DateRdv = NewRdv.DateRdv.AddDays(1);
                         break;
                     case DayOfWeek.Thursday:
                         foreach (Utilisateur usr in planning.MedecinsJeudi)
@@ -351,15 +365,16 @@ namespace ConsultationManagerClient.ViewModels.Patients
                                 foundDate = true;
                         }
                         if (!foundDate)
-                            NewdRdv.DateRdv = NewdRdv.DateRdv.AddDays(1);
+                            NewRdv.DateRdv = NewRdv.DateRdv.AddDays(1);
                         break;
                     case DayOfWeek.Friday:
-                        NewdRdv.DateRdv = NewdRdv.DateRdv.AddDays(1);
+                        NewRdv.DateRdv = NewRdv.DateRdv.AddDays(1);
                         break;
                     case DayOfWeek.Saturday:
-                        NewdRdv.DateRdv = NewdRdv.DateRdv.AddDays(1);
+                        NewRdv.DateRdv = NewRdv.DateRdv.AddDays(1);
                         break;
                 }
+                //MessageBox.Show("Nouvelle Date " + NewRdv.DateRdv.DayOfWeek + " " + NewRdv.DateRdv + " " + selectedMedecin.Id);
             }
         }
 
@@ -374,7 +389,7 @@ namespace ConsultationManagerClient.ViewModels.Patients
         {
             List<RdvPatientMedecin> listRdvMedecinSelected = new List<RdvPatientMedecin>();
 
-            var toAdd = listRdvsConsultation.Where(rdv => rdv.Medecin.Id == selectedMedecin.Id && rdv.Rdv.DateRdv.Date == NewdRdv.DateRdv.Date).ToList();
+            var toAdd = listRdvsConsultation.Where(rdv => rdv.Medecin.Id == selectedMedecin.Id && rdv.Rdv.DateRdv.Date == NewRdv.DateRdv.Date).ToList();
             foreach (var item in toAdd)
                 listRdvMedecinSelected.Add(item);
 
@@ -389,24 +404,18 @@ namespace ConsultationManagerClient.ViewModels.Patients
 
         private void AjouterRdv()
         {
-            PatientServiceClient psc = new PatientServiceClient();
-            psc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
-            psc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
-            psc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
-                                X509CertificateValidationMode.None;
-
-            NewdRdv.PatientId = selectedPatient.Id;
-            NewdRdv.Rang = selectedRang;
-            NewdRdv.CreeDans = DateTime.Now;
-            NewdRdv.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
-            NewdRdv.ServiceId = AuthenticationViewModel.AuthenticatedUser.ServiceId;
-            NewdRdv.PathologieId = AuthenticationViewModel.AuthenticatedUser.PathologieId;
-            rsc.AddRdv(NewdRdv);
-            selectedPatient.Nouveau = false;
-            selectedPatient.MedecinResp = NewdRdv.MedecinRespId;
-            psc.UpdatePatient(selectedPatient);
-            patientsVM.ListNewPatients.Remove(selectedPatient);
-            patientsVM.DialogNewPatRdv.Close();
+            NewRdv.PatientId = selectedRdv.Patient.Id;
+            NewRdv.MedecinRespId = selectedRdv.Medecin.Id;
+            NewRdv.Rang = selectedRang;
+            NewRdv.CreeDans = DateTime.Now;
+            NewRdv.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
+            NewRdv.ServiceId = AuthenticationViewModel.AuthenticatedUser.ServiceId;
+            NewRdv.PathologieId = AuthenticationViewModel.AuthenticatedUser.PathologieId;
+            NewRdv.NouvPat = false;
+            rsc.AddRdv(NewRdv);
+            rdvsVM.ListAllFirstRvd.Remove(selectedRdv);
+            rdvsVM.NextRdvWindow.Close();
+            rdvsVM.DialogInterwiewConclusionView.Close();
         }
 
         #endregion

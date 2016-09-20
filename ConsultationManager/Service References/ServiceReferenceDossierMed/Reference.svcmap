@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c2d9702d-ca79-4b22-ac12-a7c59bf2ad73" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address=" http://localhost:64183/Services/DossierMedService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DossierMedService.wsdl" MetadataType="Wsdl" ID="0e10d05d-12ba-4d90-adb3-3960d36b39d9" SourceId="1" SourceUrl="http://localhost:64183/Services/DossierMedService.svc?wsdl" />
+    <MetadataFile FileName="DossierMedService.xsd" MetadataType="Schema" ID="5941ab96-6036-4044-b2b0-64629ba6d10f" SourceId="1" SourceUrl="http://localhost:64183/Services/DossierMedService.svc?xsd=xsd1" />
+    <MetadataFile FileName="DossierMedService1.xsd" MetadataType="Schema" ID="276f46ff-f0e6-426e-b96b-7771d96cef3e" SourceId="1" SourceUrl="http://localhost:64183/Services/DossierMedService.svc?xsd=xsd0" />
+    <MetadataFile FileName="DossierMedService2.xsd" MetadataType="Schema" ID="442ee88a-4061-41c1-9244-8aa4c46a2c83" SourceId="1" SourceUrl="http://localhost:64183/Services/DossierMedService.svc?xsd=xsd3" />
+    <MetadataFile FileName="DossierMedService3.xsd" MetadataType="Schema" ID="56d7f000-24e6-4bd3-aa71-9a0db5db5d7e" SourceId="1" SourceUrl="http://localhost:64183/Services/DossierMedService.svc?xsd=xsd2" />
+    <MetadataFile FileName="DossierMedService4.xsd" MetadataType="Schema" ID="57c097a3-2697-42c2-94fa-c40ca6efd83c" SourceId="1" SourceUrl="http://localhost:64183/Services/DossierMedService.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

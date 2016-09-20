@@ -7,20 +7,20 @@ namespace ConsultationManagerServer.Models
     public class Medicament : INotifyPropertyChanged
     {
         private string nom;
-        private int periodeMois;
-        private int periodeJours;
-        private int nbFoisJours;
+        private string periodeMois;
+        private string periodeJours;
+        private string nbFoisJours;
         private string temps;
         private string remarque;
 
-        public Medicament(string nom, int periodeMois, int periodeJours, int nbFoisJours, string temps, string remarque)
+        public Medicament()
         {
-            this.nom = nom;
-            this.periodeMois = periodeMois;
-            this.periodeJours = periodeJours;
-            this.nbFoisJours = nbFoisJours;
-            this.temps = temps;
-            this.remarque = remarque;
+            this.nom = "";
+            this.periodeMois = "";
+            this.periodeJours = "";
+            this.nbFoisJours = "";
+            this.temps = "";
+            this.remarque = "";
         }
 
         [DataMember]
@@ -38,7 +38,7 @@ namespace ConsultationManagerServer.Models
         }
 
         [DataMember]
-        public int PeriodeMois
+        public string PeriodeMois
         {
             get
             {
@@ -52,7 +52,7 @@ namespace ConsultationManagerServer.Models
         }
 
         [DataMember]
-        public int PeriodeJours
+        public string PeriodeJours
         {
             get
             {
@@ -66,7 +66,7 @@ namespace ConsultationManagerServer.Models
         }
 
         [DataMember]
-        public int NbFoisJours
+        public string NbFoisJours
         {
             get
             {

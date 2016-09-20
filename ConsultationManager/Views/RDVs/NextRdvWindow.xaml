@@ -1,0 +1,85 @@
+﻿<Window x:Class="ConsultationManager.Views.RDVs.NextRdvWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:ConsultationManager.Views.RDVs"
+        mc:Ignorable="d"
+        Title="NextRdvWindow" Width="650" Height="430"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel Orientation="Vertical">
+            <TextBlock Margin="0 0 10 10" FontSize="22">Création du Rendez-Vous</TextBlock>
+            <WrapPanel Orientation="Horizontal">
+                <TextBlock Text="Concernat le patient : " FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Text="{Binding SelectedPatient.Nom}" Margin="0 0 10 0" FontSize="20" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Text="{Binding SelectedPatient.Prenom}"  FontSize="20" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            </WrapPanel>
+
+        </WrapPanel>
+
+        <Grid Grid.Row="1" Margin="0 30 50 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+
+            <TextBlock Text="Rendez-Vous Après" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <WrapPanel Orientation="Horizontal" Grid.Column="1" Margin="0 10 0 0">
+                <ComboBox x:Name="listMoisComboBox"
+                          FontSize="16" VerticalAlignment="Center" Width="100"
+                          ItemsSource="{Binding ListMois}"
+                          SelectedItem="{Binding DiffMois, Mode=TwoWay}">
+                </ComboBox>
+                <TextBlock Text="Mois" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="10 0 10 0"></TextBlock>
+
+                <ComboBox x:Name="listJourComboBox"
+                          FontSize="16" VerticalAlignment="Center" Width="100"  Margin="30 0 10 0"
+                          ItemsSource="{Binding ListJours}"
+                          SelectedItem="{Binding DiffJours, Mode=TwoWay}">
+                </ComboBox>
+                <TextBlock Text="Jours" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 0 10 0"></TextBlock>
+            </WrapPanel>
+
+            <TextBlock Grid.Row="1" Text="Date du Rendez-Vous" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="1"  Text="{Binding Path=NewRdv.DateRdv, StringFormat='dd/MM/yyy'}" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            
+            <TextBlock Grid.Row="2" Text="Position Fille d'Attente" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <ComboBox Grid.Row="2" Grid.Column="1" x:Name="listRangsDispComboBox" FontSize="16" VerticalAlignment="Center" Width="100"  Margin="30 0 10 0" 
+                      ItemsSource="{Binding ListRangs}"
+                      SelectedItem="{Binding SelectedRang, Mode=TwoWay}">
+            </ComboBox>
+
+            <TextBlock Grid.Row="3" Text="Heure du Rendez-Vous" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBlock Grid.Row="3" Grid.Column="1"  Text="{Binding Path=Heure, Mode=OneWay, StringFormat='HH:mm'}" VerticalAlignment="Center" FontSize="16"></TextBlock>
+        </Grid>
+
+        <WrapPanel Orientation="Horizontal" Grid.Row="2" Margin="0 30 50 30" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+            <Button Command="{Binding CancelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin=" 0 0 10 0" FontSize="16">
+                Annuler
+            </Button>
+            <Button Command="{Binding AddNextRdvCommand}" VerticalAlignment="Bottom" FontSize="16">
+                Confirmer
+            </Button>
+        </WrapPanel>
+
+    </Grid>
+</Window>

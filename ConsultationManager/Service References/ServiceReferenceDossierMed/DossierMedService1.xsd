@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:64183/Services/DossierMedService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" />
+  <xs:import schemaLocation="http://localhost:64183/Services/DossierMedService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" />
+  <xs:element name="GetAllDossierMeds">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idService" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllDossierMedsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" minOccurs="0" name="GetAllDossierMedsResult" nillable="true" type="q1:ArrayOfDossierMedDetail" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetConsultDossierMeds">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idMedecin" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetConsultDossierMedsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" minOccurs="0" name="GetConsultDossierMedsResult" nillable="true" type="q2:ArrayOfDossierMedDetail" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMedecinDossierMeds">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idMedecin" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMedecinDossierMedsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" minOccurs="0" name="GetMedecinDossierMedsResult" nillable="true" type="q3:ArrayOfDossierMedDetail" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDossierMed">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idPatient" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDossierMedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" minOccurs="0" name="GetDossierMedResult" nillable="true" type="q4:DossierMedDetail" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddDossierMed">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="dossierMed" nillable="true" type="q5:DossierMed" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddDossierMedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="AddDossierMedResult" nillable="true" type="q6:DossierMed" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateDossierMed">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="dossierMed" nillable="true" type="q7:DossierMed" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateDossierMedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="UpdateDossierMedResult" nillable="true" type="q8:DossierMed" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteDossierMed">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteDossierMedResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

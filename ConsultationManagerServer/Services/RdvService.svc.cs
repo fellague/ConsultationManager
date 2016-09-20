@@ -25,10 +25,20 @@ namespace ConsultationManagerServer.Services
             if (result == null)
             {
                 db.RDVs.Save(rdv);
-                //MessageBox.Show("User Saved");
             }
             else
                 MessageBox.Show("Ce Patient a déja un Rdv avec le medecin");
+
+            var query2 = Query.EQ("Id", rdv.PatientId);
+            var update2 = Update
+                .Set("Nouveau", false);
+            var result2 = db.Patients.FindAndModify(query2, null, update2);
+            
+            //var query3 = Query.EQ("Id", rdvPreced.Id);
+            //var update3 = Update
+            //    .Set("DejaFait", true);
+            //var result3 = db.RDVs.FindAndModify(query3, null, update3);
+
 
             return rdv;
         }

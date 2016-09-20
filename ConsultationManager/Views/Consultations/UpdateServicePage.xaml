@@ -135,23 +135,14 @@
                                         <!--<RowDefinition Height="Auto"/>-->
                                     </Grid.RowDefinitions>
 
-                                    <WrapPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 0">
+                                    <WrapPanel Grid.Row="0" Margin="5, 0, 0, 0">
                                         <TextBlock Text="{Binding Path=Nom}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="DemiBold"></TextBlock>
-                                        <!--<TextBlock Text="{Binding Path=PrenomPatient}" FontSize="16" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text=" assisté par le médecin " FontSize="16"></TextBlock>
-                                        <TextBlock Text="{Binding Path=NomMedecin}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text="{Binding Path=PrenomMedecin}" FontSize="16" FontWeight="Bold"></TextBlock>-->
                                     </WrapPanel>
-                                    <WrapPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 5">
+                                    <WrapPanel Grid.Row="1" Margin="5, 0, 0, 5">
                                         <TextBlock Text="{Binding Path=Description}" FontSize="16"></TextBlock>
-                                        <!--<TextBlock Text="{Binding Path=DateRdv,  StringFormat='dd/MM/yyy'}" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text=", position "></TextBlock>
-                                        <TextBlock Text="{Binding Path=Rang}" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text=" sur la fille d'attente, heure éstimé à "></TextBlock>
-                                        <TextBlock Text="{Binding Path=DateRdv,  StringFormat=t}" FontWeight="Bold"></TextBlock>-->
                                     </WrapPanel>
 
-                                    <WrapPanel Grid.Column="1" Grid.RowSpan="3">
+                                    <WrapPanel Grid.Column="1" Grid.RowSpan="2">
                                         <materialDesign:PopupBox
                                                          Margin="20" ToolTip="Plus d'Opionts">
                                             <StackPanel>

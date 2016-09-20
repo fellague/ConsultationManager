@@ -45,7 +45,7 @@
                                         </WrapPanel>
                                         <!--<WrapPanel>
                                             <TextBlock Text="Date de naissance : " FontSize="14"></TextBlock>
-                                            <TextBlock Text="{Binding Path = DateNaiss,  StringFormat=d}" FontSize="14"></TextBlock>
+                                            <TextBlock Text="{Binding Path = DateNaiss,  StringFormat='dd/MM/yyy'}" FontSize="14"></TextBlock>
                                         </WrapPanel>
                                         <WrapPanel>
                                             <TextBlock Text="Adresse : " FontSize="14"></TextBlock>
@@ -61,7 +61,7 @@
                                         </WrapPanel>
                                         <WrapPanel>
                                             <TextBlock Text="Dans le : " FontSize="14"></TextBlock>
-                                            <TextBlock Text="{Binding Path = CreeDans,  StringFormat=d}" FontSize="14"></TextBlock>
+                                            <TextBlock Text="{Binding Path = CreeDans,  StringFormat='dd/MM/yyy'}" FontSize="14"></TextBlock>
                                         </WrapPanel>-->
                                     </WrapPanel>
                                 </materialDesign:Card>

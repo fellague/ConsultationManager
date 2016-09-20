@@ -100,7 +100,7 @@
                                         </WrapPanel>
                                         <WrapPanel Margin="5">
                                             <TextBlock Text="Déscription : " FontSize="14"></TextBlock>
-                                            <TextBlock Text="{Binding Path = Description}" FontSize="14"></TextBlock>
+                                            <TextBlock Text="{Binding Path = Description}" TextWrapping="Wrap" FontSize="14"></TextBlock>
                                         </WrapPanel>
                                     </WrapPanel>
                                 </materialDesign:Card>
@@ -112,6 +112,7 @@
                                 <Setter Property="BorderThickness" Value="2"/>
                                 <Setter Property="Margin" Value="30 5 30 5"/>
                                 <Setter Property="Padding" Value="0"/>
+                                <Setter Property="MaxWidth" Value="350"/>
                             </Style>
                         </ListView.ItemContainerStyle>
                     </ListView>

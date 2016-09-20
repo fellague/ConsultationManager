@@ -1,0 +1,362 @@
+﻿<Window x:Class="ConsultationManager.Views.Interviews.FirstInterviewExamenWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:ConsultationManager.Views.Interviews"
+        mc:Ignorable="d"
+        Title="Premier Interwiew (Examen)" WindowState="Maximized">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition  Height="*"/>
+            <RowDefinition  Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel Orientation="Horizontal">
+            <TextBlock Text="Examen de la Première Consultation pour " FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Text="{Binding RdvConsult.Patient.Nom}" Margin="0 0 10 0" FontSize="22" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Text="{Binding RdvConsult.Patient.Prenom}"  FontSize="22" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        </WrapPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Border BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}" ClipToBounds="True" Margin="20 5 10 5" Padding="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="ETAT GENERAL" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="DemiBold" Margin="0 5 30 0"></TextBlock>
+
+                    <CheckBox Content="Asthénie" IsChecked="{Binding Dossier.Asthenie}" Grid.Row="1" FontSize="14" VerticalAlignment="Center" ></CheckBox>
+                    <CheckBox Content="Psychisme" IsChecked="{Binding Dossier.Psychisme}" Grid.Row="2" FontSize="14" VerticalAlignment="Center" ></CheckBox>
+                    <CheckBox Content="Evoltion Pondérale" IsChecked="{Binding Dossier.EvoltionPond}" Grid.Row="1" Grid.Column="1" FontSize="14" VerticalAlignment="Center" ></CheckBox>
+                    <CheckBox Content="Développement Psycho-Moteur" IsChecked="{Binding Dossier.DevelopPsychoMot}" Grid.Row="2" Grid.Column="1" FontSize="14" VerticalAlignment="Center" ></CheckBox>
+                    <CheckBox Content="Morphotype" IsChecked="{Binding Dossier.Morphotype}" Grid.Row="1" Grid.Column="2" FontSize="14" VerticalAlignment="Center" ></CheckBox>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}" ClipToBounds="True" Margin="20 5 10 5" Padding="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="GOITRE 0-1-2-3" Grid.ColumnSpan="3"  FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 0"></TextBlock>
+
+                    <CheckBox Content="Diffus" IsChecked="{Binding Dossier.Diffus}" Grid.Row="1" FontSize="14" VerticalAlignment="Center" ></CheckBox>
+                    <CheckBox Content="Uninodulaire" IsChecked="{Binding Dossier.Uninodulaire}" Grid.Row="2" FontSize="14" VerticalAlignment="Center" ></CheckBox>
+                    <CheckBox Content="Multinodulaire" IsChecked="{Binding Dossier.Multinodulaire}" Grid.Row="3" FontSize="14" VerticalAlignment="Center" ></CheckBox>
+                    <CheckBox Content="Elastique" IsChecked="{Binding Dossier.Elastique}" Grid.Row="1" Grid.Column="1" FontSize="14" VerticalAlignment="Center" ></CheckBox>
+                    <CheckBox Content="Ferme" IsChecked="{Binding Dossier.Ferme}" Grid.Row="2" Grid.Column="1" FontSize="14" VerticalAlignment="Center" ></CheckBox>
+                    <CheckBox Content="Indure" IsChecked="{Binding Dossier.Indure}" Grid.Row="3" Grid.Column="1" FontSize="14" VerticalAlignment="Center" ></CheckBox>
+                    <CheckBox Content="Renitent" IsChecked="{Binding Dossier.Renitent}" Grid.Row="4" Grid.Column="1" FontSize="14" VerticalAlignment="Center" ></CheckBox>
+                    <CheckBox Content="Vasculaire" IsChecked="{Binding Dossier.Vasculaire}" Grid.Row="1" Grid.Column="2" FontSize="14" VerticalAlignment="Center" ></CheckBox>
+                    <CheckBox Content="Compressif" IsChecked="{Binding Dossier.Compressif}" Grid.Row="2" Grid.Column="2" FontSize="14" VerticalAlignment="Center" ></CheckBox>
+                    <CheckBox Content="Douloureux" IsChecked="{Binding Dossier.Douloureux}" Grid.Row="3" Grid.Column="2" FontSize="14" VerticalAlignment="Center" ></CheckBox>
+                    <CheckBox Content="(+/-) Adénopathies" IsChecked="{Binding Dossier.Adenopathies}" Grid.Row="4" Grid.Column="2" FontSize="14" VerticalAlignment="Center" ></CheckBox>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="2" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}" ClipToBounds="True" Margin="20 5 10 5" Padding="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="SIGNES OCULAIRES :"  FontSize="14" FontWeight="DemiBold" Margin="0 4 0 0"></TextBlock>
+                    <TextBox Grid.Column="1" Text="{Binding Dossier.SignesOculaire}" FontSize="14" VerticalAlignment="Center" TextWrapping="Wrap" AcceptsReturn="True" MinLines="2" MaxLines="2" VerticalScrollBarVisibility="Auto" materialDesign:TextFieldAssist.Hint="description"></TextBox>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="3" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}" ClipToBounds="True" Margin="20 5 10 5" Padding="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="SIGNES CUTANEO-MUQUEUX :"  FontSize="14" FontWeight="DemiBold"  Margin="0 4 0 0"></TextBlock>
+                    <TextBox Grid.Column="1" Text="{Binding Dossier.SignesCutaneomuqueux}" FontSize="14" VerticalAlignment="Center" TextWrapping="Wrap" AcceptsReturn="True" MinLines="3" MaxLines="3" VerticalScrollBarVisibility="Auto" materialDesign:TextFieldAssist.Hint="Description"></TextBox>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="4" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}" ClipToBounds="True" Margin="20 5 10 5" Padding="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="SIGNES CARDIO-PULMONAIRES" Grid.ColumnSpan="3" FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 0"></TextBlock>
+
+                    <CheckBox Content="Dyspnée" IsChecked="{Binding Dossier.Dyspnee}" Grid.Row="1" FontSize="14" VerticalAlignment="Center" ></CheckBox>
+                    <CheckBox Content="Ausculation" IsChecked="{Binding Dossier.Ausculation}" Grid.Row="2" FontSize="14" VerticalAlignment="Center" ></CheckBox>
+                    <CheckBox Content="Précordialogies" IsChecked="{Binding Dossier.Precordialogies}" Grid.Row="1" Grid.Column="1" FontSize="14" VerticalAlignment="Center" ></CheckBox>
+                    <CheckBox Content="Palpitations" IsChecked="{Binding Dossier.Palpitations}" Grid.Row="1" Grid.Column="2" FontSize="14" VerticalAlignment="Center" ></CheckBox>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="5" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}" ClipToBounds="True" Margin="20 5 10 5" Padding="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="SIGNES CARDIO-MUSCULAIRES" Grid.ColumnSpan="3" FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 0"></TextBlock>
+
+                    <CheckBox Content="Tremblement" IsChecked="{Binding Dossier.Tremblement}" Grid.Row="1" FontSize="14" VerticalAlignment="Center"></CheckBox>
+                    <CheckBox Content="Réflexes O T" IsChecked="{Binding Dossier.ReflexesOT}" Grid.Row="2" FontSize="14" VerticalAlignment="Center"></CheckBox>
+                    <CheckBox Content="Myasthénies" IsChecked="{Binding Dossier.Myasthenies}" Grid.Row="1" Grid.Column="1" FontSize="14" VerticalAlignment="Center"></CheckBox>
+                    <CheckBox Content="Autres" IsChecked="{Binding Dossier.Autres}" Grid.Row="1" Grid.Column="2" FontSize="14" VerticalAlignment="Center"></CheckBox>
+                </Grid>
+            </Border>
+
+
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Border BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}" ClipToBounds="True" Margin="20 5 10 5" Padding="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="SIGNES DIGESTIFS" Grid.ColumnSpan="3" FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 0"></TextBlock>
+
+                    <CheckBox Content="Appétit" IsChecked="{Binding Dossier.Appetit}" Grid.Row="1" FontSize="14" VerticalAlignment="Center"></CheckBox>
+                    <CheckBox Content="Obdomen" IsChecked="{Binding Dossier.Obdomen}" Grid.Row="2" FontSize="14" VerticalAlignment="Center"></CheckBox>
+                    <CheckBox Content="Transit" IsChecked="{Binding Dossier.Transit}" Grid.Row="1" Grid.Column="1" FontSize="14" VerticalAlignment="Center"></CheckBox>
+                </Grid>
+            </Border>
+            
+            <Border Grid.Row="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}" ClipToBounds="True" Margin="20 5 10 5" Padding="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="SIGNES GENITO-URINAIRES" Grid.ColumnSpan="3" FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 0"></TextBlock>
+
+                    <CheckBox Content="Boissons" IsChecked="{Binding Dossier.Boissons}" Grid.Row="1" FontSize="14" VerticalAlignment="Center"></CheckBox>
+                    <CheckBox Content="Développement Génital" IsChecked="{Binding Dossier.DeveloppementGenital}" Grid.Row="2" FontSize="14" VerticalAlignment="Center"></CheckBox>
+                    <CheckBox Content="Diurèse" IsChecked="{Binding Dossier.Diurese}" Grid.Row="1" Grid.Column="1" FontSize="14" VerticalAlignment="Center"></CheckBox>
+                    <CheckBox Content="D D R" IsChecked="{Binding Dossier.DDR}" Grid.Row="1" Grid.Column="2" FontSize="14" VerticalAlignment="Center"></CheckBox>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="2" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}" ClipToBounds="True" Margin="20 5 10 5" Padding="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="SIGNES OSSEUX :"  FontSize="14" FontWeight="DemiBold" Margin="0 4 0 0"></TextBlock>
+                    <TextBox Grid.Column="1" Text="{Binding Dossier.SignesOsseux}" FontSize="14" VerticalAlignment="Center" TextWrapping="Wrap" AcceptsReturn="True" MinLines="2" MaxLines="2" VerticalScrollBarVisibility="Auto" materialDesign:TextFieldAssist.Hint="Description"></TextBox>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="3" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}" ClipToBounds="True" Margin="20 5 10 5" Padding="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="SIGNES LYMPHO-GANGLIONNAIRES :"  FontSize="14" FontWeight="DemiBold" Margin="0 4 0 0"></TextBlock>
+                    <TextBox Grid.Column="1" Text="{Binding Dossier.SignesLumphoGanglionnaires}" FontSize="14" VerticalAlignment="Center" TextWrapping="Wrap" AcceptsReturn="True" MinLines="2" MaxLines="2" VerticalScrollBarVisibility="Auto" materialDesign:TextFieldAssist.Hint="Description"></TextBox>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="4" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}" ClipToBounds="True" Margin="20 5 10 5" Padding="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="CONCLUSIONS CLINIQUES :"  FontSize="14" FontWeight="DemiBold" Margin="0 4 0 0"></TextBlock>
+                    <TextBox Grid.Column="1" Text="{Binding Dossier.ConclusionClinique}" FontSize="14" VerticalAlignment="Center" TextWrapping="Wrap" AcceptsReturn="True" MinLines="2" MaxLines="2" VerticalScrollBarVisibility="Auto" materialDesign:TextFieldAssist.Hint="Description"></TextBox>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="5" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}" ClipToBounds="True" Margin="20 5 10 5" Padding="5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="EXAMENS COMPLEMENTAIRES" Grid.ColumnSpan="3" FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 0"></TextBlock>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text=" TSH "  FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="0 4 0 0"></TextBlock>
+                            <TextBox Grid.Column="1" Text="{Binding Dossier.TSH}" FontSize="14" materialDesign:TextFieldAssist.Hint="Valeur"></TextBox>
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text=" FT3 "  FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="0 4 0 0"></TextBlock>
+                            <TextBox Grid.Column="1" Text="{Binding Dossier.FT3}" FontSize="14" materialDesign:TextFieldAssist.Hint="Valeur"></TextBox>
+                        </Grid>
+
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text=" FT4 "  FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center"  Margin="0 4 0 0"></TextBlock>
+                            <TextBox Grid.Column="1" Text="{Binding Dossier.FT4}" FontSize="14" materialDesign:TextFieldAssist.Hint="Valeur"></TextBox>
+                        </Grid>
+
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text=" TG "  FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="0 4 0 0"></TextBlock>
+                            <TextBox Grid.Column="1" Text="{Binding Dossier.TG}" FontSize="14" materialDesign:TextFieldAssist.Hint="Valeur"></TextBox>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text=" ACTG "  FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="0 4 0 0"></TextBlock>
+                            <TextBox Grid.Column="1" Text="{Binding Dossier.ACTG}" FontSize="14" materialDesign:TextFieldAssist.Hint="Valeur"></TextBox>
+                        </Grid>
+
+                        <Grid Grid.Row="2" Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text=" ACTPO "  FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="0 4 0 0"></TextBlock>
+                            <TextBox Grid.Column="1" Text="{Binding Dossier.ACTPO}" FontSize="14" materialDesign:TextFieldAssist.Hint="Valeur"></TextBox>
+                        </Grid>
+
+                        <Grid Grid.Row="3" Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text=" TCT "  FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center"  Margin="0 4 0 0"></TextBlock>
+                            <TextBox Grid.Column="1" Text="{Binding Dossier.TCT}" FontSize="14" materialDesign:TextFieldAssist.Hint="Valeur"></TextBox>
+                        </Grid>
+
+                        <Grid Grid.Column="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text=" T41 "  FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="0 4 0 0"></TextBlock>
+                            <TextBox Grid.Column="1" Text="{Binding Dossier.T41}" FontSize="14" materialDesign:TextFieldAssist.Hint="Valeur"></TextBox>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Grid.Column="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text=" T31 "  FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center"  Margin="0 4 0 0"></TextBlock>
+                            <TextBox Grid.Column="1" Text="{Binding Dossier.T31}" FontSize="14" materialDesign:TextFieldAssist.Hint="Valeur"></TextBox>
+                        </Grid>
+
+                        <Grid Grid.Row="2" Grid.Column="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text=" T4 "  FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="0 4 0 0"></TextBlock>
+                            <TextBox Grid.Column="1" Text="{Binding Dossier.T4}" FontSize="14" materialDesign:TextFieldAssist.Hint="Valeur"></TextBox>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Border>
+
+        </Grid>
+
+        <Button Grid.Row="2" Grid.Column="1" Command="{Binding ShowConsultConclusWindowCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="250" Margin=" 0 0 50 20" FontSize="14">Conclure</Button>
+    </Grid>
+</Window>

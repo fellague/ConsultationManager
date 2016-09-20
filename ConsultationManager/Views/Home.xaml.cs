@@ -72,6 +72,14 @@ namespace ConsultationManagerClient.Views
             form2.Show();
         }
 
+        private void showMedicalFolders(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new MenuDossierMedWindow();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
+
         private void showPathologies(object sender, EventArgs e)
         {
             this.Hide();

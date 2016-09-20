@@ -29,7 +29,7 @@ namespace ConsultationManagerServer.Models
         {
             patientId = "";
             medecinRespId = "";
-            dateRdv = DateTime.Now;
+            dateRdv = new DateTime();
             rang = 1;
             dejaFait = false;
             creeDans = new DateTime();

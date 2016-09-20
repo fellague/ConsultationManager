@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using ConsultationManagerServer.Models;
 using ConsultationManagerClient.ViewModels.RDVs;
+using ConsultationManagerServer.Models.SerializedModels;
 
 namespace ConsultationManagerClient.Commands.RDVs
 {
@@ -34,7 +35,7 @@ namespace ConsultationManagerClient.Commands.RDVs
         public void Execute(object parameter)
         {
             //Console.WriteLine("Update RDV command has executed");
-            var selectedRDV = parameter as RDV;
+            var selectedRDV = parameter as RdvPatientMedecin;
             
             //Console.WriteLine("parameter " + selectedRDV.NomPatient);
             bool isUpadted = vmUpdate.UpdateRvd();

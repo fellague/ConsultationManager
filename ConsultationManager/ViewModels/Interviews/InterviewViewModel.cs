@@ -6,12 +6,13 @@ using System.Windows.Input;
 using ConsultationManagerServer.Models;
 using ConsultationManagerClient.Commands;
 using ConsultationManagerClient.ViewModels.RDVs;
+using ConsultationManagerServer.Models.SerializedModels;
 
 namespace ConsultationManagerClient.ViewModels.Interviews
 {
     internal class InterviewViewModel
     {
-        private RDV rdvConsult;
+        private RdvPatientMedecin rdvConsult;
         private ListRvdViewModel rdvsViewModel;
 
         private Interview consultation;
@@ -23,13 +24,13 @@ namespace ConsultationManagerClient.ViewModels.Interviews
         private ObservableCollection<int> listMois;
         private ObservableCollection<int> listJours;
 
-        public InterviewViewModel(RDV rdv, ListRvdViewModel rdvVM)
+        public InterviewViewModel(RdvPatientMedecin rdv, ListRvdViewModel rdvVM)
         {
             this.rdvConsult = rdv;
             rdvsViewModel = rdvVM;
             NewAntecedPersDialogCommand = new RelayCommand(param => ShowDialogNewAntecedPers());
             NewRemarqMedDialogCommand = new RelayCommand(param => ShowDialogNewRemarqMed());
-            consultation = new Interview(new ObservableCollection < AntecedentPersonel > (), new ObservableCollection < RemarqueMedecin > (), 0, 0, 0, 0, "", "");
+            consultation = new Interview();
             RemoveAntecedPersCommand = new RelayCommand(param => DeleteAntecedPers(param));
             RemoveRemarqMedCommand = new RelayCommand(param => DeleteRemarqMed(param));
             
@@ -38,7 +39,7 @@ namespace ConsultationManagerClient.ViewModels.Interviews
 
         #region ConsultationViewModel Variables
 
-        public RDV RdvConsult
+        public RdvPatientMedecin RdvConsult
         {
             get
             {

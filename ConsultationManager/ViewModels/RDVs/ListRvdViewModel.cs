@@ -11,6 +11,9 @@ using ConsultationManagerClient.ViewModels.Authentication;
 using ConsultationManager.ServiceReferenceRdv;
 using System.ServiceModel.Security;
 using ConsultationManagerServer.Models.SerializedModels;
+using ConsultationManager.Views.Interviews;
+using ConsultationManager.Views.RDVs;
+using System.Windows;
 
 namespace ConsultationManagerClient.ViewModels.RDVs
 {
@@ -26,7 +29,9 @@ namespace ConsultationManagerClient.ViewModels.RDVs
         private UpdateRdvWindow dialogUpdate;
         private InterviewWindow dialogConsultation;
         private FirstInterviewWindow dialogFirstConsultation;
+        private FirstInterviewExamenWindow dialogFirstRdvExamenView;
         private InterviewConclusionWindow dialogConsltConclusion;
+        private NextRdvWindow nextRdvWindow;
 
         private string nomUtilisateur;
 
@@ -37,7 +42,7 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             rsc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
                                 X509CertificateValidationMode.None;
 
-            listAllRvd = CreateRDVs();
+            listAllRvd = GetRDVs();
             listAllMyRvd = CreateListAllMyRdv();
             listAllMyTodayRvd = CreateListAllMyTodayRdv();
             listAllFirstRvd = CreateListAllFirstRdv();
@@ -49,6 +54,9 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             FirstRdvDialogCommand = new RelayCommand(param => this.ShowDialogFirstConsult(param));
 
             RemoveSelectedRdvCommand = new RelayCommand(param => this.Delete(param));
+
+            AddNextRdvCommand = new RelayCommand(param => this.AddNextRvd());
+            CancelCommand = new RelayCommand(o => ((Window)o).Close());
         }
         #region ListRvdViewModel Variables
 
@@ -80,6 +88,7 @@ namespace ConsultationManagerClient.ViewModels.RDVs
                 return listAllFirstRvd;
             }
         }
+
         public UpdateRdvWindow DialogUpdateView
         {
             get
@@ -87,7 +96,7 @@ namespace ConsultationManagerClient.ViewModels.RDVs
                 return dialogUpdate;
             }
         }
-        public InterviewWindow DialogConsultationView
+        public InterviewWindow DialogInterviewView
         {
             get
             {
@@ -101,6 +110,40 @@ namespace ConsultationManagerClient.ViewModels.RDVs
                 return dialogFirstConsultation;
             }
         }
+        public FirstInterviewExamenWindow DialogFirstRdvExamenView
+        {
+            get
+            {
+                return dialogFirstRdvExamenView;
+            }
+            set
+            {
+                dialogFirstRdvExamenView = value;
+            }
+        }
+        public InterviewConclusionWindow DialogInterwiewConclusionView
+        {
+            get
+            {
+                return dialogConsltConclusion;
+            }
+            set
+            {
+                dialogConsltConclusion = value;
+            }
+        }
+        public NextRdvWindow NextRdvWindow
+        {
+            get
+            {
+                return nextRdvWindow;
+            }
+            set
+            {
+                nextRdvWindow = value;
+            }
+        }
+
         public string NomUtilisateur
         {
             get
@@ -108,19 +151,6 @@ namespace ConsultationManagerClient.ViewModels.RDVs
                 return nomUtilisateur;
             }
         }
-        //public RDV SelectedRDV
-        //{
-        //    get
-        //    {
-        //        return selectedRDV;
-        //    }
-        //    set
-        //    {
-        //        selectedRDV = value;
-        //        //Console.WriteLine("ListRvdViewModel : SelectedRDV changed " + selectedRDV.NomPatient);
-        //        OnPropertyChanged("SelectedRDV");
-        //    }
-        //}
 
         #endregion
 
@@ -150,14 +180,26 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             private set;
         }
 
+        public ICommand AddNextRdvCommand
+        {
+            get;
+            private set;
+        }
+
+        public ICommand CancelCommand
+        {
+            get;
+            private set;
+        }
+
         #endregion
 
         #region ListRvdViewModel Methodes
 
         public void ShowDialogUpdateRvd(object selectedRdv)
         {
-            var rdv = selectedRdv as RDV;
-            Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.DateRdv);
+            var rdv = selectedRdv as RdvPatientMedecin;
+            //Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.Rdv.DateRdv);
             dialogUpdate = new UpdateRdvWindow();
             dialogUpdate.DataContext = new UpdateRdvViewModel(rdv, this);
             dialogUpdate.ShowDialog();
@@ -165,8 +207,8 @@ namespace ConsultationManagerClient.ViewModels.RDVs
 
         public void ShowDialogConsult(object selectedRdv)
         {
-            var rdv = selectedRdv as RDV;
-            Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.DateRdv);
+            var rdv = selectedRdv as RdvPatientMedecin;
+            //Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.DateRdv);
             dialogConsultation = new InterviewWindow();
             dialogConsultation.DataContext = new InterviewViewModel(rdv, this);
             dialogConsultation.ShowDialog();
@@ -174,17 +216,17 @@ namespace ConsultationManagerClient.ViewModels.RDVs
 
         public void ShowDialogFirstConsult(object selectedRdv)
         {
-            var rdv = selectedRdv as RDV;
-            Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.DateRdv);
+            var rdv = selectedRdv as RdvPatientMedecin;
+            Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.Rdv.DateRdv);
             dialogFirstConsultation = new FirstInterviewWindow();
-            dialogFirstConsultation.DataContext = new FirstInterviewViewModel(rdv);
+            dialogFirstConsultation.DataContext = new FirstInterviewViewModel(rdv, this);
             dialogFirstConsultation.ShowDialog();
         }
 
-        public void ShowDialogConsultConclusion(RDV selectedRdv, Interview consult)
+        public void ShowDialogConsultConclusion(RdvPatientMedecin selectedRdv, Interview consult)
         {
-            RDV rdv = selectedRdv;
-            Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.DateRdv);
+            RdvPatientMedecin rdv = selectedRdv;
+            //Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.DateRdv);
             dialogConsltConclusion = new InterviewConclusionWindow();
             dialogConsltConclusion.DataContext = new InterviewConclusionViewModel(rdv, consult, this);
 
@@ -193,12 +235,15 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             dialogConsltConclusion.ShowDialog();
         }
         
-
-
-        public void CloseDialogUpdateRvd(RDV updRdv)
+        public void CloseDialogUpdateRvd(RdvPatientMedecin updRdv)
         {
-            Console.WriteLine("ListRvdViewModel : Dialog closed with updated RDV  " + updRdv.DateRdv);
+            Console.WriteLine("ListRvdViewModel : Dialog closed with updated RDV  " + updRdv.Rdv.DateRdv);
             dialogUpdate.Close();
+        }
+
+        public void AddNextRvd()
+        {
+            nextRdvWindow.Close();
         }
 
         public void Delete(object selectedRdv)
@@ -208,8 +253,7 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             this.listAllMyRvd.Remove(rdv);
         }
 
-
-        private ObservableCollection<RdvPatientMedecin> CreateRDVs()
+        private ObservableCollection<RdvPatientMedecin> GetRDVs()
         {
             ObservableCollection<RdvPatientMedecin> list = new ObservableCollection<RdvPatientMedecin>();
             list = new ObservableCollection<RdvPatientMedecin>(rsc.GetAllRdv(AuthenticationViewModel.AuthenticatedUser.ServiceId));

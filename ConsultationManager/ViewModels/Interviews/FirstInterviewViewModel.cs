@@ -5,39 +5,71 @@ using ConsultationManagerClient.Commands;
 using ConsultationManagerClient.Views.Interviews;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
+using ConsultationManagerServer.Models.SerializedModels;
+using ConsultationManagerClient.ViewModels.RDVs;
+using ConsultationManager.Views.Interviews;
+using System.Windows;
+using ConsultationManager.ServiceReferenceDossierMed;
+using ConsultationManagerClient.ViewModels.Authentication;
+using System.ServiceModel.Security;
 
 namespace ConsultationManagerClient.ViewModels.Interviews
 {
     internal class FirstInterviewViewModel
     {
-        private RDV rdvConsult;
+        private DossierMedServiceClient dsc = new DossierMedServiceClient();
+
+        private ListRvdViewModel listRdvVM;
+        private RdvPatientMedecin rdvConsult;
+        private DossierMed dossier;
         private NewAntecedPersWindow dialogNewAntecedPers;
         private NewAntecedFamilWindow dialogNewAntecedFamil;
         private AntecedentPersonel newAntecedPers;
         private AntecedentFamilial newAntecedFamil;
-        private ObservableCollection<AntecedentPersonel> listAntecedentPersonel;
-        private ObservableCollection<AntecedentFamilial> listAntecedentFamilial;
+        //private ObservableCollection<AntecedentPersonel> listAntecedentPersonel;
+        //private ObservableCollection<AntecedentFamilial> listAntecedentFamilial;
         private ObservableCollection<int> listMois;
         private ObservableCollection<int> listJours;
 
-        public FirstInterviewViewModel(RDV rdv)
+        public FirstInterviewViewModel(RdvPatientMedecin rdv, ListRvdViewModel rdvsVM)
         {
+            dsc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
+            dsc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
+            dsc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
+                                X509CertificateValidationMode.None;
+
             rdvConsult = rdv;
+            dossier = new DossierMed();
+
+            listRdvVM = rdvsVM;
             NewAntecedPersDialogCommand = new RelayCommand(param=>ShowDialogNewAntecedPers());
             NewAntecedFamilDialogCommand = new RelayCommand(param => ShowDialogNewAntecedFamil());
-            listAntecedentPersonel = new ObservableCollection<AntecedentPersonel>();
-            listAntecedentFamilial = new ObservableCollection<AntecedentFamilial>();
+            //listAntecedentPersonel = new ObservableCollection<AntecedentPersonel>();
+            //listAntecedentFamilial = new ObservableCollection<AntecedentFamilial>();
             RemoveAntecedPersCommand = new RelayCommand(param => DeleteAntecedPers(param));
             RemoveAntecedFamilCommand = new RelayCommand(param => DeleteAntecedFamil(param));
+
+            ShowExamenWindowCommand = new RelayCommand(param => AfficherExamenWindow());
+            ShowConsultConclusWindowCommand = new RelayCommand(param => AfficherConclusionWindow());
         }
+
+
+
 
         #region FirstConsultationViewModel Variables
 
-        public RDV RdvConsult
+        public RdvPatientMedecin RdvConsult
         {
             get
             {
                 return rdvConsult;
+            }
+        }
+        public DossierMed Dossier
+        {
+            get
+            {
+                return dossier;
             }
         }
         public NewAntecedPersWindow DialogNewAntecedPers
@@ -68,20 +100,20 @@ namespace ConsultationManagerClient.ViewModels.Interviews
                 return newAntecedFamil;
             }
         }
-        public ObservableCollection<AntecedentPersonel> ListAntecedentPersonel
-        {
-            get
-            {
-                return listAntecedentPersonel;
-            }
-        }
-        public ObservableCollection<AntecedentFamilial> ListAntecedentFamilal
-        {
-            get
-            {
-                return listAntecedentFamilial;
-            }
-        }
+        //public ObservableCollection<AntecedentPersonel> ListAntecedentPersonel
+        //{
+        //    get
+        //    {
+        //        return listAntecedentPersonel;
+        //    }
+        //}
+        //public ObservableCollection<AntecedentFamilial> ListAntecedentFamilal
+        //{
+        //    get
+        //    {
+        //        return listAntecedentFamilial;
+        //    }
+        //}
         public ObservableCollection<int> ListMois
         {
             get
@@ -135,6 +167,18 @@ namespace ConsultationManagerClient.ViewModels.Interviews
             private set;
         }
 
+        public ICommand ShowExamenWindowCommand
+        {
+            get;
+            private set;
+        }
+
+        public ICommand ShowConsultConclusWindowCommand
+        {
+            get;
+            private set;
+        }
+
         #endregion
 
         #region FirstConsultationViewModel Methods
@@ -175,7 +219,7 @@ namespace ConsultationManagerClient.ViewModels.Interviews
             var newAnteced = ant as AntecedentPersonel;
             Console.WriteLine("FirstConsultationViewModel : Dialog Closed with RDV  "+newAnteced.Organe);
             dialogNewAntecedPers.Close();
-            listAntecedentPersonel.Add(newAnteced);
+            dossier.AntecedPers.Add(newAnteced);
             //dialogNewAntecedent.DataContext = this;
             //dialogFirstRdvView = new FirstConsultationWindow();
             //dialogFirstRdvView.DataContext = new FirstConsultationViewModel(rdv);
@@ -185,7 +229,7 @@ namespace ConsultationManagerClient.ViewModels.Interviews
             var newAnteced = ant as AntecedentFamilial;
             Console.WriteLine("FirstConsultationViewModel : Dialog Closed with RDV  " + newAnteced.Membre);
             dialogNewAntecedFamil.Close();
-            listAntecedentFamilial.Add(newAnteced);
+            dossier.AntecedFamil.Add(newAnteced);
             //dialogNewAntecedent.DataContext = this;
             //dialogFirstRdvView = new FirstConsultationWindow();
             //dialogFirstRdvView.DataContext = new FirstConsultationViewModel(rdv);
@@ -194,13 +238,43 @@ namespace ConsultationManagerClient.ViewModels.Interviews
         {
             Console.WriteLine("FirstConsultationViewModel : Remove RDV  ");
             var ant = selectedAntec as AntecedentPersonel;
-            listAntecedentPersonel.Remove(ant);
+            dossier.AntecedPers.Remove(ant);
         }
         public void DeleteAntecedFamil(object selectedAntec)
         {
             Console.WriteLine("FirstConsultationViewModel : Remove RDV  ");
             var ant = selectedAntec as AntecedentFamilial;
-            listAntecedentFamilial.Remove(ant);
+            dossier.AntecedFamil.Remove(ant);
+        }
+
+        private void AfficherExamenWindow()
+        {
+            listRdvVM.DialogFirstRdvView.Close();
+            listRdvVM.DialogFirstRdvExamenView = new FirstInterviewExamenWindow();
+            listRdvVM.DialogFirstRdvExamenView.DataContext = this;
+            listRdvVM.DialogFirstRdvExamenView.ShowDialog();
+        }
+        
+        private void AfficherConclusionWindow()
+        {
+            listRdvVM.DialogFirstRdvExamenView.Close();
+
+            dossier.Identifiant = "HDJ/"+"0001"+"/"+DateTime.Now.Year;
+            dossier.IdPatient = rdvConsult.Patient.Id;
+            dossier.IdMedecin = rdvConsult.Medecin.Id;
+            dossier.ServiceId = rdvConsult.Medecin.ServiceId;
+            dossier.PathologieId = rdvConsult.Medecin.PathologieId;
+            dossier.CreeDans = DateTime.Now;
+            dossier.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
+
+            
+            dsc.AddDossierMed(dossier);
+            MessageBox.Show("Un Nouveau Dossier Médical est Creé avec l'Identifiant" + dossier.Identifiant);
+
+
+            listRdvVM.DialogInterwiewConclusionView = new InterviewConclusionWindow();
+            listRdvVM.DialogInterwiewConclusionView.DataContext = new InterviewConclusionViewModel(rdvConsult, null,listRdvVM);
+            listRdvVM.DialogInterwiewConclusionView.ShowDialog();
         }
 
         #endregion

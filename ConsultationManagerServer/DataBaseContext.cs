@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using ConsultationManagerServer.Models;
+using ConsultationManagerServer.Models.Hospitalisations;
 
 namespace ConsultationManagerServer
 {
@@ -64,6 +65,42 @@ namespace ConsultationManagerServer
             get
             {
                 return db.GetCollection<RDV>("RDV");
+            }
+        }
+
+        public MongoCollection<DossierMed> DossierMeds
+        {
+            get
+            {
+                return db.GetCollection<DossierMed>("DossierMed");
+            }
+        }
+        public MongoCollection<Interview> Interviews
+        {
+            get
+            {
+                return db.GetCollection<Interview>("Interview");
+            }
+        }
+        public MongoCollection<Hospitalisation> Hospitalisations
+        {
+            get
+            {
+                return db.GetCollection<Hospitalisation>("Hospitalisation");
+            }
+        }
+        public MongoCollection<Conclusion> Conclusions
+        {
+            get
+            {
+                return db.GetCollection<Conclusion>("Conclusion");
+            }
+        }
+        public MongoCollection<Mesure> Mesures
+        {
+            get
+            {
+                return db.GetCollection<Mesure>("Mesure");
             }
         }
     }

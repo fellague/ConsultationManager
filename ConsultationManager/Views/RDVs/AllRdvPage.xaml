@@ -91,7 +91,7 @@
                         </WrapPanel>
                         <WrapPanel>
                             <TextBlock Text="Date de naissance : " FontSize="14"></TextBlock>
-                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.DateNaiss,  StringFormat=d}" FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.DateNaiss,  StringFormat='dd/MM/yyy'}" FontSize="14"></TextBlock>
                         </WrapPanel>
                         <WrapPanel>
                             <TextBlock Text="Raison Médical : " FontSize="14"></TextBlock>
@@ -111,7 +111,7 @@
                         </WrapPanel>
                         <WrapPanel>
                             <TextBlock Text="Dans le : " FontSize="14"></TextBlock>
-                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.CreeDans,  StringFormat=d}" FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.CreeDans,  StringFormat='dd/MM/yyy'}" FontSize="14"></TextBlock>
                         </WrapPanel>
 
                     </WrapPanel>

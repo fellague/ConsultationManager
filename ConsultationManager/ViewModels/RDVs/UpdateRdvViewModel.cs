@@ -7,19 +7,20 @@ using System.Windows;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using ConsultationManagerClient.Commands;
+using ConsultationManagerServer.Models.SerializedModels;
 
 namespace ConsultationManagerClient.ViewModels.RDVs
 {
     internal class UpdateRdvViewModel : INotifyPropertyChanged
     {
-        private RDV updatedRdv;
+        private RdvPatientMedecin updatedRdv;
         private int diffMois;
         private int diffJours;
         private ObservableCollection<int> listMois;
         private ObservableCollection<int> listJours;
 
 
-        public UpdateRdvViewModel(RDV rdv, ListRvdViewModel vmLi)
+        public UpdateRdvViewModel(RdvPatientMedecin rdv, ListRvdViewModel vmLi)
         {
             updatedRdv = rdv;
 
@@ -30,7 +31,7 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             CancelCommand = new RelayCommand(o => ((Window)o).Close());
         }
 
-        public RDV UpdatedRdv
+        public RdvPatientMedecin UpdatedRdv
         {
             get
             {
@@ -44,7 +45,7 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             get
             {
                 int Mois = 0;
-                while (updatedRdv.DateRdv.CompareTo(DateTime.Now.Date.AddMonths(++Mois)) >= 0) { }
+                while (updatedRdv.Rdv.DateRdv.CompareTo(DateTime.Now.Date.AddMonths(++Mois)) >= 0) { }
                 diffMois = --Mois;
                 Console.WriteLine("DiffMois get changed" + diffMois);
                 return diffMois;
@@ -53,7 +54,7 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             {
                 diffMois = value;
                 Console.WriteLine("DiffMois set changed "+diffMois);
-                updatedRdv.DateRdv = DateTime.Now.Date.AddMonths(diffMois).AddDays(diffJours);
+                updatedRdv.Rdv.DateRdv = DateTime.Now.Date.AddMonths(diffMois).AddDays(diffJours);
                 OnPropertyChanged("DiffMois");
             }
         }
@@ -63,14 +64,14 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             get
             {
                 int Jours = 0;
-                while (updatedRdv.DateRdv.CompareTo(DateTime.Now.AddMonths(diffMois).AddDays(++Jours)) >= 0) { }
+                while (updatedRdv.Rdv.DateRdv.CompareTo(DateTime.Now.AddMonths(diffMois).AddDays(++Jours)) >= 0) { }
                 diffJours = --Jours;
                 return diffJours;
             }
             set
             {
                 diffJours = value;
-                updatedRdv.DateRdv = DateTime.Now.AddMonths(diffMois).AddDays(diffJours);
+                updatedRdv.Rdv.DateRdv = DateTime.Now.AddMonths(diffMois).AddDays(diffJours);
                 OnPropertyChanged("DiffJours");
             }
         }

@@ -12,7 +12,7 @@
     <Grid Margin="10">
         <DockPanel>
             <WrapPanel DockPanel.Dock="Top">
-                <Label  FontSize="24">La liste des patients</Label>
+                <TextBlock  FontSize="24">La liste de Mes patients</TextBlock>
             </WrapPanel>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -20,7 +20,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid>
-                    <ListBox x:Name="listViewMyAcount"  ItemsSource="{Binding ListAllMyPatient}" HorizontalContentAlignment="Stretch">
+                    <ListBox x:Name="listViewAcount" ItemsSource="{Binding ListAllMyPatient}" HorizontalContentAlignment="Stretch">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -35,18 +35,20 @@
                                     </Grid.RowDefinitions>
 
                                     <WrapPanel Grid.Row="0" Grid.Column="0" Margin="5, 0, 0, 0">
-                                        <TextBlock Text="{Binding Path=Nom}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text="{Binding Path=Prenom}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=Nom}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="DemiBold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=Prenom}" FontSize="16" FontWeight="DemiBold"></TextBlock>
                                     </WrapPanel>
-                                    <WrapPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5, 0, 0, 0">
-                                        <TextBlock Text="Raison : "></TextBlock>
-                                        <TextBlock Text="{Binding Path=Raison}"></TextBlock>
-                                    </WrapPanel>
+                                    <Grid Grid.Row="1" Margin="5, 0, 0, 0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="Raison : " FontSize="14"></TextBlock>
+                                        <TextBlock Grid.Column="1" Text="{Binding Path=Raison}" TextWrapping="Wrap" FontSize="14"></TextBlock>
+                                    </Grid>
                                     <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 5">
-                                        <TextBlock Text="Creé Par "></TextBlock>
-                                        <TextBlock Text="{Binding Path=CreePar}" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text="Dans le "></TextBlock>
-                                        <TextBlock Text="{Binding Path=CreeDans,  StringFormat=d}" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="Creé dans le "></TextBlock>
+                                        <TextBlock Text="{Binding Path=CreeDans,  StringFormat='dd/MM/yyy'}" FontWeight="Bold"></TextBlock>
                                     </WrapPanel>
 
                                 </Grid>
@@ -54,43 +56,69 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </Grid>
-                <materialDesign:Card Grid.Column="1" Margin="10,0,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth4">
-                    <WrapPanel Orientation="Vertical">
-                        <TextBlock Text="Détails : " FontSize="16"></TextBlock>
-                        <WrapPanel>
-                            <TextBlock Text="Nom : "></TextBlock>
-                            <TextBlock Text="{Binding ElementName=listViewMyAcount, Path=SelectedItem.Nom}"></TextBlock>
-                        </WrapPanel>
-                        <WrapPanel>
-                            <TextBlock Text="Prénom : "></TextBlock>
-                            <TextBlock Text="{Binding ElementName=listViewMyAcount, Path=SelectedItem.Prenom}"></TextBlock>
-                        </WrapPanel>
-                        <WrapPanel>
-                            <TextBlock Text="Date de naissance : "></TextBlock>
-                            <TextBlock Text="{Binding ElementName=listViewMyAcount, Path=SelectedItem.DateNaiss,  StringFormat=d}"></TextBlock>
-                        </WrapPanel>
-                        <WrapPanel>
-                            <TextBlock Text="Raison Médical : "></TextBlock>
-                            <TextBlock Text="{Binding ElementName=listViewMyAcount, Path=SelectedItem.Raison}"></TextBlock>
-                        </WrapPanel>
-                        <WrapPanel>
-                            <TextBlock Text="Adresse : "></TextBlock>
-                            <TextBlock Text="{Binding ElementName=listViewMyAcount, Path=SelectedItem.Adresse}"></TextBlock>
-                        </WrapPanel>
-                        <WrapPanel>
-                            <TextBlock Text="Téléphone : "></TextBlock>
-                            <TextBlock Text="{Binding ElementName=listViewMyAcount, Path=SelectedItem.Telephone}"></TextBlock>
-                        </WrapPanel>
-                        <WrapPanel>
-                            <TextBlock Text="Ajouté Par : "></TextBlock>
-                            <TextBlock Text="{Binding ElementName=listViewMyAcount, Path=SelectedItem.CreePar}"></TextBlock>
-                        </WrapPanel>
-                        <WrapPanel>
-                            <TextBlock Text="Dans le : "></TextBlock>
-                            <TextBlock Text="{Binding ElementName=listViewMyAcount, Path=SelectedItem.CreeDans,  StringFormat=d}"></TextBlock>
-                        </WrapPanel>
 
-                    </WrapPanel>
+                <materialDesign:Card Grid.Column="1"  Margin="10,0,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.ColumnSpan="2" Text="Détails : " FontSize="18" Margin="135 5 0 5"></TextBlock>
+
+                        <TextBlock Grid.Row="1" HorizontalAlignment="Right" Text="Nom : " FontSize="14" Margin="0 5 0 5"></TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=listViewAcount, Path=SelectedItem.Nom}" FontSize="14" FontWeight="DemiBold" Margin="0 5 0 5"></TextBlock>
+
+                        <TextBlock Grid.Row="2" HorizontalAlignment="Right" Text="Prénom : " FontSize="14" Margin="0 5 0 5"></TextBlock>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding ElementName=listViewAcount, Path=SelectedItem.Prenom}" FontSize="14" FontWeight="DemiBold" Margin="0 5 0 5"></TextBlock>
+
+                        <TextBlock Grid.Row="3" HorizontalAlignment="Right" Text="Code d'Uregence : " FontSize="14" Margin="0 5 0 5"></TextBlock>
+                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ElementName=listViewAcount, Path=SelectedItem.DegreUrgence,  StringFormat='dd/MM/yyy'}" FontSize="14" FontWeight="DemiBold" Margin="0 5 0 5"></TextBlock>
+
+                        <TextBlock Grid.Row="4" HorizontalAlignment="Right" Text="Raison de la visite : " FontSize="14" Margin="0 5 0 5"></TextBlock>
+                        <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding ElementName=listViewAcount, Path=SelectedItem.Raison}" TextWrapping="Wrap" FontSize="14" FontWeight="DemiBold" Margin="0 5 0 5"></TextBlock>
+
+                        <TextBlock Grid.Row="5" HorizontalAlignment="Right" Text="Date de naissance : " FontSize="14" Margin="0 5 0 5"></TextBlock>
+                        <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding ElementName=listViewAcount, Path=SelectedItem.DateNaiss,  StringFormat='dd/MM/yyy'}" FontSize="14" FontWeight="DemiBold" Margin="0 5 0 5"></TextBlock>
+
+                        <TextBlock Grid.Row="6" HorizontalAlignment="Right" Text="Profession : " FontSize="14" Margin="0 5 0 5"></TextBlock>
+                        <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding ElementName=listViewAcount, Path=SelectedItem.Profession,  StringFormat='dd/MM/yyy'}" FontSize="14" FontWeight="DemiBold" Margin="0 5 0 5"></TextBlock>
+
+                        <TextBlock Grid.Row="7" HorizontalAlignment="Right" Text="Adresse : " FontSize="14" Margin="0 5 0 5"></TextBlock>
+                        <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding ElementName=listViewAcount, Path=SelectedItem.Adresse}" FontSize="14" FontWeight="DemiBold" Margin="0 5 0 5"></TextBlock>
+
+                        <TextBlock Grid.Row="8" HorizontalAlignment="Right" Text="Origine Géographique : " FontSize="14" Margin="0 5 0 5"></TextBlock>
+                        <TextBlock Grid.Row="8" Grid.Column="1" Text="{Binding ElementName=listViewAcount, Path=SelectedItem.OrigineGeo}" FontSize="14" FontWeight="DemiBold" Margin="0 5 0 5"></TextBlock>
+
+                        <TextBlock Grid.Row="9" HorizontalAlignment="Right" Text="Téléphone : " FontSize="14" Margin="0 15 0 5"></TextBlock>
+                        <ListBox Grid.Row="9" Grid.Column="1" x:Name="TelephonesListBox" ItemsSource="{Binding ElementName=listViewAcount, Path=SelectedItem.Telephones}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch" Margin="0 5 30 5">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <WrapPanel>
+                                            <TextBlock Text="{Binding}" FontSize="14" FontWeight="DemiBold"></TextBlock>
+                                        </WrapPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                        <TextBlock Grid.Row="10" HorizontalAlignment="Right" Text="Ajouté dans le : " FontSize="14" Margin="0 5 0 5"></TextBlock>
+                        <TextBlock Grid.Row="10" Grid.Column="1" Text="{Binding ElementName=listViewAcount, Path=SelectedItem.CreeDans,  StringFormat='dd/MM/yyy'}" FontSize="14" FontWeight="DemiBold" Margin="0 5 0 5"></TextBlock>
+                    </Grid>
                 </materialDesign:Card>
 
             </Grid>

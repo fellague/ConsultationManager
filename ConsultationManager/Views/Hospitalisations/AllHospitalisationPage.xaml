@@ -38,9 +38,9 @@
                                         <TextBlock Text="{Binding Path=Nom}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
                                         <TextBlock Text="{Binding Path=Prenom}" FontSize="16" FontWeight="Bold"></TextBlock>
                                         <TextBlock Text=" planifié de : " FontSize="16"></TextBlock>
-                                        <TextBlock Text="{Binding Path=DateDebut,  StringFormat=d}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=DateDebut,  StringFormat='dd/MM/yyy'}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
                                         <TextBlock Text=" jusqu'à : " FontSize="16"></TextBlock>
-                                        <TextBlock Text="{Binding Path=DateFinPrevu,  StringFormat=d}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=DateFinPrevu,  StringFormat='dd/MM/yyy'}" FontSize="16" FontWeight="Bold"></TextBlock>
                                     </WrapPanel>
                                     <WrapPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 5">
                                         <TextBlock Text="Dans la salle "></TextBlock>
@@ -52,7 +52,7 @@
                                         <TextBlock Text="Creé Par "></TextBlock>
                                         <TextBlock Text="{Binding Path=CreePar}" Margin="0, 0, 4, 0" FontWeight="Bold"></TextBlock>
                                         <TextBlock Text="Dans le "></TextBlock>
-                                        <TextBlock Text="{Binding Path=CreeDans,  StringFormat=d}" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=CreeDans,  StringFormat='dd/MM/yyy'}" FontWeight="Bold"></TextBlock>
                                     </WrapPanel>
                                 </Grid>
                             </DataTemplate>
@@ -74,7 +74,7 @@
                         </WrapPanel>
                         <WrapPanel>
                             <TextBlock Text="Date de naissance : " FontSize="14"></TextBlock>
-                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.DateNaiss,  StringFormat=d}" FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.DateNaiss,  StringFormat='dd/MM/yyy'}" FontSize="14"></TextBlock>
                         </WrapPanel>
                         <WrapPanel>
                             <TextBlock Text="Raison Médical : " FontSize="14"></TextBlock>
@@ -94,7 +94,7 @@
                         </WrapPanel>
                         <WrapPanel>
                             <TextBlock Text="Dans le : " FontSize="14"></TextBlock>
-                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.CreeDans,  StringFormat=d}" FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding ElementName=listViewAcount, Path=SelectedItem.CreeDans,  StringFormat='dd/MM/yyy'}" FontSize="14"></TextBlock>
                         </WrapPanel>
 
                     </WrapPanel>

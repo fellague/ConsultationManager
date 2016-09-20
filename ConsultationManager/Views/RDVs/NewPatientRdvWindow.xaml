@@ -46,7 +46,7 @@
                       ItemsSource="{Binding ListMedecins}" 
                       SelectedItem="{Binding SelectedMedecin}"
                       SelectedValuePath="Id"
-                      SelectedValue="{Binding NewdRdv.MedecinRespId}">
+                      SelectedValue="{Binding NewRdv.MedecinRespId}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock>
@@ -63,16 +63,6 @@
 
             <TextBlock Grid.Row="1" Text="Rendez-Vous Après" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
             <WrapPanel Grid.Row="1" Orientation="Horizontal" Grid.Column="1" Margin="0 10 0 0">
-                <!--<ComboBox
-                          FontSize="16" VerticalAlignment="Center" Width="100"
-                          ItemsSource="{Binding ListMois}"
-                          SelectedItem="{Binding DiffMois, Mode=TwoWay}">
-                    <ComboBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <VirtualizingStackPanel />
-                        </ItemsPanelTemplate>
-                    </ComboBox.ItemsPanel>
-                </ComboBox>-->
                 <ComboBox x:Name="listMoisComboBox"
                           FontSize="16" VerticalAlignment="Center" Width="100"
                           ItemsSource="{Binding ListMois}"
@@ -80,16 +70,6 @@
                 </ComboBox>
                 <TextBlock Text="Mois" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="10 0 10 0"></TextBlock>
 
-                <!--<ComboBox
-                          FontSize="16" VerticalAlignment="Center" Width="100"  Margin="30 0 10 0"
-                          ItemsSource="{Binding ListJours}"
-                          SelectedItem="{Binding DiffJours, Mode=TwoWay}">
-                    <ComboBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <VirtualizingStackPanel />
-                        </ItemsPanelTemplate>
-                    </ComboBox.ItemsPanel>
-                </ComboBox>-->
                 <ComboBox x:Name="listJourComboBox"
                           FontSize="16" VerticalAlignment="Center" Width="100"  Margin="30 0 10 0"
                           ItemsSource="{Binding ListJours}"
@@ -99,10 +79,7 @@
             </WrapPanel>
 
             <TextBlock Grid.Row="2" Text="Date du Rendez-Vous" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBlock Grid.Row="2" Grid.Column="1"  Text="{Binding Path=NewdRdv.DateRdv, StringFormat='dd/MM/yyy'}" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <!--<DatePicker Grid.Row="1" Grid.Column="1" 
-                        SelectedDate="{Binding Path=UpdatedRdv.DateRdv, Mode=TwoWay}" 
-                        materialDesign:TextFieldAssist.Hint="JJ,MM,AAAA" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>-->
+            <TextBlock Grid.Row="2" Grid.Column="1"  Text="{Binding Path=NewRdv.DateRdv, StringFormat='dd/MM/yyy'}" VerticalAlignment="Center" FontSize="16"></TextBlock>
 
             <TextBlock Grid.Row="3" Text="Position Fille d'Attente" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
             <ComboBox Grid.Row="3" Grid.Column="1" x:Name="listRangsDispComboBox" FontSize="16" VerticalAlignment="Center" Width="100"  Margin="30 0 10 0" 
@@ -110,7 +87,7 @@
                       SelectedItem="{Binding SelectedRang, Mode=TwoWay}">
             </ComboBox>
             
-            <TextBlock Grid.Row="4" Text="Temps du Rendez-Vous" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
+            <TextBlock Grid.Row="4" Text="Heure du Rendez-Vous" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
             <!--<materialDesign:TimePicker SelectedTime="{Binding Path=UpdatedRdv.DateRdv}" Grid.Row="4" Grid.Column="1" materialDesign:TextFieldAssist.Hint="HH:MM" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>-->
             <TextBlock Grid.Row="4" Grid.Column="1"  Text="{Binding Path=Heure, Mode=OneWay, StringFormat='HH:mm'}" VerticalAlignment="Center" FontSize="16"></TextBlock>
         </Grid>

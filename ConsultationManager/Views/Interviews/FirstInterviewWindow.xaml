@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ConsultationManagerClient.Views.Interviews"
         mc:Ignorable="d"
-        Title="Premier Diagnostic" WindowState="Maximized">
+        Title="Premier Interview (Diagnostique)" WindowState="Maximized">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*"/>
@@ -15,12 +15,13 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition  Height="*"/>
+            <RowDefinition  Height="auto"/>
         </Grid.RowDefinitions>
 
         <WrapPanel Orientation="Horizontal">
             <TextBlock Text="Première Consultation pour " FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-            <TextBlock Text="{Binding RdvConsult.NomPatient}" Margin="0 0 10 0" FontSize="22" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-            <TextBlock Text="{Binding RdvConsult.PrenomPatient}"  FontSize="22" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Text="{Binding RdvConsult.Patient.Nom}" Margin="0 0 10 0" FontSize="22" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Text="{Binding RdvConsult.Patient.Prenom}"  FontSize="22" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         </WrapPanel>
 
         <Grid Grid.Row="1" Grid.ColumnSpan="2">
@@ -45,16 +46,16 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="Poids" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
-                <TextBox Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Poids (Kg)"></TextBox>
+                <TextBox Grid.Column="1" Text="{Binding Dossier.Poids}" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Poids (Kg)"></TextBox>
 
                 <TextBlock Grid.Row="1" Text="TA" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="0 5 30 0"></TextBlock>
-                <TextBox Grid.Row="1" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Température (Fr)"></TextBox>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Dossier.TA}" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Température (Fr)"></TextBox>
 
                 <TextBlock Grid.Row="2" Text="Motif de Consultation" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16" Margin="0 23 30 0"></TextBlock>
-                <TextBox Grid.Row="2" Grid.Column="1" FontSize="16" VerticalAlignment="Center" TextWrapping="Wrap" AcceptsReturn="True" MinLines="3" MaxLines="3" Margin="0 20 0 0" VerticalScrollBarVisibility="Auto" materialDesign:TextFieldAssist.Hint="Motif"></TextBox>
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Dossier.Motif}" FontSize="16" VerticalAlignment="Center" TextWrapping="Wrap" AcceptsReturn="True" MinLines="3" MaxLines="3" Margin="0 20 0 0" VerticalScrollBarVisibility="Auto" materialDesign:TextFieldAssist.Hint="Motif"></TextBox>
 
                 <TextBlock Grid.Row="3" Text="Histoire de la Maladie" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16" Margin="0 23 30 0"></TextBlock>
-                <TextBox Grid.Row="3" Grid.Column="1" FontSize="16" VerticalAlignment="Center" TextWrapping="Wrap" AcceptsReturn="True" MinLines="5" MaxLines="5" Margin="0 20 0 0" VerticalScrollBarVisibility="Auto"  materialDesign:TextFieldAssist.Hint="Histoire"></TextBox>
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Dossier.Histoire}" FontSize="16" VerticalAlignment="Center" TextWrapping="Wrap" AcceptsReturn="True" MinLines="5" MaxLines="5" Margin="0 20 0 0" VerticalScrollBarVisibility="Auto"  materialDesign:TextFieldAssist.Hint="Histoire"></TextBox>
 
                 <TextBlock Grid.ColumnSpan="2" Grid.Row="4" Text="Antécédents" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="20" Margin="200 50 0 10"></TextBlock>
 
@@ -62,7 +63,7 @@
                 <Border Grid.Row="5" Grid.Column="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
                              ClipToBounds="True">
                     <Grid>
-                        <ListBox x:Name="AntecedentPersListBox" ItemsSource="{Binding ListAntecedentPersonel}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch">
+                        <ListBox x:Name="AntecedentPersListBox" ItemsSource="{Binding Dossier.AntecedPers}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
@@ -105,7 +106,7 @@
                 <Border Grid.Row="6" Grid.Column="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
                              ClipToBounds="True" Margin="0 5 0 0">
                     <Grid>
-                        <ListBox x:Name="AntecedentFamilListBox" ItemsSource="{Binding ListAntecedentFamilal}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch">
+                        <ListBox x:Name="AntecedentFamilListBox" ItemsSource="{Binding Dossier.AntecedFamil}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
@@ -162,26 +163,26 @@
                 <TextBlock Grid.ColumnSpan="2" Text="Traitements Antérieurs" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="20" Margin="150 0 0 0"></TextBlock>
 
                 <TextBlock Grid.Row="1" Text="1 - Composes Iodes" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16" Margin="0 23 30 0"></TextBlock>
-                <TextBox Grid.Row="1" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Valeur" Margin="0 20 0 0"></TextBox>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Dossier.ComposeIode}" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Valeur" Margin="0 20 0 0"></TextBox>
 
                 <TextBlock Grid.Row="2" Text="2 - TRTS Hormonaux" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16" Margin="0 23 30 0"></TextBlock>
-                <TextBox Grid.Row="2" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Valeur" Margin="0 20 0 0"></TextBox>
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Dossier.TrtsHorm}" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Valeur" Margin="0 20 0 0"></TextBox>
 
                 <TextBlock Grid.Row="3" Text="3 - A . S . T" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16" Margin="0 23 30 0"></TextBlock>
-                <TextBox Grid.Row="3" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Description" Margin="0 20 0 0"></TextBox>
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Dossier.AST}" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Description" Margin="0 20 0 0"></TextBox>
 
                 <TextBlock Grid.Row="4" Text="4 - Chirurgie" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16" Margin="0 23 30 0"></TextBlock>
-                <TextBox Grid.Row="4" Grid.Column="1" FontSize="16" VerticalAlignment="Center" TextWrapping="Wrap" AcceptsReturn="True" MinLines="5" MaxLines="5" Margin="0 20 0 0" VerticalScrollBarVisibility="Auto" materialDesign:TextFieldAssist.Hint="Description"></TextBox>
+                <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Dossier.Chirurgie}" FontSize="16" VerticalAlignment="Center" TextWrapping="Wrap" AcceptsReturn="True" MinLines="5" MaxLines="5" Margin="0 20 0 0" VerticalScrollBarVisibility="Auto" materialDesign:TextFieldAssist.Hint="Description"></TextBox>
 
                 <TextBlock Grid.Row="5" Text="5 - Irathérapie" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16" Margin="0 23 30 0"></TextBlock>
-                <TextBox Grid.Row="5" Grid.Column="1" FontSize="16" VerticalAlignment="Center" TextWrapping="Wrap" AcceptsReturn="True" MinLines="5" MaxLines="5" Margin="0 20 0 0" VerticalScrollBarVisibility="Auto" materialDesign:TextFieldAssist.Hint="Descdription"></TextBox>
+                <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Dossier.Iratherapie}" FontSize="16" VerticalAlignment="Center" TextWrapping="Wrap" AcceptsReturn="True" MinLines="5" MaxLines="5" Margin="0 20 0 0" VerticalScrollBarVisibility="Auto" materialDesign:TextFieldAssist.Hint="Descdription"></TextBox>
 
                 <TextBlock Grid.Row="6" Text="6 - Autres" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16" Margin="0 23 30 0"></TextBlock>
-                <TextBox Grid.Row="6" Grid.Column="1" FontSize="16" VerticalAlignment="Center" TextWrapping="Wrap" AcceptsReturn="True" MinLines="5" MaxLines="5" Margin="0 20 0 0" VerticalScrollBarVisibility="Auto" materialDesign:TextFieldAssist.Hint="Description"></TextBox>
+                <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Dossier.Autre}" FontSize="16" VerticalAlignment="Center" TextWrapping="Wrap" AcceptsReturn="True" MinLines="5" MaxLines="5" Margin="0 20 0 0" VerticalScrollBarVisibility="Auto" materialDesign:TextFieldAssist.Hint="Description"></TextBox>
             </Grid>
 
         </Grid>
 
-        <Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="250" Margin=" 0 0 50 50" FontSize="16">Ajouter</Button>
+        <Button Grid.Row="2" Grid.Column="1" Command="{Binding ShowExamenWindowCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="250" Margin=" 0 0 50 50" FontSize="16">Suivant</Button>
     </Grid>
 </Window>

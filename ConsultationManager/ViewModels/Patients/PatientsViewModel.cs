@@ -9,6 +9,8 @@ using System.ServiceModel.Security;
 using System.Windows.Input;
 using ConsultationManagerClient.Commands;
 using ConsultationManager.Views.Patients;
+using ConsultationManager.Views.DossierMedicals;
+using ConsultationManager.ViewModels.DossierMedicals;
 
 namespace ConsultationManagerClient.ViewModels.Patients
 {
@@ -25,6 +27,8 @@ namespace ConsultationManagerClient.ViewModels.Patients
         private string newTelephone;
 
         private NewPatientRdvWindow dialogNewPatRdv;
+
+        private DossierMedicalWindow dialoDossierMedical;
 
         public PatientsViewModel()
         {
@@ -49,8 +53,12 @@ namespace ConsultationManagerClient.ViewModels.Patients
             AddPatientCommand = new RelayCommand(param => AjouterPatient(param));
 
             OpenDialogRdvCommand = new RelayCommand(param => ShowDialogRdvNewPatient(param));
+
+            OpenDialogMedFolderCommand = new RelayCommand(param => ShowDialogDossierMedical(param));
         }
+
         
+
         #region PatientsViewModel Variables
 
         public ObservableCollection<Patient> ListAllPatient
@@ -144,6 +152,12 @@ namespace ConsultationManagerClient.ViewModels.Patients
             private set;
         }
 
+        public ICommand OpenDialogMedFolderCommand
+        {
+            get;
+            private set;
+        }
+
         #endregion
 
         #region PatientsViewModel Methods
@@ -227,8 +241,7 @@ namespace ConsultationManagerClient.ViewModels.Patients
             NewPatient = new Patient();
             ActualiserLists();
         }
-
-
+        
         private void ShowDialogRdvNewPatient(object param)
         {
             Patient selPat = param as Patient;
@@ -237,6 +250,16 @@ namespace ConsultationManagerClient.ViewModels.Patients
             //newPathologie = new Consultation();
             //AddPathologieCommand = new RelayCommand(param => AjouterPathologie());
             dialogNewPatRdv.ShowDialog();
+        }
+
+        private void ShowDialogDossierMedical(object param)
+        {
+            Patient selPat = param as Patient;
+            dialoDossierMedical = new DossierMedicalWindow();
+            dialoDossierMedical.DataContext = new DossierMedicalViewModel(selPat);
+            //newPathologie = new Consultation();
+            //AddPathologieCommand = new RelayCommand(param => AjouterPathologie());
+            dialoDossierMedical.ShowDialog();
         }
 
         private void ActualiserLists()

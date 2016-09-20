@@ -105,7 +105,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ServiceReferenceConclusion\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServiceReferenceConsultation\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ServiceReferenceDossierMed\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -131,11 +141,13 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Authentication\AuthenticationViewModel.cs" />
+    <Compile Include="ViewModels\DossierMedicals\DossierMedicalViewModel.cs" />
     <Compile Include="ViewModels\Interviews\InterviewViewModel.cs" />
     <Compile Include="ViewModels\Interviews\InterviewConclusionViewModel.cs" />
     <Compile Include="ViewModels\Interviews\FirstInterviewViewModel.cs" />
     <Compile Include="ViewModels\Plannings\PlanningsViewModel.cs" />
-    <Compile Include="ViewModels\Patients\RdvNewPatientViewModel.cs" />
+    <Compile Include="ViewModels\RDVs\NextRdvViewModel.cs" />
+    <Compile Include="ViewModels\RDVs\RdvNewPatientViewModel.cs" />
     <Compile Include="ViewModels\Utilisateurs\UsersViewModel.cs" />
     <Compile Include="ViewModels\Hospitalisations\ListHospitalisationViewModel.cs" />
     <Compile Include="ViewModels\Hospitalisations\NewDemandHospitalisationViewModel.cs" />
@@ -144,6 +156,21 @@
     <Compile Include="ViewModels\RDVs\ListRvdViewModel.cs" />
     <Compile Include="ViewModels\RDVs\NewRdvViewModel.cs" />
     <Compile Include="ViewModels\RDVs\UpdateRdvViewModel.cs" />
+    <Compile Include="Views\DossierMedicals\AllDossiersPage.xaml.cs">
+      <DependentUpon>AllDossiersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DossierMedicals\ConsultationDossiersPage.xaml.cs">
+      <DependentUpon>ConsultationDossiersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DossierMedicals\DossierMedicalWindow.xaml.cs">
+      <DependentUpon>DossierMedicalWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DossierMedicals\MyDossierPage.xaml.cs">
+      <DependentUpon>MyDossierPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Interviews\FirstInterviewExamenWindow.xaml.cs">
+      <DependentUpon>FirstInterviewExamenWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Interviews\InterviewConclusionWindow.xaml.cs">
       <DependentUpon>InterviewConclusionWindow.xaml</DependentUpon>
     </Compile>
@@ -168,13 +195,16 @@
     <Compile Include="Views\Interviews\NewTraitemComplWindow.xaml.cs">
       <DependentUpon>NewTraitemComplWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MenuDossierMedWindow.xaml.cs">
+      <DependentUpon>MenuDossierMedWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MenuPlanningWindow.xaml.cs">
       <DependentUpon>MenuPlanningWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Patients\ListNewPatientsPage.xaml.cs">
       <DependentUpon>ListNewPatientsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Patients\NewPatientRdvWindow.xaml.cs">
+    <Compile Include="Views\RDVs\NewPatientRdvWindow.xaml.cs">
       <DependentUpon>NewPatientRdvWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Plannings\AllPlanningsPage.xaml.cs">
@@ -182,6 +212,9 @@
     </Compile>
     <Compile Include="Views\Plannings\UpdatePlanningPage.xaml.cs">
       <DependentUpon>UpdatePlanningPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RDVs\NextRdvWindow.xaml.cs">
+      <DependentUpon>NextRdvWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Utilisateurs\AllUsersPage.xaml.cs">
       <DependentUpon>AllUsersPage.xaml</DependentUpon>
@@ -279,6 +312,26 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\DossierMedicals\AllDossiersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DossierMedicals\ConsultationDossiersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DossierMedicals\DossierMedicalWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DossierMedicals\MyDossierPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Interviews\FirstInterviewExamenWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Interviews\InterviewConclusionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -311,6 +364,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MenuDossierMedWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MenuPlanningWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -319,7 +376,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Patients\NewPatientRdvWindow.xaml">
+    <Page Include="Views\RDVs\NewPatientRdvWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -328,6 +385,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Plannings\UpdatePlanningPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RDVs\NextRdvWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -464,12 +525,15 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ConsultationManagerServer.Models.Conclusion.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Consultation.datasource" />
+    <None Include="Properties\DataSources\ConsultationManagerServer.Models.DossierMed.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Pathologie.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Patient.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Planning.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.RDV.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.ConsultationMedecinsPlanning.datasource" />
+    <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.DossierMedDetail.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.ServicePathologies.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Service.datasource" />
@@ -489,6 +553,19 @@
     <None Include="Service References\ServiceReferenceAuthentication\AuthenticationService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ServiceReferenceConclusion\ConclusionService.wsdl" />
+    <None Include="Service References\ServiceReferenceConclusion\ConclusionService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceConclusion\ConclusionService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceConclusion\ConclusionService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceConclusion\ConclusionService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ServiceReferenceConsultation\ConsultationService.wsdl" />
     <None Include="Service References\ServiceReferenceConsultation\ConsultationService.xsd">
       <SubType>Designer</SubType>
@@ -503,6 +580,22 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReferenceConsultation\ConsultationService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceDossierMed\DossierMedService.wsdl" />
+    <None Include="Service References\ServiceReferenceDossierMed\DossierMedService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceDossierMed\DossierMedService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceDossierMed\DossierMedService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceDossierMed\DossierMedService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceDossierMed\DossierMedService4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReferencePatient\PatientService.wsdl" />
@@ -631,7 +724,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReferenceAuthentication\" />
+    <WCFMetadataStorage Include="Service References\ServiceReferenceConclusion\" />
     <WCFMetadataStorage Include="Service References\ServiceReferenceConsultation\" />
+    <WCFMetadataStorage Include="Service References\ServiceReferenceDossierMed\" />
     <WCFMetadataStorage Include="Service References\ServiceReferencePatient\" />
     <WCFMetadataStorage Include="Service References\ServiceReferencePlanning\" />
     <WCFMetadataStorage Include="Service References\ServiceReferenceRdv\" />
@@ -693,6 +788,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceReferencePlanning\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceDossierMed\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceDossierMed\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceDossierMed\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceConclusion\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceConclusion\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceConclusion\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

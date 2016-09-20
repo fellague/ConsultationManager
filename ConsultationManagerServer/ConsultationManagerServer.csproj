@@ -85,7 +85,9 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Services\AuthenticationService.svc" />
+    <Content Include="Services\ConclusionService.svc" />
     <Content Include="Services\ConsultationService.svc" />
+    <Content Include="Services\DossierMedService.svc" />
     <Content Include="Services\PatientService.svc" />
     <Content Include="Services\PlanningService.svc" />
     <Content Include="Services\RdvService.svc" />
@@ -95,13 +97,30 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\DossierMedicale\DossierMed.cs" />
+    <Compile Include="Models\Conclusion.cs" />
+    <Compile Include="Models\Hospitalisations\FicheGlycemique.cs" />
+    <Compile Include="Models\Hospitalisations\FichePoids.cs" />
+    <Compile Include="Models\Hospitalisations\FicheTA.cs" />
+    <Compile Include="Models\Hospitalisations\FicheTemperature.cs" />
+    <Compile Include="Models\Hospitalisations\Mesure.cs" />
     <Compile Include="Models\Planning.cs" />
     <Compile Include="Models\SerializedModels\ConsultationMedecinsPlanning.cs" />
+    <Compile Include="Models\SerializedModels\DossierMedDetail.cs" />
+    <Compile Include="Models\SerializedModels\HospitalisationDetail.cs" />
     <Compile Include="Models\SerializedModels\RdvPatientMedecin.cs" />
     <Compile Include="Services\AuthenticationService.svc.cs">
       <DependentUpon>AuthenticationService.svc</DependentUpon>
     </Compile>
+    <Compile Include="Services\ConclusionService.svc.cs">
+      <DependentUpon>ConclusionService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\DossierMedService.svc.cs">
+      <DependentUpon>DossierMedService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Services\IAuthenticationService.cs" />
+    <Compile Include="Services\IConclusionService.cs" />
+    <Compile Include="Services\IDossierMedService.cs" />
     <Compile Include="Services\IPatientService.cs" />
     <Compile Include="Services\IPlanningService.cs" />
     <Compile Include="Services\IRdvService.cs" />
@@ -122,23 +141,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AntecedentFamilial.cs" />
-    <Compile Include="Models\AntecedentPersonel.cs" />
-    <Compile Include="Models\CompteRendu.cs" />
+    <Compile Include="Models\DossierMedicale\AntecedentFamilial.cs" />
+    <Compile Include="Models\DossierMedicale\AntecedentPersonel.cs" />
+    <Compile Include="Models\Conclusions\CompteRendu.cs" />
     <Compile Include="Models\Interview.cs" />
     <Compile Include="Models\Utilisateur.cs" />
-    <Compile Include="Models\Hospitalisation.cs" />
-    <Compile Include="Models\LettreOrientation.cs" />
-    <Compile Include="Models\Medicament.cs" />
-    <Compile Include="Models\Ordonnance.cs" />
+    <Compile Include="Models\Hospitalisations\Hospitalisation.cs" />
+    <Compile Include="Models\Conclusions\LettreOrientation.cs" />
+    <Compile Include="Models\Conclusions\Medicament.cs" />
+    <Compile Include="Models\Conclusions\Ordonnance.cs" />
     <Compile Include="Models\Consultation.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\RDV.cs" />
-    <Compile Include="Models\RemarqueMedecin.cs" />
+    <Compile Include="Models\DossierMedicale\RemarqueMedecin.cs" />
     <Compile Include="Models\SerializedModels\ServicePathologies.cs" />
     <Compile Include="Models\Service.cs" />
-    <Compile Include="Models\Traitement.cs" />
-    <Compile Include="Models\TraitementsComplemtaires.cs" />
+    <Compile Include="Models\Conclusions\Traitement.cs" />
+    <Compile Include="Models\Conclusions\TraitementsComplemtaires.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IConsultationService.cs" />
     <Compile Include="Services\IUtilisateurService.cs" />
