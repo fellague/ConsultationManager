@@ -18,4 +18,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DossierMedDetail" nillable="true" type="tns:DossierMedDetail" />
+  <xs:complexType name="RdvPatientMedecin">
+    <xs:sequence>
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="Medecin" nillable="true" type="q7:Utilisateur" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="Patient" nillable="true" type="q8:Patient" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="Rdv" nillable="true" type="q9:RDV" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RdvPatientMedecin" nillable="true" type="tns:RdvPatientMedecin" />
 </xs:schema>

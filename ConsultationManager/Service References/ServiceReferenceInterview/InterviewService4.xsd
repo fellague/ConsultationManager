@@ -13,7 +13,7 @@
       <xs:element minOccurs="0" name="IdMedecin" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IdPatient" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IdRdv" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Numero" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Numero" type="xs:int" />
       <xs:element minOccurs="0" name="Poids" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RemarquesMedecin" nillable="true" type="tns:ArrayOfRemarqueMedecin" />
       <xs:element minOccurs="0" name="TA" nillable="true" type="xs:string" />
@@ -61,6 +61,7 @@
       <xs:element minOccurs="0" name="IdPatient" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IdRdv" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IdSource" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Numero" type="xs:int" />
       <xs:element minOccurs="0" name="Ordonnance" nillable="true" type="tns:Ordonnance" />
       <xs:element minOccurs="0" name="TraitementsCompl" nillable="true" type="tns:TraitementsComplemtaires" />
     </xs:sequence>

@@ -27,6 +27,9 @@ namespace ConsultationManagerServer.Services
         DossierMedDetail GetDossierMed(string idPatient);
 
         [OperationContract]
+        int GetDossierMedNum(RdvPatientMedecin patient);
+
+        [OperationContract]
         DossierMed AddDossierMed(DossierMed dossierMed);
 
         [OperationContract]

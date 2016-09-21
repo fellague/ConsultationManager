@@ -47,7 +47,7 @@
 
                                             <WrapPanel Margin="5, 0, 0, 0">
                                                 <TextBlock Text="Consultation numéro " FontSize="16" Margin="0, 0, 4, 0"></TextBlock>
-                                                <TextBlock Text="{Binding Path=Num}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="DemiBold"></TextBlock>
+                                                <TextBlock Text="{Binding Path=Numero}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="DemiBold"></TextBlock>
                                             </WrapPanel>
                                             <Grid Grid.Row="1" Margin="5, 0, 0, 0">
                                                 <Grid.ColumnDefinitions>

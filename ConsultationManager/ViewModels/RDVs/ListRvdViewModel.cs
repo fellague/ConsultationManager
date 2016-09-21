@@ -28,7 +28,7 @@ namespace ConsultationManagerClient.ViewModels.RDVs
         //private RDV selectedRDV = null;
         private UpdateRdvWindow dialogUpdate;
         private InterviewWindow dialogConsultation;
-        private FirstInterviewWindow dialogFirstConsultation;
+        private FirstInterviewWindow dialogFirstInterview;
         private FirstInterviewExamenWindow dialogFirstRdvExamenView;
         private InterviewConclusionWindow dialogConsltConclusion;
         private NextRdvWindow nextRdvWindow;
@@ -73,6 +73,11 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             {
                 return listAllMyRvd;
             }
+            set
+            {
+                listAllMyRvd = value;
+                OnPropertyChanged("ListAllMyRvd");
+            }
         }
         public ObservableCollection<RdvPatientMedecin> ListAllMyTodayRvd
         {
@@ -80,12 +85,22 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             {
                 return listAllMyTodayRvd;
             }
+            set
+            {
+                listAllMyTodayRvd = value;
+                OnPropertyChanged("ListAllMyTodayRvd");
+            }
         }
         public ObservableCollection<RdvPatientMedecin> ListAllFirstRvd
         {
             get
             {
                 return listAllFirstRvd;
+            }
+            set
+            {
+                listAllFirstRvd = value;
+                OnPropertyChanged("ListAllFirstRvd");
             }
         }
 
@@ -103,11 +118,11 @@ namespace ConsultationManagerClient.ViewModels.RDVs
                 return dialogConsultation;
             }
         }
-        public FirstInterviewWindow DialogFirstRdvView
+        public FirstInterviewWindow DialogFirstInterviewView
         {
             get
             {
-                return dialogFirstConsultation;
+                return dialogFirstInterview;
             }
         }
         public FirstInterviewExamenWindow DialogFirstRdvExamenView
@@ -218,22 +233,22 @@ namespace ConsultationManagerClient.ViewModels.RDVs
         {
             var rdv = selectedRdv as RdvPatientMedecin;
             Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.Rdv.DateRdv);
-            dialogFirstConsultation = new FirstInterviewWindow();
-            dialogFirstConsultation.DataContext = new FirstInterviewViewModel(rdv, this);
-            dialogFirstConsultation.ShowDialog();
+            dialogFirstInterview = new FirstInterviewWindow();
+            dialogFirstInterview.DataContext = new FirstInterviewViewModel(rdv, this);
+            dialogFirstInterview.ShowDialog();
         }
 
-        public void ShowDialogConsultConclusion(RdvPatientMedecin selectedRdv, Interview consult)
-        {
-            RdvPatientMedecin rdv = selectedRdv;
-            //Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.DateRdv);
-            dialogConsltConclusion = new InterviewConclusionWindow();
-            dialogConsltConclusion.DataContext = new InterviewConclusionViewModel(rdv, consult, this);
+        //public void ShowDialogConsultConclusion(RdvPatientMedecin selectedRdv, Interview consult)
+        //{
+        //    RdvPatientMedecin rdv = selectedRdv;
+        //    //Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.DateRdv);
+        //    dialogConsltConclusion = new InterviewConclusionWindow();
+        //    dialogConsltConclusion.DataContext = new InterviewConclusionViewModel(rdv, consult, this);
 
-            //dialogConsultation.Hide();
-            dialogConsultation.Close();
-            dialogConsltConclusion.ShowDialog();
-        }
+        //    //dialogConsultation.Hide();
+        //    dialogConsultation.Close();////////////////////////////////////////+++++++++++++++++++++++++
+        //    dialogConsltConclusion.ShowDialog();
+        //}
         
         public void CloseDialogUpdateRvd(RdvPatientMedecin updRdv)
         {
@@ -314,6 +329,13 @@ namespace ConsultationManagerClient.ViewModels.RDVs
                 }
             }
             return allMyList;
+        }
+
+        public void ActualiserLists()
+        {
+            ListAllMyRvd = CreateListAllMyRdv();
+            ListAllMyTodayRvd = CreateListAllMyTodayRdv();
+            ListAllFirstRvd = CreateListAllFirstRdv();
         }
 
         #endregion

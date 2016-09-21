@@ -9,6 +9,7 @@ using ConsultationManagerServer.Models.SerializedModels;
 using MongoDB.Driver.Builders;
 using ConsultationManagerServer.Models;
 using MongoDB.Bson;
+using System.Windows;
 
 namespace ConsultationManagerServer.Services
 {
@@ -151,6 +152,18 @@ namespace ConsultationManagerServer.Services
                 .Set("IdChirurgies", new BsonArray(dossierMed.IdChirurgies));
             var result = db.DossierMeds.FindAndModify(query, null, update);
             return dossierMed;
+        }
+
+        public int GetDossierMedNum(RdvPatientMedecin patient)
+        {
+            DataBaseContext db = new DataBaseContext();
+            int num = 1;
+            var dossier = db.DossierMeds.FindAll().Where(p => p.ServiceId == patient.Patient.ServiceId).ToList().Last();
+
+            MessageBox.Show(dossier.Identifiant.Substring(4, 7));
+            num = int.Parse(dossier.Identifiant.Substring(4, 7));
+
+            return num;
         }
     }
 }

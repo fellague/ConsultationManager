@@ -15,7 +15,7 @@ namespace ConsultationManagerClient.ViewModels.Interviews
 {
     internal class InterviewViewModel
     {
-        private InterviewServiceClient dsc = new InterviewServiceClient();
+        private InterviewServiceClient isc = new InterviewServiceClient();
 
         private RdvPatientMedecin rdvConsult;
         private ListRvdViewModel rdvsViewModel;
@@ -31,9 +31,9 @@ namespace ConsultationManagerClient.ViewModels.Interviews
 
         public InterviewViewModel(RdvPatientMedecin rdv, ListRvdViewModel rdvVM)
         {
-            dsc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
-            dsc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
-            dsc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
+            isc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
+            isc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
+            isc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
                                 X509CertificateValidationMode.None;
 
             this.rdvConsult = rdv;
@@ -41,6 +41,7 @@ namespace ConsultationManagerClient.ViewModels.Interviews
             NewAntecedPersDialogCommand = new RelayCommand(param => ShowDialogNewAntecedPers());
             NewRemarqMedDialogCommand = new RelayCommand(param => ShowDialogNewRemarqMed());
             interview = new Interview();
+            interview.Numero = isc.GetInterviewNumber(rdvConsult);
             RemoveAntecedPersCommand = new RelayCommand(param => DeleteAntecedPers(param));
             RemoveRemarqMedCommand = new RelayCommand(param => DeleteRemarqMed(param));
             
@@ -206,14 +207,16 @@ namespace ConsultationManagerClient.ViewModels.Interviews
         public void ShowDialogConsultConclusion()
         {
             //rdvsViewModel.ShowDialogConsultConclusion(rdvConsult, interview);
+            
             Interview.IdPatient = rdvConsult.Patient.Id;
             Interview.IdMedecin = rdvConsult.Medecin.Id;
             Interview.IdRdv = rdvConsult.Rdv.Id;
             Interview.CreeDans = DateTime.Now;
             Interview.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
 
-            interview = dsc.AddInterview(Interview);
+            interview = isc.AddInterview(Interview);
 
+            rdvsViewModel.DialogInterviewView.Close();
             rdvsViewModel.DialogInterwiewConclusionView = new InterviewConclusionWindow();
             rdvsViewModel.DialogInterwiewConclusionView.DataContext = new InterviewConclusionViewModel(rdvConsult, interview, rdvsViewModel);
             rdvsViewModel.DialogInterwiewConclusionView.ShowDialog();

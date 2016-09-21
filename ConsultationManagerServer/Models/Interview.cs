@@ -11,7 +11,7 @@ namespace ConsultationManagerServer.Models
     [DataContract]
     public class Interview : INotifyPropertyChanged
     {
-        private string numero;
+        private int numero;
 
         private ObservableCollection<AntecedentPersonel> commentsPatient;
         private ObservableCollection<RemarqueMedecin> remarquesMedecin;
@@ -37,7 +37,7 @@ namespace ConsultationManagerServer.Models
             this.remarquesMedecin = new ObservableCollection<RemarqueMedecin>();
             this.poids = "";
             this.ta = "";
-            this.numero = "";
+            this.numero = 0;
             this.temperature = "";
             this.taille = "";
 
@@ -64,7 +64,7 @@ namespace ConsultationManagerServer.Models
         }
 
         [DataMember]
-        public string Numero
+        public int Numero
         {
             get
             {

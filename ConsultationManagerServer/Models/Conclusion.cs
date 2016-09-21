@@ -13,6 +13,7 @@ namespace ConsultationManagerServer.Models
     [DataContract]
     public class Conclusion : INotifyPropertyChanged
     {
+        private int numero;
         private string idPatient;
         private string idConsultation;
         private string idRdv;
@@ -28,6 +29,7 @@ namespace ConsultationManagerServer.Models
 
         public Conclusion()
         {
+            numero = 0;
             idPatient = "";
             idConsultation = "";
             idRdv = "";
@@ -50,6 +52,20 @@ namespace ConsultationManagerServer.Models
         {
             get { return _id.ToString(); }
             set { _id = ObjectId.Parse(value); }
+        }
+
+        [DataMember]
+        public int Numero
+        {
+            get
+            {
+                return numero;
+            }
+            set
+            {
+                numero = value;
+                OnPropertyChanged("Numero");
+            }
         }
 
         [DataMember]

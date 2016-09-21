@@ -46,6 +46,16 @@ namespace ConsultationManagerServer.Services
             return interviewDetail;
         }
 
+        public int GetInterviewNumber(RdvPatientMedecin rdv)
+        {
+            DataBaseContext db = new DataBaseContext();
+            int num = 1;
+
+            num = db.Interviews.FindAll().Where(p => p.IdPatient == rdv.Patient.Id).ToList().Count();
+
+            return num+2;
+        }
+
         public List<InterviewDetail> GetInterviews(Patient patient)
         {
             DataBaseContext db = new DataBaseContext();

@@ -3,10 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 
 namespace ConsultationManagerServer.Models.SerializedModels
 {
+    [DataContract]
     public class HospitalisationDetail
     {
         public HospitalisationDetail()
@@ -24,43 +26,51 @@ namespace ConsultationManagerServer.Models.SerializedModels
 
         }
 
+        [DataMember]
         public Hospitalisation Hospitalisation
         {
             get;
             set;
         }
+        [DataMember]
         public Patient Patient
         {
             get;
             set;
         }
+        [DataMember]
         public Utilisateur Medecin
         {
             get;
             set;
         }
 
+        [DataMember]
         public Conclusion Conclusion
         {
             get;
             set;
         }
 
+        [DataMember]
         public ObservableCollection<Mesure> FicheTA
         {
             get;
             set;
         }
+        [DataMember]
         public ObservableCollection<Mesure> FichePoids
         {
             get;
             set;
         }
+        [DataMember]
         public ObservableCollection<Mesure> FicheTemperature
         {
             get;
             set;
         }
+        [DataMember]
         public ObservableCollection<Mesure> FicheGlycemique
         {
             get;

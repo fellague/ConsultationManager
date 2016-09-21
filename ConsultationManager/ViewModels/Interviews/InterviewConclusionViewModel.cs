@@ -22,7 +22,7 @@ namespace ConsultationManagerClient.ViewModels.Interviews
 
         private RdvPatientMedecin rdvConsult;
         private ListRvdViewModel rdvsViewModel;
-        private Interview consultation;
+        private Interview interview;
 
         private Conclusion intervConclus;
 
@@ -46,7 +46,7 @@ namespace ConsultationManagerClient.ViewModels.Interviews
         private ObservableCollection<int> listNbFois;
         
 
-        public InterviewConclusionViewModel(RdvPatientMedecin rdv, Interview consult, ListRvdViewModel rdvVM)
+        public InterviewConclusionViewModel(RdvPatientMedecin rdv, Interview interv, ListRvdViewModel rdvVM)
         {
             csc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
             csc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
@@ -54,10 +54,17 @@ namespace ConsultationManagerClient.ViewModels.Interviews
                                 X509CertificateValidationMode.None;
 
             this.rdvConsult = rdv;
-            this.consultation = consult;
+            if(interv != null)
+                interview = interv;
+            else
+            {
+                interview = new Interview();
+                interview.Numero = 1;
+            }
             rdvsViewModel = rdvVM;
 
             intervConclus = new Conclusion();
+            intervConclus.Numero = interview.Numero;
 
             NewMedicamentDialogCommand = new RelayCommand(param => ShowDialogNewMedicament());
             //ordonnance = new Ordonnance();
@@ -88,6 +95,14 @@ namespace ConsultationManagerClient.ViewModels.Interviews
             get
             {
                 return rdvConsult;
+            }
+        }
+
+        public Interview Interview
+        {
+            get
+            {
+                return interview;
             }
         }
 
@@ -327,7 +342,7 @@ namespace ConsultationManagerClient.ViewModels.Interviews
             }
             else
             {
-                IntervConclus.IdSource = consultation.Id;
+                IntervConclus.IdSource = interview.Id;
             }
 
             intervConclus.IdPatient = rdvConsult.Patient.Id;

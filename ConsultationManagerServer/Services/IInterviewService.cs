@@ -20,6 +20,9 @@ namespace ConsultationManagerServer.Services
         InterviewDetail GetInterview(string idRdv);
 
         [OperationContract]
+        int GetInterviewNumber(RdvPatientMedecin rdv);
+
+        [OperationContract]
         List<InterviewDetail> GetInterviews(Patient patient);
 
         [OperationContract]

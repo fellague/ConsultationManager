@@ -33,6 +33,12 @@
   <wsdl:message name="IDossierMedService_GetDossierMed_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDossierMedResponse" />
   </wsdl:message>
+  <wsdl:message name="IDossierMedService_GetDossierMedNum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDossierMedNum" />
+  </wsdl:message>
+  <wsdl:message name="IDossierMedService_GetDossierMedNum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDossierMedNumResponse" />
+  </wsdl:message>
   <wsdl:message name="IDossierMedService_AddDossierMed_InputMessage">
     <wsdl:part name="parameters" element="tns:AddDossierMed" />
   </wsdl:message>
@@ -67,6 +73,10 @@
     <wsdl:operation name="GetDossierMed">
       <wsdl:input wsaw:Action="http://tempuri.org/IDossierMedService/GetDossierMed" message="tns:IDossierMedService_GetDossierMed_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDossierMedService/GetDossierMedResponse" message="tns:IDossierMedService_GetDossierMed_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDossierMedNum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDossierMedService/GetDossierMedNum" message="tns:IDossierMedService_GetDossierMedNum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDossierMedService/GetDossierMedNumResponse" message="tns:IDossierMedService_GetDossierMedNum_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddDossierMed">
       <wsdl:input wsaw:Action="http://tempuri.org/IDossierMedService/AddDossierMed" message="tns:IDossierMedService_AddDossierMed_InputMessage" />
@@ -112,6 +122,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetDossierMed">
       <soap:operation soapAction="http://tempuri.org/IDossierMedService/GetDossierMed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDossierMedNum">
+      <soap:operation soapAction="http://tempuri.org/IDossierMedService/GetDossierMedNum" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

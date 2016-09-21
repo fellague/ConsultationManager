@@ -39,6 +39,12 @@ namespace ConsultationManager.ServiceReferenceDossierMed {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDossierMedService/GetDossierMed", ReplyAction="http://tempuri.org/IDossierMedService/GetDossierMedResponse")]
         System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.DossierMedDetail> GetDossierMedAsync(string idPatient);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDossierMedService/GetDossierMedNum", ReplyAction="http://tempuri.org/IDossierMedService/GetDossierMedNumResponse")]
+        int GetDossierMedNum(ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin patient);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDossierMedService/GetDossierMedNum", ReplyAction="http://tempuri.org/IDossierMedService/GetDossierMedNumResponse")]
+        System.Threading.Tasks.Task<int> GetDossierMedNumAsync(ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin patient);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDossierMedService/AddDossierMed", ReplyAction="http://tempuri.org/IDossierMedService/AddDossierMedResponse")]
         ConsultationManagerServer.Models.DossierMed AddDossierMed(ConsultationManagerServer.Models.DossierMed dossierMed);
         
@@ -115,6 +121,14 @@ namespace ConsultationManager.ServiceReferenceDossierMed {
         
         public System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.DossierMedDetail> GetDossierMedAsync(string idPatient) {
             return base.Channel.GetDossierMedAsync(idPatient);
+        }
+        
+        public int GetDossierMedNum(ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin patient) {
+            return base.Channel.GetDossierMedNum(patient);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetDossierMedNumAsync(ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin patient) {
+            return base.Channel.GetDossierMedNumAsync(patient);
         }
         
         public ConsultationManagerServer.Models.DossierMed AddDossierMed(ConsultationManagerServer.Models.DossierMed dossierMed) {

@@ -21,7 +21,7 @@
 
         <WrapPanel Orientation="Horizontal">
             <TextBlock Text="Consultation  Numéro " FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-            <TextBlock Text="3" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Text="{Binding Interview.Numero}" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             <TextBlock Text=" pour  " FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             <TextBlock Text="{Binding RdvConsult.Patient.Nom}" Margin="0 0 10 0" FontSize="22" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             <TextBlock Text="{Binding RdvConsult.Patient.Prenom}"  FontSize="22" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>

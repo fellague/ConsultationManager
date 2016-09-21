@@ -24,7 +24,7 @@
         
         <WrapPanel Orientation="Horizontal" Grid.ColumnSpan="2">
             <TextBlock Text="Cloture de la Consultation  Numéro " FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-            <TextBlock Text="3" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Text="{Binding Interview.Numero}" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             <TextBlock Text=" pour  " FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             <TextBlock Text="{Binding RdvConsult.NomPatient}" Margin="0 0 10 0" FontSize="22" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             <TextBlock Text="{Binding RdvConsult.PrenomPatient}"  FontSize="22" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>

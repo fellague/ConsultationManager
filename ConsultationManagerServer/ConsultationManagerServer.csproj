@@ -101,10 +101,6 @@
     <Compile Include="Models\DossierMedicale\Bilan.cs" />
     <Compile Include="Models\DossierMedicale\DossierMed.cs" />
     <Compile Include="Models\Conclusion.cs" />
-    <Compile Include="Models\Hospitalisations\FicheGlycemique.cs" />
-    <Compile Include="Models\Hospitalisations\FichePoids.cs" />
-    <Compile Include="Models\Hospitalisations\FicheTA.cs" />
-    <Compile Include="Models\Hospitalisations\FicheTemperature.cs" />
     <Compile Include="Models\Hospitalisations\Mesure.cs" />
     <Compile Include="Models\Planning.cs" />
     <Compile Include="Models\SerializedModels\ConsultationMedecinsPlanning.cs" />

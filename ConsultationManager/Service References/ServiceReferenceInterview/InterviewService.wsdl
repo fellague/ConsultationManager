@@ -22,6 +22,12 @@
   <wsdl:message name="IInterviewService_GetInterview_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetInterviewResponse" />
   </wsdl:message>
+  <wsdl:message name="IInterviewService_GetInterviewNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInterviewNumber" />
+  </wsdl:message>
+  <wsdl:message name="IInterviewService_GetInterviewNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInterviewNumberResponse" />
+  </wsdl:message>
   <wsdl:message name="IInterviewService_GetInterviews_InputMessage">
     <wsdl:part name="parameters" element="tns:GetInterviews" />
   </wsdl:message>
@@ -49,6 +55,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IInterviewService/GetInterview" message="tns:IInterviewService_GetInterview_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IInterviewService/GetInterviewResponse" message="tns:IInterviewService_GetInterview_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetInterviewNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterviewService/GetInterviewNumber" message="tns:IInterviewService_GetInterviewNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterviewService/GetInterviewNumberResponse" message="tns:IInterviewService_GetInterviewNumber_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetInterviews">
       <wsdl:input wsaw:Action="http://tempuri.org/IInterviewService/GetInterviews" message="tns:IInterviewService_GetInterviews_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IInterviewService/GetInterviewsResponse" message="tns:IInterviewService_GetInterviews_OutputMessage" />
@@ -75,6 +85,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetInterview">
       <soap:operation soapAction="http://tempuri.org/IInterviewService/GetInterview" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInterviewNumber">
+      <soap:operation soapAction="http://tempuri.org/IInterviewService/GetInterviewNumber" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

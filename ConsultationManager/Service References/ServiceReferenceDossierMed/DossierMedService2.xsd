@@ -15,7 +15,10 @@
       <xs:element minOccurs="0" name="CreePar" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IdConsultation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdPatient" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdRdv" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IdSource" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Numero" type="xs:int" />
       <xs:element minOccurs="0" name="Ordonnance" nillable="true" type="tns:Ordonnance" />
       <xs:element minOccurs="0" name="TraitementsCompl" nillable="true" type="tns:TraitementsComplemtaires" />
     </xs:sequence>
@@ -214,4 +217,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Patient" nillable="true" type="tns:Patient" />
+  <xs:complexType name="RDV">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreeDans" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreePar" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateRdv" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DejaFait" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MedecinRespId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NouvPat" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PathologieId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Rang" type="xs:int" />
+      <xs:element minOccurs="0" name="ServiceId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RDV" nillable="true" type="tns:RDV" />
 </xs:schema>
