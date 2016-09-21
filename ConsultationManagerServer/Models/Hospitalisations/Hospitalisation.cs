@@ -20,10 +20,14 @@ namespace ConsultationManagerServer.Models.Hospitalisations
         private DateTime dateFinPrevu;
         private DateTime dateFinReel;
 
-        private ObservableCollection<string> ficheTA;
-        private ObservableCollection<string> fichePoids;
-        private ObservableCollection<string> ficheTemperature;
-        private ObservableCollection<string> ficheGlycemique;
+        private ObservableCollection<string> idSalleChanges;
+        private ObservableCollection<string> idInterventions;
+        private ObservableCollection<string> idGardesMalade;
+
+        private ObservableCollection<string> idMesuresFicheTA;
+        private ObservableCollection<string> idMesuresFichePoids;
+        private ObservableCollection<string> idMesuresFicheTemperature;
+        private ObservableCollection<string> idMesuresFicheGlycemique;
 
         private DateTime creeDans;
         private string creePar;
@@ -40,10 +44,14 @@ namespace ConsultationManagerServer.Models.Hospitalisations
             dateFinPrevu = new DateTime();
             dateFinReel = new DateTime();
 
-            ficheTA = new ObservableCollection<string>();
-            fichePoids = new ObservableCollection<string>();
-            ficheTemperature = new ObservableCollection<string>();
-            ficheGlycemique = new ObservableCollection<string>();
+            idSalleChanges = new ObservableCollection<string>();
+            idInterventions = new ObservableCollection<string>();
+            idGardesMalade = new ObservableCollection<string>();
+
+            idMesuresFicheTA = new ObservableCollection<string>();
+            idMesuresFichePoids = new ObservableCollection<string>();
+            idMesuresFicheTemperature = new ObservableCollection<string>();
+            idMesuresFicheGlycemique = new ObservableCollection<string>();
 
             creeDans = new DateTime();
             creePar = "";
@@ -172,54 +180,94 @@ namespace ConsultationManagerServer.Models.Hospitalisations
         }
 
         [DataMember]
-        public ObservableCollection<string> FicheTA
+        public ObservableCollection<string> IdSallesChange
         {
             get
             {
-                return ficheTA;
+                return idSalleChanges;
             }
             set
             {
-                ficheTA = value;
+                idSalleChanges = value;
+                OnPropertyChanged("SalleChanges");
+            }
+        }
+        [DataMember]
+        public ObservableCollection<string> IdInterventions
+        {
+            get
+            {
+                return idInterventions;
+            }
+            set
+            {
+                idInterventions = value;
+                OnPropertyChanged("Intervention");
+            }
+        }
+        [DataMember]
+        public ObservableCollection<string> IdGardesMalade
+        {
+            get
+            {
+                return idGardesMalade;
+            }
+            set
+            {
+                idGardesMalade = value;
+                OnPropertyChanged("IdGardesMalade");
+            }
+        }
+
+        [DataMember]
+        public ObservableCollection<string> IdMesuresFicheTA
+        {
+            get
+            {
+                return idMesuresFicheTA;
+            }
+            set
+            {
+                idMesuresFicheTA = value;
                 OnPropertyChanged("FicheTA");
             }
         }
         [DataMember]
-        public ObservableCollection<string> FichePoids
+        public ObservableCollection<string> IdMesuresFichePoids
         {
             get
             {
-                return fichePoids;
+                return idMesuresFichePoids;
             }
             set
             {
-                fichePoids = value;
+                idMesuresFichePoids = value;
                 OnPropertyChanged("FichePoids");
             }
         }
         [DataMember]
-        public ObservableCollection<string> FicheTemperature
+        public ObservableCollection<string> IdMesuresFicheTemperature
         {
             get
             {
-                return ficheTemperature;
+                return idMesuresFicheTemperature;
             }
             set
             {
-                ficheTemperature = value;
+                idMesuresFicheTemperature = value;
                 OnPropertyChanged("FicheTemperature");
             }
         }
         [DataMember]
-        public ObservableCollection<string> FicheGlycemique
+        public ObservableCollection<string> IdMesuresFicheGlycemique
         {
             get
             {
-                return ficheGlycemique;
+                return idMesuresFicheGlycemique;
             }
             set
             {
-                ficheGlycemique = value;
+                idMesuresFicheGlycemique = value;
                 OnPropertyChanged("FicheGlycemique");
             }
         }

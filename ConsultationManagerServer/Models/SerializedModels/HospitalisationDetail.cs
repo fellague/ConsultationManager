@@ -24,6 +24,9 @@ namespace ConsultationManagerServer.Models.SerializedModels
             FicheTemperature = new ObservableCollection<Mesure>();
             FicheGlycemique = new ObservableCollection<Mesure>();
 
+            SallesChange = new ObservableCollection<Salle>();
+            Inetrventions = new ObservableCollection<Intervention>();
+            GardesMalade = new ObservableCollection<GardeMalade>();
         }
 
         [DataMember]
@@ -72,6 +75,25 @@ namespace ConsultationManagerServer.Models.SerializedModels
         }
         [DataMember]
         public ObservableCollection<Mesure> FicheGlycemique
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public ObservableCollection<Salle> SallesChange
+        {
+            get;
+            set;
+        }
+        [DataMember]
+        public ObservableCollection<Intervention> Inetrventions
+        {
+            get;
+            set;
+        }
+        [DataMember]
+        public ObservableCollection<GardeMalade> GardesMalade
         {
             get;
             set;

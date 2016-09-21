@@ -2,6 +2,7 @@
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -10,26 +11,32 @@ using System.Web;
 namespace ConsultationManagerServer.Models.Hospitalisations
 {
     [DataContract]
-    public class Mesure : INotifyPropertyChanged
+    public class GardeMalade : INotifyPropertyChanged
     {
-        private string idHospitalisation;
+        private string nom;
+        private string prenom;
+        private DateTime dateNaiss;
+        private string numeroCarte;
+        private ObservableCollection<string> telephones;
 
-        private DateTime date;
-        private string valeur;
+        private string idHospitalisation;
 
         private DateTime creeDans;
         private string creePar;
 
-        public Mesure()
+        public GardeMalade()
         {
+            nom = "";
+            prenom = "";
+            dateNaiss = new DateTime();
             idHospitalisation = "";
-
-            date = new DateTime();
-            valeur = "";
+            numeroCarte = "";
+            telephones = new ObservableCollection<string>();
 
             creeDans = new DateTime();
             creePar = "";
         }
+
         [BsonId]
         public ObjectId _id { get; set; }
 
@@ -38,6 +45,48 @@ namespace ConsultationManagerServer.Models.Hospitalisations
         {
             get { return _id.ToString(); }
             set { _id = ObjectId.Parse(value); }
+        }
+
+        [DataMember]
+        public string Nom
+        {
+            get
+            {
+                return nom;
+            }
+            set
+            {
+                nom = value;
+                OnPropertyChanged("Nom");
+            }
+        }
+
+        [DataMember]
+        public string Prenom
+        {
+            get
+            {
+                return prenom;
+            }
+            set
+            {
+                prenom = value;
+                OnPropertyChanged("Prenom");
+            }
+        }
+
+        [DataMember]
+        public DateTime DateNaiss
+        {
+            get
+            {
+                return dateNaiss;
+            }
+            set
+            {
+                dateNaiss = value;
+                OnPropertyChanged("DateNaiss");
+            }
         }
 
         [DataMember]
@@ -55,33 +104,33 @@ namespace ConsultationManagerServer.Models.Hospitalisations
         }
 
         [DataMember]
-        public DateTime Date
+        public string NumeroCarte
         {
             get
             {
-                return date;
+                return numeroCarte;
             }
             set
             {
-                date = value;
-                OnPropertyChanged("Date");
+                numeroCarte = value;
+                OnPropertyChanged("NumeroCarte");
             }
         }
 
         [DataMember]
-        public string Valeur
+        public ObservableCollection<string> Telephones
         {
             get
             {
-                return valeur;
+                return telephones;
             }
             set
             {
-                valeur = value;
-                OnPropertyChanged("Valeur");
+                telephones = value;
+                OnPropertyChanged("Telephone");
             }
         }
-
+        
         [DataMember]
         public DateTime CreeDans
         {
@@ -109,7 +158,7 @@ namespace ConsultationManagerServer.Models.Hospitalisations
                 OnPropertyChanged("CreePar");
             }
         }
-
+        
         #region InotifyPropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;

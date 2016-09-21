@@ -240,7 +240,7 @@ namespace ConsultationManagerClient.ViewModels.Users
             //    }
             //}
             newUser = usc.AddUtilisateur(newUtilisateur);
-            MessageBox.Show("Utilisateur Saved Request... " + newUtilisateur.Password);
+            MessageBox.Show("Nouveau Utilisateur est ajouté avec le Nom d'utilisateur : " + newUtilisateur.UserName+"   et le Mot de Passe : " + newUtilisateur.Password);
 
             listAllUsers.Add(newUser);
             NewUtilisateur = new Utilisateur();

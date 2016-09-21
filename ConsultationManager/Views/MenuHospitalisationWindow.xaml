@@ -32,6 +32,7 @@
                         <Button Name="infirmierBtn" Click="button_click_infirmier"  Content="Les infirmiers" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
                         <Button Name="assistantBtn" Click="button_click_assistant"  Content="Les assistants" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>-->
                         <Button Name="NewHospBtn" Click="button_click_nouveau"  Content="Nouvelle hospitalisation" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
+                        <Button Name="SalleBtn" Click="button_click_salles"  Content="Les Salles d'Hospitalisation" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
                     </ItemsControl>
 
                 </DockPanel>

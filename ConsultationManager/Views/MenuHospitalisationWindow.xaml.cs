@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ConsultationManagerClient.Views.Hospitalisations;
 using ConsultationManagerClient.ViewModels.Hospitalisations;
+using ConsultationManager.Views.Hospitalisations;
 
 namespace ConsultationManagerClient.Views
 {
@@ -30,25 +31,30 @@ namespace ConsultationManagerClient.Views
             this.DataContext = hospitVM;
 
             _mainFrame.Navigate(new AllHospitalisationPage(hospitVM));
-            coloringTabs(AllHospBtn, ActiveHospBtn, NewHospBtn);
+            coloringTabs(AllHospBtn, ActiveHospBtn, NewHospBtn, SalleBtn);
         }
 
 
         private void button_click_tout(object sender, RoutedEventArgs e)
         {
             _mainFrame.Navigate(new AllHospitalisationPage(hospitVM));
-            coloringTabs(AllHospBtn, ActiveHospBtn, NewHospBtn);
+            coloringTabs(AllHospBtn, ActiveHospBtn, NewHospBtn, SalleBtn);
         }
 
         private void button_click_active(object sender, RoutedEventArgs e)
         {
             _mainFrame.Navigate(new ActiveHospitalisationPage(hospitVM));
-            coloringTabs(ActiveHospBtn, AllHospBtn, NewHospBtn);
+            coloringTabs(ActiveHospBtn, AllHospBtn, NewHospBtn, SalleBtn);
         }
         private void button_click_nouveau(object sender, RoutedEventArgs e)
         {
             _mainFrame.Navigate(new NewDemandHospitalisationPage());
-            coloringTabs(NewHospBtn, AllHospBtn, ActiveHospBtn);
+            coloringTabs(NewHospBtn, AllHospBtn, ActiveHospBtn, SalleBtn);
+        }
+        private void button_click_salles(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.Navigate(new ListSallesPage(hospitVM));
+            coloringTabs(SalleBtn, NewHospBtn, AllHospBtn, ActiveHospBtn);
         }
 
         private void button_click_home(object sender, RoutedEventArgs e)
@@ -69,15 +75,17 @@ namespace ConsultationManagerClient.Views
 
         }
 
-        private void coloringTabs(Button puprpleBtn, Button transparantBtn1, Button transparantBtn2)
+        private void coloringTabs(Button puprpleBtn, Button transparantBtn1, Button transparantBtn2, Button transparantBtn3)
         {
             puprpleBtn.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF945BF9"));
             transparantBtn1.Background = Brushes.Transparent;
             transparantBtn2.Background = Brushes.Transparent;
+            transparantBtn3.Background = Brushes.Transparent;
 
             puprpleBtn.Foreground = Brushes.White;
             transparantBtn1.Foreground = Brushes.Black;
             transparantBtn2.Foreground = Brushes.Black;
+            transparantBtn3.Foreground = Brushes.Black;
         }
     }
 }

@@ -10,26 +10,27 @@ using System.Web;
 namespace ConsultationManagerServer.Models.Hospitalisations
 {
     [DataContract]
-    public class Mesure : INotifyPropertyChanged
+    public class Intervention : INotifyPropertyChanged
     {
         private string idHospitalisation;
 
-        private DateTime date;
-        private string valeur;
-
+        private string motif;
+        private string description;
+        
         private DateTime creeDans;
         private string creePar;
 
-        public Mesure()
+        public Intervention()
         {
             idHospitalisation = "";
 
-            date = new DateTime();
-            valeur = "";
-
+            motif = "";
+            description = "";
+            
             creeDans = new DateTime();
             creePar = "";
         }
+
         [BsonId]
         public ObjectId _id { get; set; }
 
@@ -39,7 +40,7 @@ namespace ConsultationManagerServer.Models.Hospitalisations
             get { return _id.ToString(); }
             set { _id = ObjectId.Parse(value); }
         }
-
+        
         [DataMember]
         public string IdHospitalisation
         {
@@ -55,33 +56,33 @@ namespace ConsultationManagerServer.Models.Hospitalisations
         }
 
         [DataMember]
-        public DateTime Date
+        public string Motif
         {
             get
             {
-                return date;
+                return motif;
             }
             set
             {
-                date = value;
-                OnPropertyChanged("Date");
+                motif = value;
+                OnPropertyChanged("Motif");
             }
         }
 
         [DataMember]
-        public string Valeur
+        public string Description
         {
             get
             {
-                return valeur;
+                return description;
             }
             set
             {
-                valeur = value;
-                OnPropertyChanged("Valeur");
+                description = value;
+                OnPropertyChanged("Description");
             }
         }
-
+        
         [DataMember]
         public DateTime CreeDans
         {

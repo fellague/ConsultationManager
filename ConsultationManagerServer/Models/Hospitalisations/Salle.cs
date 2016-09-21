@@ -10,22 +10,24 @@ using System.Web;
 namespace ConsultationManagerServer.Models.Hospitalisations
 {
     [DataContract]
-    public class Mesure : INotifyPropertyChanged
+    public class Salle : INotifyPropertyChanged
     {
-        private string idHospitalisation;
+        private string nom;
+        private string type;
+        private int nbLit;
 
-        private DateTime date;
-        private string valeur;
+        private string idService;
 
         private DateTime creeDans;
         private string creePar;
 
-        public Mesure()
+        public Salle()
         {
-            idHospitalisation = "";
+            nom = "";
+            type = "";
+            nbLit = 1;
 
-            date = new DateTime();
-            valeur = "";
+            idService = "";
 
             creeDans = new DateTime();
             creePar = "";
@@ -41,44 +43,58 @@ namespace ConsultationManagerServer.Models.Hospitalisations
         }
 
         [DataMember]
-        public string IdHospitalisation
+        public string Nom
         {
             get
             {
-                return idHospitalisation;
+                return nom;
             }
             set
             {
-                idHospitalisation = value;
-                OnPropertyChanged("IdHospitalisation");
+                nom = value;
+                OnPropertyChanged("Nom");
             }
         }
 
         [DataMember]
-        public DateTime Date
+        public string Type
         {
             get
             {
-                return date;
+                return type;
             }
             set
             {
-                date = value;
-                OnPropertyChanged("Date");
+                type = value;
+                OnPropertyChanged("Type");
+            }
+        }
+        
+        [DataMember]
+        public int NbLit
+        {
+            get
+            {
+                return nbLit;
+            }
+            set
+            {
+                nbLit = value;
+                OnPropertyChanged("NbLit");
             }
         }
 
         [DataMember]
-        public string Valeur
+        public string IdService
         {
             get
             {
-                return valeur;
+                return idService;
             }
             set
             {
-                valeur = value;
-                OnPropertyChanged("Valeur");
+                idService = value;
+                OnPropertyChanged("IdService");
             }
         }
 

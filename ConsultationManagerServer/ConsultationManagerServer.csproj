@@ -92,6 +92,7 @@
     <Content Include="Services\PatientService.svc" />
     <Content Include="Services\PlanningService.svc" />
     <Content Include="Services\RdvService.svc" />
+    <Content Include="Services\SalleService.svc" />
     <Content Include="Services\UtilisateurService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -101,7 +102,10 @@
     <Compile Include="Models\DossierMedicale\Bilan.cs" />
     <Compile Include="Models\DossierMedicale\DossierMed.cs" />
     <Compile Include="Models\Conclusion.cs" />
+    <Compile Include="Models\Hospitalisations\GardeMalade.cs" />
+    <Compile Include="Models\Hospitalisations\Intervention.cs" />
     <Compile Include="Models\Hospitalisations\Mesure.cs" />
+    <Compile Include="Models\Hospitalisations\Salle.cs" />
     <Compile Include="Models\Planning.cs" />
     <Compile Include="Models\SerializedModels\ConsultationMedecinsPlanning.cs" />
     <Compile Include="Models\SerializedModels\DossierMedDetail.cs" />
@@ -127,6 +131,7 @@
     <Compile Include="Services\IPatientService.cs" />
     <Compile Include="Services\IPlanningService.cs" />
     <Compile Include="Services\IRdvService.cs" />
+    <Compile Include="Services\ISalleService.cs" />
     <Compile Include="Services\PatientService.svc.cs">
       <DependentUpon>PatientService.svc</DependentUpon>
     </Compile>
@@ -135,6 +140,9 @@
     </Compile>
     <Compile Include="Services\RdvService.svc.cs">
       <DependentUpon>RdvService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\SalleService.svc.cs">
+      <DependentUpon>SalleService.svc</DependentUpon>
     </Compile>
     <Compile Include="Services\UtilisateurService.svc.cs">
       <DependentUpon>UtilisateurService.svc</DependentUpon>

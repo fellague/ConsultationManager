@@ -79,6 +79,7 @@
                 <ComboBoxItem Content="Administrateur"/>
                 <ComboBoxItem Content="Chef Service" Tag="ShowConsultations"/>
                 <ComboBoxItem Content="Médecin"/>
+                <ComboBoxItem Content="Chef Hospitalisation"/>
                 <ComboBoxItem Content="Infirmier"/>
                 <ComboBoxItem Content="Assistant" Tag="ShowConsultations"/>
             </ComboBox>

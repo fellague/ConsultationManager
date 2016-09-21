@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SalleService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:64183/Services/SalleService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:64183/Services/SalleService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:64183/Services/SalleService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISalleService_AddSalle_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddSalle" />
+  </wsdl:message>
+  <wsdl:message name="ISalleService_AddSalle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddSalleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISalleService_GetSalles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSalles" />
+  </wsdl:message>
+  <wsdl:message name="ISalleService_GetSalles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSallesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISalleService_UpdateSalle_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSalle" />
+  </wsdl:message>
+  <wsdl:message name="ISalleService_UpdateSalle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSalleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISalleService_DeleteSalle_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSalle" />
+  </wsdl:message>
+  <wsdl:message name="ISalleService_DeleteSalle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSalleResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISalleService">
+    <wsdl:operation name="AddSalle">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISalleService/AddSalle" message="tns:ISalleService_AddSalle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISalleService/AddSalleResponse" message="tns:ISalleService_AddSalle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSalles">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISalleService/GetSalles" message="tns:ISalleService_GetSalles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISalleService/GetSallesResponse" message="tns:ISalleService_GetSalles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSalle">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISalleService/UpdateSalle" message="tns:ISalleService_UpdateSalle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISalleService/UpdateSalleResponse" message="tns:ISalleService_UpdateSalle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSalle">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISalleService/DeleteSalle" message="tns:ISalleService_DeleteSalle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISalleService/DeleteSalleResponse" message="tns:ISalleService_DeleteSalle_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ISalleService" type="tns:ISalleService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddSalle">
+      <soap:operation soapAction="http://tempuri.org/ISalleService/AddSalle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSalles">
+      <soap:operation soapAction="http://tempuri.org/ISalleService/GetSalles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSalle">
+      <soap:operation soapAction="http://tempuri.org/ISalleService/UpdateSalle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSalle">
+      <soap:operation soapAction="http://tempuri.org/ISalleService/DeleteSalle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SalleService">
+    <wsdl:port name="BasicHttpBinding_ISalleService" binding="tns:BasicHttpBinding_ISalleService">
+      <soap:address location="http://localhost:64183/Services/SalleService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

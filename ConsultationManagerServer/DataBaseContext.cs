@@ -82,6 +82,14 @@ namespace ConsultationManagerServer
                 return db.GetCollection<Interview>("Interview");
             }
         }
+
+        public MongoCollection<Salle> Salles
+        {
+            get
+            {
+                return db.GetCollection<Salle>("Salle");
+            }
+        }
         public MongoCollection<Hospitalisation> Hospitalisations
         {
             get

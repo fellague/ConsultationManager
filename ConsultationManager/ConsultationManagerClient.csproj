@@ -140,6 +140,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ServiceReferenceSalle\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServiceReferenceUtilisateur\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -172,6 +177,15 @@
     </Compile>
     <Compile Include="Views\DossierMedicals\MyDossierPage.xaml.cs">
       <DependentUpon>MyDossierPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Hospitalisations\ListSallesPage.xaml.cs">
+      <DependentUpon>ListSallesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Hospitalisations\NewSalleWindow.xaml.cs">
+      <DependentUpon>NewSalleWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Hospitalisations\UpdateSalleWindow.xaml.cs">
+      <DependentUpon>UpdateSalleWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Interviews\FirstInterviewExamenWindow.xaml.cs">
       <DependentUpon>FirstInterviewExamenWindow.xaml</DependentUpon>
@@ -330,6 +344,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DossierMedicals\MyDossierPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Hospitalisations\ListSallesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Hospitalisations\NewSalleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Hospitalisations\UpdateSalleWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -533,6 +559,7 @@
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Conclusion.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Consultation.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.DossierMed.datasource" />
+    <None Include="Properties\DataSources\ConsultationManagerServer.Models.Hospitalisations.Salle.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Interview.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Pathologie.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Patient.datasource" />
@@ -669,6 +696,16 @@
     <None Include="Service References\ServiceReferenceRdv\RdvService4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ServiceReferenceSalle\SalleService.wsdl" />
+    <None Include="Service References\ServiceReferenceSalle\SalleService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceSalle\SalleService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceSalle\SalleService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ServiceReferenceUtilisateur\UtilisateurService.wsdl" />
     <None Include="Service References\ServiceReferenceUtilisateur\UtilisateurService.xsd">
       <SubType>Designer</SubType>
@@ -757,6 +794,7 @@
     <WCFMetadataStorage Include="Service References\ServiceReferencePatient\" />
     <WCFMetadataStorage Include="Service References\ServiceReferencePlanning\" />
     <WCFMetadataStorage Include="Service References\ServiceReferenceRdv\" />
+    <WCFMetadataStorage Include="Service References\ServiceReferenceSalle\" />
     <WCFMetadataStorage Include="Service References\ServiceReferenceUtilisateur\" />
   </ItemGroup>
   <ItemGroup>
@@ -863,6 +901,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceReferenceDossierMed\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceSalle\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceSalle\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceSalle\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

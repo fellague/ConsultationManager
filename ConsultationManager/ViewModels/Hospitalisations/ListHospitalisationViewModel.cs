@@ -3,21 +3,59 @@ using ConsultationManagerServer.Models;
 using System.Collections.ObjectModel;
 using ConsultationManagerClient.ViewModels.Authentication;
 using ConsultationManagerServer.Models.Hospitalisations;
+using System.ComponentModel;
+using System.Linq;
+using System.Windows.Input;
+using ConsultationManagerClient.Commands;
+using System.Windows;
+using ConsultationManager.Views.Hospitalisations;
+using ConsultationManager.ServiceReferenceSalle;
+using System.ServiceModel.Security;
 
 namespace ConsultationManagerClient.ViewModels.Hospitalisations
 {
-    internal class ListHospitalisationViewModel
+    internal class ListHospitalisationViewModel : INotifyPropertyChanged
     {
+        private SalleServiceClient ssc = new SalleServiceClient();
+
         private string nomUtilisateur;
         private ObservableCollection<Hospitalisation> listAllHospitalisation;
         private ObservableCollection<Hospitalisation> listActiveHospitalisation;
+        
+        private ObservableCollection<Salle> listSalle;
+
+
+        private NewSalleWindow dialogNewSalle;
+        private Salle newSalle;
+        private int selectedNbLit;
+        private ObservableCollection<int> listNbLit;
+
+        private UpdateSalleWindow dialogUpdateSalle;
+        private Salle updatedSalle;
 
         public ListHospitalisationViewModel()
         {
+            ssc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
+            ssc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
+            ssc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
+                                X509CertificateValidationMode.None;
+
             listAllHospitalisation = CreateHospitalisations();
             listActiveHospitalisation = CreateListActiveHospitalisation();
             nomUtilisateur = AuthenticationViewModel.AuthenticatedUser.Nom + " " + AuthenticationViewModel.AuthenticatedUser.Prenom;
+
+            listSalle = new ObservableCollection<Salle>(ssc.GetSalles(AuthenticationViewModel.AuthenticatedUser.ServiceId));
+
+            CancelCommand = new RelayCommand(o => ((Window)o).Close());
+
+            NewSalleDialogCommand = new RelayCommand(param => ShowDialogNewSalle());
+            UpdateSalleDialogCommand = new RelayCommand(param => this.ShowDialogUpdateSalle(param));
+            RemoveSalleCommand = new RelayCommand(param => DeleteSalle(param));
+
         }
+
+
+        #region PatientsViewModel Variables
 
         public ObservableCollection<Hospitalisation> ListAllHospitalisation
         {
@@ -33,6 +71,66 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
                 return listActiveHospitalisation;
             }
         }
+        public ObservableCollection<Salle> ListSalle
+        {
+            get
+            {
+                return listSalle;
+            }
+            set
+            {
+                listSalle = value;
+                OnPropertyChanged("ListSalle");
+            }
+        }
+        public Salle NewSalle
+        {
+            get
+            {
+                return newSalle;
+            }
+            set
+            {
+                newSalle = value;
+                OnPropertyChanged("NewSalle");
+            }
+        }
+        public Salle UpdatedSalle
+        {
+            get
+            {
+                return updatedSalle;
+            }
+            set
+            {
+                updatedSalle = value;
+                OnPropertyChanged("UpdatedSalle");
+            }
+        }
+        public ObservableCollection<int> ListNbLit
+        {
+            get
+            {
+                return listNbLit;
+            }
+            set
+            {
+                listNbLit = value;
+                OnPropertyChanged("ListNbLit");
+            }
+        }
+        public int SelectedNbLit
+        {
+            get
+            {
+                return selectedNbLit;
+            }
+            set
+            {
+                selectedNbLit = value;
+                OnPropertyChanged("SelectedNbLit");
+            }
+        }
         public string NomUtilisateur
         {
             get
@@ -40,6 +138,49 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
                 return nomUtilisateur;
             }
         }
+
+        #endregion
+
+        #region PatientsViewModel Commands
+
+        public ICommand NewSalleDialogCommand
+        {
+            get;
+            private set;
+        }
+
+        public ICommand UpdateSalleDialogCommand
+        {
+            get;
+            private set;
+        }
+
+        public ICommand UpdateSalleCommand
+        {
+            get;
+            private set;
+        }
+        public ICommand RemoveSalleCommand
+        {
+            get;
+            private set;
+        }
+
+        public ICommand AddSalleCommand
+        {
+            get;
+            private set;
+        }
+        public ICommand CancelCommand
+        {
+            get;
+            private set;
+        }
+
+
+        #endregion
+
+        #region PatientsViewModel Methods
 
         private ObservableCollection<Hospitalisation> CreateHospitalisations()
         {
@@ -74,5 +215,65 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             }
             return allMyList;
         }
+
+        public void ShowDialogUpdateSalle(object selectedSalle)
+        {
+            updatedSalle = selectedSalle as Salle;
+            dialogUpdateSalle = new UpdateSalleWindow();
+            listNbLit = new ObservableCollection<int>(Enumerable.Range(1, 20));
+            dialogUpdateSalle.DataContext = this;
+            UpdateSalleCommand = new RelayCommand(param => ModifierPathologie());
+            dialogUpdateSalle.ShowDialog();
+        }
+        public void ModifierPathologie()
+        {
+            ssc.UpdateSalle(UpdatedSalle);
+            dialogUpdateSalle.Close();
+        }
+        public void DeleteSalle(object selectedSalle)
+        {
+            var deletedSalle = selectedSalle as Salle;
+
+            ssc.DeleteSalle(deletedSalle.Id);
+            listSalle.Remove(deletedSalle);
+        }
+
+        private void ShowDialogNewSalle()
+        {
+            dialogNewSalle = new NewSalleWindow();
+            dialogNewSalle.DataContext = this;
+            newSalle = new Salle();
+            ListNbLit = new ObservableCollection<int>(Enumerable.Range(1, 20));
+            AddSalleCommand = new RelayCommand(param => AjouterSalle());
+            dialogNewSalle.ShowDialog();
+        }
+
+        private void AjouterSalle()
+        {
+            NewSalle.IdService = AuthenticationViewModel.AuthenticatedUser.ServiceId;
+            NewSalle.NbLit = SelectedNbLit;
+            NewSalle.CreeDans = DateTime.Now;
+            NewSalle.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
+            ssc.AddSalle(NewSalle);
+            listSalle.Add(NewSalle);
+            dialogNewSalle.Close();
+        }
+
+        #endregion
+
+        #region InotifyPropertyChanged Members
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        #endregion
     }
 }
