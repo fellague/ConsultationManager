@@ -21,6 +21,12 @@ namespace ConsultationManager.ServiceReferenceConclusion {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConclusionService/AddConclusion", ReplyAction="http://tempuri.org/IConclusionService/AddConclusionResponse")]
         System.Threading.Tasks.Task<ConsultationManagerServer.Models.Conclusion> AddConclusionAsync(ConsultationManagerServer.Models.Conclusion dossierMed);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConclusionService/AddDemandeHospit", ReplyAction="http://tempuri.org/IConclusionService/AddDemandeHospitResponse")]
+        ConsultationManagerServer.Models.Hospitalisations.DemandeHospit AddDemandeHospit(ConsultationManagerServer.Models.Hospitalisations.DemandeHospit demandeHospit);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConclusionService/AddDemandeHospit", ReplyAction="http://tempuri.org/IConclusionService/AddDemandeHospitResponse")]
+        System.Threading.Tasks.Task<ConsultationManagerServer.Models.Hospitalisations.DemandeHospit> AddDemandeHospitAsync(ConsultationManagerServer.Models.Hospitalisations.DemandeHospit demandeHospit);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConclusionService/UpdateConclusion", ReplyAction="http://tempuri.org/IConclusionService/UpdateConclusionResponse")]
         ConsultationManagerServer.Models.Conclusion UpdateConclusion(ConsultationManagerServer.Models.Conclusion dossierMed);
         
@@ -67,6 +73,14 @@ namespace ConsultationManager.ServiceReferenceConclusion {
         
         public System.Threading.Tasks.Task<ConsultationManagerServer.Models.Conclusion> AddConclusionAsync(ConsultationManagerServer.Models.Conclusion dossierMed) {
             return base.Channel.AddConclusionAsync(dossierMed);
+        }
+        
+        public ConsultationManagerServer.Models.Hospitalisations.DemandeHospit AddDemandeHospit(ConsultationManagerServer.Models.Hospitalisations.DemandeHospit demandeHospit) {
+            return base.Channel.AddDemandeHospit(demandeHospit);
+        }
+        
+        public System.Threading.Tasks.Task<ConsultationManagerServer.Models.Hospitalisations.DemandeHospit> AddDemandeHospitAsync(ConsultationManagerServer.Models.Hospitalisations.DemandeHospit demandeHospit) {
+            return base.Channel.AddDemandeHospitAsync(demandeHospit);
         }
         
         public ConsultationManagerServer.Models.Conclusion UpdateConclusion(ConsultationManagerServer.Models.Conclusion dossierMed) {

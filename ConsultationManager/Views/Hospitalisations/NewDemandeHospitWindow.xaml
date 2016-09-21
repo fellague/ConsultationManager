@@ -1,0 +1,69 @@
+﻿<Window x:Class="ConsultationManager.Views.Hospitalisations.NewDemandeHospitWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:ConsultationManager.Views.Hospitalisations"
+        mc:Ignorable="d" WindowStyle="None"
+        Height="340" Width="550" WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition  Height="*"/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel>
+            <TextBlock  FontSize="24">Nouvelle Demande d'Hospitalisation</TextBlock>
+        </WrapPanel>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Motif" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" Margin="0 5 0 0"></TextBlock>
+            <TextBox Text="{Binding NewDemandeHospit.Motif}" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" MinLines="2" MaxLines="2" VerticalScrollBarVisibility="Auto" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Nom"/>
+
+            <TextBlock Grid.Row="1" Text="Traitement" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" Margin="0 5 0 0" ></TextBlock>
+            <TextBox Text="{Binding NewDemandeHospit.Traitement}" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" MinLines="3" MaxLines="3" VerticalScrollBarVisibility="Auto" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Prénom"></TextBox>
+
+            <TextBlock Grid.Row="2" Text="Durée d'hospitalisation" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 5 0 5"></TextBlock>
+            <ComboBox Grid.Row="2" Grid.Column="1" x:Name="listLitsDispComboBox" FontSize="16" VerticalAlignment="Center" Width="100"  Margin="30 5 10 5" 
+                      ItemsSource="{Binding ListNbJours}"
+                      SelectedItem="{Binding NewDemandeHospit.NbJours, Mode=TwoWay}">
+            </ComboBox>
+
+            <TextBlock Grid.Row="3" Text="Degré d'Urgence" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 5 0 5"></TextBlock>
+            <ComboBox x:Name="ComboBoxRole" SelectedValuePath="Content" SelectedValue="{Binding NewDemandeHospit.Urgence}" SelectedIndex="1" Grid.Row="3" Grid.Column="1" FontSize="16" Margin="0 5 0 5">
+                <ComboBoxItem Content="A"/>
+                <ComboBoxItem Content="B"/>
+                <ComboBoxItem Content="C"/>
+                <ComboBoxItem Content="D"/>
+            </ComboBox>
+
+            <WrapPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1"  Margin="0 30 50 30" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                <Button Command="{Binding CancelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin=" 0 0 10 0" FontSize="16">
+                    Annuler
+                </Button>
+                <Button Command="{Binding AddDemandeHospCommand}" VerticalAlignment="Bottom" FontSize="16">
+                    Confirmer
+                </Button>
+            </WrapPanel>
+        </Grid>
+
+    </Grid>
+</Window>

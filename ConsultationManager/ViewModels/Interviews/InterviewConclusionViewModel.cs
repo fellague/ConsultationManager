@@ -13,6 +13,9 @@ using ConsultationManagerClient.ViewModels.Authentication;
 using ConsultationManager.ServiceReferenceConclusion;
 using System.ServiceModel.Security;
 using ConsultationManager.ViewModels.RDVs;
+using ConsultationManager.Views.Hospitalisations;
+using ConsultationManagerServer.Models.Hospitalisations;
+using System.Windows;
 
 namespace ConsultationManagerClient.ViewModels.Interviews
 {
@@ -27,19 +30,18 @@ namespace ConsultationManagerClient.ViewModels.Interviews
         private Conclusion intervConclus;
 
         private NewMedicamentWindow dialogNewMedicament;
-        //private Ordonnance ordonnance;
         private Medicament newMedicament;
 
         private NewTraitemComplWindow dialogNewTraitement;
-        //private TraitementsComplemtaires traitementsCompl;
         private Traitement newTraitement;
+
+        private NewDemandeHospitWindow dialogNewDemandeHospit;
+        private DemandeHospit newDemandeHospit;
+        private ObservableCollection<int> listNbJours;
 
         private LettreOrientation lettreOrientation;
 
         private string newConseil;
-        //private ObservableCollection<string> conseils;
-
-        //private CompteRendu compteRendu;
 
         private ObservableCollection<int> listMois;
         private ObservableCollection<int> listJours;
@@ -66,27 +68,25 @@ namespace ConsultationManagerClient.ViewModels.Interviews
             intervConclus = new Conclusion();
             intervConclus.Numero = interview.Numero;
 
+            CancelCommand = new RelayCommand(o => ((Window)o).Close());
+
             NewMedicamentDialogCommand = new RelayCommand(param => ShowDialogNewMedicament());
-            //ordonnance = new Ordonnance();
             RemoveMedicamentCommand = new RelayCommand(param => DeleteMedicament(param));
 
             NewTraitementDialogCommand = new RelayCommand(param => ShowDialogNewTraitement());
-            //traitementsCompl = new TraitementsComplemtaires();
             RemoveTraitementCommand = new RelayCommand(param => DeleteTraitement(param));
 
             lettreOrientation = new LettreOrientation("", "", "");
 
             newConseil = "";
-            //conseils = new ObservableCollection<string>();
             AddConseilCommand = new RelayCommand(param => AjouterConseil());
             RemoveConseilCommand = new RelayCommand(param => DeleteConseil(param));
 
             ShowDialogNextRdvCommand = new RelayCommand(param => ShowDialogNextRdv(param));
-
-            //compteRendu = new CompteRendu();
+            ShowDialogDemandeHospCommand = new RelayCommand(param => ShowDialogDemandeHospit(param));
+            AddDemandeHospCommand = new RelayCommand(param => AjouterDemandeHospit());
         }
 
-        
 
         #region ConsultationViewModel Variables
 
@@ -121,13 +121,6 @@ namespace ConsultationManagerClient.ViewModels.Interviews
                 return newMedicament;
             }
         }
-        //public Ordonnance Ordonnance
-        //{
-        //    get
-        //    {
-        //        return ordonnance;
-        //    }
-        //}
 
         public Traitement NewTraitement
         {
@@ -136,13 +129,6 @@ namespace ConsultationManagerClient.ViewModels.Interviews
                 return newTraitement;
             }
         }
-        //public TraitementsComplemtaires TraitementsCompl
-        //{
-        //    get
-        //    {
-        //        return traitementsCompl;
-        //    }
-        //}
 
         public LettreOrientation LettreOrientation
         {
@@ -164,21 +150,6 @@ namespace ConsultationManagerClient.ViewModels.Interviews
                 OnPropertyChanged("NewConseil");
             }
         }
-        //public ObservableCollection<string> Conseils
-        //{
-        //    get
-        //    {
-        //        return conseils;
-        //    }
-        //}
-
-        //public CompteRendu CompteRendu
-        //{
-        //    get
-        //    {
-        //        return compteRendu;
-        //    }
-        //}
 
         public ObservableCollection<int> ListMois
         {
@@ -201,10 +172,37 @@ namespace ConsultationManagerClient.ViewModels.Interviews
                 return listNbFois;
             }
         }
+        public ObservableCollection<int> ListNbJours
+        {
+            get
+            {
+                return listNbJours;
+            }
+        }
+
+        public DemandeHospit NewDemandeHospit
+        {
+            get
+            {
+                return newDemandeHospit;
+            }
+            set
+            {
+                newDemandeHospit = value;
+                OnPropertyChanged("NewDemandeHospit");
+            }
+        }
+
         #endregion
 
         #region ConsultationViewModel Commands
-        
+
+        public ICommand CancelCommand
+        {
+            get;
+            private set;
+        }
+
         public ICommand NewMedicamentDialogCommand
         {
             get;
@@ -259,6 +257,18 @@ namespace ConsultationManagerClient.ViewModels.Interviews
             get;
             private set;
         }
+        
+        public ICommand ShowDialogDemandeHospCommand
+        {
+            get;
+            private set;
+        }
+
+        public ICommand AddDemandeHospCommand
+        {
+            get;
+            private set;
+        }
 
         #endregion
 
@@ -266,7 +276,6 @@ namespace ConsultationManagerClient.ViewModels.Interviews
 
         public void ShowDialogNewMedicament()
         {
-            ////Console.WriteLine("ConsultationViewModel : Dialog Ordonnance opened with RDV  ");
             dialogNewMedicament = new NewMedicamentWindow();
             dialogNewMedicament.DataContext = this;
             AddMedicamentCommand = new RelayCommand(param => AjouterMedicament(param));
@@ -279,20 +288,17 @@ namespace ConsultationManagerClient.ViewModels.Interviews
         public void AjouterMedicament(object med)
         {
             var newMed = med as Medicament;
-            //Console.WriteLine("FirstConsultationViewModel : Dialog Closed with RDV  " + newMed.Nom);
             dialogNewMedicament.Close();
             IntervConclus.Ordonnance.ListMedicaments.Add(newMed);
         }
         public void DeleteMedicament(object selectedMed)
         {
-            //Console.WriteLine("ConsultationViewModel : Remove RDV  ");
             var med = selectedMed as Medicament;
             IntervConclus.Ordonnance.ListMedicaments.Remove(med);
         }
 
         public void ShowDialogNewTraitement()
         {
-            ////Console.WriteLine("ConsultationViewModel : Dialog Traitements Complémentaires opened with RDV  ");
             dialogNewTraitement = new NewTraitemComplWindow();
             dialogNewTraitement.DataContext = this;
             AddTraitementCommand = new RelayCommand(param => AjouterTraitement(param));
@@ -302,20 +308,17 @@ namespace ConsultationManagerClient.ViewModels.Interviews
         public void AjouterTraitement(object trait)
         {
             var newTrait = trait as Traitement;
-            //Console.WriteLine("FirstConsultationViewModel : Dialog Closed with RDV  " + newTrait.Nom);
             dialogNewTraitement.Close();
             IntervConclus.TraitementsCompl.ListTraitements.Add(newTrait);
         }
         public void DeleteTraitement(object selectedTrait)
         {
-            //Console.WriteLine("ConsultationViewModel : Remove RDV  ");
             var trait = selectedTrait as Traitement;
             IntervConclus.TraitementsCompl.ListTraitements.Remove(trait);
         }
 
         public void AjouterConseil()
         {
-            //var newCsl = csl as string;
             if (newConseil != "")
             {
                 IntervConclus.Conseils.Add(newConseil);
@@ -325,7 +328,6 @@ namespace ConsultationManagerClient.ViewModels.Interviews
         }
         public void DeleteConseil(object selectedConseil)
         {
-            //Console.WriteLine("ConsultationViewModel : Remove RDV  ");
             var consl = selectedConseil as string;
             IntervConclus.Conseils.Remove(consl);
         }
@@ -354,7 +356,59 @@ namespace ConsultationManagerClient.ViewModels.Interviews
             
             rdvsViewModel.NextRdvWindow.ShowDialog();
         }
+        
+        private void ShowDialogDemandeHospit(object param)
+        {
+            dialogNewDemandeHospit = new NewDemandeHospitWindow();
+            newDemandeHospit = new DemandeHospit();
+            dialogNewDemandeHospit.DataContext = this;
 
+            if (rdvConsult.Rdv.NouvPat)
+            {
+                intervConclus.IdSource = "first";
+            }
+            else
+            {
+                IntervConclus.IdSource = interview.Id;
+            }
+
+            intervConclus.IdPatient = rdvConsult.Patient.Id;
+            intervConclus.IdConsultation = rdvConsult.Rdv.PathologieId;
+            intervConclus.IdRdv = rdvConsult.Rdv.Id;
+            intervConclus.CreeDans = DateTime.Now;
+            intervConclus.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
+            csc.AddConclusion(intervConclus);
+
+            listNbJours = new ObservableCollection<int>(Enumerable.Range(1, 3));
+
+            dialogNewDemandeHospit.ShowDialog();
+        }
+
+        private void AjouterDemandeHospit()
+        {
+            NewDemandeHospit.IdPatient = rdvConsult.Patient.Id;
+            NewDemandeHospit.IdMedecin = rdvConsult.Medecin.Id;
+            if (rdvConsult.Rdv.NouvPat)
+            {
+                NewDemandeHospit.IdSource = "first";
+            }
+            else
+            {
+                NewDemandeHospit.IdSource = interview.Id;
+            }
+
+            NewDemandeHospit.ServiceId = rdvConsult.Rdv.ServiceId;
+            NewDemandeHospit.IdRdv = rdvConsult.Rdv.Id;
+            NewDemandeHospit.CreeDans = DateTime.Now;
+            NewDemandeHospit.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
+            csc.AddDemandeHospit(NewDemandeHospit);
+
+            dialogNewDemandeHospit.Close();
+            rdvsViewModel.DialogInterwiewConclusionView.Close();
+
+            rdvsViewModel.ListAllRvd.Remove(rdvConsult);
+            rdvsViewModel.ActualiserLists();
+        }
         #endregion
 
         #region InotifyPropertyChanged Members

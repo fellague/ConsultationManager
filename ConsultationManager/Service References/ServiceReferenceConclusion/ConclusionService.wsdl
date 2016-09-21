@@ -6,6 +6,7 @@
       <xsd:import schemaLocation="http://localhost:64183/Services/ConclusionService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:64183/Services/ConclusionService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" />
       <xsd:import schemaLocation="http://localhost:64183/Services/ConclusionService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:64183/Services/ConclusionService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IConclusionService_AddConclusion_InputMessage">
@@ -13,6 +14,12 @@
   </wsdl:message>
   <wsdl:message name="IConclusionService_AddConclusion_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddConclusionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConclusionService_AddDemandeHospit_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddDemandeHospit" />
+  </wsdl:message>
+  <wsdl:message name="IConclusionService_AddDemandeHospit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddDemandeHospitResponse" />
   </wsdl:message>
   <wsdl:message name="IConclusionService_UpdateConclusion_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateConclusion" />
@@ -31,6 +38,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IConclusionService/AddConclusion" message="tns:IConclusionService_AddConclusion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConclusionService/AddConclusionResponse" message="tns:IConclusionService_AddConclusion_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="AddDemandeHospit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConclusionService/AddDemandeHospit" message="tns:IConclusionService_AddDemandeHospit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConclusionService/AddDemandeHospitResponse" message="tns:IConclusionService_AddDemandeHospit_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="UpdateConclusion">
       <wsdl:input wsaw:Action="http://tempuri.org/IConclusionService/UpdateConclusion" message="tns:IConclusionService_UpdateConclusion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConclusionService/UpdateConclusionResponse" message="tns:IConclusionService_UpdateConclusion_OutputMessage" />
@@ -44,6 +55,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="AddConclusion">
       <soap:operation soapAction="http://tempuri.org/IConclusionService/AddConclusion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDemandeHospit">
+      <soap:operation soapAction="http://tempuri.org/IConclusionService/AddDemandeHospit" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

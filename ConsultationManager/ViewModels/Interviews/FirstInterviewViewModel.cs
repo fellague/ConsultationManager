@@ -42,6 +42,9 @@ namespace ConsultationManagerClient.ViewModels.Interviews
             dossier = new DossierMed();
 
             listRdvVM = rdvsVM;
+
+            CancelCommand = new RelayCommand(o => ((Window)o).Close());
+
             NewAntecedPersDialogCommand = new RelayCommand(param=>ShowDialogNewAntecedPers());
             NewAntecedFamilDialogCommand = new RelayCommand(param => ShowDialogNewAntecedFamil());
             //listAntecedentPersonel = new ObservableCollection<AntecedentPersonel>();
@@ -132,6 +135,12 @@ namespace ConsultationManagerClient.ViewModels.Interviews
         #endregion
 
         #region FirstConsultationViewModel Commands
+
+        public ICommand CancelCommand
+        {
+            get;
+            private set;
+        }
 
         public ICommand NewAntecedPersDialogCommand
         {

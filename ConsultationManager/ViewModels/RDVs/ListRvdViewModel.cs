@@ -55,7 +55,7 @@ namespace ConsultationManagerClient.ViewModels.RDVs
 
             RemoveSelectedRdvCommand = new RelayCommand(param => this.Delete(param));
 
-            AddNextRdvCommand = new RelayCommand(param => this.AddNextRvd());
+            //AddNextRdvCommand = new RelayCommand(param => this.AddNextRvd());
             CancelCommand = new RelayCommand(o => ((Window)o).Close());
         }
         #region ListRvdViewModel Variables
@@ -195,11 +195,11 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             private set;
         }
 
-        public ICommand AddNextRdvCommand
-        {
-            get;
-            private set;
-        }
+        //public ICommand AddNextRdvCommand
+        //{
+        //    get;
+        //    private set;
+        //}
 
         public ICommand CancelCommand
         {
@@ -238,28 +238,16 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             dialogFirstInterview.ShowDialog();
         }
 
-        //public void ShowDialogConsultConclusion(RdvPatientMedecin selectedRdv, Interview consult)
-        //{
-        //    RdvPatientMedecin rdv = selectedRdv;
-        //    //Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.DateRdv);
-        //    dialogConsltConclusion = new InterviewConclusionWindow();
-        //    dialogConsltConclusion.DataContext = new InterviewConclusionViewModel(rdv, consult, this);
-
-        //    //dialogConsultation.Hide();
-        //    dialogConsultation.Close();////////////////////////////////////////+++++++++++++++++++++++++
-        //    dialogConsltConclusion.ShowDialog();
-        //}
-        
         public void CloseDialogUpdateRvd(RdvPatientMedecin updRdv)
         {
             Console.WriteLine("ListRvdViewModel : Dialog closed with updated RDV  " + updRdv.Rdv.DateRdv);
             dialogUpdate.Close();
         }
 
-        public void AddNextRvd()
-        {
-            nextRdvWindow.Close();
-        }
+        //public void AddNextRvd()
+        //{
+        //    nextRdvWindow.Close();
+        //}
 
         public void Delete(object selectedRdv)
         {

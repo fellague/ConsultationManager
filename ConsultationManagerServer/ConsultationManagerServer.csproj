@@ -102,6 +102,7 @@
     <Compile Include="Models\DossierMedicale\Bilan.cs" />
     <Compile Include="Models\DossierMedicale\DossierMed.cs" />
     <Compile Include="Models\Conclusion.cs" />
+    <Compile Include="Models\Hospitalisations\DemandeHospit.cs" />
     <Compile Include="Models\Hospitalisations\GardeMalade.cs" />
     <Compile Include="Models\Hospitalisations\Intervention.cs" />
     <Compile Include="Models\Hospitalisations\Mesure.cs" />

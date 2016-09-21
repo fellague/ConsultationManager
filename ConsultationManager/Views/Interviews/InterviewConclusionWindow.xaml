@@ -245,14 +245,14 @@
 
 
                     <RadioButton GroupName="Temps" Content="Prochaine Consultation" Command="{Binding ShowDialogNextRdvCommand}" FontSize="16"/>
-                    <RadioButton x:Name="radioBtn1" GroupName="Temps" Content="Hospitalisation"  FontSize="16"/>
+                    <RadioButton x:Name="radioBtn1" GroupName="Temps" Content="Hospitalisation" Command="{Binding ShowDialogDemandeHospCommand}" FontSize="16"/>
                     <RadioButton x:Name="radioBtn2" GroupName="Temps" Content="Transfert" FontSize="16"/>
                     <RadioButton x:Name="radioBtn3" GroupName="Temps" Content="Chirurgie" FontSize="16"/>
                 </WrapPanel>
             </Grid>
         </Border>
 
-        <Border Grid.Row="3" Grid.Column="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+        <!--<Border Grid.Row="3" Grid.Column="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
                 ClipToBounds="True" Margin="20 0 20 20" 
                 Visibility="{Binding IsChecked,ElementName=radioBtn1,Converter={StaticResource b2v}}" >
             <Grid >
@@ -281,7 +281,7 @@
                              FontSize="16" VerticalAlignment="Top" materialDesign:TextFieldAssist.Hint="Description" Margin="0 0 30 0"></TextBox>
                 </Grid>
             </Grid>
-        </Border>
+        </Border>-->
         <Border Grid.Row="3" Grid.Column="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
                 ClipToBounds="True" Margin="20 0 20 20" 
                 Visibility="{Binding IsChecked,ElementName=radioBtn2,Converter={StaticResource b2v}}" >

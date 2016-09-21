@@ -181,6 +181,9 @@
     <Compile Include="Views\Hospitalisations\ListSallesPage.xaml.cs">
       <DependentUpon>ListSallesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Hospitalisations\NewDemandeHospitWindow.xaml.cs">
+      <DependentUpon>NewDemandeHospitWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Hospitalisations\NewSalleWindow.xaml.cs">
       <DependentUpon>NewSalleWindow.xaml</DependentUpon>
     </Compile>
@@ -348,6 +351,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Hospitalisations\ListSallesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Hospitalisations\NewDemandeHospitWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -559,6 +566,7 @@
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Conclusion.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Consultation.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.DossierMed.datasource" />
+    <None Include="Properties\DataSources\ConsultationManagerServer.Models.Hospitalisations.DemandeHospit.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Hospitalisations.Salle.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Interview.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Pathologie.datasource" />
@@ -598,6 +606,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReferenceConclusion\ConclusionService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceConclusion\ConclusionService4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReferenceConsultation\ConsultationService.wsdl" />
@@ -858,18 +869,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReferenceConclusion\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ServiceReferenceConclusion\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ServiceReferenceConclusion\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\ServiceReferenceRdv\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -913,6 +912,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceReferenceSalle\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceConclusion\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceConclusion\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceConclusion\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

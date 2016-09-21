@@ -82,6 +82,13 @@ namespace ConsultationManagerServer
                 return db.GetCollection<Interview>("Interview");
             }
         }
+        public MongoCollection<Conclusion> Conclusions
+        {
+            get
+            {
+                return db.GetCollection<Conclusion>("Conclusion");
+            }
+        }
 
         public MongoCollection<Salle> Salles
         {
@@ -90,18 +97,18 @@ namespace ConsultationManagerServer
                 return db.GetCollection<Salle>("Salle");
             }
         }
+        public MongoCollection<DemandeHospit> DemandesHospit
+        {
+            get
+            {
+                return db.GetCollection<DemandeHospit>("DemandeHospit");
+            }
+        }
         public MongoCollection<Hospitalisation> Hospitalisations
         {
             get
             {
                 return db.GetCollection<Hospitalisation>("Hospitalisation");
-            }
-        }
-        public MongoCollection<Conclusion> Conclusions
-        {
-            get
-            {
-                return db.GetCollection<Conclusion>("Conclusion");
             }
         }
         public MongoCollection<Mesure> Mesures

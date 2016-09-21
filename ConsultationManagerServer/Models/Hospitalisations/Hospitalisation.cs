@@ -13,6 +13,8 @@ namespace ConsultationManagerServer.Models.Hospitalisations
         private string idPatient;
         private string idMedecin;
         private string idConclusion;
+        private string idDemande;
+        private string serviceId;
 
         private string idSalle;
         private string lit;
@@ -37,6 +39,8 @@ namespace ConsultationManagerServer.Models.Hospitalisations
             idPatient = "";
             idMedecin = "";
             idConclusion = "";
+            idDemande = "";
+            serviceId = "";
 
             idSalle = "";
             lit = "";
@@ -106,6 +110,34 @@ namespace ConsultationManagerServer.Models.Hospitalisations
             {
                 idConclusion = value;
                 OnPropertyChanged("IdConclusion");
+            }
+        }
+
+        [DataMember]
+        public string IdDemande
+        {
+            get
+            {
+                return idDemande;
+            }
+            set
+            {
+                idDemande = value;
+                OnPropertyChanged("IdDemande");
+            }
+        }
+
+        [DataMember]
+        public string ServiceId
+        {
+            get
+            {
+                return serviceId;
+            }
+            set
+            {
+                serviceId = value;
+                OnPropertyChanged("ServiceId");
             }
         }
 

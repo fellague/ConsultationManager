@@ -10,6 +10,7 @@ using ConsultationManagerServer.Models.SerializedModels;
 using ConsultationManagerClient.ViewModels.Authentication;
 using ConsultationManager.ServiceReferenceInterview;
 using System.ServiceModel.Security;
+using System.Windows;
 
 namespace ConsultationManagerClient.ViewModels.Interviews
 {
@@ -38,6 +39,9 @@ namespace ConsultationManagerClient.ViewModels.Interviews
 
             this.rdvConsult = rdv;
             rdvsViewModel = rdvVM;
+
+            CancelCommand = new RelayCommand(o => ((Window)o).Close());
+
             NewAntecedPersDialogCommand = new RelayCommand(param => ShowDialogNewAntecedPers());
             NewRemarqMedDialogCommand = new RelayCommand(param => ShowDialogNewRemarqMed());
             interview = new Interview();
@@ -109,6 +113,12 @@ namespace ConsultationManagerClient.ViewModels.Interviews
         #endregion
 
         #region ConsultationViewModel Commands
+
+        public ICommand CancelCommand
+        {
+            get;
+            private set;
+        }
 
         public ICommand NewAntecedPersDialogCommand
         {

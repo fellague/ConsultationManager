@@ -34,12 +34,6 @@ namespace ConsultationManagerServer.Services
                 .Set("Nouveau", false);
             var result2 = db.Patients.FindAndModify(query2, null, update2);
             
-            //var query3 = Query.EQ("Id", rdvPreced.Id);
-            //var update3 = Update
-            //    .Set("DejaFait", true);
-            //var result3 = db.RDVs.FindAndModify(query3, null, update3);
-
-
             return rdv;
         }
 

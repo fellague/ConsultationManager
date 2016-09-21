@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b794a5f4-b334-4180-9041-2a6ee9bb8a8f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9cf995e0-0c19-42ef-bbdc-5e8982a54f6b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,14 +19,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address=" http://localhost:64183/Services/ConclusionService.svc?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:64183/Services/ConclusionService.svc?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ConclusionService.xsd" MetadataType="Schema" ID="75ec43e3-b97c-4558-a261-fbeb1c265893" SourceId="1" SourceUrl="http://localhost:64183/Services/ConclusionService.svc?xsd=xsd3" />
-    <MetadataFile FileName="ConclusionService1.xsd" MetadataType="Schema" ID="63ef1e86-63ae-4508-8ceb-449e24070688" SourceId="1" SourceUrl="http://localhost:64183/Services/ConclusionService.svc?xsd=xsd2" />
-    <MetadataFile FileName="ConclusionService2.xsd" MetadataType="Schema" ID="9fa60e1e-9ff4-4d83-a5f3-ca1c8f35b742" SourceId="1" SourceUrl="http://localhost:64183/Services/ConclusionService.svc?xsd=xsd1" />
-    <MetadataFile FileName="ConclusionService3.xsd" MetadataType="Schema" ID="8306ad13-260e-488f-92d2-b05f6330635b" SourceId="1" SourceUrl="http://localhost:64183/Services/ConclusionService.svc?xsd=xsd0" />
-    <MetadataFile FileName="ConclusionService.wsdl" MetadataType="Wsdl" ID="24452d95-d7c0-423b-9294-8df21348b384" SourceId="1" SourceUrl="http://localhost:64183/Services/ConclusionService.svc?wsdl" />
+    <MetadataFile FileName="ConclusionService.xsd" MetadataType="Schema" ID="9cff58d6-3c9d-4ea1-a7bd-5a04ecfc3931" SourceId="1" SourceUrl="http://localhost:64183/Services/ConclusionService.svc?xsd=xsd4" />
+    <MetadataFile FileName="ConclusionService1.xsd" MetadataType="Schema" ID="aadf7f4e-c97f-496a-98ae-59f052890a81" SourceId="1" SourceUrl="http://localhost:64183/Services/ConclusionService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ConclusionService2.xsd" MetadataType="Schema" ID="e9879380-e88d-4c6c-855f-ac8055b52e28" SourceId="1" SourceUrl="http://localhost:64183/Services/ConclusionService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ConclusionService3.xsd" MetadataType="Schema" ID="7831e3c4-7b9d-48c0-a30d-be94c71e5119" SourceId="1" SourceUrl="http://localhost:64183/Services/ConclusionService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ConclusionService4.xsd" MetadataType="Schema" ID="74edfb3c-f42a-4286-9133-073190f6d27f" SourceId="1" SourceUrl="http://localhost:64183/Services/ConclusionService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ConclusionService.wsdl" MetadataType="Wsdl" ID="6f37537e-d582-4abf-9a31-60111ffe8ff0" SourceId="1" SourceUrl="http://localhost:64183/Services/ConclusionService.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

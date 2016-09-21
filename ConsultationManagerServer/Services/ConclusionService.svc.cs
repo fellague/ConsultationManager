@@ -8,6 +8,7 @@ using ConsultationManagerServer.Models;
 using MongoDB.Driver.Builders;
 using MongoDB.Bson;
 using System.Collections.ObjectModel;
+using ConsultationManagerServer.Models.Hospitalisations;
 
 namespace ConsultationManagerServer.Services
 {
@@ -45,6 +46,15 @@ namespace ConsultationManagerServer.Services
             var result2 = db.RDVs.FindAndModify(query2, null, update2);
 
             return conclusion;
+        }
+
+        public DemandeHospit AddDemandeHospit(DemandeHospit demandeHospit)
+        {
+            DataBaseContext db = new DataBaseContext();
+            
+            db.DemandesHospit.Save(demandeHospit);
+            
+            return demandeHospit;
         }
 
         public void DeleteConclusion(string id)
