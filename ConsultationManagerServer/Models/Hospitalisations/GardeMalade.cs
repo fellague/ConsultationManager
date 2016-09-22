@@ -19,22 +19,22 @@ namespace ConsultationManagerServer.Models.Hospitalisations
         private string numeroCarte;
         private ObservableCollection<string> telephones;
 
-        private string idHospitalisation;
+        //private string idHospitalisation;
 
-        private DateTime creeDans;
-        private string creePar;
+        //private DateTime creeDans;
+        //private string creePar;
 
         public GardeMalade()
         {
             nom = "";
             prenom = "";
             dateNaiss = new DateTime();
-            idHospitalisation = "";
             numeroCarte = "";
             telephones = new ObservableCollection<string>();
 
-            creeDans = new DateTime();
-            creePar = "";
+            //idHospitalisation = "";
+            //creeDans = new DateTime();
+            //creePar = "";
         }
 
         [BsonId]
@@ -89,19 +89,7 @@ namespace ConsultationManagerServer.Models.Hospitalisations
             }
         }
 
-        [DataMember]
-        public string IdHospitalisation
-        {
-            get
-            {
-                return idHospitalisation;
-            }
-            set
-            {
-                idHospitalisation = value;
-                OnPropertyChanged("IdHospitalisation");
-            }
-        }
+        
 
         [DataMember]
         public string NumeroCarte
@@ -130,35 +118,49 @@ namespace ConsultationManagerServer.Models.Hospitalisations
                 OnPropertyChanged("Telephone");
             }
         }
-        
-        [DataMember]
-        public DateTime CreeDans
-        {
-            get
-            {
-                return creeDans;
-            }
-            set
-            {
-                creeDans = value;
-                OnPropertyChanged("CreeDans");
-            }
-        }
 
-        [DataMember]
-        public string CreePar
-        {
-            get
-            {
-                return creePar;
-            }
-            set
-            {
-                creePar = value;
-                OnPropertyChanged("CreePar");
-            }
-        }
-        
+        //[DataMember]
+        //public string IdHospitalisation
+        //{
+        //    get
+        //    {
+        //        return idHospitalisation;
+        //    }
+        //    set
+        //    {
+        //        idHospitalisation = value;
+        //        OnPropertyChanged("IdHospitalisation");
+        //    }
+        //}
+
+        //[DataMember]
+        //public DateTime CreeDans
+        //{
+        //    get
+        //    {
+        //        return creeDans;
+        //    }
+        //    set
+        //    {
+        //        creeDans = value;
+        //        OnPropertyChanged("CreeDans");
+        //    }
+        //}
+
+        //[DataMember]
+        //public string CreePar
+        //{
+        //    get
+        //    {
+        //        return creePar;
+        //    }
+        //    set
+        //    {
+        //        creePar = value;
+        //        OnPropertyChanged("CreePar");
+        //    }
+        //}
+
         #region InotifyPropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;

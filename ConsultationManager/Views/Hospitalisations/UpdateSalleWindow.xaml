@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ConsultationManager.Views.Hospitalisations"
         mc:Ignorable="d" WindowStyle="None"
-        Height="220" Width="550" WindowStartupLocation="CenterScreen">
+        Height="270" Width="550" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -30,6 +30,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
             <TextBlock Text="Nom" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 5 0 0" FontSize="16"></TextBlock>
@@ -43,12 +44,14 @@
             </ComboBox>
 
             <TextBlock Grid.Row="2" Text="Nombre de Lit" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 5 0 0" FontSize="16"></TextBlock>
-            <ComboBox Grid.Row="2" Grid.Column="1" x:Name="listLitsDispComboBox" FontSize="16" VerticalAlignment="Center" Width="100"  Margin="30 0 10 0" 
+            <ComboBox Grid.Row="2" Grid.Column="1" x:Name="listLitsDispComboBox" FontSize="16" VerticalAlignment="Center" Width="100"  Margin="30 0 10 10" 
                       ItemsSource="{Binding ListNbLit}"
                       SelectedItem="{Binding UpdatedSalle.NbLit, Mode=TwoWay}">
             </ComboBox>
 
-            <WrapPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1"  Margin="0 30 50 30" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+            <CheckBox Content="Hors Service" IsChecked="{Binding UpdatedSalle.HorService}" Grid.Row="3" Grid.Column="1" FontSize="16" VerticalAlignment="Center" ></CheckBox>
+
+            <WrapPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1"  Margin="0 30 50 30" VerticalAlignment="Bottom" HorizontalAlignment="Right">
                 <Button Command="{Binding CancelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
                 HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin=" 0 0 10 0" FontSize="16">
                     Annuler

@@ -11,18 +11,24 @@ using System.Windows;
 using ConsultationManager.Views.Hospitalisations;
 using ConsultationManager.ServiceReferenceSalle;
 using System.ServiceModel.Security;
+using ConsultationManagerServer.Models.SerializedModels;
+using ConsultationManager.ServiceReferenceHospit;
 
 namespace ConsultationManagerClient.ViewModels.Hospitalisations
 {
     internal class ListHospitalisationViewModel : INotifyPropertyChanged
     {
         private SalleServiceClient ssc = new SalleServiceClient();
+        private HospitServiceClient hsc = new HospitServiceClient();
+        
 
         private string nomUtilisateur;
-        private ObservableCollection<Hospitalisation> listAllHospitalisation;
-        private ObservableCollection<Hospitalisation> listActiveHospitalisation;
+        private ObservableCollection<HospitalisationDetail> listAllHospitalisation;
+        private ObservableCollection<HospitalisationDetail> listActiveHospitalisation;
         
         private ObservableCollection<Salle> listSalle;
+
+        private ObservableCollection<DemandeHospitDetail> listDemandeHospit;
 
 
         private NewSalleWindow dialogNewSalle;
@@ -39,12 +45,19 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             ssc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
             ssc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
                                 X509CertificateValidationMode.None;
+            hsc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
+            hsc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
+            hsc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
+                                X509CertificateValidationMode.None;
 
-            listAllHospitalisation = CreateHospitalisations();
-            listActiveHospitalisation = CreateListActiveHospitalisation();
+            listAllHospitalisation = new ObservableCollection<HospitalisationDetail>();
+            listAllHospitalisation = new ObservableCollection<HospitalisationDetail>(hsc.GetHospits(AuthenticationViewModel.AuthenticatedUser.ServiceId));
+            listActiveHospitalisation = new ObservableCollection<HospitalisationDetail>();
+            ActualiserLists();
             nomUtilisateur = AuthenticationViewModel.AuthenticatedUser.Nom + " " + AuthenticationViewModel.AuthenticatedUser.Prenom;
 
             listSalle = new ObservableCollection<Salle>(ssc.GetSalles(AuthenticationViewModel.AuthenticatedUser.ServiceId));
+            listDemandeHospit = new ObservableCollection<DemandeHospitDetail>(hsc.GetDemandesHospit(AuthenticationViewModel.AuthenticatedUser.ServiceId));
 
             CancelCommand = new RelayCommand(o => ((Window)o).Close());
 
@@ -57,18 +70,28 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
 
         #region PatientsViewModel Variables
 
-        public ObservableCollection<Hospitalisation> ListAllHospitalisation
+        public ObservableCollection<HospitalisationDetail> ListAllHospitalisation
         {
             get
             {
                 return listAllHospitalisation;
             }
+            set
+            {
+                listAllHospitalisation = value;
+                OnPropertyChanged("ListAllHospitalisation");
+            }
         }
-        public ObservableCollection<Hospitalisation> ListActiveHospitalisation
+        public ObservableCollection<HospitalisationDetail> ListActiveHospitalisation
         {
             get
             {
                 return listActiveHospitalisation;
+            }
+            set
+            {
+                listActiveHospitalisation = value;
+                OnPropertyChanged("ListActiveHospitalisation");
             }
         }
         public ObservableCollection<Salle> ListSalle
@@ -81,6 +104,18 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             {
                 listSalle = value;
                 OnPropertyChanged("ListSalle");
+            }
+        }
+        public ObservableCollection<DemandeHospitDetail> ListDemandeHospit
+        {
+            get
+            {
+                return listDemandeHospit;
+            }
+            set
+            {
+                listDemandeHospit = value;
+                OnPropertyChanged("ListDemandeHospit");
             }
         }
         public Salle NewSalle
@@ -181,34 +216,13 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
         #endregion
 
         #region PatientsViewModel Methods
-
-        private ObservableCollection<Hospitalisation> CreateHospitalisations()
+        
+        private ObservableCollection<HospitalisationDetail> CreateListActiveHospitalisation()
         {
-            ObservableCollection<Hospitalisation> list = new ObservableCollection<Hospitalisation>();
-            //list.Add(new Hospitalisation("", "Kaddour Aissa", "Kamel", "5", "14", DateTime.Today.AddDays(-10), DateTime.Today.AddDays(-3), DateTime.Today.AddDays(-2), DateTime.Today.AddDays(-11), "Adda hanifi Omar"));
-            //list.Add(new Hospitalisation("1", "Hadj Henni", "Abdelkader" , "3", "7", DateTime.Today.AddDays(-5), DateTime.Today.AddDays(2), DateTime.Today, DateTime.Today.AddDays(-32), "Mokrane Fatiha"));
-            //list.Add(new Hospitalisation("2", "Koidri", "Fatma", "1", "3", DateTime.Today, DateTime.Today.AddDays(7),new DateTime(1, 1, 1), DateTime.Today.AddDays(-1), "Halim Imed"));
-            //list.Add(new Hospitalisation("", "Chergou", "Abdelhak" , "5", "10", DateTime.Today.AddDays(-20), DateTime.Today.AddDays(-12), DateTime.Today.AddDays(-12), DateTime.Today.AddDays(-30), "Fellague chebra Abdelhalim"));
-            //list.Add(new Hospitalisation("3", "Bouzidi", "Brahim", "3", "5", DateTime.Today.AddDays(-1), DateTime.Today.AddDays(10), DateTime.Today, DateTime.Today.AddDays(-19), "bennouna el khebith"));
-            //list.Add(new Hospitalisation("", "Aissawi", "Oussama", "5", "6", DateTime.Today.AddMonths(-2), DateTime.Today.AddMonths(-2).AddDays(10), DateTime.Today.AddMonths(-2).AddDays(10), DateTime.Today.AddMonths(-2).AddDays(-4), "fellague halim"));
-            //list.Add(new Hospitalisation("", "Nouri", "Hakim", "3", "2", DateTime.Today.AddMonths(-3), DateTime.Today.AddMonths(-3).AddDays(10), DateTime.Today.AddMonths(-3).AddDays(10), DateTime.Today.AddMonths(-2).AddDays(-1), "Sakraoui Imed"));
-            //list.Add(new Hospitalisation("", "Berroudji", "Bakhta", "5", "8", DateTime.Today.AddDays(3), DateTime.Today.AddDays(10), new DateTime(1, 1, 1), DateTime.Today, "Melloul Abdellah"));
-            //list.Add(new Hospitalisation("", "Amaouri", "Saiid", "5", "3", DateTime.Today.AddMonths(1).AddDays(3), DateTime.Today.AddMonths(1).AddDays(10), new DateTime(1, 1, 1), DateTime.Today, "Adda hanifi Omar"));
-            //list.Add(new Hospitalisation("", "Bouraoui", "Ammar", "1", "4", DateTime.Today.AddMonths(-4), DateTime.Today.AddMonths(-4).AddDays(7), DateTime.Today.AddMonths(-4).AddDays(10), DateTime.Today.AddMonths(-4).AddDays(-4), "Halim Imed"));
-            //list.Add(new Hospitalisation("4", "Henni", "El Alia", "3", "4", DateTime.Today.AddDays(-4), DateTime.Today.AddDays(5), new DateTime(1, 1, 1), DateTime.Today.AddDays(-6), "Melloul Abdellah"));
-            //list.Add(new Hospitalisation("", "Ben yamina", "Abdelkader", "5", "11", DateTime.Today.AddMonths(-2), DateTime.Today.AddMonths(-2).AddDays(10), DateTime.Today.AddMonths(-2).AddDays(10), DateTime.Today.AddMonths(-2).AddDays(-4), "Sakraoui Imed"));
-            //list.Add(new Hospitalisation("5", "Bougara", "Brahim", "1", "2", DateTime.Today.AddDays(-7), DateTime.Today.AddDays(1), new DateTime(1, 1, 1), DateTime.Today.AddDays(-10), "Melloul Abdellah"));
-            //list.Add(new Hospitalisation("", "Khoukhi", "Doukkich", "5", "9", DateTime.Today.AddDays(3), DateTime.Today.AddDays(10), new DateTime(1, 1, 1), DateTime.Today, "Sakraoui Imed"));
-            return list;
-        }
-
-        private ObservableCollection<Hospitalisation> CreateListActiveHospitalisation()
-        {
-            ObservableCollection<Hospitalisation> allList = CreateHospitalisations();
-            ObservableCollection<Hospitalisation> allMyList = new ObservableCollection<Hospitalisation>();
-            foreach (Hospitalisation element in allList)
+            ObservableCollection<HospitalisationDetail> allMyList = new ObservableCollection<HospitalisationDetail>();
+            foreach (HospitalisationDetail element in listAllHospitalisation)
             {
-                if (element.DateFinPrevu.Date.CompareTo(DateTime.Now) > 0 && element.DateDebut.Date.CompareTo(DateTime.Now.Date) <= 0)
+                if (element.Hospitalisation.DateFinPrevu.Date.CompareTo(DateTime.Now) > 0 && element.Hospitalisation.DateDebutReel.Date.CompareTo(DateTime.Now.Date) <= 0)
                 {
                     allMyList.Add(element);
                 }
@@ -222,10 +236,10 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             dialogUpdateSalle = new UpdateSalleWindow();
             listNbLit = new ObservableCollection<int>(Enumerable.Range(1, 20));
             dialogUpdateSalle.DataContext = this;
-            UpdateSalleCommand = new RelayCommand(param => ModifierPathologie());
+            UpdateSalleCommand = new RelayCommand(param => ModifierSalle());
             dialogUpdateSalle.ShowDialog();
         }
-        public void ModifierPathologie()
+        public void ModifierSalle()
         {
             ssc.UpdateSalle(UpdatedSalle);
             dialogUpdateSalle.Close();
@@ -257,6 +271,11 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             ssc.AddSalle(NewSalle);
             listSalle.Add(NewSalle);
             dialogNewSalle.Close();
+        }
+
+        private void ActualiserLists()
+        {
+            listActiveHospitalisation = CreateListActiveHospitalisation();
         }
 
         #endregion

@@ -1,0 +1,111 @@
+﻿<Page x:Class="ConsultationManager.Views.Hospitalisations.ListDemandesHospitPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:ConsultationManager.Views.Hospitalisations"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="ListDemandesHospitPage">
+
+    <Grid Margin="10">
+        <DockPanel>
+            <WrapPanel DockPanel.Dock="Top">
+                <TextBlock  FontSize="24">Les Demandes d'Hospitalisation</TextBlock>
+
+            </WrapPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <!--<ColumnDefinition Width="*" />-->
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <DockPanel LastChildFill="True">
+                        <Grid DockPanel.Dock="Top" Height="30">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.9*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="2.3*"/>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" FontSize="16" FontWeight="Bold">Urgence</Label>
+                            <Label Grid.Column="1" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Patient</Label>
+                            <Label Grid.Column="2" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Médecin Responsable</Label>
+                            <Label Grid.Column="3" FontSize="16" FontWeight="Bold" Margin="10 0">Motif</Label>
+                            <Label Grid.Column="4" FontSize="16" FontWeight="Bold" Margin="10 0">Traitement</Label>
+                            <Label Grid.Column="5" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Durée (Jours)</Label>
+                            <Label Grid.Column="6" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Creé Dans</Label>
+                        </Grid>
+                        <ItemsPresenter></ItemsPresenter>
+                    </DockPanel>
+
+                    <ListBox x:Name="listMyRdv" ItemsSource="{Binding ListDemandeHospit}" Grid.Row="1" HorizontalContentAlignment="Stretch">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.7*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="2.3*"/>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="5*"/>
+                                        <ColumnDefinition Width="1.5*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="{Binding Path=DemandeHospit.Urgence}" HorizontalAlignment="Center" FontSize="16" FontWeight="DemiBold"></TextBlock>
+
+                                    <WrapPanel Grid.Column="1"  HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding Path=Patient.Nom}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="DemiBold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=Patient.Prenom}" FontSize="16" FontWeight="DemiBold"></TextBlock>
+                                    </WrapPanel>
+
+                                    <WrapPanel Grid.Column="2"  HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding Path=Medecin.Nom}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="DemiBold"></TextBlock>
+                                        <TextBlock Text="{Binding Path=Medecin.Prenom}" FontSize="16" FontWeight="DemiBold"></TextBlock>
+                                    </WrapPanel>
+
+                                    <TextBlock Text="{Binding Path=DemandeHospit.Motif}" Grid.Column="3" Margin="20 0" FontSize="16"></TextBlock>
+                                    
+                                    <TextBlock Text="{Binding Path=DemandeHospit.Traitement}" Grid.Column="4" Margin="20 0" FontSize="16" FontWeight="DemiBold"></TextBlock>
+
+                                    <TextBlock Text="{Binding Path=DemandeHospit.NbJours}" Grid.Column="5" HorizontalAlignment="Center" FontSize="16"></TextBlock>
+
+                                    <TextBlock Text="{Binding Path=DemandeHospit.CreeDans,  StringFormat='dd/MM/yyy'}" Grid.Column="6"  HorizontalAlignment="Center" FontSize="16" FontWeight="DemiBold"></TextBlock>
+
+                                    <WrapPanel Grid.Column="7" Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <!--<Button  
+                                                    Command="{Binding DataContext.UpdateRdvDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
+                                                    ToolTip="Modifier le Rendez-Vous">
+                                            <materialDesign:PackIcon Kind="Pencil" Height="24" Width="24" />
+                                        </Button>-->
+                                        <Button  
+                                                    Command="{Binding DataContext.RemoveSelectedRdvCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="3"
+                                                    ToolTip="Reporter le Rendez-vous">
+                                            <materialDesign:PackIcon Kind="RayStartArrow" Height="24" Width="24" />
+                                        </Button>
+                                    </WrapPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Page>

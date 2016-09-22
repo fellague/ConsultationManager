@@ -2,6 +2,7 @@
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -15,6 +16,8 @@ namespace ConsultationManagerServer.Models.Hospitalisations
         private string nom;
         private string type;
         private int nbLit;
+        private ObservableCollection<int> litsLibres;
+        private bool horService;
 
         private string idService;
 
@@ -26,6 +29,8 @@ namespace ConsultationManagerServer.Models.Hospitalisations
             nom = "";
             type = "";
             nbLit = 1;
+            litsLibres = new ObservableCollection<int>(Enumerable.Range(1, 20));
+            horService = false;
 
             idService = "";
 
@@ -81,6 +86,34 @@ namespace ConsultationManagerServer.Models.Hospitalisations
             {
                 nbLit = value;
                 OnPropertyChanged("NbLit");
+            }
+        }
+
+        [DataMember]
+        public ObservableCollection<int> LitsLibres
+        {
+            get
+            {
+                return litsLibres;
+            }
+            set
+            {
+                litsLibres = value;
+                OnPropertyChanged("LitsLibres");
+            }
+        }
+
+        [DataMember]
+        public bool HorService
+        {
+            get
+            {
+                return horService;
+            }
+            set
+            {
+                horService = value;
+                OnPropertyChanged("HorService");
             }
         }
 

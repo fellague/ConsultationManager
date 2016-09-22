@@ -390,11 +390,11 @@ namespace ConsultationManagerClient.ViewModels.Interviews
             NewDemandeHospit.IdMedecin = rdvConsult.Medecin.Id;
             if (rdvConsult.Rdv.NouvPat)
             {
-                NewDemandeHospit.IdSource = "first";
+                NewDemandeHospit.IdInterview = "first";
             }
             else
             {
-                NewDemandeHospit.IdSource = interview.Id;
+                NewDemandeHospit.IdInterview = interview.Id;
             }
 
             NewDemandeHospit.ServiceId = rdvConsult.Rdv.ServiceId;

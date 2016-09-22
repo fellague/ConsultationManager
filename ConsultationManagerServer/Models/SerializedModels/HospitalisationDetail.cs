@@ -26,7 +26,6 @@ namespace ConsultationManagerServer.Models.SerializedModels
 
             SallesChange = new ObservableCollection<Salle>();
             Inetrventions = new ObservableCollection<Intervention>();
-            GardesMalade = new ObservableCollection<GardeMalade>();
         }
 
         [DataMember]
@@ -92,11 +91,11 @@ namespace ConsultationManagerServer.Models.SerializedModels
             get;
             set;
         }
-        [DataMember]
-        public ObservableCollection<GardeMalade> GardesMalade
-        {
-            get;
-            set;
-        }
+        //[DataMember]
+        //public ObservableCollection<GardeMalade> GardesMalade
+        //{
+        //    get;
+        //    set;
+        //}
     }
 }

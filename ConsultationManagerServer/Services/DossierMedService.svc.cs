@@ -36,7 +36,6 @@ namespace ConsultationManagerServer.Services
         public List<DossierMedDetail> GetAllDossierMeds(string idService)
         {
             DataBaseContext db = new DataBaseContext();
-            ObservableCollection<DossierMedDetail> list = new ObservableCollection<DossierMedDetail>();
             List<DossierMedDetail> listDossiers = new List<DossierMedDetail>();
             DossierMedDetail dossierMedDetail = new DossierMedDetail();
             //var patients = db.Patients.AsQueryable().Where(p => p.ServiceId == idService).ToList();
@@ -65,7 +64,6 @@ namespace ConsultationManagerServer.Services
         public List<DossierMedDetail> GetConsultDossierMeds(string idMedecin)
         {
             DataBaseContext db = new DataBaseContext();
-            ObservableCollection<DossierMedDetail> list = new ObservableCollection<DossierMedDetail>();
             List<DossierMedDetail> listDossiers = new List<DossierMedDetail>();
             DossierMedDetail dossierMedDetail = new DossierMedDetail();
             //var patients = db.Patients.AsQueryable().Where(p => p.ServiceId == idService).ToList();
@@ -94,7 +92,6 @@ namespace ConsultationManagerServer.Services
         public List<DossierMedDetail> GetMedecinDossierMeds(string idMedecin)
         {
             DataBaseContext db = new DataBaseContext();
-            ObservableCollection<DossierMedDetail> list = new ObservableCollection<DossierMedDetail>();
             List<DossierMedDetail> listDossiers = new List<DossierMedDetail>();
             DossierMedDetail dossierMedDetail = new DossierMedDetail();
             //var patients = db.Patients.AsQueryable().Where(p => p.ServiceId == idService).ToList();

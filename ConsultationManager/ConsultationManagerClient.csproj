@@ -120,6 +120,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ServiceReferenceHospit\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServiceReferenceInterview\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -177,6 +182,9 @@
     </Compile>
     <Compile Include="Views\DossierMedicals\MyDossierPage.xaml.cs">
       <DependentUpon>MyDossierPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Hospitalisations\ListDemandesHospitPage.xaml.cs">
+      <DependentUpon>ListDemandesHospitPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Hospitalisations\ListSallesPage.xaml.cs">
       <DependentUpon>ListSallesPage.xaml</DependentUpon>
@@ -347,6 +355,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DossierMedicals\MyDossierPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Hospitalisations\ListDemandesHospitPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -567,6 +579,7 @@
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Consultation.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.DossierMed.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Hospitalisations.DemandeHospit.datasource" />
+    <None Include="Properties\DataSources\ConsultationManagerServer.Models.Hospitalisations.Hospitalisation.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Hospitalisations.Salle.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Interview.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Pathologie.datasource" />
@@ -574,7 +587,9 @@
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Planning.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.RDV.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.ConsultationMedecinsPlanning.datasource" />
+    <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.DemandeHospitDetail.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.DossierMedDetail.datasource" />
+    <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.HospitalisationDetail.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.InterviewDetail.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.ServicePathologies.datasource" />
@@ -641,6 +656,25 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReferenceDossierMed\DossierMedService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceHospit\HospitService.wsdl" />
+    <None Include="Service References\ServiceReferenceHospit\HospitService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceHospit\HospitService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceHospit\HospitService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceHospit\HospitService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceHospit\HospitService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReferenceHospit\HospitService5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReferenceInterview\InterviewService.wsdl" />
@@ -801,6 +835,7 @@
     <WCFMetadataStorage Include="Service References\ServiceReferenceConclusion\" />
     <WCFMetadataStorage Include="Service References\ServiceReferenceConsultation\" />
     <WCFMetadataStorage Include="Service References\ServiceReferenceDossierMed\" />
+    <WCFMetadataStorage Include="Service References\ServiceReferenceHospit\" />
     <WCFMetadataStorage Include="Service References\ServiceReferenceInterview\" />
     <WCFMetadataStorage Include="Service References\ServiceReferencePatient\" />
     <WCFMetadataStorage Include="Service References\ServiceReferencePlanning\" />
@@ -924,6 +959,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceReferenceConclusion\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceHospit\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceHospit\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceHospit\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

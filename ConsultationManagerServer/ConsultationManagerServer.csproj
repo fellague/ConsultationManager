@@ -88,6 +88,7 @@
     <Content Include="Services\ConclusionService.svc" />
     <Content Include="Services\ConsultationService.svc" />
     <Content Include="Services\DossierMedService.svc" />
+    <Content Include="Services\HospitService.svc" />
     <Content Include="Services\InterviewService.svc" />
     <Content Include="Services\PatientService.svc" />
     <Content Include="Services\PlanningService.svc" />
@@ -109,6 +110,7 @@
     <Compile Include="Models\Hospitalisations\Salle.cs" />
     <Compile Include="Models\Planning.cs" />
     <Compile Include="Models\SerializedModels\ConsultationMedecinsPlanning.cs" />
+    <Compile Include="Models\SerializedModels\DemandeHospitDetail.cs" />
     <Compile Include="Models\SerializedModels\DossierMedDetail.cs" />
     <Compile Include="Models\SerializedModels\HospitalisationDetail.cs" />
     <Compile Include="Models\SerializedModels\InterviewDetail.cs" />
@@ -122,9 +124,13 @@
     <Compile Include="Services\DossierMedService.svc.cs">
       <DependentUpon>DossierMedService.svc</DependentUpon>
     </Compile>
+    <Compile Include="Services\HospitService.svc.cs">
+      <DependentUpon>HospitService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Services\IAuthenticationService.cs" />
     <Compile Include="Services\IConclusionService.cs" />
     <Compile Include="Services\IDossierMedService.cs" />
+    <Compile Include="Services\IHospitService.cs" />
     <Compile Include="Services\IInterviewService.cs" />
     <Compile Include="Services\InterviewService.svc.cs">
       <DependentUpon>InterviewService.svc</DependentUpon>

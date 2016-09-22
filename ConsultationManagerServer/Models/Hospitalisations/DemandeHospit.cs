@@ -14,7 +14,7 @@ namespace ConsultationManagerServer.Models.Hospitalisations
     {
         private string idPatient;
         private string idMedecin;
-        private string idSource;
+        private string idInterview;
         private string idHospit;
 
         private string idRdv;
@@ -32,7 +32,7 @@ namespace ConsultationManagerServer.Models.Hospitalisations
         {
             idPatient = "";
             idMedecin = "";
-            idSource = "";
+            idInterview = "";
             idHospit = "";
 
             idRdv = "";
@@ -100,16 +100,16 @@ namespace ConsultationManagerServer.Models.Hospitalisations
         }
 
         [DataMember]
-        public string IdSource
+        public string IdInterview
         {
             get
             {
-                return idSource;
+                return idInterview;
             }
             set
             {
-                idSource = value;
-                OnPropertyChanged("IdSource");
+                idInterview = value;
+                OnPropertyChanged("IdInterview");
             }
         }
 

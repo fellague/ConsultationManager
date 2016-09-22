@@ -18,9 +18,12 @@ namespace ConsultationManagerServer.Models.Hospitalisations
 
         private string idSalle;
         private string lit;
-        private DateTime dateDebut;
+        private DateTime dateDebutPrevu;
+        private DateTime dateDebutReel;
         private DateTime dateFinPrevu;
         private DateTime dateFinReel;
+
+        private GardeMalade garde;
 
         private ObservableCollection<string> idSalleChanges;
         private ObservableCollection<string> idInterventions;
@@ -44,13 +47,16 @@ namespace ConsultationManagerServer.Models.Hospitalisations
 
             idSalle = "";
             lit = "";
-            dateDebut = new DateTime();
+            dateDebutPrevu = new DateTime();
+            dateDebutReel = new DateTime();
             dateFinPrevu = new DateTime();
             dateFinReel = new DateTime();
 
+            garde = new GardeMalade();
+
             idSalleChanges = new ObservableCollection<string>();
             idInterventions = new ObservableCollection<string>();
-            idGardesMalade = new ObservableCollection<string>();
+            //idGardesMalade = new ObservableCollection<string>();
 
             idMesuresFicheTA = new ObservableCollection<string>();
             idMesuresFichePoids = new ObservableCollection<string>();
@@ -170,16 +176,30 @@ namespace ConsultationManagerServer.Models.Hospitalisations
         }
 
         [DataMember]
-        public DateTime DateDebut
+        public DateTime DateDebutPrevu
         {
             get
             {
-                return dateDebut;
+                return dateDebutPrevu;
             }
             set
             {
-                dateDebut = value;
-                OnPropertyChanged("DateDebut");
+                dateDebutPrevu = value;
+                OnPropertyChanged("DateDebutPrevu");
+            }
+        }
+
+        [DataMember]
+        public DateTime DateDebutReel
+        {
+            get
+            {
+                return dateDebutReel;
+            }
+            set
+            {
+                dateDebutReel = value;
+                OnPropertyChanged("DateDebutReel");
             }
         }
 
@@ -212,6 +232,20 @@ namespace ConsultationManagerServer.Models.Hospitalisations
         }
 
         [DataMember]
+        public GardeMalade Garde
+        {
+            get
+            {
+                return garde;
+            }
+            set
+            {
+                garde = value;
+                OnPropertyChanged("Garde");
+            }
+        }
+
+        [DataMember]
         public ObservableCollection<string> IdSallesChange
         {
             get
@@ -237,19 +271,19 @@ namespace ConsultationManagerServer.Models.Hospitalisations
                 OnPropertyChanged("Intervention");
             }
         }
-        [DataMember]
-        public ObservableCollection<string> IdGardesMalade
-        {
-            get
-            {
-                return idGardesMalade;
-            }
-            set
-            {
-                idGardesMalade = value;
-                OnPropertyChanged("IdGardesMalade");
-            }
-        }
+        //[DataMember]
+        //public ObservableCollection<string> IdGardesMalade
+        //{
+        //    get
+        //    {
+        //        return idGardesMalade;
+        //    }
+        //    set
+        //    {
+        //        idGardesMalade = value;
+        //        OnPropertyChanged("IdGardesMalade");
+        //    }
+        //}
 
         [DataMember]
         public ObservableCollection<string> IdMesuresFicheTA

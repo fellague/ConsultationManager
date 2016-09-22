@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:64183/Services/HospitService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="Hospitalisation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreeDans" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreePar" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateDebutPrevu" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateDebutReel" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateFinPrevu" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateFinReel" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Garde" nillable="true" type="tns:GardeMalade" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdConclusion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdDemande" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IdInterventions" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="IdMedecin" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IdMesuresFicheGlycemique" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IdMesuresFichePoids" nillable="true" type="q3:ArrayOfstring" />
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IdMesuresFicheTA" nillable="true" type="q4:ArrayOfstring" />
+      <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IdMesuresFicheTemperature" nillable="true" type="q5:ArrayOfstring" />
+      <xs:element minOccurs="0" name="IdPatient" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdSalle" nillable="true" type="xs:string" />
+      <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IdSallesChange" nillable="true" type="q6:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Lit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Hospitalisation" nillable="true" type="tns:Hospitalisation" />
+  <xs:complexType name="GardeMalade">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateNaiss" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroCarte" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Prenom" nillable="true" type="xs:string" />
+      <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Telephones" nillable="true" type="q7:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GardeMalade" nillable="true" type="tns:GardeMalade" />
+  <xs:complexType name="DemandeHospit">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreeDans" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreePar" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdHospit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdInterview" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdMedecin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdPatient" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdRdv" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Motif" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NbJours" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Traitement" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Urgence" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DemandeHospit" nillable="true" type="tns:DemandeHospit" />
+  <xs:complexType name="ArrayOfMesure">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Mesure" nillable="true" type="tns:Mesure" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMesure" nillable="true" type="tns:ArrayOfMesure" />
+  <xs:complexType name="Mesure">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreeDans" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreePar" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdHospitalisation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Valeur" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Mesure" nillable="true" type="tns:Mesure" />
+  <xs:complexType name="ArrayOfIntervention">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Intervention" nillable="true" type="tns:Intervention" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIntervention" nillable="true" type="tns:ArrayOfIntervention" />
+  <xs:complexType name="Intervention">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreeDans" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreePar" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdHospitalisation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Motif" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Intervention" nillable="true" type="tns:Intervention" />
+  <xs:complexType name="ArrayOfSalle">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Salle" nillable="true" type="tns:Salle" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSalle" nillable="true" type="tns:ArrayOfSalle" />
+  <xs:complexType name="Salle">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreeDans" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreePar" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HorService" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdService" nillable="true" type="xs:string" />
+      <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="LitsLibres" nillable="true" type="q8:ArrayOfint" />
+      <xs:element minOccurs="0" name="NbLit" type="xs:int" />
+      <xs:element minOccurs="0" name="Nom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Salle" nillable="true" type="tns:Salle" />
+</xs:schema>

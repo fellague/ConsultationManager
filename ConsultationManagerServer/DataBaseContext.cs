@@ -118,5 +118,12 @@ namespace ConsultationManagerServer
                 return db.GetCollection<Mesure>("Mesure");
             }
         }
+        public MongoCollection<Intervention> Interventions
+        {
+            get
+            {
+                return db.GetCollection<Intervention>("Intervention");
+            }
+        }
     }
 }

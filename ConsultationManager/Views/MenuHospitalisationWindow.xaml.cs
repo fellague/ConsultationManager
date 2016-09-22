@@ -31,30 +31,30 @@ namespace ConsultationManagerClient.Views
             this.DataContext = hospitVM;
 
             _mainFrame.Navigate(new AllHospitalisationPage(hospitVM));
-            coloringTabs(AllHospBtn, ActiveHospBtn, NewHospBtn, SalleBtn);
+            coloringTabs(AllHospBtn, ActiveHospBtn, DemandesHospit, SalleBtn);
         }
 
 
         private void button_click_tout(object sender, RoutedEventArgs e)
         {
             _mainFrame.Navigate(new AllHospitalisationPage(hospitVM));
-            coloringTabs(AllHospBtn, ActiveHospBtn, NewHospBtn, SalleBtn);
+            coloringTabs(AllHospBtn, ActiveHospBtn, DemandesHospit, SalleBtn);
         }
 
         private void button_click_active(object sender, RoutedEventArgs e)
         {
             _mainFrame.Navigate(new ActiveHospitalisationPage(hospitVM));
-            coloringTabs(ActiveHospBtn, AllHospBtn, NewHospBtn, SalleBtn);
+            coloringTabs(ActiveHospBtn, AllHospBtn, DemandesHospit, SalleBtn);
         }
-        private void button_click_nouveau(object sender, RoutedEventArgs e)
+        private void button_click_demands(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new NewDemandHospitalisationPage());
-            coloringTabs(NewHospBtn, AllHospBtn, ActiveHospBtn, SalleBtn);
+            _mainFrame.Navigate(new ListDemandesHospitPage(hospitVM));
+            coloringTabs(DemandesHospit, AllHospBtn, ActiveHospBtn, SalleBtn);
         }
         private void button_click_salles(object sender, RoutedEventArgs e)
         {
             _mainFrame.Navigate(new ListSallesPage(hospitVM));
-            coloringTabs(SalleBtn, NewHospBtn, AllHospBtn, ActiveHospBtn);
+            coloringTabs(SalleBtn, DemandesHospit, AllHospBtn, ActiveHospBtn);
         }
 
         private void button_click_home(object sender, RoutedEventArgs e)
