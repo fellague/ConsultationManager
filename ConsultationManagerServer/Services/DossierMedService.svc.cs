@@ -155,12 +155,12 @@ namespace ConsultationManagerServer.Services
         {
             DataBaseContext db = new DataBaseContext();
             int num = 1;
-            var dossier = db.DossierMeds.FindAll().Where(p => p.ServiceId == patient.Patient.ServiceId).ToList().Last();
+            var dossier = db.DossierMeds.FindAll().Where(p => p.ServiceId == patient.Patient.ServiceId && p.CreeDans.Year == DateTime.Now.Year).ToList();
 
-            MessageBox.Show(dossier.Identifiant.Substring(4, 7));
-            num = int.Parse(dossier.Identifiant.Substring(4, 7));
+            if (dossier.Count()>0)
+                num = int.Parse(dossier.Last().Identifiant.Substring(4, 4));
 
-            return num;
+            return num+1;
         }
     }
 }

@@ -36,7 +36,7 @@
                                 <ColumnDefinition Width="5*"/>
                                 <ColumnDefinition Width="1.5*"/>
                                 <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="0.6*"/>
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" FontSize="16" FontWeight="Bold">Urgence</Label>
                             <Label Grid.Column="1" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">Patient</Label>
@@ -61,7 +61,7 @@
                                         <ColumnDefinition Width="5*"/>
                                         <ColumnDefinition Width="1.5*"/>
                                         <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="0.6*"/>
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Text="{Binding Path=DemandeHospit.Urgence}" HorizontalAlignment="Center" FontSize="16" FontWeight="DemiBold"></TextBlock>
@@ -95,9 +95,9 @@
                                         <Button  
                                                     Command="{Binding DataContext.RemoveSelectedRdvCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
                                                     CommandParameter="{Binding}"
-                                                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="3"
-                                                    ToolTip="Reporter le Rendez-vous">
-                                            <materialDesign:PackIcon Kind="RayStartArrow" Height="24" Width="24" />
+                                                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                                                    ToolTip="Créer une Hospitalisation">
+                                            <materialDesign:PackIcon Kind="HospitalMarker" Height="30" Width="30" />
                                         </Button>
                                     </WrapPanel>
                                 </Grid>

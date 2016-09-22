@@ -266,9 +266,9 @@ namespace ConsultationManagerClient.ViewModels.Interviews
         
         private void AfficherConclusionWindow()
         {
-            //listRdvVM.DialogFirstRdvExamenView.Close();
+            listRdvVM.DialogFirstRdvExamenView.Close();
 
-            dossier.Identifiant = "HDJ/"+"0001"+"/"+DateTime.Now.Year;
+            dossier.Identifiant = "HDJ/"+ dsc.GetDossierMedNum(rdvConsult).ToString().PadLeft(4, '0') + "/"+DateTime.Now.Year;
             dossier.IdPatient = rdvConsult.Patient.Id;
             dossier.IdMedecin = rdvConsult.Medecin.Id;
             dossier.ServiceId = rdvConsult.Medecin.ServiceId;
@@ -277,13 +277,13 @@ namespace ConsultationManagerClient.ViewModels.Interviews
             dossier.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
 
             
-            //dsc.AddDossierMed(dossier);
-            MessageBox.Show("Un Nouveau Dossier Médical est Creé avec l'Identifiant" + dsc.GetDossierMedNum(rdvConsult));
+            dsc.AddDossierMed(dossier);
+            MessageBox.Show("Un Nouveau Dossier Médical est Creé avec l'Identifiant  " + dossier.Identifiant);
 
 
-            //listRdvVM.DialogInterwiewConclusionView = new InterviewConclusionWindow();
-            //listRdvVM.DialogInterwiewConclusionView.DataContext = new InterviewConclusionViewModel(rdvConsult, null,listRdvVM);
-            //listRdvVM.DialogInterwiewConclusionView.ShowDialog();
+            listRdvVM.DialogInterwiewConclusionView = new InterviewConclusionWindow();
+            listRdvVM.DialogInterwiewConclusionView.DataContext = new InterviewConclusionViewModel(rdvConsult, null, listRdvVM);
+            listRdvVM.DialogInterwiewConclusionView.ShowDialog();
         }
 
         #endregion
