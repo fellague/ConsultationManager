@@ -42,7 +42,7 @@ namespace ConsultationManagerServer.Services
             List<DemandeHospitDetail> listDemandes = new List<DemandeHospitDetail>();
             DemandeHospitDetail demandDetail = new DemandeHospitDetail();
             //var patients = db.Patients.AsQueryable().Where(p => p.ServiceId == idService).ToList();
-            var demands = db.DemandesHospit.FindAll().Where(p => p.ServiceId == idService).ToList();
+            var demands = db.DemandesHospit.FindAll().Where(p => p.ServiceId == idService && p.IdHospit == "").ToList();
             if (demands.Count() > 0)
                 foreach (DemandeHospit item in demands)
                 {
@@ -50,11 +50,8 @@ namespace ConsultationManagerServer.Services
                     demandDetail.DemandeHospit = item;
                     demandDetail.Medecin = db.Utilisateurs.FindAll().Where(p => p.Id == item.IdMedecin).First();
                     demandDetail.Patient = db.Patients.FindAll().Where(p => p.Id == item.IdPatient).First();
-
-                    var interv = db.Interviews.FindAll().Where(p => p.Id == item.IdInterview).ToList().First();
-                    var conclus = db.Conclusions.FindAll().Where(p => p.Id == interv.IdConclusion).ToList().First();
-                    demandDetail.IntervConclus = conclus;
-
+                    demandDetail.IntervConclus = db.Conclusions.FindAll().Where(p => p.Id == item.IdIntervConclus).ToList().First();
+                    
                     listDemandes.Add(demandDetail);
                 }
             return listDemandes;
@@ -73,7 +70,8 @@ namespace ConsultationManagerServer.Services
                     hospitDetail.Hospitalisation = item;
                     hospitDetail.Medecin = db.Utilisateurs.FindAll().Where(p => p.Id == item.IdMedecin).First();
                     hospitDetail.Patient = db.Patients.FindAll().Where(p => p.Id == item.IdPatient).First();
-                    hospitDetail.Conclusion = db.Conclusions.FindAll().Where(p => p.Id == item.IdConclusion).First();
+                    if(item.IdConclusion != "")
+                        hospitDetail.Conclusion = db.Conclusions.FindAll().Where(p => p.Id == item.IdConclusion).First();
 
                     foreach (string id in item.IdInterventions)
                     {
@@ -110,6 +108,24 @@ namespace ConsultationManagerServer.Services
                     listHospits.Add(hospitDetail);
                 }
             return listHospits;
+        }
+
+        public List<SalleHospitPlanning> GetSallePlanning(string idService)
+        {
+            DataBaseContext db = new DataBaseContext();
+            List<SalleHospitPlanning> listSallePlan = new List<SalleHospitPlanning>();
+            SalleHospitPlanning hospitDetail = new SalleHospitPlanning();
+            var salles = db.Salles.FindAll().Where(p => p.IdService == idService && !p.HorService).ToList();
+            if (salles.Count() > 0)
+                foreach (Salle item in salles)
+                {
+                    hospitDetail = new SalleHospitPlanning();
+                    hospitDetail.Salle = item;
+                    hospitDetail.Hospits = db.Hospitalisations.FindAll().Where(p => p.IdSalle == item.Id).ToList();
+
+                    listSallePlan.Add(hospitDetail);
+                }
+            return listSallePlan;
         }
 
         public Hospitalisation UpdateHospit(Hospitalisation hosp)

@@ -38,4 +38,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="HospitalisationDetail" nillable="true" type="tns:HospitalisationDetail" />
+  <xs:complexType name="ArrayOfSalleHospitPlanning">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SalleHospitPlanning" nillable="true" type="tns:SalleHospitPlanning" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSalleHospitPlanning" nillable="true" type="tns:ArrayOfSalleHospitPlanning" />
+  <xs:complexType name="SalleHospitPlanning">
+    <xs:sequence>
+      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="Hospits" nillable="true" type="q15:ArrayOfHospitalisation" />
+      <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="Salle" nillable="true" type="q16:Salle" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SalleHospitPlanning" nillable="true" type="tns:SalleHospitPlanning" />
 </xs:schema>

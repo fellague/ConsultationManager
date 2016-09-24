@@ -157,6 +157,7 @@
     </Compile>
     <Compile Include="ViewModels\Authentication\AuthenticationViewModel.cs" />
     <Compile Include="ViewModels\DossierMedicals\DossierMedicalViewModel.cs" />
+    <Compile Include="ViewModels\Hospitalisations\NewHospitViewModel.cs" />
     <Compile Include="ViewModels\Interviews\InterviewViewModel.cs" />
     <Compile Include="ViewModels\Interviews\InterviewConclusionViewModel.cs" />
     <Compile Include="ViewModels\Interviews\FirstInterviewViewModel.cs" />
@@ -165,11 +166,9 @@
     <Compile Include="ViewModels\RDVs\RdvNewPatientViewModel.cs" />
     <Compile Include="ViewModels\Utilisateurs\UsersViewModel.cs" />
     <Compile Include="ViewModels\Hospitalisations\ListHospitalisationViewModel.cs" />
-    <Compile Include="ViewModels\Hospitalisations\NewDemandHospitalisationViewModel.cs" />
     <Compile Include="ViewModels\Consultations\ConsultationsViewModel.cs" />
     <Compile Include="ViewModels\Patients\PatientsViewModel.cs" />
     <Compile Include="ViewModels\RDVs\ListRvdViewModel.cs" />
-    <Compile Include="ViewModels\RDVs\NewRdvViewModel.cs" />
     <Compile Include="ViewModels\RDVs\UpdateRdvViewModel.cs" />
     <Compile Include="Views\DossierMedicals\AllDossiersPage.xaml.cs">
       <DependentUpon>AllDossiersPage.xaml</DependentUpon>
@@ -191,6 +190,9 @@
     </Compile>
     <Compile Include="Views\Hospitalisations\NewDemandeHospitWindow.xaml.cs">
       <DependentUpon>NewDemandeHospitWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Hospitalisations\NewHospitWindow.xaml.cs">
+      <DependentUpon>NewHospitWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Hospitalisations\NewSalleWindow.xaml.cs">
       <DependentUpon>NewSalleWindow.xaml</DependentUpon>
@@ -273,9 +275,6 @@
     <Compile Include="Views\Hospitalisations\AllHospitalisationPage.xaml.cs">
       <DependentUpon>AllHospitalisationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Hospitalisations\NewDemandHospitalisationPage.xaml.cs">
-      <DependentUpon>NewDemandHospitalisationPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\MenuUtilisateurWindow.xaml.cs">
       <DependentUpon>MenuUtilisateurWindow.xaml</DependentUpon>
     </Compile>
@@ -324,9 +323,6 @@
     <Compile Include="Views\RDVs\MyTodayRdvPage.xaml.cs">
       <DependentUpon>MyTodayRdvPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RDVs\NewRdvPage.xaml.cs">
-      <DependentUpon>NewRdvPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\RDVs\UpdateRdvWindow.xaml.cs">
       <DependentUpon>UpdateRdvWindow.xaml</DependentUpon>
     </Compile>
@@ -367,6 +363,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Hospitalisations\NewDemandeHospitWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Hospitalisations\NewHospitWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -478,10 +478,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Hospitalisations\NewDemandHospitalisationPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\MenuUtilisateurWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -546,10 +542,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RDVs\NewRdvPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\RDVs\UpdateRdvWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -592,6 +584,7 @@
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.HospitalisationDetail.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.InterviewDetail.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin.datasource" />
+    <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.SalleHospitPlanning.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.SerializedModels.ServicePathologies.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Service.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Utilisateur.datasource" />

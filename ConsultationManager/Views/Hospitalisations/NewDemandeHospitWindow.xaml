@@ -35,10 +35,10 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="Motif" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" Margin="0 5 0 0"></TextBlock>
-            <TextBox Text="{Binding NewDemandeHospit.Motif}" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" MinLines="2" MaxLines="2" VerticalScrollBarVisibility="Auto" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Nom"/>
+            <TextBox Text="{Binding NewDemandeHospit.Motif}" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" MinLines="2" MaxLines="2" VerticalScrollBarVisibility="Auto" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Description"/>
 
             <TextBlock Grid.Row="1" Text="Traitement" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" Margin="0 5 0 0" ></TextBlock>
-            <TextBox Text="{Binding NewDemandeHospit.Traitement}" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" MinLines="3" MaxLines="3" VerticalScrollBarVisibility="Auto" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Prénom"></TextBox>
+            <TextBox Text="{Binding NewDemandeHospit.Traitement}" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" MinLines="3" MaxLines="3" VerticalScrollBarVisibility="Auto" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Description"></TextBox>
 
             <TextBlock Grid.Row="2" Text="Durée d'hospitalisation" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 5 0 5"></TextBlock>
             <ComboBox Grid.Row="2" Grid.Column="1" x:Name="listLitsDispComboBox" FontSize="16" VerticalAlignment="Center" Width="100"  Margin="30 5 10 5" 

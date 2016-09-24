@@ -33,6 +33,12 @@ namespace ConsultationManager.ServiceReferenceHospit {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitService/GetHospits", ReplyAction="http://tempuri.org/IHospitService/GetHospitsResponse")]
         System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.HospitalisationDetail[]> GetHospitsAsync(string idService);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitService/GetSallePlanning", ReplyAction="http://tempuri.org/IHospitService/GetSallePlanningResponse")]
+        ConsultationManagerServer.Models.SerializedModels.SalleHospitPlanning[] GetSallePlanning(string idService);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitService/GetSallePlanning", ReplyAction="http://tempuri.org/IHospitService/GetSallePlanningResponse")]
+        System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.SalleHospitPlanning[]> GetSallePlanningAsync(string idService);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitService/UpdateHospit", ReplyAction="http://tempuri.org/IHospitService/UpdateHospitResponse")]
         ConsultationManagerServer.Models.Hospitalisations.Hospitalisation UpdateHospit(ConsultationManagerServer.Models.Hospitalisations.Hospitalisation salle);
         
@@ -95,6 +101,14 @@ namespace ConsultationManager.ServiceReferenceHospit {
         
         public System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.HospitalisationDetail[]> GetHospitsAsync(string idService) {
             return base.Channel.GetHospitsAsync(idService);
+        }
+        
+        public ConsultationManagerServer.Models.SerializedModels.SalleHospitPlanning[] GetSallePlanning(string idService) {
+            return base.Channel.GetSallePlanning(idService);
+        }
+        
+        public System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.SalleHospitPlanning[]> GetSallePlanningAsync(string idService) {
+            return base.Channel.GetSallePlanningAsync(idService);
         }
         
         public ConsultationManagerServer.Models.Hospitalisations.Hospitalisation UpdateHospit(ConsultationManagerServer.Models.Hospitalisations.Hospitalisation salle) {

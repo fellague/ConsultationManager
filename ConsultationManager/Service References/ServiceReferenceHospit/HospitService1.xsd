@@ -44,7 +44,7 @@
       <xs:element minOccurs="0" name="CreePar" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IdHospit" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IdInterview" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdIntervConclus" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IdMedecin" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IdPatient" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IdRdv" nillable="true" type="xs:string" />
@@ -110,4 +110,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Salle" nillable="true" type="tns:Salle" />
+  <xs:complexType name="ArrayOfHospitalisation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Hospitalisation" nillable="true" type="tns:Hospitalisation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHospitalisation" nillable="true" type="tns:ArrayOfHospitalisation" />
 </xs:schema>

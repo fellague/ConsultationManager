@@ -13,6 +13,7 @@ using ConsultationManager.ServiceReferenceSalle;
 using System.ServiceModel.Security;
 using ConsultationManagerServer.Models.SerializedModels;
 using ConsultationManager.ServiceReferenceHospit;
+using ConsultationManager.ViewModels.Hospitalisations;
 
 namespace ConsultationManagerClient.ViewModels.Hospitalisations
 {
@@ -35,6 +36,10 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
         private Salle newSalle;
         private int selectedNbLit;
         private ObservableCollection<int> listNbLit;
+        
+        private NewHospitWindow dialogNewHospit;
+        private Hospitalisation newHospit;
+        private DemandeHospitDetail selectedDemande;
 
         private UpdateSalleWindow dialogUpdateSalle;
         private Salle updatedSalle;
@@ -60,6 +65,8 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             listDemandeHospit = new ObservableCollection<DemandeHospitDetail>(hsc.GetDemandesHospit(AuthenticationViewModel.AuthenticatedUser.ServiceId));
 
             CancelCommand = new RelayCommand(o => ((Window)o).Close());
+
+            NewHospitDialogCommand = new RelayCommand(param => ShowDialogNewHospit(param));
 
             NewSalleDialogCommand = new RelayCommand(param => ShowDialogNewSalle());
             UpdateSalleDialogCommand = new RelayCommand(param => this.ShowDialogUpdateSalle(param));
@@ -174,11 +181,48 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             }
         }
 
+        public Hospitalisation NewHospit
+        {
+            get
+            {
+                return newHospit;
+            }
+            set
+            {
+                newHospit = value;
+                OnPropertyChanged("NewHospit");
+            }
+        }
+        public DemandeHospitDetail SelectedDemande
+        {
+            get
+            {
+                return selectedDemande;
+            }
+            set
+            {
+                selectedDemande = value;
+                OnPropertyChanged("SelectedDemande");
+            }
+        }
+
+        public NewHospitWindow DialogNewHospit
+        {
+            get
+            {
+                return dialogNewHospit;
+            }
+        }
         #endregion
 
         #region PatientsViewModel Commands
 
         public ICommand NewSalleDialogCommand
+        {
+            get;
+            private set;
+        }
+        public ICommand NewHospitDialogCommand
         {
             get;
             private set;
@@ -202,6 +246,11 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
         }
 
         public ICommand AddSalleCommand
+        {
+            get;
+            private set;
+        }
+        public ICommand AddHospitCommand
         {
             get;
             private set;
@@ -241,6 +290,7 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
         }
         public void ModifierSalle()
         {
+            UpdatedSalle.LitsLibres = new ObservableCollection<int>(Enumerable.Range(1, UpdatedSalle.NbLit));
             ssc.UpdateSalle(UpdatedSalle);
             dialogUpdateSalle.Close();
         }
@@ -268,12 +318,31 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             NewSalle.NbLit = SelectedNbLit;
             NewSalle.CreeDans = DateTime.Now;
             NewSalle.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
+            NewSalle.LitsLibres = new ObservableCollection<int>(Enumerable.Range(1, NewSalle.NbLit));
             ssc.AddSalle(NewSalle);
             listSalle.Add(NewSalle);
             dialogNewSalle.Close();
         }
 
-        private void ActualiserLists()
+        private void ShowDialogNewHospit(object selecDemand)
+        {
+            SelectedDemande = selecDemand as DemandeHospitDetail;
+            dialogNewHospit = new NewHospitWindow();
+            dialogNewHospit.DataContext = new NewHospitViewModel(SelectedDemande, this);
+            dialogNewHospit.ShowDialog();
+        }
+        //private void AjouterHospit()
+        //{
+        //    NewSalle.IdService = AuthenticationViewModel.AuthenticatedUser.ServiceId;
+        //    NewSalle.NbLit = SelectedNbLit;
+        //    NewSalle.CreeDans = DateTime.Now;
+        //    NewSalle.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
+        //    ssc.AddSalle(NewSalle);
+        //    listSalle.Add(NewSalle);
+        //    dialogNewSalle.Close();
+        //}
+
+        public void ActualiserLists()
         {
             listActiveHospitalisation = CreateListActiveHospitalisation();
         }

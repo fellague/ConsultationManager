@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using ConsultationManagerServer.Models.Hospitalisations;
 using MongoDB.Driver.Builders;
+using MongoDB.Bson;
 
 namespace ConsultationManagerServer.Services
 {
@@ -42,7 +43,9 @@ namespace ConsultationManagerServer.Services
             var update = Update
                 .Set("Nom", salle.Nom)
                 .Set("Type", salle.Type)
-                .Set("NbLit", salle.NbLit);
+                .Set("NbLit", salle.NbLit)
+                .Set("LitsLibres", new BsonArray(salle.LitsLibres))
+                .Set("HorService", salle.HorService);
             var result = db.Salles.FindAndModify(query, null, update);
             return salle;
         }

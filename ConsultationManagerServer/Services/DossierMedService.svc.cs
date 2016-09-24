@@ -154,7 +154,7 @@ namespace ConsultationManagerServer.Services
         public int GetDossierMedNum(RdvPatientMedecin patient)
         {
             DataBaseContext db = new DataBaseContext();
-            int num = 1;
+            int num = 0;
             var dossier = db.DossierMeds.FindAll().Where(p => p.ServiceId == patient.Patient.ServiceId && p.CreeDans.Year == DateTime.Now.Year).ToList();
 
             if (dossier.Count()>0)

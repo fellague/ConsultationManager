@@ -93,7 +93,7 @@
                                             <materialDesign:PackIcon Kind="Pencil" Height="24" Width="24" />
                                         </Button>-->
                                         <Button  
-                                                    Command="{Binding DataContext.RemoveSelectedRdvCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                    Command="{Binding DataContext.NewHospitDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
                                                     CommandParameter="{Binding}"
                                                     Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
                                                     ToolTip="Créer une Hospitalisation">

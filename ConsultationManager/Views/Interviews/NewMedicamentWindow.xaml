@@ -33,7 +33,7 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="Nom du Médicament" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
-            <TextBox Text="{Binding NewMedicament.Nom}" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Nom de l'organe"></TextBox>
+            <TextBox Text="{Binding NewMedicament.Nom}" Grid.Column="1" FontSize="16" VerticalAlignment="Center" materialDesign:TextFieldAssist.Hint="Nom"></TextBox>
 
             <TextBlock  Grid.Row="1" Text="Période" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></TextBlock>
             <WrapPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="0 10 0 10">

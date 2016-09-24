@@ -10,22 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ConsultationManagerClient.ViewModels.RDVs;
 
-namespace ConsultationManagerClient.Views.RDVs
+namespace ConsultationManager.Views.Hospitalisations
 {
     /// <summary>
-    /// Interaction logic for NewRdvUserControl.xaml
+    /// Interaction logic for NewHospitWindow.xaml
     /// </summary>
-    public partial class NewRdvPage : Page
+    public partial class NewHospitWindow : Window
     {
-        public NewRdvPage()
+        public NewHospitWindow()
         {
             InitializeComponent();
-
-            DataContext = new NewRdvViewModel();
         }
     }
 }

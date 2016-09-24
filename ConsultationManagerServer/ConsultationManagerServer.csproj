@@ -115,6 +115,7 @@
     <Compile Include="Models\SerializedModels\HospitalisationDetail.cs" />
     <Compile Include="Models\SerializedModels\InterviewDetail.cs" />
     <Compile Include="Models\SerializedModels\RdvPatientMedecin.cs" />
+    <Compile Include="Models\SerializedModels\SalleHospitPlanning.cs" />
     <Compile Include="Services\AuthenticationService.svc.cs">
       <DependentUpon>AuthenticationService.svc</DependentUpon>
     </Compile>

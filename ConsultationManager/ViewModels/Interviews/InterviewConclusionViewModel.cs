@@ -362,6 +362,14 @@ namespace ConsultationManagerClient.ViewModels.Interviews
             dialogNewDemandeHospit = new NewDemandeHospitWindow();
             newDemandeHospit = new DemandeHospit();
             dialogNewDemandeHospit.DataContext = this;
+            
+            listNbJours = new ObservableCollection<int>(Enumerable.Range(1, 30));
+
+            dialogNewDemandeHospit.ShowDialog();
+        }
+
+        private void AjouterDemandeHospit()
+        {
 
             if (rdvConsult.Rdv.NouvPat)
             {
@@ -377,25 +385,11 @@ namespace ConsultationManagerClient.ViewModels.Interviews
             intervConclus.IdRdv = rdvConsult.Rdv.Id;
             intervConclus.CreeDans = DateTime.Now;
             intervConclus.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
-            csc.AddConclusion(intervConclus);
 
-            listNbJours = new ObservableCollection<int>(Enumerable.Range(1, 3));
+            NewDemandeHospit.IdIntervConclus = csc.AddConclusion(intervConclus).Id;
 
-            dialogNewDemandeHospit.ShowDialog();
-        }
-
-        private void AjouterDemandeHospit()
-        {
             NewDemandeHospit.IdPatient = rdvConsult.Patient.Id;
             NewDemandeHospit.IdMedecin = rdvConsult.Medecin.Id;
-            if (rdvConsult.Rdv.NouvPat)
-            {
-                NewDemandeHospit.IdInterview = "first";
-            }
-            else
-            {
-                NewDemandeHospit.IdInterview = interview.Id;
-            }
 
             NewDemandeHospit.ServiceId = rdvConsult.Rdv.ServiceId;
             NewDemandeHospit.IdRdv = rdvConsult.Rdv.Id;

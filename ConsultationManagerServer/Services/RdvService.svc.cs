@@ -29,10 +29,15 @@ namespace ConsultationManagerServer.Services
             else
                 MessageBox.Show("Ce Patient a déja un Rdv avec le medecin");
 
-            var query2 = Query.EQ("Id", rdv.PatientId);
-            var update2 = Update
-                .Set("Nouveau", false);
-            var result2 = db.Patients.FindAndModify(query2, null, update2);
+            if (rdv.NouvPat)
+            {
+
+                var query2 = Query.EQ("Id", rdv.PatientId);
+                var update2 = Update
+                    .Set("Nouveau", false)
+                    .Set("MedecinResp", rdv.MedecinRespId);
+                var result2 = db.Patients.FindAndModify(query2, null, update2);
+            }
             
             return rdv;
         }

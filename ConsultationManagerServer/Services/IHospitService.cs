@@ -21,6 +21,9 @@ namespace ConsultationManagerServer.Services
 
         [OperationContract]
         List<HospitalisationDetail> GetHospits(string idService);
+        
+        [OperationContract]
+        List<SalleHospitPlanning> GetSallePlanning(string idService);
 
         [OperationContract]
         Hospitalisation UpdateHospit(Hospitalisation salle);

@@ -17,7 +17,7 @@ namespace ConsultationManagerServer.Models.Hospitalisations
         private string serviceId;
 
         private string idSalle;
-        private string lit;
+        private int lit;
         private DateTime dateDebutPrevu;
         private DateTime dateDebutReel;
         private DateTime dateFinPrevu;
@@ -46,7 +46,7 @@ namespace ConsultationManagerServer.Models.Hospitalisations
             serviceId = "";
 
             idSalle = "";
-            lit = "";
+            lit = 1;
             dateDebutPrevu = new DateTime();
             dateDebutReel = new DateTime();
             dateFinPrevu = new DateTime();
@@ -162,7 +162,7 @@ namespace ConsultationManagerServer.Models.Hospitalisations
         }
 
         [DataMember]
-        public string Lit
+        public int Lit
         {
             get
             {

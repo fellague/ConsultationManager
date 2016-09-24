@@ -6,7 +6,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:ConsultationManagerClient.Views.Interviews"
              mc:Ignorable="d"  WindowStyle="None"
-             Height="270" Width="550" WindowStartupLocation="CenterScreen">
+             Height="290" Width="550" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

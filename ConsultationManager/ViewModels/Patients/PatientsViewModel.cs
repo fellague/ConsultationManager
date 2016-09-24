@@ -57,8 +57,6 @@ namespace ConsultationManagerClient.ViewModels.Patients
             //OpenDialogMedFolderCommand = new RelayCommand(param => ShowDialogDossierMedical(param));
         }
 
-        
-
         #region PatientsViewModel Variables
 
         public ObservableCollection<Patient> ListAllPatient
@@ -67,6 +65,11 @@ namespace ConsultationManagerClient.ViewModels.Patients
             {
                 return listAllPatient;
             }
+            set
+            {
+                listAllPatient = value;
+                OnPropertyChanged("ListAllPatient");
+            }
         }
         public ObservableCollection<Patient> ListAllMyPatient
         {
@@ -74,12 +77,22 @@ namespace ConsultationManagerClient.ViewModels.Patients
             {
                 return listAllMyPatient;
             }
+            set
+            {
+                listAllMyPatient = value;
+                OnPropertyChanged("ListAllMyPatient");
+            }
         }
         public ObservableCollection<Patient> ListNewPatients
         {
             get
             {
                 return listNewPatients;
+            }
+            set
+            {
+                listNewPatients = value;
+                OnPropertyChanged("ListNewPatients");
             }
         }
 
@@ -247,9 +260,10 @@ namespace ConsultationManagerClient.ViewModels.Patients
             Patient selPat = param as Patient;
             dialogNewPatRdv = new NewPatientRdvWindow();
             dialogNewPatRdv.DataContext = new RdvNewPatientViewModel(selPat, this);
-            //newPathologie = new Consultation();
-            //AddPathologieCommand = new RelayCommand(param => AjouterPathologie());
             dialogNewPatRdv.ShowDialog();
+
+            ListAllPatient = GetPatients();
+            ActualiserLists();
         }
 
         //private void ShowDialogDossierMedical(object param)
@@ -264,8 +278,8 @@ namespace ConsultationManagerClient.ViewModels.Patients
 
         private void ActualiserLists()
         {
-            listAllMyPatient = CreateListAllMyPatient();
-            listNewPatients = CreateListNewPatients();
+            ListAllMyPatient = CreateListAllMyPatient();
+            ListNewPatients = CreateListNewPatients();
         }
 
         #endregion

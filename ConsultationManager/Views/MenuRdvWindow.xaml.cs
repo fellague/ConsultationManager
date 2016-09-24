@@ -20,38 +20,38 @@ namespace ConsultationManagerClient.Views
             this.DataContext = rdvVM;
 
             _frameRdv.Navigate(new AllRdvPage(rdvVM));
-            coloringTabs(AllRdvBtn, AllMyRdvBtn, MyTodayRdvBtn, FirstRdvBtn, NewRdvBtn);
+            coloringTabs(AllRdvBtn, AllMyRdvBtn, MyTodayRdvBtn, FirstRdvBtn);
         }
 
         private void button_click_tout(object sender, RoutedEventArgs e)
         {
             _frameRdv.Navigate(new AllRdvPage(rdvVM));
-            coloringTabs(AllRdvBtn, AllMyRdvBtn, MyTodayRdvBtn, FirstRdvBtn, NewRdvBtn);
+            coloringTabs(AllRdvBtn, AllMyRdvBtn, MyTodayRdvBtn, FirstRdvBtn);
         }
 
         private void button_click_tout_mes(object sender, RoutedEventArgs e)
         {
             _frameRdv.Navigate(new AllMyRdvPage(rdvVM));
-            coloringTabs(AllMyRdvBtn, AllRdvBtn, MyTodayRdvBtn, FirstRdvBtn, NewRdvBtn);
+            coloringTabs(AllMyRdvBtn, AllRdvBtn, MyTodayRdvBtn, FirstRdvBtn);
         }
 
         private void button_click_ajourd(object sender, RoutedEventArgs e)
         {
             _frameRdv.Navigate(new MyTodayRdvPage(rdvVM));
-            coloringTabs(MyTodayRdvBtn, AllRdvBtn, AllMyRdvBtn, FirstRdvBtn, NewRdvBtn);
+            coloringTabs(MyTodayRdvBtn, AllRdvBtn, AllMyRdvBtn, FirstRdvBtn);
         }
 
         private void button_click_first(object sender, RoutedEventArgs e)
         {
             _frameRdv.Navigate(new FirstRdvPage(rdvVM));
-            coloringTabs(FirstRdvBtn, MyTodayRdvBtn, AllRdvBtn, AllMyRdvBtn, NewRdvBtn);
+            coloringTabs(FirstRdvBtn, MyTodayRdvBtn, AllRdvBtn, AllMyRdvBtn);
         }
 
-        private void button_click_nouveau(object sender, RoutedEventArgs e)
-        {
-            _frameRdv.Navigate(new NewRdvPage());
-            coloringTabs(NewRdvBtn, MyTodayRdvBtn, AllRdvBtn, AllMyRdvBtn, FirstRdvBtn);
-        }
+        //private void button_click_nouveau(object sender, RoutedEventArgs e)
+        //{
+        //    _frameRdv.Navigate(new NewRdvPage());
+        //    coloringTabs(NewRdvBtn, MyTodayRdvBtn, AllRdvBtn, AllMyRdvBtn, FirstRdvBtn);
+        //}
 
         private void button_click_home(object sender, RoutedEventArgs e)
         {
@@ -76,19 +76,17 @@ namespace ConsultationManagerClient.Views
             form2.Show();
         }
 
-        private void coloringTabs(Button puprpleBtn, Button transparantBtn1, Button transparantBtn2, Button transparantBtn3, Button transparantBtn4)
+        private void coloringTabs(Button puprpleBtn, Button transparantBtn1, Button transparantBtn2, Button transparantBtn3)
         {
             puprpleBtn.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF945BF9"));
             transparantBtn1.Background = Brushes.Transparent;
             transparantBtn2.Background = Brushes.Transparent;
             transparantBtn3.Background = Brushes.Transparent;
-            transparantBtn4.Background = Brushes.Transparent;
 
             puprpleBtn.Foreground = Brushes.White;
             transparantBtn1.Foreground = Brushes.Black;
             transparantBtn2.Foreground = Brushes.Black;
             transparantBtn3.Foreground = Brushes.Black;
-            transparantBtn4.Foreground = Brushes.Black;
         }
     }
 }

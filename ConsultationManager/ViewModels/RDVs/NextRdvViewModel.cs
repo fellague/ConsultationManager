@@ -412,7 +412,13 @@ namespace ConsultationManager.ViewModels.RDVs
             NewRdv.ServiceId = AuthenticationViewModel.AuthenticatedUser.ServiceId;
             NewRdv.PathologieId = AuthenticationViewModel.AuthenticatedUser.PathologieId;
             NewRdv.NouvPat = false;
-            rsc.AddRdv(NewRdv);
+
+            RdvPatientMedecin rdv = new RdvPatientMedecin();
+            rdv.Medecin = selectedRdv.Medecin;
+            rdv.Patient = selectedRdv.Patient;
+            rdv.Rdv = rsc.AddRdv(NewRdv);
+
+            rdvsVM.ListAllRvd.Add(rdv);
             rdvsVM.ListAllRvd.Remove(selectedRdv);
             rdvsVM.ActualiserLists();
 
