@@ -251,21 +251,56 @@ namespace ConsultationManager.ViewModels.Hospitalisations
                         meilHospLit.DateDebutPrevu = NewHospit.DateDebutPrevu;
                         meilHospLit.DateFinPrevu = NewHospit.DateFinPrevu;
                         meilHospLit.Lit = lit;
-                        if(plan.Hospits.Count() > 0)
-                            foreach (Hospitalisation hosp in plan.Hospits)
+                        if (plan.Hospits.Count() > 0)
+                        {
+                            //foreach (Hospitalisation hosp in plan.Hospits)
+                            //{
+                            //    if(hosp.Lit == lit)
+                            //    {
+                            //        if(meilHospLit.DateDebutPrevu.Date.CompareTo(hosp.DateDebutPrevu.Date) >= 0 && meilHospLit.DateDebutPrevu.Date.CompareTo(hosp.DateFinPrevu.Date) <= 0)
+                            //        {
+                            //            //MessageBox.Show("<----*---> ");
+                            //            meilHospLit.DateDebutPrevu = hosp.DateFinPrevu.AddDays(1); ///////Cas num 1 : <----*---> 
+                            //        }
+                            //        else
+                            //        {
+                            //            if(meilHospLit.DateDebutPrevu.Date.CompareTo(hosp.DateDebutPrevu.Date) < 0)
+                            //            {
+                            //                if(meilHospLit.DateFinPrevu.Date.CompareTo(hosp.DateDebutPrevu.Date) < 0)
+                            //                {
+                            //                    //MessageBox.Show(" *-----* <-------> ");
+                            //                    //listHospPoss.Add(meilHosp); ///////Cas num 2 :  *-----* <-------> 
+                            //                }
+                            //                else
+                            //                {
+                            //                    //MessageBox.Show("*---<------->");
+                            //                    meilHospLit.DateDebutPrevu = hosp.DateFinPrevu.AddDays(1); ///////Cas num 3 :  *---<-------> 
+                            //                }
+                            //            }
+                            //            else
+                            //            {
+                            //                //MessageBox.Show("<-------> *------*");
+                            //                //listHospPoss.Add(meilHosp);///////Cas num 4 : <-------> *------*
+                            //            }
+                            //        }
+                            //    }
+                            //}
+                            int cpt = 0;
+                            while (cpt < plan.Hospits.Count())
                             {
-                                if(hosp.Lit == lit)
+                                if (plan.Hospits[cpt].Lit == lit)
                                 {
-                                    if(meilHospLit.DateDebutPrevu.Date.CompareTo(hosp.DateDebutPrevu.Date) >= 0 && meilHospLit.DateDebutPrevu.Date.CompareTo(hosp.DateFinPrevu.Date) <= 0)
+                                    if (meilHospLit.DateDebutPrevu.Date.CompareTo(plan.Hospits[cpt].DateDebutPrevu.Date) >= 0 && meilHospLit.DateDebutPrevu.Date.CompareTo(plan.Hospits[cpt].DateFinPrevu.Date) <= 0)
                                     {
                                         //MessageBox.Show("<----*---> ");
-                                        meilHospLit.DateDebutPrevu = hosp.DateFinPrevu.AddDays(1); ///////Cas num 1 : <----*---> 
+                                        meilHospLit.DateDebutPrevu = plan.Hospits[cpt].DateFinPrevu.AddDays(1); ///////Cas num 1 : <----*---> 
+                                        cpt = 0;
                                     }
                                     else
                                     {
-                                        if(meilHospLit.DateDebutPrevu.Date.CompareTo(hosp.DateDebutPrevu.Date) < 0)
+                                        if (meilHospLit.DateDebutPrevu.Date.CompareTo(plan.Hospits[cpt].DateDebutPrevu.Date) < 0)
                                         {
-                                            if(meilHospLit.DateFinPrevu.Date.CompareTo(hosp.DateDebutPrevu.Date) < 0)
+                                            if (meilHospLit.DateFinPrevu.Date.CompareTo(plan.Hospits[cpt].DateDebutPrevu.Date) < 0)
                                             {
                                                 //MessageBox.Show(" *-----* <-------> ");
                                                 //listHospPoss.Add(meilHosp); ///////Cas num 2 :  *-----* <-------> 
@@ -273,7 +308,8 @@ namespace ConsultationManager.ViewModels.Hospitalisations
                                             else
                                             {
                                                 //MessageBox.Show("*---<------->");
-                                                meilHospLit.DateDebutPrevu = hosp.DateFinPrevu.AddDays(1); ///////Cas num 3 :  *---<-------> 
+                                                meilHospLit.DateDebutPrevu = plan.Hospits[cpt].DateFinPrevu.AddDays(1); ///////Cas num 3 :  *---<-------> 
+                                                cpt = 0;
                                             }
                                         }
                                         else
@@ -283,7 +319,9 @@ namespace ConsultationManager.ViewModels.Hospitalisations
                                         }
                                     }
                                 }
+                                cpt++;
                             }
+                        }
                         else
                         {
 
@@ -329,7 +367,7 @@ namespace ConsultationManager.ViewModels.Hospitalisations
             newHospDetail.Patient = selectDemande.Patient;
             newHospDetail.Medecin = selectDemande.Medecin;
             newHospDetail.Hospitalisation = hsc.AddHospit(NewHospit);
-            hospitsVM.ListAllHospitalisation.Add(newHospDetail);
+            hospitsVM.ListPasseHospitalisation.Add(newHospDetail);
 
             //hospitsVM.ListAllHospitalisation.Add(NewHospit);
             hospitsVM.ListDemandeHospit.Remove(selectDemande);
@@ -354,19 +392,5 @@ namespace ConsultationManager.ViewModels.Hospitalisations
         }
 
         #endregion
-    }
-
-    class Choix
-    {
-        public DateTime DateEntre
-        {
-            get;
-            set;
-        }
-        public Salle Salle
-        {
-            get;
-            set;
-        }
     }
 }

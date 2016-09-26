@@ -22,7 +22,7 @@
       <xs:element minOccurs="0" name="IdPatient" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IdSalle" nillable="true" type="xs:string" />
       <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IdSallesChange" nillable="true" type="q6:ArrayOfstring" />
-      <xs:element minOccurs="0" name="Lit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Lit" type="xs:int" />
       <xs:element minOccurs="0" name="ServiceId" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -30,7 +30,6 @@
   <xs:complexType name="GardeMalade">
     <xs:sequence>
       <xs:element minOccurs="0" name="DateNaiss" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Nom" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="NumeroCarte" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Prenom" nillable="true" type="xs:string" />
@@ -38,6 +37,28 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="GardeMalade" nillable="true" type="tns:GardeMalade" />
+  <xs:complexType name="Mesure">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreeDans" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreePar" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdHospitalisation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Valeur" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Mesure" nillable="true" type="tns:Mesure" />
+  <xs:complexType name="Intervention">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreeDans" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreePar" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdHospitalisation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Motif" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Intervention" nillable="true" type="tns:Intervention" />
   <xs:complexType name="DemandeHospit">
     <xs:sequence>
       <xs:element minOccurs="0" name="CreeDans" type="xs:dateTime" />
@@ -62,40 +83,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfMesure" nillable="true" type="tns:ArrayOfMesure" />
-  <xs:complexType name="Mesure">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CreeDans" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="CreePar" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IdHospitalisation" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Valeur" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Mesure" nillable="true" type="tns:Mesure" />
   <xs:complexType name="ArrayOfIntervention">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Intervention" nillable="true" type="tns:Intervention" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfIntervention" nillable="true" type="tns:ArrayOfIntervention" />
-  <xs:complexType name="Intervention">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CreeDans" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="CreePar" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IdHospitalisation" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Motif" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Intervention" nillable="true" type="tns:Intervention" />
-  <xs:complexType name="ArrayOfSalle">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Salle" nillable="true" type="tns:Salle" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfSalle" nillable="true" type="tns:ArrayOfSalle" />
   <xs:complexType name="Salle">
     <xs:sequence>
       <xs:element minOccurs="0" name="CreeDans" type="xs:dateTime" />
@@ -110,6 +103,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Salle" nillable="true" type="tns:Salle" />
+  <xs:complexType name="ArrayOfSalle">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Salle" nillable="true" type="tns:Salle" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSalle" nillable="true" type="tns:ArrayOfSalle" />
   <xs:complexType name="ArrayOfHospitalisation">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Hospitalisation" nillable="true" type="tns:Hospitalisation" />

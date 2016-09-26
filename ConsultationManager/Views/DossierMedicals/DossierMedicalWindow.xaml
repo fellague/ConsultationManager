@@ -19,7 +19,7 @@
                 <TextBlock Text="{Binding SelectedDossier.DossierMedical.Identifiant}" FontSize="20" Margin="10 0" FontWeight="DemiBold"></TextBlock>
 
                 <TextBlock Text="Creé Dans le" FontSize="20" Margin="55 0"></TextBlock>
-                <TextBlock Text="{Binding SelectedDossier.DossierMedical.CreeDans}" FontSize="20" Margin="5 0" FontWeight="DemiBold"></TextBlock>
+                <TextBlock Text="{Binding SelectedDossier.DossierMedical.CreeDans,  StringFormat='dd/MM/yyy'}" FontSize="20" Margin="5 0" FontWeight="DemiBold"></TextBlock>
             </WrapPanel>
             <Grid>
                 <Grid.ColumnDefinitions>

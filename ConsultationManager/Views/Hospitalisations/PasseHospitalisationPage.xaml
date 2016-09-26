@@ -1,4 +1,4 @@
-﻿<Page x:Class="ConsultationManagerClient.Views.Hospitalisations.ActiveHospitalisationPage"
+﻿<Page x:Class="ConsultationManagerClient.Views.Hospitalisations.PasseHospitalisationPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,13 +7,13 @@
       xmlns:local="clr-namespace:ConsultationManagerClient.Views.Hospitalisations"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="ActiveHospitalisationPage">
+      Title="AllHospitalisationPage">
 
     <Grid Margin="10">
         <DockPanel>
             <WrapPanel DockPanel.Dock="Top">
-                <TextBlock  FontSize="24">La Liste des Hospitalisations Actives</TextBlock>
-            </WrapPanel>
+                <TextBlock  FontSize="24">La Liste de toutes les Anciennes Hospitalisations</TextBlock>
+            </WrapPanel> 
             <Grid Margin="0 10 0 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*" />
@@ -50,7 +50,7 @@
                         <ItemsPresenter></ItemsPresenter>
                     </DockPanel>
 
-                    <ListBox x:Name="listMyRdv" ItemsSource="{Binding ListActiveHospitalisation}" Grid.Row="1" HorizontalContentAlignment="Stretch">
+                    <ListBox x:Name="listMyRdv" ItemsSource="{Binding ListPasseHospitalisation}" Grid.Row="1" HorizontalContentAlignment="Stretch">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -87,37 +87,24 @@
                                     <TextBlock Grid.Column="6" Text="{Binding Path=Demande.Traitement}" FontSize="16"></TextBlock>
 
                                     <TextBlock Grid.Column="7" Text="{Binding Path=Hospitalisation.CreeDans,  StringFormat='dd/MM/yyy'}" HorizontalAlignment="Center" FontSize="16" FontWeight="DemiBold"></TextBlock>
-
+                                    
                                     <WrapPanel Grid.Column="8" Orientation="Horizontal" HorizontalAlignment="Right">
                                         <Button  
-                                                    Command="{Binding DataContext.OpenDialogSuiviCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                    Command="{Binding DataContext.UpdateRdvDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
                                                     CommandParameter="{Binding}"
                                                     Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="3"
-                                                    ToolTip="Suivie d'Hospitalisation">
-                                            <materialDesign:PackIcon Kind="ChartLine" Height="24" Width="24" />
+                                                    ToolTip="Confirmer l'Entrée">
+                                            <materialDesign:PackIcon Kind="ClipboardCheck" Height="24" Width="24" />
                                         </Button>
                                         <materialDesign:PopupBox ToolTip="Plus d'Opionts" Margin="5 0 5 0">
                                             <StackPanel>
-                                                <Button 
-                                                    Command="{Binding DataContext.DetailHospitDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
-                                                    CommandParameter="{Binding}"
-                                                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
+                                                <Button  Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
                                                     ToolTip="Plus de Détails">
                                                     <materialDesign:PackIcon Kind="Eye" Height="24" Width="24" />
-                                                </Button> 
-                                                <Button
-                                                    Command="{Binding DataContext.OpenDialogMedFolderCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
-                                                    CommandParameter="{Binding}"
-                                                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
+                                                </Button>
+                                                <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
                                                     ToolTip="Voir Dossier Médical">
                                                     <materialDesign:PackIcon Kind="FolderPlus" Height="24" Width="24" />
-                                                </Button>
-                                                <Button 
-                                                    Command="{Binding DataContext.DetailHospitDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
-                                                    CommandParameter="{Binding}"
-                                                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
-                                                    ToolTip="Terminer l'Hospitalisation">
-                                                    <materialDesign:PackIcon Kind="Walk" Height="24" Width="24" />
                                                 </Button>
                                             </StackPanel>
                                         </materialDesign:PopupBox>

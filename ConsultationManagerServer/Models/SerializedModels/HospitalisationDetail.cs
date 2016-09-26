@@ -17,6 +17,8 @@ namespace ConsultationManagerServer.Models.SerializedModels
 
             Patient = new Patient();
             Medecin = new Utilisateur();
+            Demande = new DemandeHospit();
+            Salle = new Salle();
             Conclusion = new Conclusion();
 
             FicheTA = new ObservableCollection<Mesure>();
@@ -46,6 +48,19 @@ namespace ConsultationManagerServer.Models.SerializedModels
             get;
             set;
         }
+        [DataMember]
+        public DemandeHospit Demande
+        {
+            get;
+            set;
+        }
+        [DataMember]
+        public Salle Salle
+        {
+            get;
+            set;
+        }
+
 
         [DataMember]
         public Conclusion Conclusion

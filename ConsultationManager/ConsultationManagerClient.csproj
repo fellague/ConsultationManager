@@ -182,11 +182,26 @@
     <Compile Include="Views\DossierMedicals\MyDossierPage.xaml.cs">
       <DependentUpon>MyDossierPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Hospitalisations\AttenteHospitalisationPage.xaml.cs">
+      <DependentUpon>AttenteHospitalisationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Hospitalisations\ConfirmeHospWindow.xaml.cs">
+      <DependentUpon>ConfirmeHospWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Hospitalisations\DetailHospitWindow.xaml.cs">
+      <DependentUpon>DetailHospitWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Hospitalisations\FuturHospitalisationPage.xaml.cs">
+      <DependentUpon>FuturHospitalisationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Hospitalisations\ListDemandesHospitPage.xaml.cs">
       <DependentUpon>ListDemandesHospitPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Hospitalisations\ListSallesPage.xaml.cs">
       <DependentUpon>ListSallesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Hospitalisations\MissedHospitalisationPage.xaml.cs">
+      <DependentUpon>MissedHospitalisationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Hospitalisations\NewDemandeHospitWindow.xaml.cs">
       <DependentUpon>NewDemandeHospitWindow.xaml</DependentUpon>
@@ -196,6 +211,9 @@
     </Compile>
     <Compile Include="Views\Hospitalisations\NewSalleWindow.xaml.cs">
       <DependentUpon>NewSalleWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Hospitalisations\SuiviHospitWindow.xaml.cs">
+      <DependentUpon>SuiviHospitWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Hospitalisations\UpdateSalleWindow.xaml.cs">
       <DependentUpon>UpdateSalleWindow.xaml</DependentUpon>
@@ -272,8 +290,8 @@
     <Compile Include="Views\Hospitalisations\ActiveHospitalisationPage.xaml.cs">
       <DependentUpon>ActiveHospitalisationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Hospitalisations\AllHospitalisationPage.xaml.cs">
-      <DependentUpon>AllHospitalisationPage.xaml</DependentUpon>
+    <Compile Include="Views\Hospitalisations\PasseHospitalisationPage.xaml.cs">
+      <DependentUpon>PasseHospitalisationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MenuUtilisateurWindow.xaml.cs">
       <DependentUpon>MenuUtilisateurWindow.xaml</DependentUpon>
@@ -354,11 +372,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Hospitalisations\AttenteHospitalisationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Hospitalisations\ConfirmeHospWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Hospitalisations\DetailHospitWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Hospitalisations\FuturHospitalisationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Hospitalisations\ListDemandesHospitPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Hospitalisations\ListSallesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Hospitalisations\MissedHospitalisationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -371,6 +409,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Hospitalisations\NewSalleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Hospitalisations\SuiviHospitWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -474,7 +516,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Hospitalisations\AllHospitalisationPage.xaml">
+    <Page Include="Views\Hospitalisations\PasseHospitalisationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -572,6 +614,8 @@
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.DossierMed.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Hospitalisations.DemandeHospit.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Hospitalisations.Hospitalisation.datasource" />
+    <None Include="Properties\DataSources\ConsultationManagerServer.Models.Hospitalisations.Intervention.datasource" />
+    <None Include="Properties\DataSources\ConsultationManagerServer.Models.Hospitalisations.Mesure.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Hospitalisations.Salle.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Interview.datasource" />
     <None Include="Properties\DataSources\ConsultationManagerServer.Models.Pathologie.datasource" />

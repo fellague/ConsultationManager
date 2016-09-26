@@ -30,6 +30,86 @@ namespace ConsultationManagerServer.Services
             return hospit;
         }
 
+        public Intervention AddIntervention(Intervention interv, ObservableCollection<string> ids)
+        {
+            DataBaseContext db = new DataBaseContext();
+
+            db.Interventions.Save(interv);
+
+            ids.Add(interv.Id);
+
+            var query = Query.EQ("Id", interv.IdHospitalisation);
+            var update = Update
+                .Set("IdInterventions", new BsonArray(ids));
+            var result = db.Hospitalisations.FindAndModify(query, null, update);
+
+            return interv;
+        }
+
+        public Mesure AddMesureGlycemique(Mesure mesure, ObservableCollection<string> ids)
+        {
+            DataBaseContext db = new DataBaseContext();
+
+            db.Mesures.Save(mesure);
+
+            ids.Add(mesure.Id);
+
+            var query = Query.EQ("Id", mesure.IdHospitalisation);
+            var update = Update
+                .Set("IdMesuresFicheGlycemique", new BsonArray(ids));
+            var result = db.Hospitalisations.FindAndModify(query, null, update);
+
+            return mesure;
+        }
+
+        public Mesure AddMesurePoids(Mesure mesure, ObservableCollection<string> ids)
+        {
+            DataBaseContext db = new DataBaseContext();
+
+            db.Mesures.Save(mesure);
+
+            ids.Add(mesure.Id);
+
+            var query = Query.EQ("Id", mesure.IdHospitalisation);
+            var update = Update
+                .Set("IdMesuresFichePoids", new BsonArray(ids));
+            var result = db.Hospitalisations.FindAndModify(query, null, update);
+
+            return mesure;
+        }
+
+        public Mesure AddMesureTa(Mesure mesure, ObservableCollection<string> ids)
+        {
+            DataBaseContext db = new DataBaseContext();
+
+            db.Mesures.Save(mesure);
+
+            ids.Add(mesure.Id);
+
+            var query = Query.EQ("Id", mesure.IdHospitalisation);
+            var update = Update
+                .Set("IdMesuresFicheTA", new BsonArray(ids));
+            var result = db.Hospitalisations.FindAndModify(query, null, update);
+
+            return mesure;
+        }
+
+        public Mesure AddMesureTemperature(Mesure mesure, ObservableCollection<string> ids)
+        {
+            DataBaseContext db = new DataBaseContext();
+
+            db.Mesures.Save(mesure);
+
+            ids.Add(mesure.Id);
+
+            var query = Query.EQ("Id", mesure.IdHospitalisation);
+            var update = Update
+                .Set("IdMesuresFicheTemperature", new BsonArray(ids));
+            var result = db.Hospitalisations.FindAndModify(query, null, update);
+
+            return mesure;
+        }
+
         public void DeleteHospit(string id)
         {
             DataBaseContext db = new DataBaseContext();
@@ -70,7 +150,9 @@ namespace ConsultationManagerServer.Services
                     hospitDetail.Hospitalisation = item;
                     hospitDetail.Medecin = db.Utilisateurs.FindAll().Where(p => p.Id == item.IdMedecin).First();
                     hospitDetail.Patient = db.Patients.FindAll().Where(p => p.Id == item.IdPatient).First();
-                    if(item.IdConclusion != "")
+                    hospitDetail.Demande = db.DemandesHospit.FindAll().Where(p => p.Id == item.IdDemande).First();
+                    hospitDetail.Salle = db.Salles.FindAll().Where(p => p.Id == item.IdSalle).First();
+                    if (item.IdConclusion != "")
                         hospitDetail.Conclusion = db.Conclusions.FindAll().Where(p => p.Id == item.IdConclusion).First();
 
                     foreach (string id in item.IdInterventions)
@@ -137,6 +219,11 @@ namespace ConsultationManagerServer.Services
                 .Set("DateFinReel", hosp.DateFinReel)
                 .Set("IdSalle", hosp.IdSalle)
                 .Set("Lit", hosp.Lit)
+                .Set("Garde.Nom", hosp.Garde.Nom)
+                .Set("Garde.Prenom", hosp.Garde.Prenom)
+                .Set("Garde.DateNaiss", hosp.Garde.DateNaiss)
+                .Set("Garde.NumeroCarte", hosp.Garde.NumeroCarte)
+                .Set("Garde.Telephones", new BsonArray(hosp.Garde.Telephones))
                 .Set("IdSallesChange", new BsonArray(hosp.IdSallesChange))
                 .Set("IdInterventions", new BsonArray(hosp.IdInterventions));
             var result = db.Hospitalisations.FindAndModify(query, null, update);

@@ -37,15 +37,15 @@ namespace ConsultationManagerServer.Models.Hospitalisations
             //creePar = "";
         }
 
-        [BsonId]
-        public ObjectId _id { get; set; }
+        //[BsonId]
+        //public ObjectId _id { get; set; }
 
-        [DataMember]
-        public string Id
-        {
-            get { return _id.ToString(); }
-            set { _id = ObjectId.Parse(value); }
-        }
+        //[DataMember]
+        //public string Id
+        ////{
+        //    get { return _id.ToString(); }
+        //    set { _id = ObjectId.Parse(value); }
+        //}
 
         [DataMember]
         public string Nom
@@ -88,9 +88,7 @@ namespace ConsultationManagerServer.Models.Hospitalisations
                 OnPropertyChanged("DateNaiss");
             }
         }
-
         
-
         [DataMember]
         public string NumeroCarte
         {

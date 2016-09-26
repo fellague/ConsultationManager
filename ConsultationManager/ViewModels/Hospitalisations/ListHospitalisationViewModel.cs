@@ -14,6 +14,8 @@ using System.ServiceModel.Security;
 using ConsultationManagerServer.Models.SerializedModels;
 using ConsultationManager.ServiceReferenceHospit;
 using ConsultationManager.ViewModels.Hospitalisations;
+using ConsultationManager.Views.DossierMedicals;
+using ConsultationManager.ServiceReferenceDossierMed;
 
 namespace ConsultationManagerClient.ViewModels.Hospitalisations
 {
@@ -25,8 +27,12 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
 
         private string nomUtilisateur;
         private ObservableCollection<HospitalisationDetail> listAllHospitalisation;
+        private ObservableCollection<HospitalisationDetail> listPasseHospitalisation;
         private ObservableCollection<HospitalisationDetail> listActiveHospitalisation;
-        
+        private ObservableCollection<HospitalisationDetail> listFuturHospitalisation;
+        private ObservableCollection<HospitalisationDetail> listAttenteHospitalisation;
+        private ObservableCollection<HospitalisationDetail> listRateHospitalisation;
+
         private ObservableCollection<Salle> listSalle;
 
         private ObservableCollection<DemandeHospitDetail> listDemandeHospit;
@@ -38,11 +44,26 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
         private ObservableCollection<int> listNbLit;
         
         private NewHospitWindow dialogNewHospit;
-        private Hospitalisation newHospit;
-        private DemandeHospitDetail selectedDemande;
 
         private UpdateSalleWindow dialogUpdateSalle;
         private Salle updatedSalle;
+
+        private ConfirmeHospWindow dialogConfirmeHosp;
+        private HospitalisationDetail selectHosp;
+        private string newTelephone;
+
+        private DetailHospitWindow dialogHospDetail;
+
+        private DossierMedServiceClient psc = new DossierMedServiceClient();
+        private DossierMedicalWindow dialoDossierMedical;
+        private DossierMedDetail selectedDossier;
+
+        private SuiviHospitWindow dialogSuivi;
+        private string mesurePoids;
+        private string mesureTA;
+        private string mesureTemperature;
+        private string mesureGlycemique;
+        private Intervention newIntervention;
 
         public ListHospitalisationViewModel()
         {
@@ -54,10 +75,18 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             hsc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
             hsc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
                                 X509CertificateValidationMode.None;
+            psc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
+            psc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
+            psc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
+                                X509CertificateValidationMode.None;
 
             listAllHospitalisation = new ObservableCollection<HospitalisationDetail>();
             listAllHospitalisation = new ObservableCollection<HospitalisationDetail>(hsc.GetHospits(AuthenticationViewModel.AuthenticatedUser.ServiceId));
+            listPasseHospitalisation = new ObservableCollection<HospitalisationDetail>();
             listActiveHospitalisation = new ObservableCollection<HospitalisationDetail>();
+            listFuturHospitalisation = new ObservableCollection<HospitalisationDetail>();
+            listAttenteHospitalisation = new ObservableCollection<HospitalisationDetail>();
+            listRateHospitalisation = new ObservableCollection<HospitalisationDetail>();
             ActualiserLists();
             nomUtilisateur = AuthenticationViewModel.AuthenticatedUser.Nom + " " + AuthenticationViewModel.AuthenticatedUser.Prenom;
 
@@ -67,11 +96,17 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             CancelCommand = new RelayCommand(o => ((Window)o).Close());
 
             NewHospitDialogCommand = new RelayCommand(param => ShowDialogNewHospit(param));
+            ConfirmeHospDialogCommand = new RelayCommand(param => ShowDialogConfirmHospit(param));
 
             NewSalleDialogCommand = new RelayCommand(param => ShowDialogNewSalle());
             UpdateSalleDialogCommand = new RelayCommand(param => this.ShowDialogUpdateSalle(param));
             RemoveSalleCommand = new RelayCommand(param => DeleteSalle(param));
 
+            DetailHospitDialogCommand = new RelayCommand(param => this.ShowDialogDetailHosp(param));
+
+            OpenDialogMedFolderCommand = new RelayCommand(param => ShowDialogDossierMedical(param));
+
+            OpenDialogSuiviCommand = new RelayCommand(param => ShowDialogSuivi(param));
         }
 
 
@@ -89,6 +124,18 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
                 OnPropertyChanged("ListAllHospitalisation");
             }
         }
+        public ObservableCollection<HospitalisationDetail> ListPasseHospitalisation
+        {
+            get
+            {
+                return listPasseHospitalisation;
+            }
+            set
+            {
+                listPasseHospitalisation = value;
+                OnPropertyChanged("ListPasseHospitalisation");
+            }
+        }
         public ObservableCollection<HospitalisationDetail> ListActiveHospitalisation
         {
             get
@@ -101,6 +148,43 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
                 OnPropertyChanged("ListActiveHospitalisation");
             }
         }
+        public ObservableCollection<HospitalisationDetail> ListFuturHospitalisation
+        {
+            get
+            {
+                return listFuturHospitalisation;
+            }
+            set
+            {
+                listFuturHospitalisation = value;
+                OnPropertyChanged("ListFuturHospitalisation");
+            }
+        }
+        public ObservableCollection<HospitalisationDetail> ListAttenteHospitalisation
+        {
+            get
+            {
+                return listAttenteHospitalisation;
+            }
+            set
+            {
+                listAttenteHospitalisation = value;
+                OnPropertyChanged("ListAttenteHospitalisation");
+            }
+        }
+        public ObservableCollection<HospitalisationDetail> ListRateHospitalisation
+        {
+            get
+            {
+                return listRateHospitalisation;
+            }
+            set
+            {
+                listRateHospitalisation = value;
+                OnPropertyChanged("ListRateHospitalisation");
+            }
+        }
+
         public ObservableCollection<Salle> ListSalle
         {
             get
@@ -181,28 +265,29 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             }
         }
 
-        public Hospitalisation NewHospit
+        public HospitalisationDetail SelectHosp
         {
             get
             {
-                return newHospit;
+                return selectHosp;
             }
             set
             {
-                newHospit = value;
-                OnPropertyChanged("NewHospit");
+                selectHosp = value;
+                OnPropertyChanged("SelectHosp");
             }
         }
-        public DemandeHospitDetail SelectedDemande
+
+        public string NewTelephone
         {
             get
             {
-                return selectedDemande;
+                return newTelephone;
             }
             set
             {
-                selectedDemande = value;
-                OnPropertyChanged("SelectedDemande");
+                newTelephone = value;
+                OnPropertyChanged("NewTelephone");
             }
         }
 
@@ -211,6 +296,80 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             get
             {
                 return dialogNewHospit;
+            }
+        }
+        
+        public DossierMedDetail SelectedDossier
+        {
+            get
+            {
+                return selectedDossier;
+            }
+            set
+            {
+                selectedDossier = value;
+                OnPropertyChanged("SelectedDossier");
+            }
+        }
+
+        public string MesurePoids
+        {
+            get
+            {
+                return mesurePoids;
+            }
+            set
+            {
+                mesurePoids = value;
+                OnPropertyChanged("MesurePoids");
+            }
+        }
+        public string MesureTA
+        {
+            get
+            {
+                return mesureTA;
+            }
+            set
+            {
+                mesureTA = value;
+                OnPropertyChanged("MesureTA");
+            }
+        }
+        public string MesureTemperature
+        {
+            get
+            {
+                return mesureTemperature;
+            }
+            set
+            {
+                mesureTemperature = value;
+                OnPropertyChanged("MesureTemperature");
+            }
+        }
+        public string MesureGlycemique
+        {
+            get
+            {
+                return mesureGlycemique;
+            }
+            set
+            {
+                mesureGlycemique = value;
+                OnPropertyChanged("MesureGlycemique");
+            }
+        }
+        public Intervention NewIntervention
+        {
+            get
+            {
+                return newIntervention;
+            }
+            set
+            {
+                newIntervention = value;
+                OnPropertyChanged("NewIntervention");
             }
         }
         #endregion
@@ -223,6 +382,21 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             private set;
         }
         public ICommand NewHospitDialogCommand
+        {
+            get;
+            private set;
+        }
+        public ICommand ConfirmeHospDialogCommand
+        {
+            get;
+            private set;
+        }
+        public ICommand ConfirmHospitCommand
+        {
+            get;
+            private set;
+        }
+        public ICommand DetailHospitDialogCommand
         {
             get;
             private set;
@@ -261,17 +435,92 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             private set;
         }
 
+        public ICommand AddTelephoneCommand
+        {
+            get;
+            private set;
+        }
+        public ICommand RemoveTelephoneCommand
+        {
+            get;
+            private set;
+        }
+
+        public ICommand OpenDialogMedFolderCommand
+        {
+            get;
+            private set;
+        }
+
+        public ICommand OpenDialogSuiviCommand
+        {
+            get;
+            private set;
+        }
+        public ICommand UpdateSuiviCommand
+        {
+            get;
+            private set;
+        }
 
         #endregion
 
         #region PatientsViewModel Methods
-        
+
+        private ObservableCollection<HospitalisationDetail> CreateListPasseHospitalisation()
+        {
+            ObservableCollection<HospitalisationDetail> allMyList = new ObservableCollection<HospitalisationDetail>();
+            foreach (HospitalisationDetail element in listAllHospitalisation)
+            {
+                if (element.Hospitalisation.DateFinReel.Date.CompareTo(DateTime.Now.Date) <= 0 && element.Hospitalisation.DateFinReel.Date.CompareTo(new DateTime(1,1,1).Date) != 0)
+                {
+                    allMyList.Add(element);
+                }
+            }
+            return allMyList;
+        }
         private ObservableCollection<HospitalisationDetail> CreateListActiveHospitalisation()
         {
             ObservableCollection<HospitalisationDetail> allMyList = new ObservableCollection<HospitalisationDetail>();
             foreach (HospitalisationDetail element in listAllHospitalisation)
             {
-                if (element.Hospitalisation.DateFinPrevu.Date.CompareTo(DateTime.Now) > 0 && element.Hospitalisation.DateDebutReel.Date.CompareTo(DateTime.Now.Date) <= 0)
+                if (element.Hospitalisation.DateDebutReel.Date.CompareTo(DateTime.Now.Date) <= 0 && element.Hospitalisation.DateDebutReel.Date.CompareTo(new DateTime(1, 1, 1).Date) != 0 && element.Hospitalisation.DateFinReel.Date.CompareTo(new DateTime(1, 1, 1).Date) == 0)
+                {
+                    allMyList.Add(element);
+                }
+            }
+            return allMyList;
+        }
+        private ObservableCollection<HospitalisationDetail> CreateListFuturHospitalisation()
+        {
+            ObservableCollection<HospitalisationDetail> allMyList = new ObservableCollection<HospitalisationDetail>();
+            foreach (HospitalisationDetail element in listAllHospitalisation)
+            {
+                if (element.Hospitalisation.DateDebutPrevu.Date.CompareTo(DateTime.Now.Date) > 0 && element.Hospitalisation.DateDebutReel.Date.CompareTo(new DateTime(1, 1, 1).Date) == 0)
+                {
+                    allMyList.Add(element);
+                }
+            }
+            return allMyList;
+        }
+        private ObservableCollection<HospitalisationDetail> CreateListAttentHospitalisation()
+        {
+            ObservableCollection<HospitalisationDetail> allMyList = new ObservableCollection<HospitalisationDetail>();
+            foreach (HospitalisationDetail element in listAllHospitalisation)
+            {
+                if (element.Hospitalisation.DateDebutPrevu.Date.CompareTo(DateTime.Now.Date) == 0 && element.Hospitalisation.DateDebutReel.Date.CompareTo(new DateTime(1, 1, 1).Date) == 0)
+                {
+                    allMyList.Add(element);
+                }
+            }
+            return allMyList;
+        }
+        private ObservableCollection<HospitalisationDetail> CreateListRateHospitalisation()
+        {
+            ObservableCollection<HospitalisationDetail> allMyList = new ObservableCollection<HospitalisationDetail>();
+            foreach (HospitalisationDetail element in listAllHospitalisation)
+            {
+                if (element.Hospitalisation.DateDebutPrevu.Date.CompareTo(DateTime.Now.Date) < 0 && element.Hospitalisation.DateDebutReel.Date.CompareTo(new DateTime(1, 1, 1).Date) == 0)
                 {
                     allMyList.Add(element);
                 }
@@ -301,7 +550,6 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             ssc.DeleteSalle(deletedSalle.Id);
             listSalle.Remove(deletedSalle);
         }
-
         private void ShowDialogNewSalle()
         {
             dialogNewSalle = new NewSalleWindow();
@@ -311,7 +559,6 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             AddSalleCommand = new RelayCommand(param => AjouterSalle());
             dialogNewSalle.ShowDialog();
         }
-
         private void AjouterSalle()
         {
             NewSalle.IdService = AuthenticationViewModel.AuthenticatedUser.ServiceId;
@@ -326,25 +573,158 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
 
         private void ShowDialogNewHospit(object selecDemand)
         {
-            SelectedDemande = selecDemand as DemandeHospitDetail;
+            //SelectedDemande = selecDemand as DemandeHospitDetail;
             dialogNewHospit = new NewHospitWindow();
-            dialogNewHospit.DataContext = new NewHospitViewModel(SelectedDemande, this);
+            dialogNewHospit.DataContext = new NewHospitViewModel(selecDemand as DemandeHospitDetail, this);
             dialogNewHospit.ShowDialog();
         }
-        //private void AjouterHospit()
-        //{
-        //    NewSalle.IdService = AuthenticationViewModel.AuthenticatedUser.ServiceId;
-        //    NewSalle.NbLit = SelectedNbLit;
-        //    NewSalle.CreeDans = DateTime.Now;
-        //    NewSalle.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
-        //    ssc.AddSalle(NewSalle);
-        //    listSalle.Add(NewSalle);
-        //    dialogNewSalle.Close();
-        //}
+
+        private HospitalisationDetail copie;
+        private void ShowDialogConfirmHospit(Object obj)
+        {
+            selectHosp = obj as HospitalisationDetail;
+            copie = selectHosp;
+            dialogConfirmeHosp = new ConfirmeHospWindow();
+            selectHosp.Hospitalisation.Garde.DateNaiss = new DateTime(1970, 6, 1);
+            dialogConfirmeHosp.DataContext = this;
+            AddTelephoneCommand = new RelayCommand(param => AjouterTelephone());
+            RemoveTelephoneCommand = new RelayCommand(param => DeleteTelephone(param));
+            ConfirmHospitCommand = new RelayCommand(param => ConfirmerHospit());
+            dialogConfirmeHosp.ShowDialog();
+        }
+        
+        private void ShowDialogDetailHosp(Object obj)
+        {
+            SelectHosp = obj as HospitalisationDetail;
+            dialogHospDetail = new DetailHospitWindow();
+            dialogHospDetail.DataContext = this;
+            dialogHospDetail.ShowDialog();
+        }
+        
+        private void ShowDialogDossierMedical(object param)
+        {
+            HospitalisationDetail selHosp = param as HospitalisationDetail;
+            SelectedDossier = psc.GetDossierMed(selHosp.Patient.Id);
+            dialoDossierMedical = new DossierMedicalWindow();
+            dialoDossierMedical.DataContext = this;
+            //newPathologie = new Consultation();
+            //AddPathologieCommand = new RelayCommand(param => AjouterPathologie());
+            dialoDossierMedical.ShowDialog();
+        }
+        
+        private void ShowDialogSuivi(object param)
+        {
+            SelectHosp = param as HospitalisationDetail;
+            dialogSuivi = new SuiviHospitWindow();
+            mesurePoids = "";
+            mesureTA = "";
+            mesureTemperature = "";
+            mesureGlycemique = "";
+            newIntervention = new Intervention();
+            dialogSuivi.DataContext = this;
+            UpdateSuiviCommand = new RelayCommand(par => UpdateSuivi());
+            dialogSuivi.ShowDialog();
+        }
+
+        private void UpdateSuivi()
+        {
+            Mesure mesure;
+            if(MesurePoids != "")
+            {
+                mesure = new Mesure();
+                mesure.Valeur = MesurePoids;
+                mesure.IdHospitalisation = SelectHosp.Hospitalisation.Id;
+                mesure.CreeDans = DateTime.Now;
+                mesure.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
+
+                mesure = hsc.AddMesurePoids(mesure, selectHosp.Hospitalisation.IdMesuresFichePoids.ToArray());
+                SelectHosp.FichePoids.Add(mesure);
+                SelectHosp.Hospitalisation.IdMesuresFichePoids.Add(mesure.Id);
+            }
+            if (MesureTA != "")
+            {
+                mesure = new Mesure();
+                mesure.Valeur = MesureTA;
+                mesure.IdHospitalisation = SelectHosp.Hospitalisation.Id;
+                mesure.CreeDans = DateTime.Now;
+                mesure.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
+
+                mesure = hsc.AddMesureTa(mesure, selectHosp.Hospitalisation.IdMesuresFicheTA.ToArray());
+                SelectHosp.FicheTA.Add(mesure);
+                SelectHosp.Hospitalisation.IdMesuresFicheTA.Add(mesure.Id);
+            }
+            if (MesureTemperature != "")
+            {
+                mesure = new Mesure();
+                mesure.Valeur = MesureTemperature;
+                mesure.IdHospitalisation = SelectHosp.Hospitalisation.Id;
+                mesure.CreeDans = DateTime.Now;
+                mesure.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
+
+                mesure = hsc.AddMesureTemperature(mesure, selectHosp.Hospitalisation.IdMesuresFicheTemperature.ToArray());
+                SelectHosp.FicheTemperature.Add(mesure);
+                SelectHosp.Hospitalisation.IdMesuresFicheTemperature.Add(mesure.Id);
+            }
+            if (MesureGlycemique != "")
+            {
+                mesure = new Mesure();
+                mesure.Valeur = MesureGlycemique;
+                mesure.IdHospitalisation = SelectHosp.Hospitalisation.Id;
+                mesure.CreeDans = DateTime.Now;
+                mesure.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
+
+                mesure = hsc.AddMesureGlycemique(mesure, selectHosp.Hospitalisation.IdMesuresFicheGlycemique.ToArray());
+                SelectHosp.FicheGlycemique.Add(mesure);
+                SelectHosp.Hospitalisation.IdMesuresFicheGlycemique.Add(mesure.Id);
+            }
+
+            if (NewIntervention.Motif != "" || NewIntervention.Description != "")
+            {
+                NewIntervention.IdHospitalisation = SelectHosp.Hospitalisation.Id;
+                NewIntervention.CreeDans = DateTime.Now;
+                NewIntervention.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
+                
+                newIntervention = hsc.AddIntervention(NewIntervention, selectHosp.Hospitalisation.IdInterventions.ToArray());
+                SelectHosp.Inetrventions.Add(newIntervention);
+                SelectHosp.Hospitalisation.IdInterventions.Add(newIntervention.Id);
+            }
+            dialogSuivi.Close();
+        }
+
+        private void ConfirmerHospit()
+        {
+            listAllHospitalisation.Remove(copie);
+            SelectHosp.Hospitalisation.DateDebutReel = SelectHosp.Hospitalisation.DateDebutPrevu;
+            hsc.UpdateHospit(SelectHosp.Hospitalisation);
+            listAllHospitalisation.Add(SelectHosp);
+            
+            dialogConfirmeHosp.Close();
+            ActualiserLists();
+        }
+
+        public void AjouterTelephone()
+        {
+            //var newCsl = csl as string;
+            if (newTelephone != "")
+            {
+                SelectHosp.Hospitalisation.Garde.Telephones.Add(newTelephone);
+                NewTelephone = "";
+            }
+        }
+        public void DeleteTelephone(object selectedTelephone)
+        {
+            var telephone = selectedTelephone as string;
+            SelectHosp.Hospitalisation.Garde.Telephones.Remove(telephone);
+        }
+
 
         public void ActualiserLists()
         {
-            listActiveHospitalisation = CreateListActiveHospitalisation();
+            ListPasseHospitalisation = CreateListPasseHospitalisation();
+            ListActiveHospitalisation = CreateListActiveHospitalisation();
+            ListFuturHospitalisation = CreateListFuturHospitalisation();
+            ListAttenteHospitalisation = CreateListAttentHospitalisation();
+            ListRateHospitalisation = CreateListRateHospitalisation();
         }
 
         #endregion

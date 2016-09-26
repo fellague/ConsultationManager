@@ -21,6 +21,36 @@ namespace ConsultationManager.ServiceReferenceHospit {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitService/AddHospit", ReplyAction="http://tempuri.org/IHospitService/AddHospitResponse")]
         System.Threading.Tasks.Task<ConsultationManagerServer.Models.Hospitalisations.Hospitalisation> AddHospitAsync(ConsultationManagerServer.Models.Hospitalisations.Hospitalisation hospit);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitService/AddMesurePoids", ReplyAction="http://tempuri.org/IHospitService/AddMesurePoidsResponse")]
+        ConsultationManagerServer.Models.Hospitalisations.Mesure AddMesurePoids(ConsultationManagerServer.Models.Hospitalisations.Mesure interv, string[] ids);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitService/AddMesurePoids", ReplyAction="http://tempuri.org/IHospitService/AddMesurePoidsResponse")]
+        System.Threading.Tasks.Task<ConsultationManagerServer.Models.Hospitalisations.Mesure> AddMesurePoidsAsync(ConsultationManagerServer.Models.Hospitalisations.Mesure interv, string[] ids);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitService/AddMesureTa", ReplyAction="http://tempuri.org/IHospitService/AddMesureTaResponse")]
+        ConsultationManagerServer.Models.Hospitalisations.Mesure AddMesureTa(ConsultationManagerServer.Models.Hospitalisations.Mesure interv, string[] ids);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitService/AddMesureTa", ReplyAction="http://tempuri.org/IHospitService/AddMesureTaResponse")]
+        System.Threading.Tasks.Task<ConsultationManagerServer.Models.Hospitalisations.Mesure> AddMesureTaAsync(ConsultationManagerServer.Models.Hospitalisations.Mesure interv, string[] ids);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitService/AddMesureTemperature", ReplyAction="http://tempuri.org/IHospitService/AddMesureTemperatureResponse")]
+        ConsultationManagerServer.Models.Hospitalisations.Mesure AddMesureTemperature(ConsultationManagerServer.Models.Hospitalisations.Mesure interv, string[] ids);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitService/AddMesureTemperature", ReplyAction="http://tempuri.org/IHospitService/AddMesureTemperatureResponse")]
+        System.Threading.Tasks.Task<ConsultationManagerServer.Models.Hospitalisations.Mesure> AddMesureTemperatureAsync(ConsultationManagerServer.Models.Hospitalisations.Mesure interv, string[] ids);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitService/AddMesureGlycemique", ReplyAction="http://tempuri.org/IHospitService/AddMesureGlycemiqueResponse")]
+        ConsultationManagerServer.Models.Hospitalisations.Mesure AddMesureGlycemique(ConsultationManagerServer.Models.Hospitalisations.Mesure interv, string[] ids);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitService/AddMesureGlycemique", ReplyAction="http://tempuri.org/IHospitService/AddMesureGlycemiqueResponse")]
+        System.Threading.Tasks.Task<ConsultationManagerServer.Models.Hospitalisations.Mesure> AddMesureGlycemiqueAsync(ConsultationManagerServer.Models.Hospitalisations.Mesure interv, string[] ids);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitService/AddIntervention", ReplyAction="http://tempuri.org/IHospitService/AddInterventionResponse")]
+        ConsultationManagerServer.Models.Hospitalisations.Intervention AddIntervention(ConsultationManagerServer.Models.Hospitalisations.Intervention interv, string[] ids);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitService/AddIntervention", ReplyAction="http://tempuri.org/IHospitService/AddInterventionResponse")]
+        System.Threading.Tasks.Task<ConsultationManagerServer.Models.Hospitalisations.Intervention> AddInterventionAsync(ConsultationManagerServer.Models.Hospitalisations.Intervention interv, string[] ids);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitService/GetDemandesHospit", ReplyAction="http://tempuri.org/IHospitService/GetDemandesHospitResponse")]
         ConsultationManagerServer.Models.SerializedModels.DemandeHospitDetail[] GetDemandesHospit(string idService);
         
@@ -85,6 +115,46 @@ namespace ConsultationManager.ServiceReferenceHospit {
         
         public System.Threading.Tasks.Task<ConsultationManagerServer.Models.Hospitalisations.Hospitalisation> AddHospitAsync(ConsultationManagerServer.Models.Hospitalisations.Hospitalisation hospit) {
             return base.Channel.AddHospitAsync(hospit);
+        }
+        
+        public ConsultationManagerServer.Models.Hospitalisations.Mesure AddMesurePoids(ConsultationManagerServer.Models.Hospitalisations.Mesure interv, string[] ids) {
+            return base.Channel.AddMesurePoids(interv, ids);
+        }
+        
+        public System.Threading.Tasks.Task<ConsultationManagerServer.Models.Hospitalisations.Mesure> AddMesurePoidsAsync(ConsultationManagerServer.Models.Hospitalisations.Mesure interv, string[] ids) {
+            return base.Channel.AddMesurePoidsAsync(interv, ids);
+        }
+        
+        public ConsultationManagerServer.Models.Hospitalisations.Mesure AddMesureTa(ConsultationManagerServer.Models.Hospitalisations.Mesure interv, string[] ids) {
+            return base.Channel.AddMesureTa(interv, ids);
+        }
+        
+        public System.Threading.Tasks.Task<ConsultationManagerServer.Models.Hospitalisations.Mesure> AddMesureTaAsync(ConsultationManagerServer.Models.Hospitalisations.Mesure interv, string[] ids) {
+            return base.Channel.AddMesureTaAsync(interv, ids);
+        }
+        
+        public ConsultationManagerServer.Models.Hospitalisations.Mesure AddMesureTemperature(ConsultationManagerServer.Models.Hospitalisations.Mesure interv, string[] ids) {
+            return base.Channel.AddMesureTemperature(interv, ids);
+        }
+        
+        public System.Threading.Tasks.Task<ConsultationManagerServer.Models.Hospitalisations.Mesure> AddMesureTemperatureAsync(ConsultationManagerServer.Models.Hospitalisations.Mesure interv, string[] ids) {
+            return base.Channel.AddMesureTemperatureAsync(interv, ids);
+        }
+        
+        public ConsultationManagerServer.Models.Hospitalisations.Mesure AddMesureGlycemique(ConsultationManagerServer.Models.Hospitalisations.Mesure interv, string[] ids) {
+            return base.Channel.AddMesureGlycemique(interv, ids);
+        }
+        
+        public System.Threading.Tasks.Task<ConsultationManagerServer.Models.Hospitalisations.Mesure> AddMesureGlycemiqueAsync(ConsultationManagerServer.Models.Hospitalisations.Mesure interv, string[] ids) {
+            return base.Channel.AddMesureGlycemiqueAsync(interv, ids);
+        }
+        
+        public ConsultationManagerServer.Models.Hospitalisations.Intervention AddIntervention(ConsultationManagerServer.Models.Hospitalisations.Intervention interv, string[] ids) {
+            return base.Channel.AddIntervention(interv, ids);
+        }
+        
+        public System.Threading.Tasks.Task<ConsultationManagerServer.Models.Hospitalisations.Intervention> AddInterventionAsync(ConsultationManagerServer.Models.Hospitalisations.Intervention interv, string[] ids) {
+            return base.Channel.AddInterventionAsync(interv, ids);
         }
         
         public ConsultationManagerServer.Models.SerializedModels.DemandeHospitDetail[] GetDemandesHospit(string idService) {

@@ -16,6 +16,36 @@
   <wsdl:message name="IHospitService_AddHospit_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddHospitResponse" />
   </wsdl:message>
+  <wsdl:message name="IHospitService_AddMesurePoids_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddMesurePoids" />
+  </wsdl:message>
+  <wsdl:message name="IHospitService_AddMesurePoids_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddMesurePoidsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHospitService_AddMesureTa_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddMesureTa" />
+  </wsdl:message>
+  <wsdl:message name="IHospitService_AddMesureTa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddMesureTaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHospitService_AddMesureTemperature_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddMesureTemperature" />
+  </wsdl:message>
+  <wsdl:message name="IHospitService_AddMesureTemperature_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddMesureTemperatureResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHospitService_AddMesureGlycemique_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddMesureGlycemique" />
+  </wsdl:message>
+  <wsdl:message name="IHospitService_AddMesureGlycemique_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddMesureGlycemiqueResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHospitService_AddIntervention_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddIntervention" />
+  </wsdl:message>
+  <wsdl:message name="IHospitService_AddIntervention_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddInterventionResponse" />
+  </wsdl:message>
   <wsdl:message name="IHospitService_GetDemandesHospit_InputMessage">
     <wsdl:part name="parameters" element="tns:GetDemandesHospit" />
   </wsdl:message>
@@ -51,6 +81,26 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IHospitService/AddHospit" message="tns:IHospitService_AddHospit_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IHospitService/AddHospitResponse" message="tns:IHospitService_AddHospit_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="AddMesurePoids">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHospitService/AddMesurePoids" message="tns:IHospitService_AddMesurePoids_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHospitService/AddMesurePoidsResponse" message="tns:IHospitService_AddMesurePoids_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMesureTa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHospitService/AddMesureTa" message="tns:IHospitService_AddMesureTa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHospitService/AddMesureTaResponse" message="tns:IHospitService_AddMesureTa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMesureTemperature">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHospitService/AddMesureTemperature" message="tns:IHospitService_AddMesureTemperature_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHospitService/AddMesureTemperatureResponse" message="tns:IHospitService_AddMesureTemperature_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMesureGlycemique">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHospitService/AddMesureGlycemique" message="tns:IHospitService_AddMesureGlycemique_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHospitService/AddMesureGlycemiqueResponse" message="tns:IHospitService_AddMesureGlycemique_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddIntervention">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHospitService/AddIntervention" message="tns:IHospitService_AddIntervention_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHospitService/AddInterventionResponse" message="tns:IHospitService_AddIntervention_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetDemandesHospit">
       <wsdl:input wsaw:Action="http://tempuri.org/IHospitService/GetDemandesHospit" message="tns:IHospitService_GetDemandesHospit_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IHospitService/GetDemandesHospitResponse" message="tns:IHospitService_GetDemandesHospit_OutputMessage" />
@@ -76,6 +126,51 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="AddHospit">
       <soap:operation soapAction="http://tempuri.org/IHospitService/AddHospit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMesurePoids">
+      <soap:operation soapAction="http://tempuri.org/IHospitService/AddMesurePoids" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMesureTa">
+      <soap:operation soapAction="http://tempuri.org/IHospitService/AddMesureTa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMesureTemperature">
+      <soap:operation soapAction="http://tempuri.org/IHospitService/AddMesureTemperature" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMesureGlycemique">
+      <soap:operation soapAction="http://tempuri.org/IHospitService/AddMesureGlycemique" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddIntervention">
+      <soap:operation soapAction="http://tempuri.org/IHospitService/AddIntervention" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

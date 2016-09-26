@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:64183/Services/HospitService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" />
+  <xs:import schemaLocation="http://localhost:64183/Services/HospitService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:import schemaLocation="http://localhost:64183/Services/HospitService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" />
   <xs:element name="AddHospit">
     <xs:complexType>
@@ -16,6 +17,81 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="AddMesurePoids">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="interv" nillable="true" type="q3:Mesure" />
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ids" nillable="true" type="q4:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMesurePoidsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="AddMesurePoidsResult" nillable="true" type="q5:Mesure" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMesureTa">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="interv" nillable="true" type="q6:Mesure" />
+        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ids" nillable="true" type="q7:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMesureTaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="AddMesureTaResult" nillable="true" type="q8:Mesure" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMesureTemperature">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="interv" nillable="true" type="q9:Mesure" />
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ids" nillable="true" type="q10:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMesureTemperatureResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="AddMesureTemperatureResult" nillable="true" type="q11:Mesure" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMesureGlycemique">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="interv" nillable="true" type="q12:Mesure" />
+        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ids" nillable="true" type="q13:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMesureGlycemiqueResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="AddMesureGlycemiqueResult" nillable="true" type="q14:Mesure" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddIntervention">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="interv" nillable="true" type="q15:Intervention" />
+        <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ids" nillable="true" type="q16:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddInterventionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="AddInterventionResult" nillable="true" type="q17:Intervention" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetDemandesHospit">
     <xs:complexType>
       <xs:sequence>
@@ -26,7 +102,7 @@
   <xs:element name="GetDemandesHospitResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" minOccurs="0" name="GetDemandesHospitResult" nillable="true" type="q3:ArrayOfDemandeHospitDetail" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" minOccurs="0" name="GetDemandesHospitResult" nillable="true" type="q18:ArrayOfDemandeHospitDetail" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -40,7 +116,7 @@
   <xs:element name="GetHospitsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" minOccurs="0" name="GetHospitsResult" nillable="true" type="q4:ArrayOfHospitalisationDetail" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" minOccurs="0" name="GetHospitsResult" nillable="true" type="q19:ArrayOfHospitalisationDetail" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -54,21 +130,21 @@
   <xs:element name="GetSallePlanningResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" minOccurs="0" name="GetSallePlanningResult" nillable="true" type="q5:ArrayOfSalleHospitPlanning" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" minOccurs="0" name="GetSallePlanningResult" nillable="true" type="q20:ArrayOfSalleHospitPlanning" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateHospit">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="salle" nillable="true" type="q6:Hospitalisation" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="salle" nillable="true" type="q21:Hospitalisation" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateHospitResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="UpdateHospitResult" nillable="true" type="q7:Hospitalisation" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="UpdateHospitResult" nillable="true" type="q22:Hospitalisation" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -27,7 +27,7 @@ namespace ConsultationManagerServer.Models.Hospitalisations
 
         private ObservableCollection<string> idSalleChanges;
         private ObservableCollection<string> idInterventions;
-        private ObservableCollection<string> idGardesMalade;
+        //private ObservableCollection<string> idGardesMalade;
 
         private ObservableCollection<string> idMesuresFicheTA;
         private ObservableCollection<string> idMesuresFichePoids;
@@ -189,6 +189,20 @@ namespace ConsultationManagerServer.Models.Hospitalisations
             }
         }
 
+        //[DataMember]
+        //public DateTime DateDebutPrevu
+        //{
+        //    get
+        //    {
+        //        return dateDebutPrevu;
+        //    }
+        //    set
+        //    {
+        //        dateDebutPrevu = value;
+        //        OnPropertyChanged("DateDebutPrevu");
+        //    }
+        //}
+
         [DataMember]
         public DateTime DateDebutReel
         {
@@ -268,7 +282,7 @@ namespace ConsultationManagerServer.Models.Hospitalisations
             set
             {
                 idInterventions = value;
-                OnPropertyChanged("Intervention");
+                OnPropertyChanged("IdInterventions");
             }
         }
         //[DataMember]

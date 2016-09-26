@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsultationManagerClient.ViewModels.Hospitalisations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,19 +13,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ConsultationManagerClient.ViewModels.Hospitalisations;
 
-namespace ConsultationManagerClient.Views.Hospitalisations
+namespace ConsultationManager.Views.Hospitalisations
 {
     /// <summary>
-    /// Interaction logic for AllHospitalisationPage.xaml
+    /// Interaction logic for FuturHospitalisationPage.xaml
     /// </summary>
-    public partial class AllHospitalisationPage : Page
+    public partial class FuturHospitalisationPage : Page
     {
-        internal AllHospitalisationPage(ListHospitalisationViewModel hospitVM)
+        internal FuturHospitalisationPage(ListHospitalisationViewModel hospitVM)
         {
             InitializeComponent();
-
             DataContext = hospitVM;
         }
     }

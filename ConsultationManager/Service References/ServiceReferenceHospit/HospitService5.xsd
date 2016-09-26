@@ -26,15 +26,17 @@
   <xs:complexType name="HospitalisationDetail">
     <xs:sequence>
       <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="Conclusion" nillable="true" type="q5:Conclusion" />
-      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="FicheGlycemique" nillable="true" type="q6:ArrayOfMesure" />
-      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="FichePoids" nillable="true" type="q7:ArrayOfMesure" />
-      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="FicheTA" nillable="true" type="q8:ArrayOfMesure" />
-      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="FicheTemperature" nillable="true" type="q9:ArrayOfMesure" />
-      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="Hospitalisation" nillable="true" type="q10:Hospitalisation" />
-      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="Inetrventions" nillable="true" type="q11:ArrayOfIntervention" />
-      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="Medecin" nillable="true" type="q12:Utilisateur" />
-      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="Patient" nillable="true" type="q13:Patient" />
-      <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="SallesChange" nillable="true" type="q14:ArrayOfSalle" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="Demande" nillable="true" type="q6:DemandeHospit" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="FicheGlycemique" nillable="true" type="q7:ArrayOfMesure" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="FichePoids" nillable="true" type="q8:ArrayOfMesure" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="FicheTA" nillable="true" type="q9:ArrayOfMesure" />
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="FicheTemperature" nillable="true" type="q10:ArrayOfMesure" />
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="Hospitalisation" nillable="true" type="q11:Hospitalisation" />
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="Inetrventions" nillable="true" type="q12:ArrayOfIntervention" />
+      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="Medecin" nillable="true" type="q13:Utilisateur" />
+      <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="Patient" nillable="true" type="q14:Patient" />
+      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="Salle" nillable="true" type="q15:Salle" />
+      <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="SallesChange" nillable="true" type="q16:ArrayOfSalle" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="HospitalisationDetail" nillable="true" type="tns:HospitalisationDetail" />
@@ -46,8 +48,8 @@
   <xs:element name="ArrayOfSalleHospitPlanning" nillable="true" type="tns:ArrayOfSalleHospitPlanning" />
   <xs:complexType name="SalleHospitPlanning">
     <xs:sequence>
-      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="Hospits" nillable="true" type="q15:ArrayOfHospitalisation" />
-      <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="Salle" nillable="true" type="q16:Salle" />
+      <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="Hospits" nillable="true" type="q17:ArrayOfHospitalisation" />
+      <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="Salle" nillable="true" type="q18:Salle" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SalleHospitPlanning" nillable="true" type="tns:SalleHospitPlanning" />
