@@ -20,6 +20,8 @@ namespace ConsultationManagerServer.Services
         {
             DataBaseContext db = new DataBaseContext();
 
+            db.Hospitalisations.Remove(Query.EQ("IdDemande", hospit.IdDemande));
+
             db.Hospitalisations.Save(hospit);
 
             var query = Query.EQ("Id", hospit.IdDemande);
@@ -203,7 +205,7 @@ namespace ConsultationManagerServer.Services
                 {
                     hospitDetail = new SalleHospitPlanning();
                     hospitDetail.Salle = item;
-                    hospitDetail.Hospits = db.Hospitalisations.FindAll().Where(p => p.IdSalle == item.Id).ToList();
+                    hospitDetail.Hospits = db.Hospitalisations.FindAll().Where(p => p.IdSalle == item.Id && p.DateFinReel.Date.CompareTo(new DateTime(1, 1, 1).Date) == 0).ToList();
 
                     listSallePlan.Add(hospitDetail);
                 }

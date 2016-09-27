@@ -113,7 +113,7 @@
                                                     <materialDesign:PackIcon Kind="FolderPlus" Height="24" Width="24" />
                                                 </Button>
                                                 <Button 
-                                                    Command="{Binding DataContext.DetailHospitDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                    Command="{Binding DataContext.TerminerHospitCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
                                                     CommandParameter="{Binding}"
                                                     Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
                                                     ToolTip="Terminer l'Hospitalisation">

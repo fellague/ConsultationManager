@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using ConsultationManagerClient.Views.RDVs;
 using ConsultationManagerClient.ViewModels.RDVs;
+using ConsultationManager.Views.RDVs;
 
 namespace ConsultationManagerClient.Views
 {
@@ -19,32 +20,46 @@ namespace ConsultationManagerClient.Views
             rdvVM = new ListRvdViewModel();
             this.DataContext = rdvVM;
 
-            _frameRdv.Navigate(new AllRdvPage(rdvVM));
-            coloringTabs(AllRdvBtn, AllMyRdvBtn, MyTodayRdvBtn, FirstRdvBtn);
+            _frameRdv.Navigate(new ListMyTodayRdvPage(rdvVM));
+            coloringTabs(MyTodayRdvBtn, AllRdvBtn, PasseRdvBtn, RateRdvBtn, FirstRdvBtn, HospitRdvBtn, FuturRdvBtn);
         }
 
         private void button_click_tout(object sender, RoutedEventArgs e)
         {
             _frameRdv.Navigate(new AllRdvPage(rdvVM));
-            coloringTabs(AllRdvBtn, AllMyRdvBtn, MyTodayRdvBtn, FirstRdvBtn);
+            coloringTabs(AllRdvBtn, PasseRdvBtn, RateRdvBtn, MyTodayRdvBtn, FirstRdvBtn, HospitRdvBtn, FuturRdvBtn);
         }
-
-        private void button_click_tout_mes(object sender, RoutedEventArgs e)
+        private void button_click_passe(object sender, RoutedEventArgs e)
         {
-            _frameRdv.Navigate(new AllMyRdvPage(rdvVM));
-            coloringTabs(AllMyRdvBtn, AllRdvBtn, MyTodayRdvBtn, FirstRdvBtn);
+            _frameRdv.Navigate(new ListPasseRdvPage(rdvVM));
+            coloringTabs(PasseRdvBtn, AllRdvBtn, RateRdvBtn, MyTodayRdvBtn, FirstRdvBtn, HospitRdvBtn, FuturRdvBtn);
+        }
+        private void button_click_rate(object sender, RoutedEventArgs e)
+        {
+            _frameRdv.Navigate(new ListRateRdvPage(rdvVM));
+            coloringTabs(RateRdvBtn, AllRdvBtn, PasseRdvBtn, MyTodayRdvBtn, FirstRdvBtn, HospitRdvBtn, FuturRdvBtn);
         }
 
         private void button_click_ajourd(object sender, RoutedEventArgs e)
         {
-            _frameRdv.Navigate(new MyTodayRdvPage(rdvVM));
-            coloringTabs(MyTodayRdvBtn, AllRdvBtn, AllMyRdvBtn, FirstRdvBtn);
+            _frameRdv.Navigate(new ListMyTodayRdvPage(rdvVM));
+            coloringTabs(MyTodayRdvBtn, AllRdvBtn, PasseRdvBtn, RateRdvBtn, FirstRdvBtn, HospitRdvBtn, FuturRdvBtn);
         }
 
         private void button_click_first(object sender, RoutedEventArgs e)
         {
-            _frameRdv.Navigate(new FirstRdvPage(rdvVM));
-            coloringTabs(FirstRdvBtn, MyTodayRdvBtn, AllRdvBtn, AllMyRdvBtn);
+            _frameRdv.Navigate(new ListFirstRdvPage(rdvVM));
+            coloringTabs(FirstRdvBtn, AllRdvBtn, PasseRdvBtn, RateRdvBtn, MyTodayRdvBtn, HospitRdvBtn, FuturRdvBtn);
+        }
+        private void button_click_hosp(object sender, RoutedEventArgs e)
+        {
+            _frameRdv.Navigate(new ListHospitRdvPage(rdvVM));
+            coloringTabs(HospitRdvBtn, FirstRdvBtn, AllRdvBtn, PasseRdvBtn, RateRdvBtn, MyTodayRdvBtn, FuturRdvBtn);
+        }
+        private void button_click_futur(object sender, RoutedEventArgs e)
+        {
+            _frameRdv.Navigate(new ListFuturRdvPage(rdvVM));
+            coloringTabs(FuturRdvBtn, FirstRdvBtn, AllRdvBtn, PasseRdvBtn, RateRdvBtn, MyTodayRdvBtn, HospitRdvBtn);
         }
 
         //private void button_click_nouveau(object sender, RoutedEventArgs e)
@@ -76,17 +91,23 @@ namespace ConsultationManagerClient.Views
             form2.Show();
         }
 
-        private void coloringTabs(Button puprpleBtn, Button transparantBtn1, Button transparantBtn2, Button transparantBtn3)
+        private void coloringTabs(Button puprpleBtn, Button transparantBtn1, Button transparantBtn2, Button transparantBtn3, Button transparantBtn4, Button transparantBtn5, Button transparantBtn6)
         {
             puprpleBtn.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF945BF9"));
             transparantBtn1.Background = Brushes.Transparent;
             transparantBtn2.Background = Brushes.Transparent;
             transparantBtn3.Background = Brushes.Transparent;
+            transparantBtn4.Background = Brushes.Transparent;
+            transparantBtn5.Background = Brushes.Transparent;
+            transparantBtn6.Background = Brushes.Transparent;
 
             puprpleBtn.Foreground = Brushes.White;
             transparantBtn1.Foreground = Brushes.Black;
             transparantBtn2.Foreground = Brushes.Black;
             transparantBtn3.Foreground = Brushes.Black;
+            transparantBtn4.Foreground = Brushes.Black;
+            transparantBtn5.Foreground = Brushes.Black;
+            transparantBtn6.Foreground = Brushes.Black;
         }
     }
 }

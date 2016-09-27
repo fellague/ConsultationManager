@@ -98,11 +98,17 @@
                                         </Button>
                                         <materialDesign:PopupBox ToolTip="Plus d'Opionts" Margin="5 0 5 0">
                                             <StackPanel>
-                                                <Button  Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
+                                                <Button 
+                                                    Command="{Binding DataContext.DetailHospitDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
                                                     ToolTip="Plus de Détails">
                                                     <materialDesign:PackIcon Kind="Eye" Height="24" Width="24" />
                                                 </Button>
-                                                <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
+                                                <Button
+                                                    Command="{Binding DataContext.OpenDialogMedFolderCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
                                                     ToolTip="Voir Dossier Médical">
                                                     <materialDesign:PackIcon Kind="FolderPlus" Height="24" Width="24" />
                                                 </Button>

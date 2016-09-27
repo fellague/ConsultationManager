@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsultationManagerClient.ViewModels.RDVs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,16 +13,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ConsultationManagerClient.ViewModels.RDVs;
 
-namespace ConsultationManagerClient.Views.RDVs
+namespace ConsultationManager.Views.RDVs
 {
     /// <summary>
-    /// Interaction logic for MyTodayRdvPage.xaml
+    /// Interaction logic for ListFuturRdvPage.xaml
     /// </summary>
-    public partial class MyTodayRdvPage : Page
+    public partial class ListFuturRdvPage : Page
     {
-        internal MyTodayRdvPage(ListRvdViewModel rdvVM)
+        internal ListFuturRdvPage(ListRvdViewModel rdvVM)
         {
             InitializeComponent();
             DataContext = rdvVM;

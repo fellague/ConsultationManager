@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ConsultationManager.Views.Hospitalisations"
         mc:Ignorable="d" WindowStyle="None"
-        Height="490" Width="550" WindowStartupLocation="CenterScreen">
+        Height="480" Width="600" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -16,9 +16,11 @@
             <RowDefinition  Height="*"/>
         </Grid.RowDefinitions>
 
-        <WrapPanel>
-            <TextBlock  FontSize="24">Confirmation d'Hospitalisation</TextBlock>
-            <TextBlock  FontSize="20">Informations du Garde Malade</TextBlock>
+        <WrapPanel Margin="5">
+            <TextBlock  FontSize="18">Confirmation d'Hospitalisation pour</TextBlock>
+            <TextBlock Text="{Binding SelectHosp.Patient.Nom}" FontSize="18" Margin="10 0" FontWeight="DemiBold"/>
+            <TextBlock Text="{Binding SelectHosp.Patient.Prenom}" FontSize="18" Margin="10 0" FontWeight="DemiBold"/>
+            <TextBlock  FontSize="18">Informations du Garde Malade</TextBlock>
         </WrapPanel>
 
         <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="10">

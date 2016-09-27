@@ -1051,7 +1051,7 @@ namespace ConsultationManagerServer.Models
             }
         }
         [DataMember]
-        public ObservableCollection<string> IdHospits
+        public ObservableCollection<string> IdIntervHospits
         {
             get
             {
@@ -1060,7 +1060,7 @@ namespace ConsultationManagerServer.Models
             set
             {
                 idHospits = value;
-                OnPropertyChanged("IdHospits");
+                OnPropertyChanged("IdIntervHospits");
             }
         }
         [DataMember]

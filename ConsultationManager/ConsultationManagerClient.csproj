@@ -254,6 +254,15 @@
     <Compile Include="Views\Patients\ListNewPatientsPage.xaml.cs">
       <DependentUpon>ListNewPatientsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\RDVs\ListFuturRdvPage.xaml.cs">
+      <DependentUpon>ListFuturRdvPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RDVs\ListHospitRdvPage.xaml.cs">
+      <DependentUpon>ListHospitRdvPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RDVs\ListRateRdvPage.xaml.cs">
+      <DependentUpon>ListRateRdvPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RDVs\NewPatientRdvWindow.xaml.cs">
       <DependentUpon>NewPatientRdvWindow.xaml</DependentUpon>
     </Compile>
@@ -329,17 +338,17 @@
     <Compile Include="Views\Patients\NewPatientPage.xaml.cs">
       <DependentUpon>NewPatientPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RDVs\AllMyRdvPage.xaml.cs">
-      <DependentUpon>AllMyRdvPage.xaml</DependentUpon>
+    <Compile Include="Views\RDVs\ListPasseRdvPage.xaml.cs">
+      <DependentUpon>ListPasseRdvPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RDVs\AllRdvPage.xaml.cs">
       <DependentUpon>AllRdvPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RDVs\FirstRdvPage.xaml.cs">
-      <DependentUpon>FirstRdvPage.xaml</DependentUpon>
+    <Compile Include="Views\RDVs\ListFirstRdvPage.xaml.cs">
+      <DependentUpon>ListFirstRdvPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RDVs\MyTodayRdvPage.xaml.cs">
-      <DependentUpon>MyTodayRdvPage.xaml</DependentUpon>
+    <Compile Include="Views\RDVs\ListMyTodayRdvPage.xaml.cs">
+      <DependentUpon>ListMyTodayRdvPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RDVs\UpdateRdvWindow.xaml.cs">
       <DependentUpon>UpdateRdvWindow.xaml</DependentUpon>
@@ -468,6 +477,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\RDVs\ListFuturRdvPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RDVs\ListHospitRdvPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RDVs\ListRateRdvPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\RDVs\NewPatientRdvWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -568,7 +589,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RDVs\AllMyRdvPage.xaml">
+    <Page Include="Views\RDVs\ListPasseRdvPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -576,11 +597,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RDVs\FirstRdvPage.xaml">
+    <Page Include="Views\RDVs\ListFirstRdvPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\RDVs\MyTodayRdvPage.xaml">
+    <Page Include="Views\RDVs\ListMyTodayRdvPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -941,18 +962,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReferenceRdv\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ServiceReferenceRdv\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ServiceReferenceRdv\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\ServiceReferenceInterview\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -1008,6 +1017,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceReferenceHospit\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceRdv\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceRdv\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceRdv\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

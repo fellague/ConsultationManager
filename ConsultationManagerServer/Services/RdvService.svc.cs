@@ -19,16 +19,9 @@ namespace ConsultationManagerServer.Services
         public RDV AddRdv(RDV rdv)
         {
             DataBaseContext db = new DataBaseContext();
-
-            var query = Query.And(Query.EQ("PatientId", rdv.PatientId), Query.EQ("MedecinRespId", rdv.MedecinRespId), Query.EQ("DejaFait", false));
-            var result = db.RDVs.FindAs<RDV>(query).FirstOrDefault();
-            if (result == null)
-            {
-                db.RDVs.Save(rdv);
-            }
-            else
-                MessageBox.Show("Ce Patient a déja un Rdv avec le medecin");
-
+            
+            db.RDVs.Save(rdv);
+            
             if (rdv.NouvPat)
             {
 
@@ -42,12 +35,18 @@ namespace ConsultationManagerServer.Services
             return rdv;
         }
 
+        public void DeleteRdv(string id)
+        {
+            DataBaseContext db = new DataBaseContext();
+            db.RDVs.Remove(Query.EQ("Id", id));
+        }
+
         public List<RdvPatientMedecin> GetAllRdv(string idService)
         {
             DataBaseContext db = new DataBaseContext();
             List<RdvPatientMedecin> listRDVs = new List<RdvPatientMedecin>();
             RdvPatientMedecin rdvPatientMedecin = new RdvPatientMedecin();
-            var rdvs = db.RDVs.FindAll().Where(p => p.ServiceId == idService && p.DejaFait == false).ToList();
+            var rdvs = db.RDVs.FindAll().Where(p => p.ServiceId == idService).ToList();
             if (rdvs.Count() > 0)
                 foreach (RDV item in rdvs)
                 {

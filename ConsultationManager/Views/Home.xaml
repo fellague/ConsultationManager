@@ -61,10 +61,10 @@
                     </DataTemplate>
                 </dxlc:Tile.ContentTemplate>
             </dxlc:Tile>
-            <dxlc:Tile Header="Emploi du Temps" Click="showPlannings" HorizontalHeaderAlignment="Center" FontSize="28" Background="#FF6C15D4">
+            <dxlc:Tile Header="Plannings" Click="showPlannings" HorizontalHeaderAlignment="Center" FontSize="28" Background="#FF6C15D4">
                 <Image x:Name="image6" Source="/ConsultationManager;component/Imgs/Home/schedule.png"/>
             </dxlc:Tile>
-            <dxlc:Tile Header="Dossiers Médicals" Click="showMedicalFolders" HorizontalHeaderAlignment="Center" FontSize="28" Background="#FF6C15D4">
+            <dxlc:Tile Header="Dossiers Médicaux" Click="showMedicalFolders" HorizontalHeaderAlignment="Center" FontSize="28" Background="#FF6C15D4">
                 <Image x:Name="image11" Source="/ConsultationManager;component/Imgs/Home/medical_files.png"/>
             </dxlc:Tile>
 

@@ -118,6 +118,7 @@ namespace ConsultationManager.ViewModels.Hospitalisations
                 int Mois = 0;
                 while (newHospit.DateDebutPrevu.CompareTo(DateTime.Now.Date.AddMonths(++Mois)) >= 0) { }
                 diffMois = --Mois;
+                newHospit.DateFinPrevu = newHospit.DateDebutPrevu.AddDays(dureJours);
                 //Console.WriteLine("DiffMois get changed" + diffMois);
                 return diffMois;
             }
@@ -145,7 +146,7 @@ namespace ConsultationManager.ViewModels.Hospitalisations
             {
                 diffJours = value;
                 newHospit.DateDebutPrevu = DateTime.Now.AddMonths(diffMois).AddDays(diffJours);
-
+                newHospit.DateFinPrevu = newHospit.DateDebutPrevu.AddDays(dureJours);
                 //MessageBox.Show("Ancienne Date " + NewdRdv.DateRdv.DayOfWeek + " " + NewdRdv.DateRdv);
                 GetValideDate();
                 OnPropertyChanged("DiffJours");
@@ -161,6 +162,7 @@ namespace ConsultationManager.ViewModels.Hospitalisations
             set
             {
                 dureJours = value;
+                newHospit.DateDebutPrevu = DateTime.Now.AddMonths(diffMois).AddDays(diffJours);
                 newHospit.DateFinPrevu = newHospit.DateDebutPrevu.AddDays(dureJours);
 
                 //MessageBox.Show("Ancienne Date " + NewdRdv.DateRdv.DayOfWeek + " " + NewdRdv.DateRdv);

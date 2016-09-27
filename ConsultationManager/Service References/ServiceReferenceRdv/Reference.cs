@@ -44,6 +44,12 @@ namespace ConsultationManager.ServiceReferenceRdv {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRdvService/UpdateRdv", ReplyAction="http://tempuri.org/IRdvService/UpdateRdvResponse")]
         System.Threading.Tasks.Task<ConsultationManagerServer.Models.RDV> UpdateRdvAsync(ConsultationManagerServer.Models.RDV rdv);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRdvService/DeleteRdv", ReplyAction="http://tempuri.org/IRdvService/DeleteRdvResponse")]
+        void DeleteRdv(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRdvService/DeleteRdv", ReplyAction="http://tempuri.org/IRdvService/DeleteRdvResponse")]
+        System.Threading.Tasks.Task DeleteRdvAsync(string id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -111,6 +117,14 @@ namespace ConsultationManager.ServiceReferenceRdv {
         
         public System.Threading.Tasks.Task<ConsultationManagerServer.Models.RDV> UpdateRdvAsync(ConsultationManagerServer.Models.RDV rdv) {
             return base.Channel.UpdateRdvAsync(rdv);
+        }
+        
+        public void DeleteRdv(string id) {
+            base.Channel.DeleteRdv(id);
+        }
+        
+        public System.Threading.Tasks.Task DeleteRdvAsync(string id) {
+            return base.Channel.DeleteRdvAsync(id);
         }
     }
 }

@@ -90,19 +90,25 @@
 
                                     <WrapPanel Grid.Column="8" Orientation="Horizontal" HorizontalAlignment="Right">
                                         <Button  
-                                                    Command="{Binding DataContext.UpdateRdvDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                    Command="{Binding DataContext.ReschedHospitDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
                                                     CommandParameter="{Binding}"
                                                     Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="3"
-                                                    ToolTip="Confirmer l'Entrée">
-                                            <materialDesign:PackIcon Kind="ClipboardCheck" Height="24" Width="24" />
+                                                    ToolTip="Créer une Nouvelle Hospitalisation">
+                                            <materialDesign:PackIcon Kind="Autorenew" Height="24" Width="24" />
                                         </Button>
                                         <materialDesign:PopupBox ToolTip="Plus d'Opionts" Margin="5 0 5 0">
                                             <StackPanel>
-                                                <Button  Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
+                                                <Button 
+                                                    Command="{Binding DataContext.DetailHospitDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
                                                     ToolTip="Plus de Détails">
                                                     <materialDesign:PackIcon Kind="Eye" Height="24" Width="24" />
                                                 </Button>
-                                                <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
+                                                <Button
+                                                    Command="{Binding DataContext.OpenDialogMedFolderCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
                                                     ToolTip="Voir Dossier Médical">
                                                     <materialDesign:PackIcon Kind="FolderPlus" Height="24" Width="24" />
                                                 </Button>

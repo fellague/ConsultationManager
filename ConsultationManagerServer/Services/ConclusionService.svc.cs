@@ -30,14 +30,28 @@ namespace ConsultationManagerServer.Services
                 var result = db.Interviews.FindAndModify(query, null, update);
 
                 var dossier = db.DossierMeds.FindAll().Where(p => p.IdPatient == conclusion.IdPatient).ToList().First();
-                //dossier.IdInterviews.Add(conclusion.IdSource);
-                List<string> listId = new List<string>();
-                listId = dossier.IdInterviews.ToList();
-                listId.Add(conclusion.IdSource);
-                var query3 = Query.EQ("IdPatient", conclusion.IdPatient);
-                var update3 = Update
-                    .Set("IdInterviews", new BsonArray(listId));
-                var result4 = db.DossierMeds.FindAndModify(query3, null, update3);
+                /////////////////////////////////////////************************
+                var rdv = db.RDVs.FindAll().Where(p => p.Id == conclusion.IdRdv).ToList().First();
+                if(rdv.DateRdv.Date.CompareTo(new DateTime(1, 1, 1)) == 0)
+                {
+                    List<string> listId = new List<string>();
+                    listId = dossier.IdIntervHospits.ToList();
+                    listId.Add(conclusion.IdSource);
+                    var query3 = Query.EQ("IdPatient", conclusion.IdPatient);
+                    var update3 = Update
+                        .Set("IdIntervHospits", new BsonArray(listId));
+                    var result4 = db.DossierMeds.FindAndModify(query3, null, update3);
+                }
+                else
+                {
+                    List<string> listId = new List<string>();
+                    listId = dossier.IdInterviews.ToList();
+                    listId.Add(conclusion.IdSource);
+                    var query3 = Query.EQ("IdPatient", conclusion.IdPatient);
+                    var update3 = Update
+                        .Set("IdInterviews", new BsonArray(listId));
+                    var result4 = db.DossierMeds.FindAndModify(query3, null, update3);
+                }
             }
 
             var query2 = Query.EQ("Id", conclusion.IdRdv);

@@ -6,9 +6,9 @@ namespace ConsultationManagerClient.Views.RDVs
     /// <summary>
     /// Interaction logic for AllMyRdvPage.xaml
     /// </summary>
-    public partial class AllMyRdvPage : Page
+    public partial class ListPasseRdvPage : Page
     {
-        internal AllMyRdvPage(ListRvdViewModel rdvVM)
+        internal ListPasseRdvPage(ListRvdViewModel rdvVM)
         {
             InitializeComponent();
             DataContext = rdvVM;

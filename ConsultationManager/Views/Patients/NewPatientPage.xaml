@@ -72,8 +72,8 @@
                 <ComboBoxItem>A</ComboBoxItem>
                 <ComboBoxItem>B</ComboBoxItem>
                 <ComboBoxItem>C</ComboBoxItem>
-                <ComboBoxItem>D</ComboBoxItem>
-                <ComboBoxItem>E</ComboBoxItem>
+                <!--<ComboBoxItem>D</ComboBoxItem>
+                <ComboBoxItem>E</ComboBoxItem>-->
             </ComboBox>
 
             <TextBlock Grid.Row="1" Grid.Column="2" Text="Adresse" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0 20 0 0"></TextBlock>

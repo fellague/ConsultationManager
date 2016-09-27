@@ -1,17 +1,18 @@
-﻿<Page x:Class="ConsultationManagerClient.Views.RDVs.AllRdvPage"
+﻿<Page x:Class="ConsultationManagerClient.Views.RDVs.ListFirstRdvPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:ConsultationManagerClient.Views.RDVs"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="AllRdvPage">
+      Title="MyTodayRdvPage">
 
     <Grid Margin="10">
         <DockPanel>
             <WrapPanel DockPanel.Dock="Top">
-                <TextBlock  FontSize="24">La Liste des Rendez-vous du Service</TextBlock>
+                <TextBlock  FontSize="24">Les Rendez-vous des Nouveaux Patients</TextBlock>
             </WrapPanel>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -26,50 +27,46 @@
                     <DockPanel LastChildFill="True">
                         <Grid DockPanel.Dock="Top" Height="30">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="4*"/>
                                 <ColumnDefinition Width="4*"/>
                                 <ColumnDefinition Width="9*"/>
                                 <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="5*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" FontSize="16" FontWeight="Bold" Margin="10 0">Date</Label>
-                            <Label Grid.Column="1" FontSize="16" FontWeight="Bold" Margin="10 0">Position</Label>
-                            <Label Grid.Column="2" FontSize="16" FontWeight="Bold" Margin="10 0">Patient</Label>
-                            <Label Grid.Column="3" FontSize="16" FontWeight="Bold" Margin="10 0">Médecin</Label>
-                            <Label Grid.Column="4" FontSize="16" FontWeight="Bold" Margin="10 0">Raison</Label>
-                            <Label Grid.Column="5" FontSize="16" FontWeight="Bold" Margin="10 0">Creé Dans</Label>
+                            <Label FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0">Position</Label>
+                            <Label Grid.Column="1" FontSize="16" FontWeight="Bold" Margin="10 0">Patient</Label>
+                            <Label Grid.Column="2" FontSize="16" FontWeight="Bold" Margin="10 0">Raison</Label>
+                            <Label Grid.Column="3" FontSize="16" FontWeight="Bold" Margin="10 0">Creé Dans</Label>
                         </Grid>
                         <ItemsPresenter></ItemsPresenter>
                     </DockPanel>
 
-                    <ListBox ItemsSource="{Binding ListServiceRvd}" Grid.Row="1" HorizontalContentAlignment="Stretch">
+                    <ListBox ItemsSource="{Binding ListFirstRvd}" Grid.Row="1" HorizontalContentAlignment="Stretch">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*"/>
                                         <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="4*"/>
                                         <ColumnDefinition Width="4*"/>
                                         <ColumnDefinition Width="9*"/>
                                         <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="5*"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <TextBlock Text="{Binding Path=Rdv.DateRdv,  StringFormat='dd/MM/yyy'}" FontSize="16" FontWeight="DemiBold"></TextBlock>
-                                    <TextBlock Text="{Binding Path=Rdv.Rang}" Grid.Column="1" HorizontalAlignment="Center" FontSize="16" FontWeight="DemiBold"></TextBlock>
+                                    <TextBlock Text="{Binding Path=Rdv.Rang}" HorizontalAlignment="Center" FontSize="16" FontWeight="DemiBold"></TextBlock>
 
-                                    <WrapPanel Grid.Column="2" Margin="5, 0, 0, 0">
+                                    <WrapPanel Grid.Column="1" Margin="5, 0, 0, 0">
                                         <TextBlock Text="{Binding Path=Patient.Nom}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="DemiBold"></TextBlock>
                                         <TextBlock Text="{Binding Path=Patient.Prenom}" FontSize="16" FontWeight="DemiBold"></TextBlock>
                                     </WrapPanel>
-                                    <WrapPanel Grid.Column="3" Margin="5, 0, 0, 5">
-                                        <TextBlock Text="{Binding Path=Medecin.Nom}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="DemiBold"></TextBlock>
-                                        <TextBlock Text="{Binding Path=Medecin.Prenom}" FontSize="16" FontWeight="DemiBold"></TextBlock>
+                                    <TextBlock Text="{Binding Path=Patient.Raison}" Grid.Column="2" FontSize="16"></TextBlock>
+                                    <TextBlock Text="{Binding Path=Rdv.CreeDans,  StringFormat='dd/MM/yyy'}" Grid.Column="3" Margin="15 0" FontSize="16" FontWeight="DemiBold"></TextBlock>
+                                    <WrapPanel Grid.Column="4" Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <Button Command="{Binding DataContext.FirstRdvDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                CommandParameter="{Binding}">
+                                            Créer Dossier Médical
+                                        </Button>
                                     </WrapPanel>
-                                    <TextBlock Text="{Binding Path=Patient.Raison}" Grid.Column="4" FontSize="16"></TextBlock>
-                                    <TextBlock Text="{Binding Path=Rdv.CreeDans,  StringFormat='dd/MM/yyy'}" Grid.Column="5" Margin="15 0" FontSize="16" FontWeight="DemiBold"></TextBlock>
-
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>

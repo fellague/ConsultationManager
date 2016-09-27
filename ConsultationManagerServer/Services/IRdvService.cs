@@ -25,9 +25,11 @@ namespace ConsultationManagerServer.Services
 
         [OperationContract]
         RDV AddRdv(RDV rdv);
-
-
+        
         [OperationContract]
         RDV UpdateRdv(RDV rdv);
+        
+        [OperationContract]
+        void DeleteRdv(string id);
     }
 }

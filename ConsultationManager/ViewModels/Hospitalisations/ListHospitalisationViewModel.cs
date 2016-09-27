@@ -16,6 +16,7 @@ using ConsultationManager.ServiceReferenceHospit;
 using ConsultationManager.ViewModels.Hospitalisations;
 using ConsultationManager.Views.DossierMedicals;
 using ConsultationManager.ServiceReferenceDossierMed;
+using ConsultationManager.ServiceReferenceRdv;
 
 namespace ConsultationManagerClient.ViewModels.Hospitalisations
 {
@@ -23,7 +24,7 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
     {
         private SalleServiceClient ssc = new SalleServiceClient();
         private HospitServiceClient hsc = new HospitServiceClient();
-        
+        private RdvServiceClient rsc = new RdvServiceClient();
 
         private string nomUtilisateur;
         private ObservableCollection<HospitalisationDetail> listAllHospitalisation;
@@ -79,6 +80,10 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             psc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
             psc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
                                 X509CertificateValidationMode.None;
+            rsc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
+            rsc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
+            rsc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
+                                X509CertificateValidationMode.None;
 
             listAllHospitalisation = new ObservableCollection<HospitalisationDetail>();
             listAllHospitalisation = new ObservableCollection<HospitalisationDetail>(hsc.GetHospits(AuthenticationViewModel.AuthenticatedUser.ServiceId));
@@ -96,6 +101,7 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             CancelCommand = new RelayCommand(o => ((Window)o).Close());
 
             NewHospitDialogCommand = new RelayCommand(param => ShowDialogNewHospit(param));
+            ReschedHospitDialogCommand = new RelayCommand(param => ShowDialogReschedHospit(param));
             ConfirmeHospDialogCommand = new RelayCommand(param => ShowDialogConfirmHospit(param));
 
             NewSalleDialogCommand = new RelayCommand(param => ShowDialogNewSalle());
@@ -107,6 +113,8 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             OpenDialogMedFolderCommand = new RelayCommand(param => ShowDialogDossierMedical(param));
 
             OpenDialogSuiviCommand = new RelayCommand(param => ShowDialogSuivi(param));
+
+            TerminerHospitCommand = new RelayCommand(param => TerminerHospit(param));
         }
 
 
@@ -386,6 +394,11 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             get;
             private set;
         }
+        public ICommand ReschedHospitDialogCommand
+        {
+            get;
+            private set;
+        }
         public ICommand ConfirmeHospDialogCommand
         {
             get;
@@ -429,6 +442,7 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             get;
             private set;
         }
+
         public ICommand CancelCommand
         {
             get;
@@ -458,6 +472,11 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             private set;
         }
         public ICommand UpdateSuiviCommand
+        {
+            get;
+            private set;
+        }
+        public ICommand TerminerHospitCommand
         {
             get;
             private set;
@@ -532,7 +551,7 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
         {
             updatedSalle = selectedSalle as Salle;
             dialogUpdateSalle = new UpdateSalleWindow();
-            listNbLit = new ObservableCollection<int>(Enumerable.Range(1, 20));
+            listNbLit = new ObservableCollection<int>(Enumerable.Range(1, 8));
             dialogUpdateSalle.DataContext = this;
             UpdateSalleCommand = new RelayCommand(param => ModifierSalle());
             dialogUpdateSalle.ShowDialog();
@@ -555,7 +574,7 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             dialogNewSalle = new NewSalleWindow();
             dialogNewSalle.DataContext = this;
             newSalle = new Salle();
-            ListNbLit = new ObservableCollection<int>(Enumerable.Range(1, 20));
+            ListNbLit = new ObservableCollection<int>(Enumerable.Range(1, 8));
             AddSalleCommand = new RelayCommand(param => AjouterSalle());
             dialogNewSalle.ShowDialog();
         }
@@ -577,6 +596,19 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             dialogNewHospit = new NewHospitWindow();
             dialogNewHospit.DataContext = new NewHospitViewModel(selecDemand as DemandeHospitDetail, this);
             dialogNewHospit.ShowDialog();
+        }
+        private void ShowDialogReschedHospit(object obj)
+        {
+            HospitalisationDetail hos = obj as HospitalisationDetail;
+            DemandeHospitDetail dem = new DemandeHospitDetail();
+            dem.Patient = hos.Patient;
+            dem.Medecin = hos.Medecin;
+            dem.DemandeHospit = hos.Demande;
+            dialogNewHospit = new NewHospitWindow();
+            dialogNewHospit.DataContext = new NewHospitViewModel(dem, this);
+            dialogNewHospit.ShowDialog();
+            listAllHospitalisation = new ObservableCollection<HospitalisationDetail>(hsc.GetHospits(AuthenticationViewModel.AuthenticatedUser.ServiceId));
+            ActualiserLists();
         }
 
         private HospitalisationDetail copie;
@@ -717,6 +749,30 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             SelectHosp.Hospitalisation.Garde.Telephones.Remove(telephone);
         }
 
+        private void TerminerHospit(object param)
+        {
+            SelectHosp = param as HospitalisationDetail;
+            copie = SelectHosp;
+
+            RDV rdv = new RDV();
+            rdv.PatientId = SelectHosp.Patient.Id;
+            rdv.MedecinRespId = SelectHosp.Medecin.Id;
+            rdv.DateRdv = new DateTime(1, 1, 1);
+            rdv.CreeDans = DateTime.Now;
+            rdv.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
+            rdv.ServiceId = SelectHosp.Patient.ServiceId;
+            rdv.PathologieId = SelectHosp.Patient.PathologieId;
+            rdv.NouvPat = false;
+
+            rsc.AddRdv(rdv);
+
+            listAllHospitalisation.Remove(copie);
+            SelectHosp.Hospitalisation.DateFinReel = DateTime.Now;
+            hsc.UpdateHospit(SelectHosp.Hospitalisation);
+            listAllHospitalisation.Add(SelectHosp);
+            
+            ActualiserLists();
+        }
 
         public void ActualiserLists()
         {

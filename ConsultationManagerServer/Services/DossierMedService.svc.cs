@@ -55,6 +55,11 @@ namespace ConsultationManagerServer.Services
                         var intervConcls = db.Conclusions.FindAll().Where(p => p.IdSource == interv).ToList().First();
                         dossierMedDetail.ConclusionsInterview.Add(intervConcls);
                     }
+                    foreach (string hosp in item.IdIntervHospits)
+                    {
+                        var intervHospitConcls = db.Conclusions.FindAll().Where(p => p.IdSource == hosp).ToList().First();
+                        dossierMedDetail.ConclusionsHospit.Add(intervHospitConcls);
+                    }
 
                     listDossiers.Add(dossierMedDetail);
                 }
@@ -145,7 +150,7 @@ namespace ConsultationManagerServer.Services
             var query = Query.EQ("Id", dossierMed.Id);
             var update = Update
                 .Set("IdInterviews", new BsonArray(dossierMed.IdInterviews))
-                .Set("IdHospits", new BsonArray(dossierMed.IdHospits))
+                .Set("IdHospits", new BsonArray(dossierMed.IdIntervHospits))
                 .Set("IdChirurgies", new BsonArray(dossierMed.IdChirurgies));
             var result = db.DossierMeds.FindAndModify(query, null, update);
             return dossierMed;

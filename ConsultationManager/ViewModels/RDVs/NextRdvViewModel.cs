@@ -418,12 +418,17 @@ namespace ConsultationManager.ViewModels.RDVs
             rdv.Patient = selectedRdv.Patient;
             rdv.Rdv = rsc.AddRdv(NewRdv);
 
+            /////if the request is rescheduling
+            if(selectedRdv.Rdv.DateRdv.Date.CompareTo(DateTime.Now.Date) !=0 )
+                rsc.DeleteRdv(selectedRdv.Rdv.Id);
+
             rdvsVM.ListAllRvd.Add(rdv);
             rdvsVM.ListAllRvd.Remove(selectedRdv);
             rdvsVM.ActualiserLists();
 
             rdvsVM.NextRdvWindow.Close();
-            rdvsVM.DialogInterwiewConclusionView.Close();
+            if(rdvsVM.DialogInterwiewConclusionView != null)
+                rdvsVM.DialogInterwiewConclusionView.Close();
             //if(!selectedRdv.Rdv.NouvPat)
             //    rdvsVM.DialogInterviewView.Close();
         }

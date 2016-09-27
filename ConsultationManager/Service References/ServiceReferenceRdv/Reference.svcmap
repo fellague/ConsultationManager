@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4a9e472a-959f-4c02-b01c-a38c941a3900" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c2c17147-3568-4807-9f55-00c1be6f1ab4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,15 +19,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:64183/Services/RdvService.svc?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address=" http://localhost:64183/Services/RdvService.svc?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="RdvService.wsdl" MetadataType="Wsdl" ID="8f5138a3-afd0-472f-91c5-cccb99dd9d39" SourceId="1" SourceUrl="http://localhost:64183/Services/RdvService.svc?wsdl" />
-    <MetadataFile FileName="RdvService.xsd" MetadataType="Schema" ID="44ec6298-705b-4425-838c-82e2c36f54b4" SourceId="1" SourceUrl="http://localhost:64183/Services/RdvService.svc?xsd=xsd4" />
-    <MetadataFile FileName="RdvService1.xsd" MetadataType="Schema" ID="5a5a92bc-dc42-4588-8dab-45beec5c76fe" SourceId="1" SourceUrl="http://localhost:64183/Services/RdvService.svc?xsd=xsd3" />
-    <MetadataFile FileName="RdvService2.xsd" MetadataType="Schema" ID="a355c649-1a5c-4b69-bfdf-e87d55d6cf99" SourceId="1" SourceUrl="http://localhost:64183/Services/RdvService.svc?xsd=xsd2" />
-    <MetadataFile FileName="RdvService3.xsd" MetadataType="Schema" ID="66291cb5-4c24-4949-8fdc-4fa995026927" SourceId="1" SourceUrl="http://localhost:64183/Services/RdvService.svc?xsd=xsd0" />
-    <MetadataFile FileName="RdvService4.xsd" MetadataType="Schema" ID="77ad8331-c96b-4ead-a578-2c7eca013b3c" SourceId="1" SourceUrl="http://localhost:64183/Services/RdvService.svc?xsd=xsd1" />
+    <MetadataFile FileName="RdvService.wsdl" MetadataType="Wsdl" ID="9df63d4c-71e9-4f79-98f9-4203ea5cfe7f" SourceId="1" SourceUrl="http://localhost:64183/Services/RdvService.svc?wsdl" />
+    <MetadataFile FileName="RdvService.xsd" MetadataType="Schema" ID="56a1a921-774f-44f0-8a58-8418b562708f" SourceId="1" SourceUrl="http://localhost:64183/Services/RdvService.svc?xsd=xsd4" />
+    <MetadataFile FileName="RdvService1.xsd" MetadataType="Schema" ID="3ad0facb-ec4b-4954-8c6e-594787d8cb30" SourceId="1" SourceUrl="http://localhost:64183/Services/RdvService.svc?xsd=xsd3" />
+    <MetadataFile FileName="RdvService2.xsd" MetadataType="Schema" ID="3fd9499d-6eb1-4f89-8a67-c83f499ebeee" SourceId="1" SourceUrl="http://localhost:64183/Services/RdvService.svc?xsd=xsd2" />
+    <MetadataFile FileName="RdvService3.xsd" MetadataType="Schema" ID="d86596d3-b0b4-4404-bbbc-fce1221c4a44" SourceId="1" SourceUrl="http://localhost:64183/Services/RdvService.svc?xsd=xsd0" />
+    <MetadataFile FileName="RdvService4.xsd" MetadataType="Schema" ID="32b9f6ae-4945-4ea9-ad2c-ecb6b66e71b4" SourceId="1" SourceUrl="http://localhost:64183/Services/RdvService.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
