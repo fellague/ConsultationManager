@@ -138,12 +138,12 @@
                                     </Grid.RowDefinitions>
 
                                     <WrapPanel>
-                                        <TextBlock Text="Traitement : " FontSize="16"></TextBlock>
-                                        <TextBlock Text="{Binding Path=Nom}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                        <!--<TextBlock Text="Traitement : " FontSize="16"></TextBlock>-->
+                                        <TextBlock Text="{Binding Path=Nom}" FontSize="16" FontWeight="DemiBold"></TextBlock>
                                     </WrapPanel>
                                     <WrapPanel Grid.Row="2">
-                                        <TextBlock Text="description : " FontSize="16"></TextBlock>
-                                        <TextBlock Text="{Binding Path=Description}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                        <!--<TextBlock Text="description : " FontSize="16"></TextBlock>-->
+                                        <TextBlock Text="{Binding Path=Description}" FontSize="16" ></TextBlock>
                                     </WrapPanel>
                                     <Button Grid.Column="1" Grid.RowSpan="2"
                                             Command="{Binding DataContext.RemoveTraitementCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"

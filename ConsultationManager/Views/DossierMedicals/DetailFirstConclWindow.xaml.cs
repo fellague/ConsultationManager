@@ -1,6 +1,4 @@
-﻿using ConsultationManager.ViewModels.DossierMedicals;
-using ConsultationManagerClient.ViewModels.Patients;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,20 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ConsultationManager.Views.DossierMedicals
 {
     /// <summary>
-    /// Interaction logic for AllDossiersPage.xaml
+    /// Interaction logic for DetailFirstConclWindow.xaml
     /// </summary>
-    public partial class AllDossiersPage : Page
+    public partial class DetailFirstConclWindow : Window
     {
-        internal AllDossiersPage(ListDossMedViewModel dossiersVM)
+        public DetailFirstConclWindow()
         {
             InitializeComponent();
-            DataContext = dossiersVM;
         }
     }
 }

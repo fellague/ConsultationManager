@@ -17,6 +17,7 @@ using ConsultationManager.ViewModels.Hospitalisations;
 using ConsultationManager.Views.DossierMedicals;
 using ConsultationManager.ServiceReferenceDossierMed;
 using ConsultationManager.ServiceReferenceRdv;
+using ConsultationManager.ViewModels.DossierMedicals;
 
 namespace ConsultationManagerClient.ViewModels.Hospitalisations
 {
@@ -638,7 +639,9 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             HospitalisationDetail selHosp = param as HospitalisationDetail;
             SelectedDossier = psc.GetDossierMed(selHosp.Patient.Id);
             dialoDossierMedical = new DossierMedicalWindow();
-            dialoDossierMedical.DataContext = this;
+            //dialoDossierMedical.DataContext = this;
+
+            dialoDossierMedical.DataContext = new DossierMedViewModel(SelectedDossier);
             //newPathologie = new Consultation();
             //AddPathologieCommand = new RelayCommand(param => AjouterPathologie());
             dialoDossierMedical.ShowDialog();

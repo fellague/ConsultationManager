@@ -25,13 +25,13 @@ namespace ConsultationManager.Views
     /// </summary>
     public partial class MenuDossierMedWindow : Window
     {
-        DossierMedicalViewModel dossiersVM;
+        ListDossMedViewModel dossiersVM;
 
         public MenuDossierMedWindow()
         {
             InitializeComponent();
 
-            dossiersVM = new DossierMedicalViewModel();
+            dossiersVM = new ListDossMedViewModel();
             this.DataContext = dossiersVM;
             _mainFrame.Navigate(new MyDossierPage(dossiersVM));
             coloringTabs(MyPatBtn, AllPatBtn, ListNewPatBtn);

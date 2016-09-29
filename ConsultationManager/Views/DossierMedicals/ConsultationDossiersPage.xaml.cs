@@ -22,7 +22,7 @@ namespace ConsultationManager.Views.DossierMedicals
     /// </summary>
     public partial class ConsultationDossiersPage : Page
     {
-        internal ConsultationDossiersPage(DossierMedicalViewModel dossiersVM)
+        internal ConsultationDossiersPage(ListDossMedViewModel dossiersVM)
         {
             InitializeComponent();
             DataContext = dossiersVM;

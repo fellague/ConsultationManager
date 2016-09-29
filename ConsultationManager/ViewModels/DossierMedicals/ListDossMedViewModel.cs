@@ -16,7 +16,7 @@ using System.Windows.Input;
 
 namespace ConsultationManager.ViewModels.DossierMedicals
 {
-    class DossierMedicalViewModel : INotifyPropertyChanged
+    class ListDossMedViewModel : INotifyPropertyChanged
     {
         private DossierMedServiceClient psc = new DossierMedServiceClient();
         private string nomUtilisateur;
@@ -27,7 +27,7 @@ namespace ConsultationManager.ViewModels.DossierMedicals
         private DossierMedicalWindow dialoDossierMedical;
         private DossierMedDetail selectedDossier;
 
-        public DossierMedicalViewModel()
+        public ListDossMedViewModel()
         {
             psc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
             psc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
@@ -45,7 +45,7 @@ namespace ConsultationManager.ViewModels.DossierMedicals
 
 
 
-        #region PatientsViewModel Variables
+        #region ListDossMedViewModel Variables
 
         public ObservableCollection<DossierMedDetail> ListAllDossier
         {
@@ -141,9 +141,8 @@ namespace ConsultationManager.ViewModels.DossierMedicals
         {
             selectedDossier = param as DossierMedDetail;
             dialoDossierMedical = new DossierMedicalWindow();
-            dialoDossierMedical.DataContext = this;
-            //newPathologie = new Consultation();
-            //AddPathologieCommand = new RelayCommand(param => AjouterPathologie());
+            //dialoDossierMedical.DataContext = this;
+            dialoDossierMedical.DataContext = new DossierMedViewModel(selectedDossier);
             dialoDossierMedical.ShowDialog();
         }
 

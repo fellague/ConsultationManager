@@ -81,12 +81,9 @@ namespace ConsultationManagerServer.Services
         {
             DataBaseContext db = new DataBaseContext();
             var query = Query.EQ("Id", conclusion.Id);
-            //var update = Update
-            //    .Set("Ordonnance", new Bson(conclusion.Ordonnance))
-            //    .Set("TraitementsCompl", new BsonArray(conclusion.TraitementsCompl))
-            //    .Set("Conseils", new BsonArray(conclusion.Conseils))
-            //    .Set("CompteRendu", new BsonArray(conclusion.CompteRendu));
-            //var result = db.DossierMeds.FindAndModify(query, null, update);
+            var update = Update
+                .Set("CompteRendu.Description", conclusion.CompteRendu.Description);
+            var result = db.Conclusions.FindAndModify(query, null, update);
             return conclusion;
         }
     }

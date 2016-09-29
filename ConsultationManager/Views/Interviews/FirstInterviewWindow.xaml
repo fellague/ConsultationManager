@@ -77,12 +77,10 @@
                                         </Grid.RowDefinitions>
 
                                         <WrapPanel>
-                                            <TextBlock Text="organe : " FontSize="16"></TextBlock>
-                                            <TextBlock Text="{Binding Path=Organe}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                            <TextBlock Text="{Binding Path=Organe}" FontSize="16" FontWeight="DemiBold"></TextBlock>
                                         </WrapPanel>
                                         <WrapPanel Grid.Row="1">
-                                            <TextBlock Text="description : " FontSize="16"></TextBlock>
-                                            <TextBlock Text="{Binding Path=Description}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                            <TextBlock Text="{Binding Path=Description}" FontSize="16"></TextBlock>
                                         </WrapPanel>
                                         <Button Grid.Column="1" Grid.RowSpan="2"
                                         Command="{Binding DataContext.RemoveAntecedPersCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
@@ -120,12 +118,10 @@
                                         </Grid.RowDefinitions>
 
                                         <WrapPanel>
-                                            <TextBlock Text="organe : " FontSize="16"></TextBlock>
-                                            <TextBlock Text="{Binding Path=Membre}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                            <TextBlock Text="{Binding Path=Membre}" FontSize="16" FontWeight="DemiBold"></TextBlock>
                                         </WrapPanel>
                                         <WrapPanel Grid.Row="1">
-                                            <TextBlock Text="description : " FontSize="16"></TextBlock>
-                                            <TextBlock Text="{Binding Path=Description}" FontSize="16" FontWeight="Bold"></TextBlock>
+                                            <TextBlock Text="{Binding Path=Description}" FontSize="16"></TextBlock>
                                         </WrapPanel>
                                         <Button Grid.Column="1" Grid.RowSpan="2"
                                         Command="{Binding DataContext.RemoveAntecedFamilCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"

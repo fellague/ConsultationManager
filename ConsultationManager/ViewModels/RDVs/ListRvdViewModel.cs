@@ -17,6 +17,7 @@ using System.Windows;
 using ConsultationManager.Views.DossierMedicals;
 using ConsultationManager.ServiceReferenceDossierMed;
 using ConsultationManager.ViewModels.RDVs;
+using ConsultationManager.ViewModels.DossierMedicals;
 
 namespace ConsultationManagerClient.ViewModels.RDVs
 {
@@ -335,7 +336,9 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             RdvPatientMedecin selRdv = param as RdvPatientMedecin;
             SelectedDossier = psc.GetDossierMed(selRdv.Patient.Id);
             dialoDossierMedical = new DossierMedicalWindow();
-            dialoDossierMedical.DataContext = this;
+            //dialoDossierMedical.DataContext = this;
+
+            dialoDossierMedical.DataContext = new DossierMedViewModel(SelectedDossier);
             //newPathologie = new Consultation();
             //AddPathologieCommand = new RelayCommand(param => AjouterPathologie());
             dialoDossierMedical.ShowDialog();

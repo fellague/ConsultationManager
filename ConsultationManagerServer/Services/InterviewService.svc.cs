@@ -39,7 +39,7 @@ namespace ConsultationManagerServer.Services
             interviewDetail.Interview = interview;
             var rdv = db.RDVs.FindAll().Where(p => p.Id == interview.IdRdv).ToList().First();
             interviewDetail.RdvPatientMedecin.Rdv = rdv;
-            interviewDetail.RdvPatientMedecin.Medecin = db.Utilisateurs.FindAll().Where(p => p.Id == rdv.MedecinRespId).First();
+            interviewDetail.RdvPatientMedecin.Medecin = db.Utilisateurs.FindAll().Where(p => p.Id == interview.CreePar).First();
             interviewDetail.RdvPatientMedecin.Patient = db.Patients.FindAll().Where(p => p.Id == rdv.PatientId).First();
             interviewDetail.Conclusion = db.Conclusions.FindAll().Where(p => p.Id == interviewDetail.Interview.IdConclusion).First();
 
