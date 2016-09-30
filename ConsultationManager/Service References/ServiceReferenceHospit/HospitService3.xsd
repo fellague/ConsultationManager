@@ -106,6 +106,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetHospit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idConclus" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHospitResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" minOccurs="0" name="GetHospitResult" nillable="true" type="q19:HospitalisationDetail" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetHospits">
     <xs:complexType>
       <xs:sequence>
@@ -116,7 +130,7 @@
   <xs:element name="GetHospitsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" minOccurs="0" name="GetHospitsResult" nillable="true" type="q19:ArrayOfHospitalisationDetail" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" minOccurs="0" name="GetHospitsResult" nillable="true" type="q20:ArrayOfHospitalisationDetail" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -130,21 +144,21 @@
   <xs:element name="GetSallePlanningResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" minOccurs="0" name="GetSallePlanningResult" nillable="true" type="q20:ArrayOfSalleHospitPlanning" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.SerializedModels" minOccurs="0" name="GetSallePlanningResult" nillable="true" type="q21:ArrayOfSalleHospitPlanning" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateHospit">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="salle" nillable="true" type="q21:Hospitalisation" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="salle" nillable="true" type="q22:Hospitalisation" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateHospitResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="UpdateHospitResult" nillable="true" type="q22:Hospitalisation" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models.Hospitalisations" minOccurs="0" name="UpdateHospitResult" nillable="true" type="q23:Hospitalisation" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

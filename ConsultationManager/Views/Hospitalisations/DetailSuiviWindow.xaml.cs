@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ConsultationManager.Views.Hospitalisations
+namespace ConsultationManager.Views.DossierMedicals
 {
     /// <summary>
     /// Interaction logic for DetailHospitWindow.xaml
     /// </summary>
-    public partial class DetailHospitWindow : Window
+    public partial class DetailSuiviWindow : Window
     {
-        public DetailHospitWindow()
+        public DetailSuiviWindow()
         {
             InitializeComponent();
         }

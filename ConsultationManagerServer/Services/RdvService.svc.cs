@@ -41,37 +41,38 @@ namespace ConsultationManagerServer.Services
             db.RDVs.Remove(Query.EQ("Id", id));
         }
 
-        public List<RdvPatientMedecin> GetAllRdv(string idService)
+        public List<RdvDetail> GetAllRdv(string idService)
         {
             DataBaseContext db = new DataBaseContext();
-            List<RdvPatientMedecin> listRDVs = new List<RdvPatientMedecin>();
-            RdvPatientMedecin rdvPatientMedecin = new RdvPatientMedecin();
+            List<RdvDetail> listRDVs = new List<RdvDetail>();
+            RdvDetail rdvPatientMedecin = new RdvDetail();
             var rdvs = db.RDVs.FindAll().Where(p => p.ServiceId == idService).ToList();
             if (rdvs.Count() > 0)
                 foreach (RDV item in rdvs)
                 {
-                    rdvPatientMedecin = new RdvPatientMedecin();
+                    rdvPatientMedecin = new RdvDetail();
                     rdvPatientMedecin.Rdv = item;
                     rdvPatientMedecin.Medecin = db.Utilisateurs.FindAll().Where(p => p.Id == item.MedecinRespId).First();
                     rdvPatientMedecin.Patient = db.Patients.FindAll().Where(p => p.Id == item.PatientId).First();
+                    rdvPatientMedecin.Consultation = db.Consultations.FindAll().Where(p => p.Id == item.PathologieId).First();
 
                     listRDVs.Add(rdvPatientMedecin);
                 }
             return listRDVs;
         }
 
-        public List<RdvPatientMedecin> GetRdvConsultation(string idConsultation)
+        public List<RdvDetail> GetRdvConsultation(string idConsultation)
         {
             DataBaseContext db = new DataBaseContext();
             //ObservableCollection<RDV> list = new ObservableCollection<RDV>();
-            List<RdvPatientMedecin> listRDVs = new List<RdvPatientMedecin>();
-            RdvPatientMedecin rdvPatientMedecin = new RdvPatientMedecin();
+            List<RdvDetail> listRDVs = new List<RdvDetail>();
+            RdvDetail rdvPatientMedecin = new RdvDetail();
             //var patients = db.Patients.AsQueryable().Where(p => p.ServiceId == idService).ToList();
             var rdvs = db.RDVs.FindAll().Where(p => p.PathologieId == idConsultation && p.DejaFait == false).ToList();
             if (rdvs.Count() > 0)
                 foreach (RDV item in rdvs)
                 {
-                    rdvPatientMedecin = new RdvPatientMedecin();
+                    rdvPatientMedecin = new RdvDetail();
                     rdvPatientMedecin.Rdv = item;
                     rdvPatientMedecin.Medecin = db.Utilisateurs.FindAll().Where(p => p.Id == item.MedecinRespId).First();
                     rdvPatientMedecin.Patient = db.Patients.FindAll().Where(p => p.Id == item.PatientId).First();
@@ -81,18 +82,18 @@ namespace ConsultationManagerServer.Services
             return listRDVs;
         }
 
-        public List<RdvPatientMedecin> GetRdvMedecin(string idMedecin)
+        public List<RdvDetail> GetRdvMedecin(string idMedecin)
         {
             DataBaseContext db = new DataBaseContext();
             ObservableCollection<RDV> list = new ObservableCollection<RDV>();
-            List<RdvPatientMedecin> listRDVs = new List<RdvPatientMedecin>();
-            RdvPatientMedecin rdvPatientMedecin = new RdvPatientMedecin();
+            List<RdvDetail> listRDVs = new List<RdvDetail>();
+            RdvDetail rdvPatientMedecin = new RdvDetail();
             //var patients = db.Patients.AsQueryable().Where(p => p.ServiceId == idService).ToList();
             var rdvs = db.RDVs.FindAll().Where(p => p.MedecinRespId == idMedecin).ToList();
             if (rdvs.Count() > 0)
                 foreach (RDV item in rdvs)
                 {
-                    rdvPatientMedecin = new RdvPatientMedecin();
+                    rdvPatientMedecin = new RdvDetail();
                     rdvPatientMedecin.Rdv = item;
                     rdvPatientMedecin.Medecin = db.Utilisateurs.FindAll().Where(p => p.Id == item.MedecinRespId).First();
                     rdvPatientMedecin.Patient = db.Patients.FindAll().Where(p => p.Id == item.PatientId).First();

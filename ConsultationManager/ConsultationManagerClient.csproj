@@ -41,6 +41,8 @@
     <Reference Include="DevExpress.Printing.v15.2.Core, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Charts.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Core.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Grid.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Grid.v15.2.Core, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.LayoutControl.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Printing.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
@@ -81,6 +83,10 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Controls.DataVisualization.Toolkit.4.0.0.0\lib\net40-Client\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -102,8 +108,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\RDVs\RunDialogUpdateRdvCommand.cs" />
-    <Compile Include="Commands\RDVs\UpdateRdvCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Service References\ServiceReferenceAuthentication\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -175,15 +179,23 @@
     <Compile Include="ViewModels\Consultations\ConsultationsViewModel.cs" />
     <Compile Include="ViewModels\Patients\PatientsViewModel.cs" />
     <Compile Include="ViewModels\RDVs\ListRvdViewModel.cs" />
-    <Compile Include="ViewModels\RDVs\UpdateRdvViewModel.cs" />
     <Compile Include="Views\DossierMedicals\AllDossiersPage.xaml.cs">
       <DependentUpon>AllDossiersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DossierMedicals\ChartWindow.xaml.cs">
+      <DependentUpon>ChartWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DossierMedicals\ConsultationDossiersPage.xaml.cs">
       <DependentUpon>ConsultationDossiersPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DossierMedicals\DetailFirstConclWindow.xaml.cs">
       <DependentUpon>DetailFirstConclWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DossierMedicals\DetailHospitWindow.xaml.cs">
+      <DependentUpon>DetailHospitWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Hospitalisations\DetailSuiviWindow.xaml.cs">
+      <DependentUpon>DetailSuiviWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DossierMedicals\DossierMedicalWindow.xaml.cs">
       <DependentUpon>DossierMedicalWindow.xaml</DependentUpon>
@@ -197,6 +209,15 @@
     <Compile Include="Views\DossierMedicals\DetailInterviewWindow.xaml.cs">
       <DependentUpon>DetailInterviewWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DossierMedicals\GridAllDossierPage.xaml.cs">
+      <DependentUpon>GridAllDossierPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DossierMedicals\GridConsultDossierPage.xaml.cs">
+      <DependentUpon>GridConsultDossierPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DossierMedicals\GridMyDossiersPage.xaml.cs">
+      <DependentUpon>GridMyDossiersPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DossierMedicals\MyDossierPage.xaml.cs">
       <DependentUpon>MyDossierPage.xaml</DependentUpon>
     </Compile>
@@ -206,8 +227,8 @@
     <Compile Include="Views\Hospitalisations\ConfirmeHospWindow.xaml.cs">
       <DependentUpon>ConfirmeHospWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Hospitalisations\DetailHospitWindow.xaml.cs">
-      <DependentUpon>DetailHospitWindow.xaml</DependentUpon>
+    <Compile Include="Views\Hospitalisations\InfosHospitWindow.xaml.cs">
+      <DependentUpon>InfosHospitWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Hospitalisations\FuturHospitalisationPage.xaml.cs">
       <DependentUpon>FuturHospitalisationPage.xaml</DependentUpon>
@@ -271,6 +292,9 @@
     </Compile>
     <Compile Include="Views\Patients\ListNewPatientsPage.xaml.cs">
       <DependentUpon>ListNewPatientsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RDVs\GridRdvsPage.xaml.cs">
+      <DependentUpon>GridRdvsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RDVs\ListFuturRdvPage.xaml.cs">
       <DependentUpon>ListFuturRdvPage.xaml</DependentUpon>
@@ -368,9 +392,6 @@
     <Compile Include="Views\RDVs\ListMyTodayRdvPage.xaml.cs">
       <DependentUpon>ListMyTodayRdvPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RDVs\UpdateRdvWindow.xaml.cs">
-      <DependentUpon>UpdateRdvWindow.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -387,11 +408,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DossierMedicals\ChartWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DossierMedicals\ConsultationDossiersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DossierMedicals\DetailFirstConclWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DossierMedicals\DetailHospitWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Hospitalisations\DetailSuiviWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -411,6 +444,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DossierMedicals\GridAllDossierPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DossierMedicals\GridConsultDossierPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DossierMedicals\GridMyDossiersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DossierMedicals\MyDossierPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -423,7 +468,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Hospitalisations\DetailHospitWindow.xaml">
+    <Page Include="Views\Hospitalisations\InfosHospitWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -508,6 +553,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Patients\ListNewPatientsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RDVs\GridRdvsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -636,10 +685,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\RDVs\ListMyTodayRdvPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\RDVs\UpdateRdvWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -855,7 +900,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imgs\Home\old-patient.png" />
@@ -1044,18 +1091,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReferenceHospit\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ServiceReferenceHospit\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ServiceReferenceHospit\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\ServiceReferenceRdv\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -1063,6 +1098,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceReferenceRdv\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceHospit\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceHospit\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReferenceHospit\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

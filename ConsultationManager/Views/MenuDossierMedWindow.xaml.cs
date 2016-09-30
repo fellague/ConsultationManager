@@ -34,25 +34,41 @@ namespace ConsultationManager.Views
             dossiersVM = new ListDossMedViewModel();
             this.DataContext = dossiersVM;
             _mainFrame.Navigate(new MyDossierPage(dossiersVM));
-            coloringTabs(MyPatBtn, AllPatBtn, ListNewPatBtn);
+            coloringTabs(MyPatBtn, AllPatBtn, ListNewPatBtn, GridServiceBtn);
             
         }
         private void button_click_tout(object sender, RoutedEventArgs e)
         {
             _mainFrame.Navigate(new AllDossiersPage(dossiersVM));
-            coloringTabs(AllPatBtn, MyPatBtn, ListNewPatBtn);
+            coloringTabs(AllPatBtn, MyPatBtn, ListNewPatBtn, GridServiceBtn);
         }
 
         private void button_click_list_consulation(object sender, RoutedEventArgs e)
         {
             _mainFrame.Navigate(new ConsultationDossiersPage(dossiersVM));
-            coloringTabs(ListNewPatBtn, MyPatBtn, AllPatBtn);
+            coloringTabs(ListNewPatBtn, MyPatBtn, AllPatBtn, GridServiceBtn);
         }
 
         private void button_click_mes(object sender, RoutedEventArgs e)
         {
             _mainFrame.Navigate(new MyDossierPage(dossiersVM));
-            coloringTabs(MyPatBtn, AllPatBtn, ListNewPatBtn);
+            coloringTabs(MyPatBtn, AllPatBtn, ListNewPatBtn, GridServiceBtn);
+        }
+
+        //private void button_click_grid_my(object sender, RoutedEventArgs e)
+        //{
+        //    _mainFrame.Navigate(new GridMyDossiersPage(dossiersVM));
+        //    coloringTabs(GridMyBtn, MyPatBtn, AllPatBtn, ListNewPatBtn, GridConsultBtn, GridServiceBtn);
+        //}
+        //private void button_click_grid_consult(object sender, RoutedEventArgs e)
+        //{
+        //    _mainFrame.Navigate(new GridConsultDossierPage(dossiersVM));
+        //    coloringTabs(GridConsultBtn, GridMyBtn, MyPatBtn, AllPatBtn, ListNewPatBtn, GridServiceBtn);
+        //}
+        private void button_click_grid_service(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.Navigate(new GridAllDossierPage(dossiersVM));
+            coloringTabs(GridServiceBtn, MyPatBtn, AllPatBtn, ListNewPatBtn);
         }
 
         private void button_click_home(object sender, RoutedEventArgs e)
@@ -73,15 +89,17 @@ namespace ConsultationManager.Views
 
         }
 
-        private void coloringTabs(Button puprpleBtn, Button transparantBtn1, Button transparantBtn2)
+        private void coloringTabs(Button puprpleBtn, Button transparantBtn1, Button transparantBtn2, Button transparantBtn3)
         {
             puprpleBtn.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF945BF9"));
             transparantBtn1.Background = Brushes.Transparent;
             transparantBtn2.Background = Brushes.Transparent;
+            transparantBtn3.Background = Brushes.Transparent;
 
             puprpleBtn.Foreground = Brushes.White;
             transparantBtn1.Foreground = Brushes.Black;
             transparantBtn2.Foreground = Brushes.Black;
+            transparantBtn3.Foreground = Brushes.Black;
         }
     }
 }

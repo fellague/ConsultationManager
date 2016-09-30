@@ -16,22 +16,22 @@ namespace ConsultationManager.ServiceReferenceRdv {
     public interface IRdvService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRdvService/GetAllRdv", ReplyAction="http://tempuri.org/IRdvService/GetAllRdvResponse")]
-        ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin[] GetAllRdv(string idService);
+        ConsultationManagerServer.Models.SerializedModels.RdvDetail[] GetAllRdv(string idService);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRdvService/GetAllRdv", ReplyAction="http://tempuri.org/IRdvService/GetAllRdvResponse")]
-        System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin[]> GetAllRdvAsync(string idService);
+        System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.RdvDetail[]> GetAllRdvAsync(string idService);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRdvService/GetRdvMedecin", ReplyAction="http://tempuri.org/IRdvService/GetRdvMedecinResponse")]
-        ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin[] GetRdvMedecin(string idMedecin);
+        ConsultationManagerServer.Models.SerializedModels.RdvDetail[] GetRdvMedecin(string idMedecin);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRdvService/GetRdvMedecin", ReplyAction="http://tempuri.org/IRdvService/GetRdvMedecinResponse")]
-        System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin[]> GetRdvMedecinAsync(string idMedecin);
+        System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.RdvDetail[]> GetRdvMedecinAsync(string idMedecin);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRdvService/GetRdvConsultation", ReplyAction="http://tempuri.org/IRdvService/GetRdvConsultationResponse")]
-        ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin[] GetRdvConsultation(string idConsultation);
+        ConsultationManagerServer.Models.SerializedModels.RdvDetail[] GetRdvConsultation(string idConsultation);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRdvService/GetRdvConsultation", ReplyAction="http://tempuri.org/IRdvService/GetRdvConsultationResponse")]
-        System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin[]> GetRdvConsultationAsync(string idConsultation);
+        System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.RdvDetail[]> GetRdvConsultationAsync(string idConsultation);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRdvService/AddRdv", ReplyAction="http://tempuri.org/IRdvService/AddRdvResponse")]
         ConsultationManagerServer.Models.RDV AddRdv(ConsultationManagerServer.Models.RDV rdv);
@@ -79,27 +79,27 @@ namespace ConsultationManager.ServiceReferenceRdv {
                 base(binding, remoteAddress) {
         }
         
-        public ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin[] GetAllRdv(string idService) {
+        public ConsultationManagerServer.Models.SerializedModels.RdvDetail[] GetAllRdv(string idService) {
             return base.Channel.GetAllRdv(idService);
         }
         
-        public System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin[]> GetAllRdvAsync(string idService) {
+        public System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.RdvDetail[]> GetAllRdvAsync(string idService) {
             return base.Channel.GetAllRdvAsync(idService);
         }
         
-        public ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin[] GetRdvMedecin(string idMedecin) {
+        public ConsultationManagerServer.Models.SerializedModels.RdvDetail[] GetRdvMedecin(string idMedecin) {
             return base.Channel.GetRdvMedecin(idMedecin);
         }
         
-        public System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin[]> GetRdvMedecinAsync(string idMedecin) {
+        public System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.RdvDetail[]> GetRdvMedecinAsync(string idMedecin) {
             return base.Channel.GetRdvMedecinAsync(idMedecin);
         }
         
-        public ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin[] GetRdvConsultation(string idConsultation) {
+        public ConsultationManagerServer.Models.SerializedModels.RdvDetail[] GetRdvConsultation(string idConsultation) {
             return base.Channel.GetRdvConsultation(idConsultation);
         }
         
-        public System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin[]> GetRdvConsultationAsync(string idConsultation) {
+        public System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.RdvDetail[]> GetRdvConsultationAsync(string idConsultation) {
             return base.Channel.GetRdvConsultationAsync(idConsultation);
         }
         

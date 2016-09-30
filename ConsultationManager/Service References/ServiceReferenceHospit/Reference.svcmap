@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a78e9dc4-8a08-45d7-81ae-3e9f26bb7d37" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4ce06b83-97c7-4bbd-a304-6e89880ca320" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,16 +19,16 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:64183/Services/HospitService.svc?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address=" http://localhost:64183/Services/HospitService.svc?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="HospitService.wsdl" MetadataType="Wsdl" ID="e78fd662-1fb3-442f-8bb7-75a508f014bc" SourceId="1" SourceUrl="http://localhost:64183/Services/HospitService.svc?wsdl" />
-    <MetadataFile FileName="HospitService.xsd" MetadataType="Schema" ID="b65656a4-f70e-49a8-a14d-d9fa4a51fe58" SourceId="1" SourceUrl="http://localhost:64183/Services/HospitService.svc?xsd=xsd3" />
-    <MetadataFile FileName="HospitService1.xsd" MetadataType="Schema" ID="e93c7152-98b7-4775-8610-074a92d6d4b0" SourceId="1" SourceUrl="http://localhost:64183/Services/HospitService.svc?xsd=xsd2" />
-    <MetadataFile FileName="HospitService2.xsd" MetadataType="Schema" ID="31d9c533-c88a-45a9-bcc5-833c8fb910a4" SourceId="1" SourceUrl="http://localhost:64183/Services/HospitService.svc?xsd=xsd1" />
-    <MetadataFile FileName="HospitService3.xsd" MetadataType="Schema" ID="3b47fb66-b46e-48f5-837e-ed543677a2f9" SourceId="1" SourceUrl="http://localhost:64183/Services/HospitService.svc?xsd=xsd0" />
-    <MetadataFile FileName="HospitService4.xsd" MetadataType="Schema" ID="3c0c69af-b1b9-4fe7-ae56-59ab056721af" SourceId="1" SourceUrl="http://localhost:64183/Services/HospitService.svc?xsd=xsd5" />
-    <MetadataFile FileName="HospitService5.xsd" MetadataType="Schema" ID="177d8bd3-ee56-4dd0-9bc1-def670570378" SourceId="1" SourceUrl="http://localhost:64183/Services/HospitService.svc?xsd=xsd4" />
+    <MetadataFile FileName="HospitService.wsdl" MetadataType="Wsdl" ID="52ee53eb-2ded-40f0-92c9-6b1870616b0e" SourceId="1" SourceUrl="http://localhost:64183/Services/HospitService.svc?wsdl" />
+    <MetadataFile FileName="HospitService.xsd" MetadataType="Schema" ID="39f6a7ef-a99d-4b12-bb18-883d674b7462" SourceId="1" SourceUrl="http://localhost:64183/Services/HospitService.svc?xsd=xsd3" />
+    <MetadataFile FileName="HospitService1.xsd" MetadataType="Schema" ID="15ff3437-85a2-4585-9e99-c4ada9418d61" SourceId="1" SourceUrl="http://localhost:64183/Services/HospitService.svc?xsd=xsd2" />
+    <MetadataFile FileName="HospitService2.xsd" MetadataType="Schema" ID="b3797daa-ef9d-4ce3-b321-967d56f02cfc" SourceId="1" SourceUrl="http://localhost:64183/Services/HospitService.svc?xsd=xsd1" />
+    <MetadataFile FileName="HospitService3.xsd" MetadataType="Schema" ID="e31692a7-7532-4ea7-8ac2-29af908e03bb" SourceId="1" SourceUrl="http://localhost:64183/Services/HospitService.svc?xsd=xsd0" />
+    <MetadataFile FileName="HospitService4.xsd" MetadataType="Schema" ID="eb81c975-319d-44f1-80fe-4f2a78d3a9f9" SourceId="1" SourceUrl="http://localhost:64183/Services/HospitService.svc?xsd=xsd5" />
+    <MetadataFile FileName="HospitService5.xsd" MetadataType="Schema" ID="d89a37b3-da2a-4f40-a4b0-6db06cf15804" SourceId="1" SourceUrl="http://localhost:64183/Services/HospitService.svc?xsd=xsd4" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

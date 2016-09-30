@@ -46,7 +46,7 @@ namespace ConsultationManagerServer.Services
             return interviewDetail;
         }
 
-        public int GetInterviewNumber(RdvPatientMedecin rdv)
+        public int GetInterviewNumber(RdvDetail rdv)
         {
             DataBaseContext db = new DataBaseContext();
             int num = 1;

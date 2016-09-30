@@ -60,8 +60,7 @@ namespace ConsultationManagerServer.Models.SerializedModels
             get;
             set;
         }
-
-
+        
         [DataMember]
         public Conclusion Conclusion
         {

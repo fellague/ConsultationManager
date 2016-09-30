@@ -17,12 +17,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DemandeHospitDetail" nillable="true" type="tns:DemandeHospitDetail" />
-  <xs:complexType name="ArrayOfHospitalisationDetail">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="HospitalisationDetail" nillable="true" type="tns:HospitalisationDetail" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfHospitalisationDetail" nillable="true" type="tns:ArrayOfHospitalisationDetail" />
   <xs:complexType name="HospitalisationDetail">
     <xs:sequence>
       <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ConsultationManagerServer.Models" minOccurs="0" name="Conclusion" nillable="true" type="q5:Conclusion" />
@@ -40,6 +34,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="HospitalisationDetail" nillable="true" type="tns:HospitalisationDetail" />
+  <xs:complexType name="ArrayOfHospitalisationDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="HospitalisationDetail" nillable="true" type="tns:HospitalisationDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHospitalisationDetail" nillable="true" type="tns:ArrayOfHospitalisationDetail" />
   <xs:complexType name="ArrayOfSalleHospitPlanning">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="SalleHospitPlanning" nillable="true" type="tns:SalleHospitPlanning" />

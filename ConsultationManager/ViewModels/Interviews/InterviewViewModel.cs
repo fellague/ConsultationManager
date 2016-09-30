@@ -18,7 +18,7 @@ namespace ConsultationManagerClient.ViewModels.Interviews
     {
         private InterviewServiceClient isc = new InterviewServiceClient();
 
-        private RdvPatientMedecin rdvConsult;
+        private RdvDetail rdvConsult;
         private ListRvdViewModel rdvsViewModel;
 
         private Interview interview;
@@ -30,7 +30,7 @@ namespace ConsultationManagerClient.ViewModels.Interviews
         private ObservableCollection<int> listMois;
         private ObservableCollection<int> listJours;
 
-        public InterviewViewModel(RdvPatientMedecin rdv, ListRvdViewModel rdvVM)
+        public InterviewViewModel(RdvDetail rdv, ListRvdViewModel rdvVM)
         {
             isc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
             isc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
@@ -54,7 +54,7 @@ namespace ConsultationManagerClient.ViewModels.Interviews
 
         #region ConsultationViewModel Variables
 
-        public RdvPatientMedecin RdvConsult
+        public RdvDetail RdvConsult
         {
             get
             {

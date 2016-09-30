@@ -24,6 +24,12 @@
             <TextBlock Text="Suivie d'Hospitalisation pour " FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             <TextBlock Text="{Binding SelectHosp.Patient.Nom}" Margin="0 0 10 0" FontSize="22" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             <TextBlock Text="{Binding SelectHosp.Patient.Prenom}"  FontSize="22" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <Button  
+                    Command="{Binding OpenChartCommand}"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="30 3 3 3"
+                    ToolTip="Voir Suivie d'Hospitalisation En Courbe">
+                <materialDesign:PackIcon Kind="ChartLine" Height="24" Width="24" />
+            </Button>
         </WrapPanel>
         <Border Grid.Row="1" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}" ClipToBounds="True" Margin="20 5 10 5" Padding="5">
             <Grid>
@@ -36,8 +42,8 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.ColumnSpan="2" Text="Poids" FontSize="18"  HorizontalAlignment="Center"/>
-
+                <TextBlock Text="Poids" Grid.ColumnSpan="2"   HorizontalAlignment="Center" FontSize="18" VerticalAlignment="Center"/>
+                
                 <TextBox Grid.Row="1" Text="{Binding MesurePoids, Mode=TwoWay}" VerticalScrollBarVisibility="Auto" FontSize="16" HorizontalAlignment="Stretch" materialDesign:TextFieldAssist.Hint="Valeur" Margin="20 0 0 0"></TextBox>
                 <ListBox Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding SelectHosp.FichePoids}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch" Margin="20 10 20 10">
                     <ListBox.ItemTemplate>
@@ -218,11 +224,9 @@
                                         </Grid.RowDefinitions>
 
                                         <WrapPanel Margin="5, 0, 0, 0">
-                                            <TextBlock Text="Motif : " FontSize="16" Margin="0, 0, 4, 0"></TextBlock>
                                             <TextBlock Text="{Binding Path=Motif}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="DemiBold"></TextBlock>
                                         </WrapPanel>
                                         <WrapPanel Grid.Row="1" Margin="5, 0, 0, 5">
-                                            <TextBlock Text="Description : " FontSize="16"></TextBlock>
                                             <TextBlock Text="{Binding Path=Description}" FontSize="16"></TextBlock>
                                         </WrapPanel>
                                         <WrapPanel Grid.Row="2" Margin="5 0 0 5">

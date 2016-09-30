@@ -36,6 +36,9 @@ namespace ConsultationManagerServer.Services
         List<DemandeHospitDetail> GetDemandesHospit(string idService);
 
         [OperationContract]
+        HospitalisationDetail GetHospit(string idConclus);
+
+        [OperationContract]
         List<HospitalisationDetail> GetHospits(string idService);
         
         [OperationContract]

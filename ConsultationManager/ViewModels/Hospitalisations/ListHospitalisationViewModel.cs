@@ -18,6 +18,7 @@ using ConsultationManager.Views.DossierMedicals;
 using ConsultationManager.ServiceReferenceDossierMed;
 using ConsultationManager.ServiceReferenceRdv;
 using ConsultationManager.ViewModels.DossierMedicals;
+using System.Collections.Generic;
 
 namespace ConsultationManagerClient.ViewModels.Hospitalisations
 {
@@ -54,7 +55,7 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
         private HospitalisationDetail selectHosp;
         private string newTelephone;
 
-        private DetailHospitWindow dialogHospDetail;
+        private InfosHospitWindow dialogHospDetail;
 
         private DossierMedServiceClient psc = new DossierMedServiceClient();
         private DossierMedicalWindow dialoDossierMedical;
@@ -66,6 +67,13 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
         private string mesureTemperature;
         private string mesureGlycemique;
         private Intervention newIntervention;
+
+        private ChartWindow chartsWindow;
+        private DetailSuiviWindow detailSuiviWindow;
+        private List<Point> pointsPoids;
+        private List<Point> pointsTA;
+        private List<Point> pointsTemperature;
+        private List<Point> pointsGlycemique;
 
         public ListHospitalisationViewModel()
         {
@@ -116,10 +124,62 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             OpenDialogSuiviCommand = new RelayCommand(param => ShowDialogSuivi(param));
 
             TerminerHospitCommand = new RelayCommand(param => TerminerHospit(param));
+            
+            OpenChartCommand = new RelayCommand(param => ShowDialogChart(param));
+            OpenDetailHospitCommand = new RelayCommand(param => ShowDialogDetailHospit(param));
         }
 
 
+
         #region PatientsViewModel Variables
+        public List<Point> PointsPoids
+        {
+            get
+            {
+                return pointsPoids;
+            }
+            set
+            {
+                pointsPoids = value;
+                OnPropertyChanged("PointsPoids");
+            }
+        }
+        public List<Point> PointsTA
+        {
+            get
+            {
+                return pointsTA;
+            }
+            set
+            {
+                pointsTA = value;
+                OnPropertyChanged("PointsTA");
+            }
+        }
+        public List<Point> PointsTemperature
+        {
+            get
+            {
+                return pointsTemperature;
+            }
+            set
+            {
+                pointsTemperature = value;
+                OnPropertyChanged("PointsTemperature");
+            }
+        }
+        public List<Point> PointsGlycemique
+        {
+            get
+            {
+                return pointsGlycemique;
+            }
+            set
+            {
+                pointsGlycemique = value;
+                OnPropertyChanged("PointsGlycemique");
+            }
+        }
 
         public ObservableCollection<HospitalisationDetail> ListAllHospitalisation
         {
@@ -482,6 +542,16 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             get;
             private set;
         }
+        public ICommand OpenChartCommand
+        {
+            get;
+            private set;
+        }
+        public ICommand OpenDetailHospitCommand
+        {
+            get;
+            private set;
+        }
 
         #endregion
 
@@ -629,7 +699,7 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
         private void ShowDialogDetailHosp(Object obj)
         {
             SelectHosp = obj as HospitalisationDetail;
-            dialogHospDetail = new DetailHospitWindow();
+            dialogHospDetail = new InfosHospitWindow();
             dialogHospDetail.DataContext = this;
             dialogHospDetail.ShowDialog();
         }
@@ -659,6 +729,61 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
             dialogSuivi.DataContext = this;
             UpdateSuiviCommand = new RelayCommand(par => UpdateSuivi());
             dialogSuivi.ShowDialog();
+        }
+
+        private void ShowDialogChart(object param)
+        {
+            pointsPoids = new List<Point>();
+            pointsTA = new List<Point>();
+            pointsTemperature = new List<Point>();
+            pointsGlycemique = new List<Point>();
+            foreach (Mesure item in SelectHosp.FichePoids)
+            {
+                pointsPoids.Add(new Point { X = item.CreeDans.ToString(), Y = float.Parse(item.Valeur)});
+            }
+            foreach (Mesure item in SelectHosp.FicheTA)
+            {
+                pointsTA.Add(new Point { X = item.CreeDans.ToString(), Y = float.Parse(item.Valeur) });
+            }
+            foreach (Mesure item in SelectHosp.FicheTemperature)
+            {
+                pointsTemperature.Add(new Point { X = item.CreeDans.ToString(), Y = float.Parse(item.Valeur) });
+            }
+            foreach (Mesure item in SelectHosp.FicheGlycemique)
+            {
+                pointsGlycemique.Add(new Point { X = item.CreeDans.ToString(), Y = float.Parse(item.Valeur) });
+            }
+            chartsWindow = new ChartWindow();
+            chartsWindow.DataContext = this;
+            chartsWindow.ShowDialog();
+        }
+
+        private void ShowDialogDetailHospit(object param)
+        {
+            SelectHosp = param as HospitalisationDetail;
+            pointsPoids = new List<Point>();
+            pointsTA = new List<Point>();
+            pointsTemperature = new List<Point>();
+            pointsGlycemique = new List<Point>();
+            foreach (Mesure item in SelectHosp.FichePoids)
+            {
+                pointsPoids.Add(new Point { X = item.CreeDans.ToString(), Y = float.Parse(item.Valeur) });
+            }
+            foreach (Mesure item in SelectHosp.FicheTA)
+            {
+                pointsTA.Add(new Point { X = item.CreeDans.ToString(), Y = float.Parse(item.Valeur) });
+            }
+            foreach (Mesure item in SelectHosp.FicheTemperature)
+            {
+                pointsTemperature.Add(new Point { X = item.CreeDans.ToString(), Y = float.Parse(item.Valeur) });
+            }
+            foreach (Mesure item in SelectHosp.FicheGlycemique)
+            {
+                pointsGlycemique.Add(new Point { X = item.CreeDans.ToString(), Y = float.Parse(item.Valeur) });
+            }
+            detailSuiviWindow = new DetailSuiviWindow();
+            detailSuiviWindow.DataContext = this;
+            detailSuiviWindow.ShowDialog();
         }
 
         private void UpdateSuivi()
@@ -802,5 +927,16 @@ namespace ConsultationManagerClient.ViewModels.Hospitalisations
         }
 
         #endregion
+    }
+
+    public class Point
+    {
+        public Point()
+        {
+            X = "";
+            Y = 0;
+        }
+        public string X { get; set; }
+        public float Y { get; set; }
     }
 }

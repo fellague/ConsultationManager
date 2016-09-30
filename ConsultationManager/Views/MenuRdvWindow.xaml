@@ -33,6 +33,7 @@
                         <Button Name="FirstRdvBtn" Click="button_click_first"  Content="Rendez-vous de Mes Nouveaux Patients" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
                         <Button Name="HospitRdvBtn" Click="button_click_hosp"  Content="Les Hospitalisations Terminées" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
                         <Button Name="FuturRdvBtn" Click="button_click_futur"  Content="Mes Futurs Rendez-vous" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
+                        <Button Name="GridRdvBtn" Click="button_click_grid"  Content="Taleur EXCEL" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
                     </ItemsControl>
 
                 </DockPanel>

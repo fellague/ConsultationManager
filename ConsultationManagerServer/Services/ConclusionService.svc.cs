@@ -41,6 +41,12 @@ namespace ConsultationManagerServer.Services
                     var update3 = Update
                         .Set("IdIntervHospits", new BsonArray(listId));
                     var result4 = db.DossierMeds.FindAndModify(query3, null, update3);
+
+                    var hosp = db.Hospitalisations.FindAll().Where(p => p.IdPatient == conclusion.IdPatient).ToList().Last();
+                    var query1 = Query.EQ("Id", hosp.Id);
+                    var update1 = Update
+                        .Set("IdConclusion", conclusion.Id);
+                    var result1 = db.Hospitalisations.FindAndModify(query1, null, update1);
                 }
                 else
                 {

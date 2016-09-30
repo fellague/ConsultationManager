@@ -23,9 +23,9 @@ namespace ConsultationManager.ViewModels.RDVs
     {
         private RdvServiceClient rsc = new RdvServiceClient();
         private ListRvdViewModel rdvsVM;
-        private RdvPatientMedecin selectedRdv;
+        private RdvDetail selectedRdv;
         private ConsultationMedecinsPlanning planning;
-        private List<RdvPatientMedecin> listRdvsConsultation;
+        private List<RdvDetail> listRdvsConsultation;
         private RDV newRdv;
 
         private ObservableCollection<Utilisateur> listMedecins;
@@ -40,7 +40,7 @@ namespace ConsultationManager.ViewModels.RDVs
         private ObservableCollection<int> listRangs;
         private DateTime heure;
 
-        public NextRdvViewModel(RdvPatientMedecin rdv, ListRvdViewModel pVM)
+        public NextRdvViewModel(RdvDetail rdv, ListRvdViewModel pVM)
         {
             rsc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
             rsc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
@@ -77,7 +77,7 @@ namespace ConsultationManager.ViewModels.RDVs
 
         #region RdvNewPatientViewModel Variables
 
-        public RdvPatientMedecin SelectedPatient
+        public RdvDetail SelectedPatient
         {
             get
             {
@@ -378,16 +378,16 @@ namespace ConsultationManager.ViewModels.RDVs
             }
         }
 
-        private List<RdvPatientMedecin> GetRdvsConsultation(string idConsultation)
+        private List<RdvDetail> GetRdvsConsultation(string idConsultation)
         {
-            List<RdvPatientMedecin> list = new List<RdvPatientMedecin>();
-            list = new List<RdvPatientMedecin>(rsc.GetRdvConsultation(idConsultation));
+            List<RdvDetail> list = new List<RdvDetail>();
+            list = new List<RdvDetail>(rsc.GetRdvConsultation(idConsultation));
             return list;
         }
 
         private ObservableCollection<int> GetRangs()
         {
-            List<RdvPatientMedecin> listRdvMedecinSelected = new List<RdvPatientMedecin>();
+            List<RdvDetail> listRdvMedecinSelected = new List<RdvDetail>();
 
             var toAdd = listRdvsConsultation.Where(rdv => rdv.Medecin.Id == selectedMedecin.Id && rdv.Rdv.DateRdv.Date == NewRdv.DateRdv.Date).ToList();
             foreach (var item in toAdd)
@@ -410,16 +410,16 @@ namespace ConsultationManager.ViewModels.RDVs
             NewRdv.CreeDans = DateTime.Now;
             NewRdv.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
             NewRdv.ServiceId = AuthenticationViewModel.AuthenticatedUser.ServiceId;
-            NewRdv.PathologieId = AuthenticationViewModel.AuthenticatedUser.PathologieId;
+            NewRdv.PathologieId = selectedRdv.Patient.PathologieId;
             NewRdv.NouvPat = false;
 
-            RdvPatientMedecin rdv = new RdvPatientMedecin();
+            RdvDetail rdv = new RdvDetail();
             rdv.Medecin = selectedRdv.Medecin;
             rdv.Patient = selectedRdv.Patient;
             rdv.Rdv = rsc.AddRdv(NewRdv);
 
             /////if the request is rescheduling
-            if(selectedRdv.Rdv.DateRdv.Date.CompareTo(DateTime.Now.Date) !=0 )
+            if(selectedRdv.Rdv.DateRdv.Date.CompareTo(DateTime.Now.Date) !=0 && selectedRdv.Rdv.DateRdv.Date.CompareTo(new DateTime(1, 1, 1).Date) != 0)
                 rsc.DeleteRdv(selectedRdv.Rdv.Id);
 
             rdvsVM.ListAllRvd.Add(rdv);

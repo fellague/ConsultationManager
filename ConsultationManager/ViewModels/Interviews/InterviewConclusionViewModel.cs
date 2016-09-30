@@ -23,7 +23,7 @@ namespace ConsultationManagerClient.ViewModels.Interviews
     {
         private ConclusionServiceClient csc = new ConclusionServiceClient();
 
-        private RdvPatientMedecin rdvConsult;
+        private RdvDetail rdvConsult;
         private ListRvdViewModel rdvsViewModel;
         private Interview interview;
 
@@ -48,7 +48,7 @@ namespace ConsultationManagerClient.ViewModels.Interviews
         private ObservableCollection<int> listNbFois;
         
 
-        public InterviewConclusionViewModel(RdvPatientMedecin rdv, Interview interv, ListRvdViewModel rdvVM)
+        public InterviewConclusionViewModel(RdvDetail rdv, Interview interv, ListRvdViewModel rdvVM)
         {
             csc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
             csc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
@@ -90,7 +90,7 @@ namespace ConsultationManagerClient.ViewModels.Interviews
 
         #region ConsultationViewModel Variables
 
-        public RdvPatientMedecin RdvConsult
+        public RdvDetail RdvConsult
         {
             get
             {

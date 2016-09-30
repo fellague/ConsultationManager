@@ -15,13 +15,13 @@ namespace ConsultationManagerServer.Services
     public interface IRdvService
     {
         [OperationContract]
-        List<RdvPatientMedecin> GetAllRdv(string idService);
+        List<RdvDetail> GetAllRdv(string idService);
 
         [OperationContract]
-        List<RdvPatientMedecin> GetRdvMedecin(string idMedecin);
+        List<RdvDetail> GetRdvMedecin(string idMedecin);
 
         [OperationContract]
-        List<RdvPatientMedecin> GetRdvConsultation(string idConsultation);
+        List<RdvDetail> GetRdvConsultation(string idConsultation);
 
         [OperationContract]
         RDV AddRdv(RDV rdv);

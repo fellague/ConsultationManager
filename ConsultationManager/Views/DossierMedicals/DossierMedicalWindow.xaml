@@ -94,16 +94,20 @@
                                 <DataTemplate>
                                     <Border BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}" ClipToBounds="True" Margin="3">
                                         <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="auto" />
+                                            </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto"/>
                                                 <RowDefinition Height="Auto"/>
                                                 <RowDefinition Height="Auto"/>
                                             </Grid.RowDefinitions>
 
-                                            <WrapPanel Margin="5, 0, 0, 0">
+                                            <!--<WrapPanel Margin="5, 0, 0, 0">
                                                 <TextBlock Text="Hospitalisation numéro " FontSize="16" Margin="0, 0, 4, 0"></TextBlock>
                                                 <TextBlock Text="{Binding Path=Num}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="DemiBold"></TextBlock>
-                                            </WrapPanel>
+                                            </WrapPanel>-->
                                             <Grid Grid.Row="1" Margin="5, 0, 0, 0">
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="Auto"/>
@@ -116,6 +120,14 @@
                                                 <TextBlock Text="Creé dans le "></TextBlock>
                                                 <TextBlock Text="{Binding Path=CreeDans,  StringFormat='dd/MM/yyy'}" FontWeight="DemiBold"></TextBlock>
                                             </WrapPanel>
+
+                                            <Button Grid.Column="1" Grid.RowSpan="3"
+                                                    Command="{Binding DataContext.DetailHospitDialogCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="3"
+                                                    ToolTip="Plus de Détails">
+                                                <materialDesign:PackIcon Kind="Eye" Height="24" Width="24" />
+                                            </Button>
                                         </Grid>
                                     </Border>
                                 </DataTemplate>

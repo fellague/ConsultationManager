@@ -28,10 +28,10 @@ namespace ConsultationManager.ServiceReferenceInterview {
         System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.InterviewDetail> GetInterviewAsync(string idRdv);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterviewService/GetInterviewNumber", ReplyAction="http://tempuri.org/IInterviewService/GetInterviewNumberResponse")]
-        int GetInterviewNumber(ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin rdv);
+        int GetInterviewNumber(ConsultationManagerServer.Models.SerializedModels.RdvDetail rdv);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterviewService/GetInterviewNumber", ReplyAction="http://tempuri.org/IInterviewService/GetInterviewNumberResponse")]
-        System.Threading.Tasks.Task<int> GetInterviewNumberAsync(ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin rdv);
+        System.Threading.Tasks.Task<int> GetInterviewNumberAsync(ConsultationManagerServer.Models.SerializedModels.RdvDetail rdv);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterviewService/GetInterviews", ReplyAction="http://tempuri.org/IInterviewService/GetInterviewsResponse")]
         ConsultationManagerServer.Models.SerializedModels.InterviewDetail[] GetInterviews(ConsultationManagerServer.Models.Patient patient);
@@ -95,11 +95,11 @@ namespace ConsultationManager.ServiceReferenceInterview {
             return base.Channel.GetInterviewAsync(idRdv);
         }
         
-        public int GetInterviewNumber(ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin rdv) {
+        public int GetInterviewNumber(ConsultationManagerServer.Models.SerializedModels.RdvDetail rdv) {
             return base.Channel.GetInterviewNumber(rdv);
         }
         
-        public System.Threading.Tasks.Task<int> GetInterviewNumberAsync(ConsultationManagerServer.Models.SerializedModels.RdvPatientMedecin rdv) {
+        public System.Threading.Tasks.Task<int> GetInterviewNumberAsync(ConsultationManagerServer.Models.SerializedModels.RdvDetail rdv) {
             return base.Channel.GetInterviewNumberAsync(rdv);
         }
         

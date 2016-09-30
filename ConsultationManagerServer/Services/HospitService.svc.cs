@@ -139,6 +139,52 @@ namespace ConsultationManagerServer.Services
             return listDemandes;
         }
 
+        public HospitalisationDetail GetHospit(string idConclus)
+        {
+            DataBaseContext db = new DataBaseContext();
+            HospitalisationDetail hospitDetail = new HospitalisationDetail();
+            hospitDetail.Conclusion = db.Conclusions.FindAll().Where(p => p.Id == idConclus).ToList().First();
+            hospitDetail.Hospitalisation = db.Hospitalisations.FindAll().Where(p => p.IdConclusion == hospitDetail.Conclusion.Id).First();
+            hospitDetail.Patient = db.Patients.FindAll().Where(p => p.Id == hospitDetail.Conclusion.IdPatient).First();
+            hospitDetail.Medecin = db.Utilisateurs.FindAll().Where(p => p.Id == hospitDetail.Patient.MedecinResp).First();
+            hospitDetail.Demande = db.DemandesHospit.FindAll().Where(p => p.Id == hospitDetail.Hospitalisation.IdDemande).First();
+            hospitDetail.Salle = db.Salles.FindAll().Where(p => p.Id == hospitDetail.Hospitalisation.IdSalle).First();
+                    
+            foreach (string id in hospitDetail.Hospitalisation.IdInterventions)
+            {
+                var intervention = db.Interventions.FindAll().Where(p => p.Id == id).ToList().First();
+                hospitDetail.Inetrventions.Add(intervention);
+            }
+            foreach (string id in hospitDetail.Hospitalisation.IdSallesChange)
+            {
+                var salle = db.Salles.FindAll().Where(p => p.Id == id).ToList().First();
+                hospitDetail.SallesChange.Add(salle);
+            }
+
+            foreach (string id in hospitDetail.Hospitalisation.IdMesuresFicheTA)
+            {
+                var mesure = db.Mesures.FindAll().Where(p => p.Id == id).ToList().First();
+                hospitDetail.FicheTA.Add(mesure);
+            }
+            foreach (string id in hospitDetail.Hospitalisation.IdMesuresFichePoids)
+            {
+                var mesure = db.Mesures.FindAll().Where(p => p.Id == id).ToList().First();
+                hospitDetail.FichePoids.Add(mesure);
+            }
+            foreach (string id in hospitDetail.Hospitalisation.IdMesuresFicheTemperature)
+            {
+                var mesure = db.Mesures.FindAll().Where(p => p.Id == id).ToList().First();
+                hospitDetail.FicheTemperature.Add(mesure);
+            }
+            foreach (string id in hospitDetail.Hospitalisation.IdMesuresFicheGlycemique)
+            {
+                var mesure = db.Mesures.FindAll().Where(p => p.Id == id).ToList().First();
+                hospitDetail.FicheGlycemique.Add(mesure);
+            }
+
+            return hospitDetail;
+        }
+
         public List<HospitalisationDetail> GetHospits(string idService)
         {
             DataBaseContext db = new DataBaseContext();

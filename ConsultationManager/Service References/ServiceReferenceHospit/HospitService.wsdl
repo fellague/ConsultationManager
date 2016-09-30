@@ -52,6 +52,12 @@
   <wsdl:message name="IHospitService_GetDemandesHospit_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDemandesHospitResponse" />
   </wsdl:message>
+  <wsdl:message name="IHospitService_GetHospit_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHospit" />
+  </wsdl:message>
+  <wsdl:message name="IHospitService_GetHospit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHospitResponse" />
+  </wsdl:message>
   <wsdl:message name="IHospitService_GetHospits_InputMessage">
     <wsdl:part name="parameters" element="tns:GetHospits" />
   </wsdl:message>
@@ -104,6 +110,10 @@
     <wsdl:operation name="GetDemandesHospit">
       <wsdl:input wsaw:Action="http://tempuri.org/IHospitService/GetDemandesHospit" message="tns:IHospitService_GetDemandesHospit_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IHospitService/GetDemandesHospitResponse" message="tns:IHospitService_GetDemandesHospit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHospit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHospitService/GetHospit" message="tns:IHospitService_GetHospit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHospitService/GetHospitResponse" message="tns:IHospitService_GetHospit_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetHospits">
       <wsdl:input wsaw:Action="http://tempuri.org/IHospitService/GetHospits" message="tns:IHospitService_GetHospits_InputMessage" />
@@ -180,6 +190,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetDemandesHospit">
       <soap:operation soapAction="http://tempuri.org/IHospitService/GetDemandesHospit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHospit">
+      <soap:operation soapAction="http://tempuri.org/IHospitService/GetHospit" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

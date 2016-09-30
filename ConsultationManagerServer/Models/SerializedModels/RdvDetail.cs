@@ -7,17 +7,19 @@ using System.Web;
 namespace ConsultationManagerServer.Models.SerializedModels
 {
     [DataContract]
-    public class RdvPatientMedecin
+    public class RdvDetail
     {
         private RDV rdv;
         private Patient patient;
         private Utilisateur medecin;
+        private Consultation consultation;
 
-        public RdvPatientMedecin()
+        public RdvDetail()
         {
             rdv = new RDV();
             patient = new Patient();
             medecin = new Utilisateur();
+            consultation = new Consultation();
         }
 
         [DataMember]
@@ -54,6 +56,18 @@ namespace ConsultationManagerServer.Models.SerializedModels
             set
             {
                 medecin = value;
+            }
+        }
+        [DataMember]
+        public Consultation Consultation
+        {
+            get
+            {
+                return consultation;
+            }
+            set
+            {
+                consultation = value;
             }
         }
     }

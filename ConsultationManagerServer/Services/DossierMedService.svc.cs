@@ -47,6 +47,7 @@ namespace ConsultationManagerServer.Services
                     dossierMedDetail.DossierMedical = item;
                     dossierMedDetail.Medecin = db.Utilisateurs.FindAll().Where(p => p.Id == item.IdMedecin).First();
                     dossierMedDetail.Patient = db.Patients.FindAll().Where(p => p.Id == item.IdPatient).First();
+                    dossierMedDetail.Consultation = db.Consultations.FindAll().Where(p => p.Id == item.PathologieId).First();
 
                     var firstConcl = db.Conclusions.FindAll().Where(p => p.IdSource == "first" && p.IdPatient == item.IdPatient).ToList().First();
                     dossierMedDetail.ConclusionsInterview.Add(firstConcl);
@@ -140,6 +141,11 @@ namespace ConsultationManagerServer.Services
                 var intervConcls = db.Conclusions.FindAll().Where(p => p.IdSource == interv).ToList().First();
                 dossierMedDetail.ConclusionsInterview.Add(intervConcls);
             }
+            foreach (string hosp in dossier.IdIntervHospits)
+            {
+                var intervHospitConcls = db.Conclusions.FindAll().Where(p => p.IdSource == hosp).ToList().First();
+                dossierMedDetail.ConclusionsHospit.Add(intervHospitConcls);
+            }
 
             return dossierMedDetail;
         }
@@ -156,7 +162,7 @@ namespace ConsultationManagerServer.Services
             return dossierMed;
         }
 
-        public int GetDossierMedNum(RdvPatientMedecin patient)
+        public int GetDossierMedNum(RdvDetail patient)
         {
             DataBaseContext db = new DataBaseContext();
             int num = 0;

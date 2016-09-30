@@ -57,6 +57,12 @@ namespace ConsultationManager.ServiceReferenceHospit {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitService/GetDemandesHospit", ReplyAction="http://tempuri.org/IHospitService/GetDemandesHospitResponse")]
         System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.DemandeHospitDetail[]> GetDemandesHospitAsync(string idService);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitService/GetHospit", ReplyAction="http://tempuri.org/IHospitService/GetHospitResponse")]
+        ConsultationManagerServer.Models.SerializedModels.HospitalisationDetail GetHospit(string idConclus);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitService/GetHospit", ReplyAction="http://tempuri.org/IHospitService/GetHospitResponse")]
+        System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.HospitalisationDetail> GetHospitAsync(string idConclus);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitService/GetHospits", ReplyAction="http://tempuri.org/IHospitService/GetHospitsResponse")]
         ConsultationManagerServer.Models.SerializedModels.HospitalisationDetail[] GetHospits(string idService);
         
@@ -163,6 +169,14 @@ namespace ConsultationManager.ServiceReferenceHospit {
         
         public System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.DemandeHospitDetail[]> GetDemandesHospitAsync(string idService) {
             return base.Channel.GetDemandesHospitAsync(idService);
+        }
+        
+        public ConsultationManagerServer.Models.SerializedModels.HospitalisationDetail GetHospit(string idConclus) {
+            return base.Channel.GetHospit(idConclus);
+        }
+        
+        public System.Threading.Tasks.Task<ConsultationManagerServer.Models.SerializedModels.HospitalisationDetail> GetHospitAsync(string idConclus) {
+            return base.Channel.GetHospitAsync(idConclus);
         }
         
         public ConsultationManagerServer.Models.SerializedModels.HospitalisationDetail[] GetHospits(string idService) {

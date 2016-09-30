@@ -15,6 +15,7 @@ namespace ConsultationManagerServer.Models.SerializedModels
             DossierMedical = new DossierMed();
             Patient = new Patient();
             Medecin = new Utilisateur();
+            Consultation = new Consultation();
             ConclusionsInterview = new ObservableCollection<Conclusion>();
             ConclusionsHospit = new ObservableCollection<Conclusion>();
             ConclusionsChirurgie = new ObservableCollection<Conclusion>();
@@ -34,6 +35,12 @@ namespace ConsultationManagerServer.Models.SerializedModels
         }
         [DataMember]
         public Utilisateur Medecin
+        {
+            get;
+            set;
+        }
+        [DataMember]
+        public Consultation Consultation
         {
             get;
             set;

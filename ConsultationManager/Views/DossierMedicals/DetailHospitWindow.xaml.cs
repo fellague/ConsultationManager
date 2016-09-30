@@ -11,16 +11,15 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ConsultationManagerClient.ViewModels.RDVs;
 
-namespace ConsultationManagerClient.Views.RDVs
+namespace ConsultationManager.Views.DossierMedicals
 {
     /// <summary>
-    /// Interaction logic for UpdateRdvWindow.xaml
+    /// Interaction logic for DetailHospDossWindow.xaml
     /// </summary>
-    public partial class UpdateRdvWindow : Window
+    public partial class DetailHospitWindow : Window
     {
-        public UpdateRdvWindow()
+        public DetailHospitWindow()
         {
             InitializeComponent();
         }

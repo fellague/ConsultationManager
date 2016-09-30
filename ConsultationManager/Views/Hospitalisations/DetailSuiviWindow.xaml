@@ -1,0 +1,118 @@
+﻿<Window x:Class="ConsultationManager.Views.DossierMedicals.DetailSuiviWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        xmlns:local="clr-namespace:ConsultationManager.Views.DossierMedicals"
+        mc:Ignorable="d"
+        Title="DetailHospitWindow" WindowState="Maximized">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Les Courbe de Suivi Durant l'Hospitalisation" FontSize="24" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
+
+        <chartingToolkit:Chart Grid.Row="1" Title="Courbe de Poids">
+            <chartingToolkit:LineSeries Title="Poids" DependentValuePath="Y" IndependentValuePath="X" ItemsSource="{Binding PointsPoids}">
+                <chartingToolkit:LineSeries.DependentRangeAxis>
+                    <chartingToolkit:LinearAxis
+                                    Orientation="Y"
+                                    Minimum="30"
+                                    ShowGridLines="True"/>
+                </chartingToolkit:LineSeries.DependentRangeAxis>
+            </chartingToolkit:LineSeries>
+        </chartingToolkit:Chart>
+        <chartingToolkit:Chart Grid.Row="1" Grid.Column="1" Title="Courbe de TA">
+            <chartingToolkit:LineSeries Title="TA" DependentValuePath="Y" IndependentValuePath="X" 
+                                        ItemsSource="{Binding PointsTA}">
+                <chartingToolkit:LineSeries.DependentRangeAxis>
+                    <chartingToolkit:LinearAxis
+                                    Orientation="Y"
+                                    ShowGridLines="True"/>
+                </chartingToolkit:LineSeries.DependentRangeAxis>
+            </chartingToolkit:LineSeries>
+        </chartingToolkit:Chart>
+        <chartingToolkit:Chart Grid.Row="2" Title="Courbe de Température">
+            <chartingToolkit:LineSeries Title="Température" DependentValuePath="Y" IndependentValuePath="X" 
+                                        ItemsSource="{Binding PointsTemperature}">
+                <chartingToolkit:LineSeries.DependentRangeAxis>
+                    <chartingToolkit:LinearAxis
+                                    Orientation="Y"
+                                    ShowGridLines="True"/>
+                </chartingToolkit:LineSeries.DependentRangeAxis>
+            </chartingToolkit:LineSeries>
+        </chartingToolkit:Chart>
+        <chartingToolkit:Chart Grid.Row="2" Grid.Column="1" Title="Courbe de Glycémique">
+            <chartingToolkit:LineSeries Title="Glycémique" DependentValuePath="Y" IndependentValuePath="X" 
+                                        ItemsSource="{Binding PointsGlycemique}">
+                <chartingToolkit:LineSeries.DependentRangeAxis>
+                    <chartingToolkit:LinearAxis
+                                    Orientation="Y"
+                                    ShowGridLines="True"/>
+                </chartingToolkit:LineSeries.DependentRangeAxis>
+            </chartingToolkit:LineSeries>
+        </chartingToolkit:Chart>
+        <Border Grid.Row="3" BorderThickness="2" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                             ClipToBounds="True" Margin="20">
+            <Grid Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock  FontSize="20">La Listes des Interventions</TextBlock>
+                <Grid Grid.Row="1">
+                    <ListBox ItemsSource="{Binding SelectHosp.Inetrventions, Mode=TwoWay}" HorizontalContentAlignment="Stretch">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <WrapPanel Margin="5, 0, 0, 0">
+                                        <TextBlock Text="{Binding Path=Motif}" FontSize="16" Margin="0, 0, 4, 0" FontWeight="DemiBold"></TextBlock>
+                                    </WrapPanel>
+                                    <WrapPanel Grid.Row="1" Margin="5, 0, 0, 5">
+                                        <TextBlock Text="{Binding Path=Description}" FontSize="16"></TextBlock>
+                                    </WrapPanel>
+                                    <WrapPanel Grid.Row="2" Margin="5 0 0 5">
+                                        <TextBlock Text="Dans le  " FontSize="16"></TextBlock>
+                                        <TextBlock Text="{Binding CreeDans,  StringFormat='dd/MM/yyy'}" FontSize="16" FontWeight="DemiBold"></TextBlock>
+                                        <TextBlock Text="  à  " FontSize="16"></TextBlock>
+                                        <TextBlock Text="{Binding CreeDans,  StringFormat='HH:mm'}" FontSize="16" FontWeight="DemiBold"></TextBlock>
+                                    </WrapPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </Grid>
+        </Border>
+        <Border Grid.Row="3" Grid.Column="2" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                             ClipToBounds="True" Margin="20">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.ColumnSpan="2" Text="Compte Rendu" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="20" Margin="220 0 0 0"></TextBlock>
+
+                <TextBlock Grid.Row="1" Text="{Binding SelectHosp.Conclusion.CompteRendu.Description}" TextWrapping="Wrap"
+                             FontSize="16" VerticalAlignment="Top" materialDesign:TextFieldAssist.Hint="Compte Rendu de la Consultation" Margin="30 0 30 0"></TextBlock>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

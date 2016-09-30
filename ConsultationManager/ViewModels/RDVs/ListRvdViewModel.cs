@@ -18,6 +18,7 @@ using ConsultationManager.Views.DossierMedicals;
 using ConsultationManager.ServiceReferenceDossierMed;
 using ConsultationManager.ViewModels.RDVs;
 using ConsultationManager.ViewModels.DossierMedicals;
+using System.Linq;
 
 namespace ConsultationManagerClient.ViewModels.RDVs
 {
@@ -25,16 +26,15 @@ namespace ConsultationManagerClient.ViewModels.RDVs
     {
         private RdvServiceClient rsc = new RdvServiceClient();
 
-        private ObservableCollection<RdvPatientMedecin> listAllRvd;
-        private ObservableCollection<RdvPatientMedecin> listServiceRvd;
-        private ObservableCollection<RdvPatientMedecin> listPasseRvd;
-        private ObservableCollection<RdvPatientMedecin> listRateRvd;
-        private ObservableCollection<RdvPatientMedecin> listMyTodayRvd;
-        private ObservableCollection<RdvPatientMedecin> listFirstRvd;
-        private ObservableCollection<RdvPatientMedecin> listHospitRvd;
-        private ObservableCollection<RdvPatientMedecin> listFuturRdv;
-
-        private UpdateRdvWindow dialogUpdate;
+        private ObservableCollection<RdvDetail> listAllRvd;
+        private ObservableCollection<RdvDetail> listServiceRvd;
+        private ObservableCollection<RdvDetail> listPasseRvd;
+        private ObservableCollection<RdvDetail> listRateRvd;
+        private ObservableCollection<RdvDetail> listMyTodayRvd;
+        private ObservableCollection<RdvDetail> listFirstRvd;
+        private ObservableCollection<RdvDetail> listHospitRvd;
+        private ObservableCollection<RdvDetail> listFuturRdv;
+        
         private InterviewWindow dialogConsultation;
         private FirstInterviewWindow dialogFirstInterview;
         private FirstInterviewExamenWindow dialogFirstRdvExamenView;
@@ -44,6 +44,8 @@ namespace ConsultationManagerClient.ViewModels.RDVs
         private DossierMedServiceClient psc = new DossierMedServiceClient();
         private DossierMedicalWindow dialoDossierMedical;
         private DossierMedDetail selectedDossier;
+
+        private ObservableCollection<GridRdvData> listRdvGrid;
 
         private string nomUtilisateur;
 
@@ -58,7 +60,7 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             psc.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode =
                                 X509CertificateValidationMode.None;
 
-            listAllRvd = new ObservableCollection<RdvPatientMedecin>(rsc.GetAllRdv(AuthenticationViewModel.AuthenticatedUser.ServiceId));
+            listAllRvd = new ObservableCollection<RdvDetail>(rsc.GetAllRdv(AuthenticationViewModel.AuthenticatedUser.ServiceId));
             listServiceRvd = CreateListServiceRdv();
             listPasseRvd = CreateListPasseRdv();
             listRateRvd = CreateListRateRdv();
@@ -66,6 +68,8 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             listFirstRvd = CreateListFirstRdv();
             listHospitRvd = CreateListHospitRdv();
             listFuturRdv = CreateListFuturRdv();
+
+            listRdvGrid = CreateListServiceGrid();
 
             nomUtilisateur = AuthenticationViewModel.AuthenticatedUser.Nom + " " + AuthenticationViewModel.AuthenticatedUser.Prenom;
 
@@ -82,14 +86,14 @@ namespace ConsultationManagerClient.ViewModels.RDVs
         }
         #region ListRvdViewModel Variables
 
-        public ObservableCollection<RdvPatientMedecin> ListAllRvd
+        public ObservableCollection<RdvDetail> ListAllRvd
         {
             get
             {
                 return listAllRvd;
             }
         }
-        public ObservableCollection<RdvPatientMedecin> ListServiceRvd
+        public ObservableCollection<RdvDetail> ListServiceRvd
         {
             get
             {
@@ -101,7 +105,7 @@ namespace ConsultationManagerClient.ViewModels.RDVs
                 OnPropertyChanged("ListServiceRvd");
             }
         }
-        public ObservableCollection<RdvPatientMedecin> ListPasseRvd
+        public ObservableCollection<RdvDetail> ListPasseRvd
         {
             get
             {
@@ -113,7 +117,7 @@ namespace ConsultationManagerClient.ViewModels.RDVs
                 OnPropertyChanged("ListAllPasseRvd");
             }
         }
-        public ObservableCollection<RdvPatientMedecin> ListRateRvd
+        public ObservableCollection<RdvDetail> ListRateRvd
         {
             get
             {
@@ -125,7 +129,7 @@ namespace ConsultationManagerClient.ViewModels.RDVs
                 OnPropertyChanged("ListRateRvd");
             }
         }
-        public ObservableCollection<RdvPatientMedecin> ListMyTodayRvd
+        public ObservableCollection<RdvDetail> ListMyTodayRvd
         {
             get
             {
@@ -137,7 +141,7 @@ namespace ConsultationManagerClient.ViewModels.RDVs
                 OnPropertyChanged("ListMyTodayRvd");
             }
         }
-        public ObservableCollection<RdvPatientMedecin> ListFirstRvd
+        public ObservableCollection<RdvDetail> ListFirstRvd
         {
             get
             {
@@ -149,7 +153,7 @@ namespace ConsultationManagerClient.ViewModels.RDVs
                 OnPropertyChanged("ListFirstRvd");
             }
         }
-        public ObservableCollection<RdvPatientMedecin> ListHospitRvd
+        public ObservableCollection<RdvDetail> ListHospitRvd
         {
             get
             {
@@ -161,7 +165,7 @@ namespace ConsultationManagerClient.ViewModels.RDVs
                 OnPropertyChanged("ListHospitRvd");
             }
         }
-        public ObservableCollection<RdvPatientMedecin> ListFuturRdv
+        public ObservableCollection<RdvDetail> ListFuturRdv
         {
             get
             {
@@ -174,13 +178,19 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             }
         }
 
-        public UpdateRdvWindow DialogUpdateView
+        public ObservableCollection<GridRdvData> ListRdvGrid
         {
             get
             {
-                return dialogUpdate;
+                return listRdvGrid;
+            }
+            set
+            {
+                listRdvGrid = value;
+                OnPropertyChanged("ListRdvGrid");
             }
         }
+
         public InterviewWindow DialogInterviewView
         {
             get
@@ -301,15 +311,15 @@ namespace ConsultationManagerClient.ViewModels.RDVs
 
         public void ShowDialogUpdateRvd(object selectedRdv)
         {
-            var rdv = selectedRdv as RdvPatientMedecin;
+            var rdv = selectedRdv as RdvDetail;
             nextRdvWindow = new NextRdvWindow();
-            nextRdvWindow.DataContext = new NextRdvViewModel(selectedRdv as RdvPatientMedecin, this);
+            nextRdvWindow.DataContext = new NextRdvViewModel(selectedRdv as RdvDetail, this);
             nextRdvWindow.ShowDialog();
         }
 
         public void ShowDialogConsult(object selectedRdv)
         {
-            var rdv = selectedRdv as RdvPatientMedecin;
+            var rdv = selectedRdv as RdvDetail;
             //Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.DateRdv);
             dialogConsultation = new InterviewWindow();
             dialogConsultation.DataContext = new InterviewViewModel(rdv, this);
@@ -318,22 +328,16 @@ namespace ConsultationManagerClient.ViewModels.RDVs
 
         public void ShowDialogFirstConsult(object selectedRdv)
         {
-            var rdv = selectedRdv as RdvPatientMedecin;
+            var rdv = selectedRdv as RdvDetail;
             Console.WriteLine("ListRvdViewModel : Dialog opened with RDV  " + rdv.Rdv.DateRdv);
             dialogFirstInterview = new FirstInterviewWindow();
             dialogFirstInterview.DataContext = new FirstInterviewViewModel(rdv, this);
             dialogFirstInterview.ShowDialog();
         }
 
-        public void CloseDialogUpdateRvd(RdvPatientMedecin updRdv)
-        {
-            Console.WriteLine("ListRvdViewModel : Dialog closed with updated RDV  " + updRdv.Rdv.DateRdv);
-            dialogUpdate.Close();
-        }
-
         private void ShowDialogDossierMedical(object param)
         {
-            RdvPatientMedecin selRdv = param as RdvPatientMedecin;
+            RdvDetail selRdv = param as RdvDetail;
             SelectedDossier = psc.GetDossierMed(selRdv.Patient.Id);
             dialoDossierMedical = new DossierMedicalWindow();
             //dialoDossierMedical.DataContext = this;
@@ -347,15 +351,15 @@ namespace ConsultationManagerClient.ViewModels.RDVs
         public void Delete(object selectedRdv)
         {
             Console.WriteLine("ListRvdViewModel : Remove RDV  " );
-            var rdv = selectedRdv as RdvPatientMedecin;
+            var rdv = selectedRdv as RdvDetail;
             this.listPasseRvd.Remove(rdv);
         }
 
-        private ObservableCollection<RdvPatientMedecin> CreateListServiceRdv()
+        private ObservableCollection<RdvDetail> CreateListServiceRdv()
         {
             //ObservableCollection<RdvPatientMedecin> allList = CreateRDVs();
-            ObservableCollection<RdvPatientMedecin> allMyList = new ObservableCollection<RdvPatientMedecin>();
-            foreach (RdvPatientMedecin element in listAllRvd)
+            ObservableCollection<RdvDetail> allMyList = new ObservableCollection<RdvDetail>();
+            foreach (RdvDetail element in listAllRvd)
             {
                 if (!element.Rdv.DejaFait)
                 {
@@ -364,11 +368,11 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             }
             return allMyList;
         }
-        private ObservableCollection<RdvPatientMedecin> CreateListPasseRdv()
+        private ObservableCollection<RdvDetail> CreateListPasseRdv()
         {
             //ObservableCollection<RdvPatientMedecin> allList = CreateRDVs();
-            ObservableCollection<RdvPatientMedecin> allMyList = new ObservableCollection<RdvPatientMedecin>();
-            foreach (RdvPatientMedecin element in listAllRvd)
+            ObservableCollection<RdvDetail> allMyList = new ObservableCollection<RdvDetail>();
+            foreach (RdvDetail element in listAllRvd)
             {
                 if (element.Rdv.MedecinRespId == AuthenticationViewModel.AuthenticatedUser.Id 
                     && element.Rdv.DejaFait)
@@ -378,11 +382,11 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             }
             return allMyList;
         }
-        private ObservableCollection<RdvPatientMedecin> CreateListRateRdv()
+        private ObservableCollection<RdvDetail> CreateListRateRdv()
         {
             //ObservableCollection<RdvPatientMedecin> allList = CreateRDVs();
-            ObservableCollection<RdvPatientMedecin> allMyList = new ObservableCollection<RdvPatientMedecin>();
-            foreach (RdvPatientMedecin element in listAllRvd)
+            ObservableCollection<RdvDetail> allMyList = new ObservableCollection<RdvDetail>();
+            foreach (RdvDetail element in listAllRvd)
             {
                 if (element.Rdv.MedecinRespId == AuthenticationViewModel.AuthenticatedUser.Id 
                     && !element.Rdv.DejaFait 
@@ -394,11 +398,11 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             }
             return allMyList;
         }
-        private ObservableCollection<RdvPatientMedecin> CreateListMyTodayRdv()
+        private ObservableCollection<RdvDetail> CreateListMyTodayRdv()
         {
             //ObservableCollection<RdvPatientMedecin> allList = CreateRDVs();
-            ObservableCollection<RdvPatientMedecin> allMyList = new ObservableCollection<RdvPatientMedecin>();
-            foreach (RdvPatientMedecin element in listAllRvd)
+            ObservableCollection<RdvDetail> allMyList = new ObservableCollection<RdvDetail>();
+            foreach (RdvDetail element in listAllRvd)
             {
                 if(AuthenticationViewModel.AuthenticatedUser.Role == "Assistant")
                 {
@@ -421,11 +425,11 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             }
             return allMyList;
         }
-        private ObservableCollection<RdvPatientMedecin> CreateListFirstRdv()
+        private ObservableCollection<RdvDetail> CreateListFirstRdv()
         {
             //ObservableCollection<RdvPatientMedecin> allList = CreateRDVs();
-            ObservableCollection<RdvPatientMedecin> allMyList = new ObservableCollection<RdvPatientMedecin>();
-            foreach (RdvPatientMedecin element in listAllRvd)
+            ObservableCollection<RdvDetail> allMyList = new ObservableCollection<RdvDetail>();
+            foreach (RdvDetail element in listAllRvd)
             {
                 if (element.Rdv.MedecinRespId == AuthenticationViewModel.AuthenticatedUser.Id
                     && element.Rdv.NouvPat
@@ -437,10 +441,10 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             }
             return allMyList;
         }
-        private ObservableCollection<RdvPatientMedecin> CreateListHospitRdv()
+        private ObservableCollection<RdvDetail> CreateListHospitRdv()
         {
-            ObservableCollection<RdvPatientMedecin> allMyList = new ObservableCollection<RdvPatientMedecin>();
-            foreach (RdvPatientMedecin element in listAllRvd)
+            ObservableCollection<RdvDetail> allMyList = new ObservableCollection<RdvDetail>();
+            foreach (RdvDetail element in listAllRvd)
             {
                 if (element.Rdv.MedecinRespId == AuthenticationViewModel.AuthenticatedUser.Id
                     && !element.Rdv.DejaFait
@@ -451,11 +455,11 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             }
             return allMyList;
         }
-        private ObservableCollection<RdvPatientMedecin> CreateListFuturRdv()
+        private ObservableCollection<RdvDetail> CreateListFuturRdv()
         {
             //ObservableCollection<RdvPatientMedecin> allList = CreateRDVs();
-            ObservableCollection<RdvPatientMedecin> allMyList = new ObservableCollection<RdvPatientMedecin>();
-            foreach (RdvPatientMedecin element in listAllRvd)
+            ObservableCollection<RdvDetail> allMyList = new ObservableCollection<RdvDetail>();
+            foreach (RdvDetail element in listAllRvd)
             {
                 if (element.Rdv.MedecinRespId == AuthenticationViewModel.AuthenticatedUser.Id
                     && !element.Rdv.DejaFait
@@ -465,6 +469,83 @@ namespace ConsultationManagerClient.ViewModels.RDVs
                 }
             }
             return allMyList;
+        }
+
+        private ObservableCollection<GridRdvData> CreateListServiceGrid()
+        {
+            ObservableCollection<GridRdvData> list = new ObservableCollection<GridRdvData>();
+            GridRdvData data;
+
+            if (AuthenticationViewModel.AuthenticatedUser.Role == "Chef Service" || AuthenticationViewModel.AuthenticatedUser.Role == "Assistant")
+            {
+                foreach (RdvDetail element in listServiceRvd)
+                {
+                    if(element.Rdv.PathologieId == AuthenticationViewModel.AuthenticatedUser.PathologieId)
+                    {
+                        data = new GridRdvData();
+                        data.Date = element.Rdv.DateRdv.Year + "-" + element.Rdv.DateRdv.Month + "-" + element.Rdv.DateRdv.Day;
+                        data.Position = element.Rdv.Rang;
+                        data.Patient = element.Patient.Nom + "  " + element.Patient.Prenom;
+                        data.DateNaissance = element.Patient.DateNaiss.Year + "-" + element.Patient.DateNaiss.Month + "-" + element.Patient.DateNaiss.Day;
+                        data.Medecin = element.Medecin.Nom + "  " + element.Medecin.Prenom;
+                        data.Consultation = element.Consultation.Nom;
+                        data.Adresse = element.Patient.Adresse;
+                        data.Telephone = element.Patient.Telephones.First();
+                        data.CreerDans = element.Patient.CreeDans.ToString();
+                        list.Add(data);
+
+                    }
+                }
+            }
+            if (AuthenticationViewModel.AuthenticatedUser.Role == "Médecin")
+            {
+                foreach (RdvDetail element in listMyTodayRvd)
+                {
+                    data = new GridRdvData();
+                    data.Date = element.Rdv.DateRdv.Year + "-" + element.Rdv.DateRdv.Month + "-" + element.Rdv.DateRdv.Day;
+                    data.Position = element.Rdv.Rang;
+                    data.Patient = element.Patient.Nom + "  " + element.Patient.Prenom;
+                    data.DateNaissance = element.Patient.DateNaiss.Year + "-" + element.Patient.DateNaiss.Month + "-" + element.Patient.DateNaiss.Day;
+                    data.Medecin = element.Medecin.Nom + "  " + element.Medecin.Prenom;
+                    data.Consultation = element.Consultation.Nom;
+                    data.Adresse = element.Patient.Adresse;
+                    data.Telephone = element.Patient.Telephones.First();
+                    data.CreerDans = element.Patient.CreeDans.ToString();
+                    list.Add(data);
+                }
+                foreach (RdvDetail element in listFuturRdv)
+                {
+                    data = new GridRdvData();
+                    data.Date = element.Rdv.DateRdv.Year + "-" + element.Rdv.DateRdv.Month + "-" + element.Rdv.DateRdv.Day;
+                    data.Position = element.Rdv.Rang;
+                    data.Patient = element.Patient.Nom + "  " + element.Patient.Prenom;
+                    data.DateNaissance = element.Patient.DateNaiss.Year + "-" + element.Patient.DateNaiss.Month + "-" + element.Patient.DateNaiss.Day;
+                    data.Medecin = element.Medecin.Nom + "  " + element.Medecin.Prenom;
+                    data.Consultation = element.Consultation.Nom;
+                    data.Adresse = element.Patient.Adresse;
+                    data.Telephone = element.Patient.Telephones.First();
+                    data.CreerDans = element.Patient.CreeDans.ToString();
+                    list.Add(data);
+                }
+            }
+            if (AuthenticationViewModel.AuthenticatedUser.Role == "Administrateur")
+            {
+                foreach (RdvDetail element in listServiceRvd)
+                {
+                    data = new GridRdvData();
+                    data.Date = element.Rdv.DateRdv.Year + "-" + element.Rdv.DateRdv.Month + "-" + element.Rdv.DateRdv.Day;
+                    data.Position = element.Rdv.Rang;
+                    data.Patient = element.Patient.Nom + "  " + element.Patient.Prenom;
+                    data.DateNaissance = element.Patient.DateNaiss.Year + "-" + element.Patient.DateNaiss.Month + "-" + element.Patient.DateNaiss.Day;
+                    data.Medecin = element.Medecin.Nom + "  " + element.Medecin.Prenom;
+                    data.Consultation = element.Consultation.Nom;
+                    data.Adresse = element.Patient.Adresse;
+                    data.Telephone = element.Patient.Telephones.First();
+                    data.CreerDans = element.Patient.CreeDans.ToString();
+                    list.Add(data);
+                }
+            }
+            return list;
         }
 
         public void ActualiserLists()
@@ -494,5 +575,18 @@ namespace ConsultationManagerClient.ViewModels.RDVs
         }
 
         #endregion
+    }
+
+    public class GridRdvData
+    {
+        public string Date { get; set; }
+        public int Position { get; set; }
+        public string Patient { get; set; }
+        public string DateNaissance { get; set; }
+        public string Adresse { get; set; }
+        public string Telephone { get; set; }
+        public string CreerDans { get; set; }
+        public string Medecin { get; set; }
+        public string Consultation { get; set; }
     }
 }

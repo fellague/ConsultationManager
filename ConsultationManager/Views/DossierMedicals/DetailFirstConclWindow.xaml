@@ -57,7 +57,7 @@
                         </Grid>
                         <ItemsPresenter></ItemsPresenter>
                     </DockPanel>
-                    <ListBox x:Name="OrdonnanceListBox" ItemsSource="{Binding SelectedIntevConcl.Ordonnance.ListMedicaments}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch" Grid.Row="1">
+                    <ListBox x:Name="OrdonnanceListBox" ItemsSource="{Binding SelectConcl.Ordonnance.ListMedicaments}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch" Grid.Row="1">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -110,7 +110,7 @@
                 <TextBlock Grid.ColumnSpan="2" Text="Traitements Complémentaires" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="20" Margin="220 0 0 0"></TextBlock>
 
                 <Grid Grid.Row="1">
-                    <ListBox x:Name="TraitementsListBox" ItemsSource="{Binding SelectedIntevConcl.TraitementsCompl.ListTraitements}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch">
+                    <ListBox x:Name="TraitementsListBox" ItemsSource="{Binding SelectConcl.TraitementsCompl.ListTraitements}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -149,7 +149,7 @@
 
                 <TextBlock Text="Conseils (Régime)" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="20" Margin="220 0 0 0"></TextBlock>
 
-                <ListBox Grid.Row="1" x:Name="ConseilsListBox" ItemsSource="{Binding SelectedIntevConcl.Conseils}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch" Margin="20 10 20 10">
+                <ListBox Grid.Row="1" x:Name="ConseilsListBox" ItemsSource="{Binding SelectConcl.Conseils}" ScrollViewer.CanContentScroll="True"  HorizontalContentAlignment="Stretch" Margin="20 10 20 10">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>
@@ -179,7 +179,7 @@
 
                 <TextBlock Grid.ColumnSpan="2" Text="Compte Rendu" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="20" Margin="220 0 0 0"></TextBlock>
 
-                <TextBox Grid.Row="1" Text="{Binding SelectedIntevConcl.CompteRendu.Description}" TextWrapping="Wrap"  AcceptsReturn="True" MinLines="9" MaxLines="9" VerticalScrollBarVisibility="Auto"
+                <TextBox Grid.Row="1" Text="{Binding SelectConcl.CompteRendu.Description}" TextWrapping="Wrap"  AcceptsReturn="True" MinLines="9" MaxLines="9" VerticalScrollBarVisibility="Auto"
                              FontSize="16" VerticalAlignment="Top" materialDesign:TextFieldAssist.Hint="Compte Rendu de la Consultation" Margin="30 0 30 0"></TextBox>
                 <Button Command="{Binding UpdateCompteRendu}" Grid.Row="2" HorizontalAlignment="Right" Margin="10" Width="250">
                     Modifier

@@ -23,7 +23,12 @@ namespace ConsultationManager.ViewModels.DossierMedicals
         private ObservableCollection<DossierMedDetail> listAllDossier;
         private ObservableCollection<DossierMedDetail> listAllMyDossier;
         private ObservableCollection<DossierMedDetail> listConsultDossier;
-        
+
+        //private ObservableCollection<GridMyDossierData> listMyDossierGrid;
+        //private ObservableCollection<GridConsultDossierData> listConsultDossierGrid;
+        private ObservableCollection<GridServiceDossierData> listAllDossierGrid;
+
+
         private DossierMedicalWindow dialoDossierMedical;
         private DossierMedDetail selectedDossier;
 
@@ -40,11 +45,13 @@ namespace ConsultationManager.ViewModels.DossierMedicals
 
             listConsultDossier = CreateListConsultPatDoss();
 
+            //listMyDossierGrid = CreateListMyGrid();
+            //listConsultDossierGrid = CreateListConsultGrid();
+            listAllDossierGrid = CreateListDossierGrid();
+
             OpenDialogMedFolderCommand = new RelayCommand(param => ShowDialogDossierMedical(param));
         }
-
-
-
+        
         #region ListDossMedViewModel Variables
 
         public ObservableCollection<DossierMedDetail> ListAllDossier
@@ -66,6 +73,29 @@ namespace ConsultationManager.ViewModels.DossierMedicals
             get
             {
                 return listConsultDossier;
+            }
+        }
+
+
+        //public ObservableCollection<GridMyDossierData> ListMyDossierGrid
+        //{
+        //    get
+        //    {
+        //        return listMyDossierGrid;
+        //    }
+        //}
+        //public ObservableCollection<GridConsultDossierData> ListConsultDossierGrid
+        //{
+        //    get
+        //    {
+        //        return listConsultDossierGrid;
+        //    }
+        //}
+        public ObservableCollection<GridServiceDossierData> ListAllDossierGrid
+        {
+            get
+            {
+                return listAllDossierGrid;
             }
         }
 
@@ -136,6 +166,59 @@ namespace ConsultationManager.ViewModels.DossierMedicals
             }
             return list;
         }
+        
+        private ObservableCollection<GridServiceDossierData> CreateListDossierGrid()
+        {
+            ObservableCollection<GridServiceDossierData> list = new ObservableCollection<GridServiceDossierData>();
+            GridServiceDossierData data;
+
+            if (AuthenticationViewModel.AuthenticatedUser.Role == "Chef Service" || AuthenticationViewModel.AuthenticatedUser.Role == "Assistant")
+            {
+                foreach (DossierMedDetail element in listConsultDossier)
+                {
+                    data = new GridServiceDossierData();
+                    data.Identifiant = element.DossierMedical.Identifiant;
+                    data.Patient = element.Patient.Nom + "  " + element.Patient.Prenom;
+                    data.DateNaissance = element.Patient.DateNaiss.Year + "-" + element.Patient.DateNaiss.Month + "-" + element.Patient.DateNaiss.Day;
+                    data.Medecin = element.Medecin.Nom + "  " + element.Medecin.Prenom;
+                    data.Consultation = element.Consultation.Nom;
+                    data.Adresse = element.Patient.Adresse;
+                    data.Telephone = element.Patient.Telephones.First();
+                    data.CreerDans = element.DossierMedical.CreeDans.ToString();
+                    list.Add(data);
+                }
+            }
+            if (AuthenticationViewModel.AuthenticatedUser.Role == "Médecin")
+            {
+                foreach (DossierMedDetail element in listAllMyDossier)
+                {
+                    data = new GridServiceDossierData();
+                    data.Identifiant = element.DossierMedical.Identifiant;
+                    data.Patient = element.Patient.Nom + "  " + element.Patient.Prenom;
+                    data.DateNaissance = element.Patient.DateNaiss.Year + "-" + element.Patient.DateNaiss.Month + "-" + element.Patient.DateNaiss.Day;
+                    data.Adresse = element.Patient.Adresse;
+                    data.Telephone = element.Patient.Telephones.First();
+                    data.CreerDans = element.DossierMedical.CreeDans.ToString();
+                    list.Add(data);
+                }
+            }
+            if (AuthenticationViewModel.AuthenticatedUser.Role == "Administrateur" || AuthenticationViewModel.AuthenticatedUser.Role == "Chef Hospitalisation")
+            {
+                foreach (DossierMedDetail element in listAllDossier)
+                {
+                    data = new GridServiceDossierData();
+                    data.Identifiant = element.DossierMedical.Identifiant;
+                    data.Patient = element.Patient.Nom + "  " + element.Patient.Prenom;
+                    data.DateNaissance = element.Patient.DateNaiss.Year + "-" + element.Patient.DateNaiss.Month + "-" + element.Patient.DateNaiss.Day;
+                    data.Adresse = element.Patient.Adresse;
+                    data.Telephone = element.Patient.Telephones.First();
+                    data.CreerDans = element.DossierMedical.CreeDans.ToString();
+                    list.Add(data);
+                }
+            }
+            
+            return list;
+        }
 
         private void ShowDialogDossierMedical(object param)
         {
@@ -168,5 +251,35 @@ namespace ConsultationManager.ViewModels.DossierMedicals
         }
 
         #endregion
+    }
+
+    //public class GridMyDossierData
+    //{
+    //    public string Identifiant { get; set; }
+    //    public string Patient { get; set; }
+    //    public string DateNaissance { get; set; }
+    //    public string Adresse { get; set; }
+    //    public string Telephone { get; set; }
+    //    public string CreerDans { get; set; }
+    //}
+    //public class GridConsultDossierData
+    //{
+    //    public string Identifiant { get; set; }
+    //    public string Patient { get; set; }
+    //    public string Medecin { get; set; }
+    //    public string Adresse { get; set; }
+    //    public string Telephone { get; set; }
+    //    public string CreerDans { get; set; }
+    //}
+    public class GridServiceDossierData
+    {
+        public string Identifiant { get; set; }
+        public string Patient { get; set; }
+        public string DateNaissance { get; set; }
+        public string Adresse { get; set; }
+        public string Telephone { get; set; }
+        public string CreerDans { get; set; }
+        public string Medecin { get; set; }
+        public string Consultation { get; set; }
     }
 }

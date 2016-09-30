@@ -20,7 +20,7 @@ namespace ConsultationManagerClient.ViewModels.Interviews
         private DossierMedServiceClient dsc = new DossierMedServiceClient();
 
         private ListRvdViewModel listRdvVM;
-        private RdvPatientMedecin rdvConsult;
+        private RdvDetail rdvConsult;
         private DossierMed dossier;
         private NewAntecedPersWindow dialogNewAntecedPers;
         private NewAntecedFamilWindow dialogNewAntecedFamil;
@@ -31,7 +31,7 @@ namespace ConsultationManagerClient.ViewModels.Interviews
         private ObservableCollection<int> listMois;
         private ObservableCollection<int> listJours;
 
-        public FirstInterviewViewModel(RdvPatientMedecin rdv, ListRvdViewModel rdvsVM)
+        public FirstInterviewViewModel(RdvDetail rdv, ListRvdViewModel rdvsVM)
         {
             dsc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
             dsc.ClientCredentials.UserName.Password = AuthenticationViewModel.AuthenticatedUser.Password;
@@ -61,7 +61,7 @@ namespace ConsultationManagerClient.ViewModels.Interviews
 
         #region FirstConsultationViewModel Variables
 
-        public RdvPatientMedecin RdvConsult
+        public RdvDetail RdvConsult
         {
             get
             {
@@ -272,7 +272,7 @@ namespace ConsultationManagerClient.ViewModels.Interviews
             dossier.IdPatient = rdvConsult.Patient.Id;
             dossier.IdMedecin = rdvConsult.Medecin.Id;
             dossier.ServiceId = rdvConsult.Medecin.ServiceId;
-            dossier.PathologieId = rdvConsult.Medecin.PathologieId;
+            dossier.PathologieId = rdvConsult.Patient.PathologieId;
             dossier.CreeDans = DateTime.Now;
             dossier.CreePar = AuthenticationViewModel.AuthenticatedUser.Id;
 

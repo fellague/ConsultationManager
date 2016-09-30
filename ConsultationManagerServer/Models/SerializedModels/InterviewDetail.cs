@@ -12,7 +12,7 @@ namespace ConsultationManagerServer.Models.SerializedModels
         public InterviewDetail()
         {
             Interview = new Interview();
-            RdvPatientMedecin = new RdvPatientMedecin();
+            RdvPatientMedecin = new RdvDetail();
             Conclusion = new Conclusion();
         }
 
@@ -24,7 +24,7 @@ namespace ConsultationManagerServer.Models.SerializedModels
         }
 
         [DataMember]
-        public RdvPatientMedecin RdvPatientMedecin
+        public RdvDetail RdvPatientMedecin
         {
             get;
             set;
