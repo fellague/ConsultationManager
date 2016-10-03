@@ -306,9 +306,6 @@
     <Compile Include="Views\RDVs\GridRdvsPage.xaml.cs">
       <DependentUpon>GridRdvsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RDVs\ListConsultRdvPage.xaml.cs">
-      <DependentUpon>ListConsultRdvPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\RDVs\ListFuturRdvPage.xaml.cs">
       <DependentUpon>ListFuturRdvPage.xaml</DependentUpon>
     </Compile>
@@ -574,10 +571,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RDVs\GridRdvsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\RDVs\ListConsultRdvPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
