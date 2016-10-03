@@ -196,6 +196,8 @@ namespace ConsultationManager.ViewModels.DossierMedicals
                     data.Identifiant = element.DossierMedical.Identifiant;
                     data.Patient = element.Patient.Nom + "  " + element.Patient.Prenom;
                     data.DateNaissance = element.Patient.DateNaiss.Year + "-" + element.Patient.DateNaiss.Month + "-" + element.Patient.DateNaiss.Day;
+                    data.Medecin = element.Medecin.Nom + "  " + element.Medecin.Prenom;
+                    data.Consultation = element.Consultation.Nom;
                     data.Adresse = element.Patient.Adresse;
                     data.Telephone = element.Patient.Telephones.First();
                     data.CreerDans = element.DossierMedical.CreeDans.ToString();
@@ -210,6 +212,8 @@ namespace ConsultationManager.ViewModels.DossierMedicals
                     data.Identifiant = element.DossierMedical.Identifiant;
                     data.Patient = element.Patient.Nom + "  " + element.Patient.Prenom;
                     data.DateNaissance = element.Patient.DateNaiss.Year + "-" + element.Patient.DateNaiss.Month + "-" + element.Patient.DateNaiss.Day;
+                    data.Medecin = element.Medecin.Nom + "  " + element.Medecin.Prenom;
+                    data.Consultation = element.Consultation.Nom;
                     data.Adresse = element.Patient.Adresse;
                     data.Telephone = element.Patient.Telephones.First();
                     data.CreerDans = element.DossierMedical.CreeDans.ToString();

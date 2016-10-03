@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Charts.v15.2.Core, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -165,8 +168,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Authentication\AuthenticationViewModel.cs" />
+    <Compile Include="ViewModels\BtnsVisibility\VisibDossierVM.cs" />
+    <Compile Include="ViewModels\BtnsVisibility\VisibHospitVM.cs" />
+    <Compile Include="ViewModels\BtnsVisibility\VisibPatientVM.cs" />
     <Compile Include="ViewModels\DossierMedicals\DossierMedViewModel.cs" />
     <Compile Include="ViewModels\DossierMedicals\ListDossMedViewModel.cs" />
+    <Compile Include="ViewModels\BtnsVisibility\VisibHomeVM.cs" />
     <Compile Include="ViewModels\Hospitalisations\NewHospitViewModel.cs" />
     <Compile Include="ViewModels\Interviews\InterviewViewModel.cs" />
     <Compile Include="ViewModels\Interviews\InterviewConclusionViewModel.cs" />
@@ -290,11 +297,17 @@
     <Compile Include="Views\MenuPlanningWindow.xaml.cs">
       <DependentUpon>MenuPlanningWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Patients\ConsultPatientsPage.xaml.cs">
+      <DependentUpon>ConsultPatientsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Patients\ListNewPatientsPage.xaml.cs">
       <DependentUpon>ListNewPatientsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RDVs\GridRdvsPage.xaml.cs">
       <DependentUpon>GridRdvsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RDVs\ListConsultRdvPage.xaml.cs">
+      <DependentUpon>ListConsultRdvPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RDVs\ListFuturRdvPage.xaml.cs">
       <DependentUpon>ListFuturRdvPage.xaml</DependentUpon>
@@ -552,11 +565,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Patients\ConsultPatientsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Patients\ListNewPatientsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RDVs\GridRdvsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RDVs\ListConsultRdvPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1113,6 +1134,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imgs\logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

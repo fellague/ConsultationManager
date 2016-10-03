@@ -1,5 +1,6 @@
 ﻿using ConsultationManager.ViewModels.Plannings;
 using ConsultationManager.Views.Plannings;
+using ConsultationManagerClient.ViewModels.Authentication;
 using ConsultationManagerClient.Views;
 using ConsultationManagerClient.Views.Plannings;
 using System;
@@ -24,16 +25,19 @@ namespace ConsultationManager.Views
     public partial class MenuPlanningWindow : Window
     {
         private PlanningsViewModel planningVM;
+
+        private bool hideUpdatePlann;
+
         public MenuPlanningWindow()
         {
             InitializeComponent();
-
             planningVM = new PlanningsViewModel();
             this.DataContext = planningVM;
 
             _mainFrame.Navigate(new AllPlanningsPage(planningVM));
             coloringTabs(PlanningsBtn, UpdatePlanningBtn);
         }
+
 
         private void button_click_tout(object sender, RoutedEventArgs e)
         {

@@ -45,6 +45,7 @@ namespace ConsultationManagerClient.ViewModels.Consultations
         private Consultation newPathologie;
 
         private string nomUtilisateur;
+        private bool hideUpdateService;
 
         public ConsultationsViewModel()
         {
@@ -74,6 +75,11 @@ namespace ConsultationManagerClient.ViewModels.Consultations
             CancelCommand = new RelayCommand(o => ((Window)o).Close());
 
             nomUtilisateur = AuthenticationViewModel.AuthenticatedUser.Nom + " " + AuthenticationViewModel.AuthenticatedUser.Prenom;
+            hideUpdateService = true;
+            if (AuthenticationViewModel.AuthenticatedUser.Role != "Administrateur")
+            {
+                hideUpdateService = false;
+            }
         }
 
         #region ConsultationViewModel Variables
@@ -161,6 +167,14 @@ namespace ConsultationManagerClient.ViewModels.Consultations
             get
             {
                 return nomUtilisateur;
+            }
+        }
+
+        public bool HideUpdateService
+        {
+            get
+            {
+                return hideUpdateService;
             }
         }
 

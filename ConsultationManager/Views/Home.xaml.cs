@@ -1,4 +1,5 @@
-﻿using ConsultationManager.Views;
+﻿using ConsultationManager.ViewModels.BtnsVisibility;
+using ConsultationManager.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,13 +21,15 @@ namespace ConsultationManagerClient.Views
     /// </summary>
     public partial class Home : Window
     {
+        private VisibHomeVM homeViewModel;
         public Home()
         {
             InitializeComponent();
+            homeViewModel = new VisibHomeVM();
+            DataContext = homeViewModel;
         }
-        public List<EducationContent> EducationContents { get { return ConsultationManagerClient.Views.EducationContents.DataSource; } }
-        public List<EmployeeContent> EmployeeContents { get { return ConsultationManagerClient.Views.EmployeeContents.DataSource; } }
 
+        
         private void showAllPatient(object sender, EventArgs e)
         {
             this.Hide();
@@ -89,48 +92,6 @@ namespace ConsultationManagerClient.Views
         }
     }
 
-    public class EducationContent
-    {
-        public string HeaderCont { get; set; }
-        public string TextCont { get; set; }
-        public string Photo { get; set; }
-        public ImageSource PhotoSource
-        {
-            get
-            {
-                return string.IsNullOrEmpty(Photo) ? null : new BitmapImage(new Uri(Photo, UriKind.Relative));
-            }
-        }
-    }
-    public static class EducationContents
-    {
-        public static readonly List<EducationContent> DataSource =
-            new List<EducationContent> {
-                new EducationContent { HeaderCont = "Education thérapeutique", TextCont = "Visualiser tous les rapport d'éducation thérapeutique", Photo = "/ConsultationManager;component/Imgs/Home/education.png" },
-                new EducationContent { HeaderCont = "Education thérapeutique", TextCont = "Editer un rapport d'éducation thérapeutique", Photo = "/ConsultationManager;component/Imgs/Home/education-rapport.png" }
-            };
-    }
 
-    public class EmployeeContent
-    {
-        public string HeaderCont { get; set; }
-        public string TextCont { get; set; }
-        public string Photo { get; set; }
-        public ImageSource PhotoSource
-        {
-            get
-            {
-                return string.IsNullOrEmpty(Photo) ? null : new BitmapImage(new Uri(Photo, UriKind.Relative));
-            }
-        }
-    }
-    public static class EmployeeContents
-    {
-        public static readonly List<EmployeeContent> DataSource =
-            new List<EmployeeContent> {
-                new EmployeeContent { HeaderCont = "Utilisateurs", TextCont = "Afficher et modifier la liste des utilisateurs", Photo = "/ConsultationManager;component/Imgs/Home/staff.jpg" },
-                new EmployeeContent { HeaderCont = "Accès", TextCont = "Controller les droits d'accès des utilisateurs", Photo = "/ConsultationManager;component/Imgs/Home/roles.png" }
-            };
-    }
 
 }

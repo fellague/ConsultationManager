@@ -48,6 +48,7 @@ namespace ConsultationManagerClient.ViewModels.RDVs
         private ObservableCollection<GridRdvData> listRdvGrid;
 
         private string nomUtilisateur;
+        private bool hideAllRdv;
 
         public ListRvdViewModel()
         {
@@ -72,6 +73,11 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             listRdvGrid = CreateListServiceGrid();
 
             nomUtilisateur = AuthenticationViewModel.AuthenticatedUser.Nom + " " + AuthenticationViewModel.AuthenticatedUser.Prenom;
+            hideAllRdv = true;
+            if (AuthenticationViewModel.AuthenticatedUser.Role != "Administrateur")
+            {
+                hideAllRdv = false;
+            }
 
             //RunDialogCommand = new RunDialogUpdateRdvCommand(this);
             ReschedRdvDialogCommand = new RelayCommand(param => this.ShowDialogUpdateRvd(param));
@@ -257,6 +263,14 @@ namespace ConsultationManagerClient.ViewModels.RDVs
             get
             {
                 return nomUtilisateur;
+            }
+        }
+
+        public bool HideAllRdv
+        {
+            get
+            {
+                return hideAllRdv;
             }
         }
 

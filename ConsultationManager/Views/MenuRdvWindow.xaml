@@ -10,6 +10,7 @@
     
     <Window.Resources>
         <ResourceDictionary>
+            <BooleanToVisibilityConverter x:Key="b2v" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
@@ -26,7 +27,8 @@
                                   HorizontalAlignment="Right" Margin="16"
                                   IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
                     <ItemsControl>
-                        <Button Name="AllRdvBtn" Click="button_click_tout"  Content="Tous Les Rendez-vous du Service" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
+                        <Button Name="AllRdvBtn" Click="button_click_tout"  Content="Tous Les Rendez-vous du Service" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"
+                                Visibility="{Binding HideAllRdv, Converter={StaticResource b2v}}"/>
                         <Button Name="PasseRdvBtn" Click="button_click_passe"  Content="Les Anciens Rendez-vous" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
                         <Button Name="RateRdvBtn" Click="button_click_rate"  Content="Les Rendez-vous Ratés" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
                         <Button Name="MyTodayRdvBtn" Click="button_click_ajourd"  Content="Mes Rendez-vous d'Aujourduit" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>

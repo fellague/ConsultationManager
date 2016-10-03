@@ -1,18 +1,18 @@
-﻿<Page x:Class="ConsultationManagerClient.Views.Patients.AllPatientsPage"
+﻿<Page x:Class="ConsultationManager.Views.Patients.ConsultPatientsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      xmlns:local="clr-namespace:ConsultationManagerClient.Views.Patients"
+      xmlns:local="clr-namespace:ConsultationManager.Views.Patients"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="AllPage">
+      Title="ConsultPatientsPage">
 
     <Grid Margin="10">
         <DockPanel>
             <WrapPanel DockPanel.Dock="Top">
-                <TextBlock  FontSize="24">La liste de touts les patients du service</TextBlock>
+                <TextBlock  FontSize="24">La liste des Patients de la Consultation</TextBlock>
             </WrapPanel>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -20,7 +20,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid>
-                    <ListBox x:Name="listViewAcount" ItemsSource="{Binding ListAllPatient}" HorizontalContentAlignment="Stretch">
+                    <ListBox x:Name="listViewAcount" ItemsSource="{Binding ListConsultPatient}" HorizontalContentAlignment="Stretch">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>

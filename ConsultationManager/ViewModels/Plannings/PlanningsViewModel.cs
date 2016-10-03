@@ -39,6 +39,8 @@ namespace ConsultationManager.ViewModels.Plannings
 
         private string nomUtilisateur;
 
+        private bool hideUpdatePlann;
+
         public PlanningsViewModel()
         {
             psc.ClientCredentials.UserName.UserName = AuthenticationViewModel.AuthenticatedUser.UserName;
@@ -77,6 +79,11 @@ namespace ConsultationManager.ViewModels.Plannings
             RemoveMedecinJeudiCommand = new RelayCommand(param => DeleteMedecinJeudi(param));
 
             UpdatePlanningCommand = new RelayCommand(param => ModifierPlanning());
+
+
+            hideUpdatePlann = true;
+            if (AuthenticationViewModel.AuthenticatedUser.Role != "Administrateur")
+                hideUpdatePlann = false;
         }
 
         #region PlanningsViewModel Variables
@@ -236,6 +243,14 @@ namespace ConsultationManager.ViewModels.Plannings
             get
             {
                 return nomUtilisateur;
+            }
+        }
+
+        public bool HideUpdatePlann
+        {
+            get
+            {
+                return hideUpdatePlann;
             }
         }
         #endregion

@@ -9,6 +9,7 @@
         Title="Hospitalisation" WindowState="Maximized">
     <Window.Resources>
         <ResourceDictionary>
+            <BooleanToVisibilityConverter x:Key="b2v" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
@@ -26,13 +27,20 @@
                                   HorizontalAlignment="Right" Margin="16"
                                   IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
                     <ItemsControl>
-                        <Button Name="PasseHospBtn" Click="button_click_passe"  Content="Les Anciennes Hospitalisations" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
-                        <Button Name="ActiveHospBtn" Click="button_click_active"  Content="Les Hospitalisations Actives" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
-                        <Button Name="FuturHospBtn" Click="button_click_futur"  Content="Les Hospitalisations Futurs" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
-                        <Button Name="AttenteHospBtn" Click="button_click_attente"  Content="Les Hospitalisations à Activées" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
-                        <Button Name="RateHospBtn" Click="button_click_rate"  Content="Les Hospitalisations Ratées" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
-                        <Button Name="DemandesHospit" Click="button_click_demands"  Content="Les Demandes d'Hospitalisation" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
-                        <Button Name="SalleBtn" Click="button_click_salles"  Content="Les Salles d'Hospitalisation" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
+                        <Button Name="PasseHospBtn" Click="button_click_passe"  Content="Les Anciennes Hospitalisations" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"
+                                Visibility="{Binding HidePasseHosp, Converter={StaticResource b2v}}"/>
+                        <Button Name="ActiveHospBtn" Click="button_click_active"  Content="Les Hospitalisations Actives" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"
+                                Visibility="{Binding HideActiveHosp, Converter={StaticResource b2v}}"/>
+                        <Button Name="FuturHospBtn" Click="button_click_futur"  Content="Les Hospitalisations Futurs" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"
+                                Visibility="{Binding HideFuturHosp, Converter={StaticResource b2v}}"/>
+                        <Button Name="AttenteHospBtn" Click="button_click_attente"  Content="Les Hospitalisations à Activées" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"
+                                Visibility="{Binding HideAttenteHosp, Converter={StaticResource b2v}}"/>
+                        <Button Name="RateHospBtn" Click="button_click_rate"  Content="Les Hospitalisations Ratées" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"
+                                Visibility="{Binding HideRateHosp, Converter={StaticResource b2v}}"/>
+                        <Button Name="DemandesHospit" Click="button_click_demands"  Content="Les Demandes d'Hospitalisation" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"
+                                Visibility="{Binding HideDemandHosp, Converter={StaticResource b2v}}"/>
+                        <Button Name="SalleBtn" Click="button_click_salles"  Content="Les Salles d'Hospitalisation" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"
+                                Visibility="{Binding HideSalleHosp, Converter={StaticResource b2v}}"/>
                     </ItemsControl>
 
                 </DockPanel>

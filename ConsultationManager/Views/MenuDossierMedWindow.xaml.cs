@@ -1,4 +1,5 @@
-﻿using ConsultationManager.ViewModels.DossierMedicals;
+﻿using ConsultationManager.ViewModels.BtnsVisibility;
+using ConsultationManager.ViewModels.DossierMedicals;
 using ConsultationManager.Views.DossierMedicals;
 using ConsultationManager.Views.Patients;
 using ConsultationManagerClient.ViewModels.Patients;
@@ -32,7 +33,7 @@ namespace ConsultationManager.Views
             InitializeComponent();
 
             dossiersVM = new ListDossMedViewModel();
-            this.DataContext = dossiersVM;
+            this.DataContext = new VisibDossierVM();
             _mainFrame.Navigate(new MyDossierPage(dossiersVM));
             coloringTabs(MyPatBtn, AllPatBtn, ListNewPatBtn, GridServiceBtn);
             

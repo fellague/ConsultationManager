@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using ConsultationManagerClient.Views.Hospitalisations;
 using ConsultationManagerClient.ViewModels.Hospitalisations;
 using ConsultationManager.Views.Hospitalisations;
+using ConsultationManager.ViewModels.BtnsVisibility;
 
 namespace ConsultationManagerClient.Views
 {
@@ -28,7 +29,7 @@ namespace ConsultationManagerClient.Views
         {
             InitializeComponent();
             hospitVM = new ListHospitalisationViewModel();
-            this.DataContext = hospitVM;
+            this.DataContext = new VisibHospitVM();
 
             _mainFrame.Navigate(new ActiveHospitalisationPage(hospitVM));
             coloringTabs(ActiveHospBtn, PasseHospBtn, FuturHospBtn, AttenteHospBtn, RateHospBtn, DemandesHospit, SalleBtn);

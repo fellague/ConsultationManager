@@ -9,6 +9,7 @@
         Title="Planning" WindowState="Maximized">
     <Window.Resources>
         <ResourceDictionary>
+            <BooleanToVisibilityConverter x:Key="b2v" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
@@ -27,7 +28,8 @@
                                   IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
                     <ItemsControl>
                         <Button Name="PlanningsBtn" Click="button_click_tout"  Content="Les Plannings des Consultations" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
-                        <Button Name="UpdatePlanningBtn" Click="button_click_update"  Content="Modification des Plannings" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
+                        <Button Name="UpdatePlanningBtn" Click="button_click_update"  Content="Modification des Plannings" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"
+                                Visibility="{Binding HideUpdatePlann, Converter={StaticResource b2v}}"/>
                     </ItemsControl>
 
                 </DockPanel>

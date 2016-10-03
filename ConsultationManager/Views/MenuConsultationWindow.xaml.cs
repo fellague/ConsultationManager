@@ -45,12 +45,6 @@ namespace ConsultationManagerClient.Views
             coloringTabs(ApdateServiceDetailBtn, PathologiesBtn);
         }
 
-        //private void button_click_nouveau(object sender, RoutedEventArgs e)
-        //{
-        //    _framePathologies.Navigate(new NewPathologiePage(pathologieVM));
-        //    coloringTabs(NewPathologieBtn, PathologiesBtn, ApdateServiceDetailBtn);
-        //}
-
         private void button_click_home(object sender, RoutedEventArgs e)
         {
             this.Hide();

@@ -10,13 +10,14 @@
 
     <Window.Resources>
         <ResourceDictionary>
+            <BooleanToVisibilityConverter x:Key="b2v" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </Window.Resources>
+     </Window.Resources>
 
     <materialDesign:DialogHost Identifier="RootDialog">
         <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
@@ -27,10 +28,16 @@
                                   HorizontalAlignment="Right" Margin="16"
                                   IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
                     <ItemsControl>
-                        <Button Name="AllPatBtn" Click="button_click_tout"  Content="Tous les Patients" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
-                        <Button Name="MyPatBtn" Click="button_click_mes"  Content="Mes Patients" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
-                        <Button Name="ListNewPatBtn" Click="button_click_list_new"  Content="Liste des Nouveaux Patients" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
-                        <Button Name="NewPatBtn" Click="button_click_nouveau"  Content="Nouveau Patient" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
+                        <Button Name="AllPatBtn" Click="button_click_tout"  Content="Tous les Patients" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"
+                                Visibility="{Binding HideAllPatient, Converter={StaticResource b2v}}"/>
+                        <Button Name="ConsultPatBtn" Click="button_click_consult"  Content="Les Patients de la Consultation" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"
+                                Visibility="{Binding HideConsultPatient, Converter={StaticResource b2v}}"/>
+                        <Button Name="MyPatBtn" Click="button_click_mes"  Content="Mes Patients" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"
+                                Visibility="{Binding HideMyPatients, Converter={StaticResource b2v}}"/>
+                        <Button Name="ListNewPatBtn" Click="button_click_list_new"  Content="Liste des Nouveaux Patients" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"
+                                Visibility="{Binding HideNewPatients, Converter={StaticResource b2v}}"/>
+                        <Button Name="NewPatBtn" Click="button_click_nouveau"  Content="Nouveau Patient" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"
+                                Visibility="{Binding HideNewPatient, Converter={StaticResource b2v}}"/>
 
                     </ItemsControl>
 

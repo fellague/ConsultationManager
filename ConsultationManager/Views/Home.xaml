@@ -10,18 +10,24 @@
         mc:Ignorable="d"
         Title="Home" Height="900" Width="1600" WindowState="Maximized"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="b2v" />
+    </Window.Resources>
     <Grid>
         <dxlc:TileLayoutControl Padding="120,100">
             <dxlc:TileLayoutControl.Background>
                 <ImageBrush ImageSource="/ConsultationManager;component/Imgs/Home/bg_home.png"/>
             </dxlc:TileLayoutControl.Background>
-            <dxlc:Tile Header="Patients" Click="showAllPatient" FontSize="30" HorizontalHeaderAlignment="Left" dxlc:FlowLayoutControl.IsFlowBreak="True" Background="White" Foreground="#FF471647" Size="Small">
+            <dxlc:Tile Header="Patients" Click="showAllPatient" FontSize="30" HorizontalHeaderAlignment="Left" dxlc:FlowLayoutControl.IsFlowBreak="True" Background="White" Foreground="#FF471647" Size="Small"
+                       Visibility="{Binding HidePatients, Converter={StaticResource b2v}}">
                 <Image x:Name="image" Source="/ConsultationManager;component/Imgs/Home/old-patient.png" Stretch="Fill"/>
             </dxlc:Tile>
-            <dxlc:Tile Header="Hospitalisation" Click="showAllHospitalisation" FontSize="18" HorizontalHeaderAlignment="Center" Background="#FF6C15D4" Foreground="White" Size="Small">
+            <dxlc:Tile Header="Hospitalisation" Click="showAllHospitalisation" FontSize="18" HorizontalHeaderAlignment="Center" Background="#FF6C15D4" Foreground="White" Size="Small"
+                       Visibility="{Binding HideHospitalisation, Converter={StaticResource b2v}}">
                 <Image x:Name="image7" Source="/ConsultationManager;component/Imgs/Home/hospitalisation.png" />
             </dxlc:Tile>
-            <dxlc:Tile Header="Mes Patients" Click="showMyPatient" FontSize="28" HorizontalHeaderAlignment="Left"  VerticalHeaderAlignment="Top" Background="#FF6C15D4" Foreground="Black">
+            <dxlc:Tile Header="Mes Patients" Click="showMyPatient" FontSize="28" HorizontalHeaderAlignment="Left"  VerticalHeaderAlignment="Top" Background="#FF6C15D4" Foreground="Black"
+                       Visibility="{Binding HideMyPatients, Converter={StaticResource b2v}}">
                 <Image x:Name="image2" Source="/ConsultationManager;component/Imgs/Home/patient.png" Stretch="Fill"/>
             </dxlc:Tile>
             <!--<dxlc:Tile Header="Education Thérapeutique" HorizontalHeaderAlignment="Center" Background="#FF6C15D4" Foreground="White" FontSize="25">
@@ -29,7 +35,8 @@
             </dxlc:Tile>-->
             <dxlc:Tile x:Name="tile5" Size="Large"
 				HorizontalHeaderAlignment="Center" Background="#FF6C15D4"
-				ContentSource="{Binding EducationContents}" ContentChangeInterval="00:00:05" AnimateContentChange="True">
+				ContentSource="{Binding EducationContents}" ContentChangeInterval="00:00:05" AnimateContentChange="True"
+                       Visibility="{Binding HideEducation, Converter={StaticResource b2v}}">
                 <dxlc:Tile.ContentTemplate>
                     <DataTemplate>
                         <Grid>
@@ -48,7 +55,8 @@
             </dxlc:Tile>-->
             <dxlc:Tile x:Name="tile" Click="showAllEmployees" Size="Large" dxlc:FlowLayoutControl.IsFlowBreak="True"
 				HorizontalHeaderAlignment="Center" Background="#FF6C15D4"
-				ContentSource="{Binding EmployeeContents}" ContentChangeInterval="00:00:07" AnimateContentChange="True">
+				ContentSource="{Binding EmployeeContents}" ContentChangeInterval="00:00:07" AnimateContentChange="True"
+                       Visibility="{Binding HideUtilisateur, Converter={StaticResource b2v}}">
                 <dxlc:Tile.ContentTemplate>
                     <DataTemplate>
                         <Grid>
@@ -61,20 +69,24 @@
                     </DataTemplate>
                 </dxlc:Tile.ContentTemplate>
             </dxlc:Tile>
-            <dxlc:Tile Header="Plannings" Click="showPlannings" HorizontalHeaderAlignment="Center" FontSize="28" Background="#FF6C15D4">
+            <dxlc:Tile Header="Plannings" Click="showPlannings" HorizontalHeaderAlignment="Center" FontSize="28" Background="#FF6C15D4"
+                       Visibility="{Binding HidePlanning, Converter={StaticResource b2v}}">
                 <Image x:Name="image6" Source="/ConsultationManager;component/Imgs/Home/schedule.png"/>
             </dxlc:Tile>
-            <dxlc:Tile Header="Dossiers Médicaux" Click="showMedicalFolders" HorizontalHeaderAlignment="Center" FontSize="28" Background="#FF6C15D4">
+            <dxlc:Tile Header="Dossiers Médicaux" Click="showMedicalFolders" HorizontalHeaderAlignment="Center" FontSize="28" Background="#FF6C15D4"
+                       Visibility="{Binding HideDossier, Converter={StaticResource b2v}}">
                 <Image x:Name="image11" Source="/ConsultationManager;component/Imgs/Home/medical_files.png"/>
             </dxlc:Tile>
 
-            <dxlc:Tile Header="Rendez-vous" Click="showAllRdv" FontSize="28" HorizontalHeaderAlignment="Center" dxlc:FlowLayoutControl.IsFlowBreak="True" Background="#FF4B97DE">
+            <dxlc:Tile Header="Rendez-vous" Click="showAllRdv" FontSize="28" HorizontalHeaderAlignment="Center" dxlc:FlowLayoutControl.IsFlowBreak="True" Background="#FF4B97DE"
+                       Visibility="{Binding HideRdv, Converter={StaticResource b2v}}">
                 <Image x:Name="image3" Source="/ConsultationManager;component/Imgs/Home/agenda.png"/>
             </dxlc:Tile>
             <dxlc:Tile Header="Messages" Size="Small" FontSize="25" HorizontalHeaderAlignment="Center" Background="#FF4B97DE" Foreground="White">
                 <Image x:Name="image8" Source="/ConsultationManager;component/Imgs/Home/messages.png"/>
             </dxlc:Tile>
-            <dxlc:Tile Header="Transfert" Size="Small" FontSize="28"  HorizontalHeaderAlignment="Center" Background="#FF4B97DE" Foreground="White">
+            <dxlc:Tile Header="Transfert" Size="Small" FontSize="28"  HorizontalHeaderAlignment="Center" Background="#FF4B97DE" Foreground="White"
+                       Visibility="{Binding HideTransfert, Converter={StaticResource b2v}}">
                 <Image x:Name="image10" Source="/ConsultationManager;component/Imgs/Home/transfert.png"/>
             </dxlc:Tile>
             <dxlc:Tile Header="Notifications" Size="Small" FontSize="20" HorizontalHeaderAlignment="Center" Background="#FF4B97DE" Foreground="White">

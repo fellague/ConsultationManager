@@ -9,6 +9,7 @@
         Title="Dossiers Medicals" WindowState="Maximized">
     <Window.Resources>
         <ResourceDictionary>
+            <BooleanToVisibilityConverter x:Key="b2v" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
@@ -26,9 +27,12 @@
                                   HorizontalAlignment="Right" Margin="16"
                                   IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
                     <ItemsControl>
-                        <Button Name="AllPatBtn" Click="button_click_tout"  Content="Tous les Patients" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
-                        <Button Name="ListNewPatBtn" Click="button_click_list_consulation"  Content="Les Patient de la Consultation" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
-                        <Button Name="MyPatBtn" Click="button_click_mes"  Content="Mes Patients" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
+                        <Button Name="AllPatBtn" Click="button_click_tout"  Content="Tous les Patients" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"
+                                Visibility="{Binding HideAllPatient, Converter={StaticResource b2v}}"/>
+                        <Button Name="ListNewPatBtn" Click="button_click_list_consulation"  Content="Les Patient de la Consultation" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"
+                                Visibility="{Binding HideConsultPatient, Converter={StaticResource b2v}}"/>
+                        <Button Name="MyPatBtn" Click="button_click_mes"  Content="Mes Patients" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"
+                                Visibility="{Binding HideMyPatients, Converter={StaticResource b2v}}"/>
                         <!--<Button Name="GridMyBtn" Click="button_click_grid_my"  Content="Tableur EXCEL-Mes Patients" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
                         <Button Name="GridConsultBtn" Click="button_click_grid_consult"  Content="Tableur EXCEL-Patient de la Consultation" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>-->
                         <Button Name="GridServiceBtn" Click="button_click_grid_service"  Content="Tableur EXCEL" Background="{x:Null}" BorderBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=NavBar}" FontSize="18" Height="50" Foreground="#DD000000"/>
