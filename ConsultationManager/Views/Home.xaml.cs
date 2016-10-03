@@ -27,9 +27,10 @@ namespace ConsultationManagerClient.Views
             InitializeComponent();
             homeViewModel = new VisibHomeVM();
             DataContext = homeViewModel;
+            
         }
 
-        
+
         private void showAllPatient(object sender, EventArgs e)
         {
             this.Hide();

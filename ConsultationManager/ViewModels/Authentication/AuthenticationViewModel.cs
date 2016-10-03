@@ -89,11 +89,17 @@ namespace ConsultationManagerClient.ViewModels.Authentication
                 {
                     if (authenticatedUser.Id != null)
                     {
-                        //MessageBox.Show("Nom utilisateur " + authenticatedUser.Id);
                         Application.Current.MainWindow.Hide();
-                        var form2 = new ConsultationManagerClient.Views.Home();
+                        var form2 = new Home();
                         form2.Closed += (s, args) => Application.Current.MainWindow.Close();
                         form2.Show();
+                        //foreach (Window win in App.Current.Windows)
+                        //{
+                        //    if (win.Tag.ToString() != "home")
+                        //    {
+                        //        win.Close();
+                        //    }
+                        //}
                     }
                 }
                 catch (Exception e)

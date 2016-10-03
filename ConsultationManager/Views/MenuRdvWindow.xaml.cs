@@ -88,12 +88,17 @@ namespace ConsultationManagerClient.Views
 
         private void button_click_logout(object sender, RoutedEventArgs e)
         {
-            //////////////////////////////////////////////////////////////////////////
-            //////////////////////////////////////////////////////////////////////////::::
-            Application.Current.MainWindow.Hide();
+            this.Hide();
             var form2 = new MainWindow();
-            form2.Closed += (s, args) => Application.Current.MainWindow.Close();
-            form2.Show();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();//////////////////////////////////////////////////////////////////////////::::
+            //Application.Current.MainWindow.Hide();
+            //var form2 = new MainWindow();
+            //form2.Closed += (s, args) => Application.Current.MainWindow.Close();
+            //form2.Show();
+            //MainWindow signIn = new MainWindow();
+            //signIn.Tag = "sign";
+            //signIn.Show();
         }
 
         private void coloringTabs(Button puprpleBtn, Button transparantBtn1, Button transparantBtn2, Button transparantBtn3, Button transparantBtn4, Button transparantBtn5, Button transparantBtn6, Button transparantBtn7)
